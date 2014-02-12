@@ -1,0 +1,159 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0025)http://blog.codecos.com/ -->
+<html>
+<head>
+    
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="keywords" content="java,python,php,nodejs,golang,linux,bae,web.py,linux,nginx,android,游戏,编程" />
+    <meta name="description" content="本站内容为个人技术博客及其它软件编程信息。本站采用python开发，用markdown来进行编辑，生成静态文本放在github上。" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    <title>豆瓣api的电影信息查询app | 茶瓯葱丝</title>
+    <link rel="stylesheet" type="text/css" href="/styles/style.css">
+    <link rel="Stylesheet" type="text/css" href="/js/prettify/desert.css" />
+    <link rel="stylesheet" type="text/css" href="/styles/bootstrap-jian.css">
+    <script type="text/javascript"  src="/js/prettify/prettify.js"></script>
+	<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.codecos.com/rss.xml">
+</head>
+<body>
+		<div id="logo">
+			<span id="motto">人生没有对错，只有选择后的坚持，不后悔，走下去，就是对的</span>
+			<h1><a href="/index.html">Codecos | 茶瓯葱丝</a></h1>
+        </div>
+<div id="wrapper">
+<div id="content" class="index">
+     
+<h2>豆瓣api的电影信息查询app</h2>
+<div class="cnt">
+<blockquote>
+<p>其实很简单的的app，就是可以根据关键字查询电影，生成一个电影列表，然后点击列表项里面能显示详细介绍。</p>
+</blockquote>
+<hr />
+<h4>一，原理</h4>
+<ol>
+<li>
+<p>使用<a href="http://www.douban.com">豆瓣</a>的api，现在是v2版本了，可以从<a href="http://developers.douban.com/wiki/?title=api_v2">这里</a>查看详细。需要注意的是必须设置<code>User-Agent</code>这个请求头，否则返回的就是500错误了。
+          httpGet.setHeader("User-Agent", "Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.22 (KHTML,     like Gecko) Chrome/25.0.1364.172 Safari/537.22");</p>
+</li>
+<li>
+<p>至于android那边我用的HttpClient，这个很简单的。</p>
+<pre><code>String uString= Douban.HOST + "search?q=" + ch + "&amp;start=" + off + "&amp;count=" +   Douban.PAGE_SIZE;
+HttpGet httpGet = new HttpGet(uString);
+HttpParams httpParams = new BasicHttpParams();  
+HttpConnectionParams.setConnectionTimeout(httpParams,  
+         Douban.NET_TIME_OUT);  
+HttpConnectionParams.setSoTimeout(httpParams,  
+     Douban.NET_TIME_OUT); 
+httpGet.setParams(httpParams);
+//X，竟然要模仿浏览器
+httpGet.setHeader("User-Agent", "Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.22 (KHTML, like         Gecko) Chrome/25.0.1364.172 Safari/537.22");
+HttpClient httpclient = new DefaultHttpClient();
+HttpResponse response = httpclient.execute(httpGet);
+</code></pre>
+</li>
+<li>
+<p>android3.0以后就不能从主线程中访问网络了，否则就会抛出一个异常<code>NetworkOnMainThreadException</code>，而且是<code>RuntimeException</code>，需要注意，可以用Handler或者是AsyncTask来处理。</p>
+</li>
+<li>
+<p>图片的下载也是，因为图片的下载肯定也是异步的，所以不能在当前网络线程中访问，更不能在主线程里面处理，最好再起一个线程，这里推荐<code>AsyncTask</code>。</p>
+<pre><code> public class ImageLoader extends AsyncTask&lt;Integer, Integer, String&gt; {
+
+    private ImageView imgView;
+    private String url = null;
+    private Bitmap bm = null;
+
+    public ImageLoader(ImageView imgView, String url) {  
+        super();  
+        this.imgView = imgView;
+        this.url = url;
+    }
+
+    @Override
+    protected String doInBackground(Integer... arg0) {
+
+        InputStream is = null;
+        URL aryURI = null;
+        try {
+            aryURI = new URL(url);
+            is = aryURI.openStream();
+            bm = BitmapFactory.decodeStream(is);
+
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }finally{
+            try {
+                is.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return null;
+    }
+
+    @Override
+    protected void onPostExecute(String result) {
+        this.imgView.setImageBitmap(bm);
+    }
+
+}
+</code></pre>
+</li>
+<li>
+<p>还有很多的不完善之处，比如图片的缓存处理，甚至是JSON数据的缓存处理，还有推出后恢复现场的处理，而且还可以接入douban更多的接口，UI也不是很好看。</p>
+</li>
+<li>
+<p>可以从<a href="http://vagascanner.googlecode.com/files/FDouBan.zip">这里</a>下载。</p>
+</li>
+</ol>
+</dir>
+<!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"vagasnail"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->
+
+    
+</div>
+<div id="footer">
+	<span style="color:#bbb;font-size:12px">
+	&copy; Powered by <a href="https://github.com/daimin/daimin.github.com" title="sologs">sologs</a> | Themed by <a href="http://blog.leezhong.com/" title="Limboy">Limboy</a>
+	</span>
+	<p style="clear:both"></p>
+</div>
+</div>
+<script type="text/javascript">
+function hasClass(obj, cls) {  
+    return obj.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));  
+}
+function addClass(obj, cls) {  
+    if (!this.hasClass(obj, cls)) obj.className += " " + cls;  
+} 
+
+function render_pretty(){
+    var pres = document.getElementsByTagName("pre");
+    for(var i = 0, len = pres.length; i < len; i++){
+        addClass(pres[i], "prettyprint linenums");
+    }
+    prettyPrint();
+
+}
+
+window.onload = function(){
+   render_pretty();
+};
+
+</script>
+</body>
+</html>

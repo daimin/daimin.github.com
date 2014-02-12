@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0025)http://blog.codecos.com/ -->
+<html>
+<head>
+    
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="keywords" content="java,python,php,nodejs,golang,linux,bae,web.py,linux,nginx,android,游戏,编程" />
+    <meta name="description" content="本站内容为个人技术博客及其它软件编程信息。本站采用python开发，用markdown来进行编辑，生成静态文本放在github上。" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    <title>Nginx中一个server配置多个location | 茶瓯葱丝</title>
+    <link rel="stylesheet" type="text/css" href="/styles/style.css">
+    <link rel="Stylesheet" type="text/css" href="/js/prettify/desert.css" />
+    <link rel="stylesheet" type="text/css" href="/styles/bootstrap-jian.css">
+    <script type="text/javascript"  src="/js/prettify/prettify.js"></script>
+	<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.codecos.com/rss.xml">
+</head>
+<body>
+		<div id="logo">
+			<span id="motto">人生没有对错，只有选择后的坚持，不后悔，走下去，就是对的</span>
+			<h1><a href="/index.html">Codecos | 茶瓯葱丝</a></h1>
+        </div>
+<div id="wrapper">
+<div id="content" class="index">
+     
+<h2>Nginx中一个server配置多个location</h2>
+<div class="cnt">
+<h5>nginx中的location的匹配规则是“先匹配正则，再匹配普通”，同级的就是先后顺序了。</h5>
+<hr />
+<p><strong>我这里需要实现：</strong></p>
+<ol>
+<li>
+<p>一个server中配置两个location对应不同的root目录</p>
+</li>
+<li>
+<p>两个location分别对应不同的phpfpm代理的location配置  </p>
+</li>
+<li>
+<p>一个特定的url使用一个别名，这里要用别名，不要用root，alias指定的目录是准确的，root是指定目录的上级目录 </p>
+<pre><code>  location /texasholdem/bug/ {
+       alias /data1/www/texasholdem/bug/;
+       index  index.php index.html index.htm ;
+  }
+</code></pre>
+</li>
+<li>
+<p>指定域名的配置  </p>
+<pre><code> location / {
+     root   /data1/www/wp/; 
+     index  index.php index.html index.htm ;
+ }
+</code></pre>
+</li>
+<li>
+<p>对应特定的url的phpfpm配置，注意root的值，root就是document_root
+因为就上文来说document_root就是/data1/www/，这里不能用alias。  </p>
+<pre><code> location ~ /texasholdem/bug/(.*)\.php$ {
+    root           /data1/www/;
+    fastcgi_pass   127.0.0.1:9000;
+    fastcgi_index  index.php;
+    fastcgi_intercept_errors on;
+    fastcgi_param  SCRIPT_FILENAME   $document_root$fastcgi_script_name;
+    include        fastcgi_params;
+}
+</code></pre>
+</li>
+<li>
+<p>域名的php配置，只要配置相同的root就行了。</p>
+<pre><code>location ~ \.php$ {
+    root           /data1/www/wp/;
+    fastcgi_pass   127.0.0.1:9000;
+    fastcgi_index  index.php;
+    fastcgi_intercept_errors on;
+    fastcgi_param  SCRIPT_FILENAME   $document_root$fastcgi_script_name;
+    include        fastcgi_params;
+}
+</code></pre>
+</li>
+</ol>
+</dir>
+<!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"vagasnail"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->
+
+    
+</div>
+<div id="footer">
+	<span style="color:#bbb;font-size:12px">
+	&copy; Powered by <a href="https://github.com/daimin/daimin.github.com" title="sologs">sologs</a> | Themed by <a href="http://blog.leezhong.com/" title="Limboy">Limboy</a>
+	</span>
+	<p style="clear:both"></p>
+</div>
+</div>
+<script type="text/javascript">
+function hasClass(obj, cls) {  
+    return obj.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));  
+}
+function addClass(obj, cls) {  
+    if (!this.hasClass(obj, cls)) obj.className += " " + cls;  
+} 
+
+function render_pretty(){
+    var pres = document.getElementsByTagName("pre");
+    for(var i = 0, len = pres.length; i < len; i++){
+        addClass(pres[i], "prettyprint linenums");
+    }
+    prettyPrint();
+
+}
+
+window.onload = function(){
+   render_pretty();
+};
+
+</script>
+</body>
+</html>

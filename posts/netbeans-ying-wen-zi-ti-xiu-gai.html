@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0025)http://blog.codecos.com/ -->
+<html>
+<head>
+    
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="keywords" content="java,python,php,nodejs,golang,linux,bae,web.py,linux,nginx,android,游戏,编程" />
+    <meta name="description" content="本站内容为个人技术博客及其它软件编程信息。本站采用python开发，用markdown来进行编辑，生成静态文本放在github上。" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    <title>netbeans英文字体修改 | 茶瓯葱丝</title>
+    <link rel="stylesheet" type="text/css" href="/styles/style.css">
+    <link rel="Stylesheet" type="text/css" href="/js/prettify/desert.css" />
+    <link rel="stylesheet" type="text/css" href="/styles/bootstrap-jian.css">
+    <script type="text/javascript"  src="/js/prettify/prettify.js"></script>
+	<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.codecos.com/rss.xml">
+</head>
+<body>
+		<div id="logo">
+			<span id="motto">人生没有对错，只有选择后的坚持，不后悔，走下去，就是对的</span>
+			<h1><a href="/index.html">Codecos | 茶瓯葱丝</a></h1>
+        </div>
+<div id="wrapper">
+<div id="content" class="index">
+     
+<h2>netbeans英文字体修改</h2>
+<div class="cnt">
+<ol>
+<li>
+<p>将 <code>JDK_HOME/jre/lib</code> 目录下的<code>fontconfig.properties.src</code>复制一份文件<code>fontconfig.properties</code>，并放在该目录下。</p>
+</li>
+<li>
+<p>编辑文件<code>fontconfig.properties</code>，查找到下面一行：<br />
+<code>sequence.monospaced.GBK=chinese-ms936, alphabetic,dingbats,symbol</code><br />
+可以发现由于中文<strong>monospaced</strong>字体缺省查找顺序是先使用<strong>chinese-ms936</strong>，结果造成了英文被宋体来          显示。纠正非常简单，只需将<strong>chinese-ms936</strong>和<strong>alphabetic</strong>调换顺序就可以了： 
+<code>sequence.monospaced.GBK=alphabetic,chinese-ms936,dingbats,symbol</code></p>
+</li>
+</ol>
+<blockquote>
+<p>google开始收录这个博客了，可是百度还说我没有添加网站。法克！</p>
+</blockquote>
+</dir>
+<!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"vagasnail"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->
+
+    
+</div>
+<div id="footer">
+	<span style="color:#bbb;font-size:12px">
+	&copy; Powered by <a href="https://github.com/daimin/daimin.github.com" title="sologs">sologs</a> | Themed by <a href="http://blog.leezhong.com/" title="Limboy">Limboy</a>
+	</span>
+	<p style="clear:both"></p>
+</div>
+</div>
+<script type="text/javascript">
+function hasClass(obj, cls) {  
+    return obj.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));  
+}
+function addClass(obj, cls) {  
+    if (!this.hasClass(obj, cls)) obj.className += " " + cls;  
+} 
+
+function render_pretty(){
+    var pres = document.getElementsByTagName("pre");
+    for(var i = 0, len = pres.length; i < len; i++){
+        addClass(pres[i], "prettyprint linenums");
+    }
+    prettyPrint();
+
+}
+
+window.onload = function(){
+   render_pretty();
+};
+
+</script>
+</body>
+</html>

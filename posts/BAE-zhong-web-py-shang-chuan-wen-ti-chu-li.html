@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0025)http://blog.codecos.com/ -->
+<html>
+<head>
+    
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="keywords" content="java,python,php,nodejs,golang,linux,bae,web.py,linux,nginx,android,游戏,编程" />
+    <meta name="description" content="本站内容为个人技术博客及其它软件编程信息。本站采用python开发，用markdown来进行编辑，生成静态文本放在github上。" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    <title>BAE中web.py上传问题处理 | 茶瓯葱丝</title>
+    <link rel="stylesheet" type="text/css" href="/styles/style.css">
+    <link rel="Stylesheet" type="text/css" href="/js/prettify/desert.css" />
+    <link rel="stylesheet" type="text/css" href="/styles/bootstrap-jian.css">
+    <script type="text/javascript"  src="/js/prettify/prettify.js"></script>
+	<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.codecos.com/rss.xml">
+</head>
+<body>
+		<div id="logo">
+			<span id="motto">人生没有对错，只有选择后的坚持，不后悔，走下去，就是对的</span>
+			<h1><a href="/index.html">Codecos | 茶瓯葱丝</a></h1>
+        </div>
+<div id="wrapper">
+<div id="content" class="index">
+     
+<h2>BAE中web.py上传问题处理</h2>
+<div class="cnt">
+<blockquote>
+<p>这个问题困扰我了两天，在BAE中使用web.py默认的上传方式是不能上传的，通过不懈的努力终于解决了。</p>
+</blockquote>
+<ol>
+<li>
+<p>首先你要设置tempfile库的tempdir，BAE文档上面说修改了tempfile的临时目录，但是实际是在web.py中还是使用的系统默认的/tmp/xxx目录，所以首先需要修改。</p>
+<pre><code>from bae.core import const
+tempfile.tempdir = const.APP_TMPDIR
+</code></pre>
+<p>可以放置在app运行之前的代码前，保证其能被设置一次就够了。</p>
+</li>
+<li>
+<p>开始我使用的是web.py cookbook中的示例上传代码，文本文件上传是没有问题，但是二进制文件是不行的，无论怎么样多会丢失很多字节，想来应该是BAE修改了python一些库的代码。</p>
+<p>web.py中除了web.input()来获取请求数据外，海油web.data()函数，web.input()是经过<strong>web.py处理过</strong>的数据的，方便我们使用，而web.data()中获取的就是原本提交的数据。这里的问题就是在web.py的处理的时候，会使二进制数据丢失很多。所以我们来处理web.data()中的数据。</p>
+<p>web.data()中获取的数据就是字符串，可以直接保存为文件，但是还是不能正常使用，因为里面有协议头和其它一些乱七八糟的东西，我们只要中间的entity就OK了。</p>
+<p>前面大概包括空行是4行：</p>
+<pre><code>------WebKitFormBoundaryecUZ2xK6QjVl5e3K
+Content-Disposition: form-data; name="attac"; filename="jquery.edatagrid.js"
+Content-Type: application/x-javascript
+</code></pre>
+<p>后面是5行：</p>
+<pre><code>------WebKitFormBoundaryecUZ2xK6QjVl5e3K
+Content-Disposition: form-data; name="name"
+
+pxblog
+------WebKitFormBoundaryecUZ2xK6QjVl5e3K--
+</code></pre>
+<p>ok,去掉这几行</p>
+<pre><code>d = web.data()
+import StringIO
+s1 = StringIO.StringIO(d)
+s2 = StringIO.StringIO()
+lines =  s1.readlines()
+lines = lines[4:-5]
+s1.close()
+</code></pre>
+<p>现在的lines中就是我们所要的数据了，然后保存起来就是我们所要的。</p>
+</li>
+<li>
+<p>其实从Content-Disposition中可以得到filename，然后取得文件信息。
+<img alt="pic_1376642423074.jpg" src="http://vaga-static.qiniudn.com/pic_1376642423074.jpg" title="悲剧" /></p>
+</li>
+</ol>
+</dir>
+<!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"vagasnail"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->
+
+    
+</div>
+<div id="footer">
+	<span style="color:#bbb;font-size:12px">
+	&copy; Powered by <a href="https://github.com/daimin/daimin.github.com" title="sologs">sologs</a> | Themed by <a href="http://blog.leezhong.com/" title="Limboy">Limboy</a>
+	</span>
+	<p style="clear:both"></p>
+</div>
+</div>
+<script type="text/javascript">
+function hasClass(obj, cls) {  
+    return obj.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));  
+}
+function addClass(obj, cls) {  
+    if (!this.hasClass(obj, cls)) obj.className += " " + cls;  
+} 
+
+function render_pretty(){
+    var pres = document.getElementsByTagName("pre");
+    for(var i = 0, len = pres.length; i < len; i++){
+        addClass(pres[i], "prettyprint linenums");
+    }
+    prettyPrint();
+
+}
+
+window.onload = function(){
+   render_pretty();
+};
+
+</script>
+</body>
+</html>

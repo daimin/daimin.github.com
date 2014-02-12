@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0025)http://blog.codecos.com/ -->
+<html>
+<head>
+    
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="keywords" content="java,python,php,nodejs,golang,linux,bae,web.py,linux,nginx,android,游戏,编程" />
+    <meta name="description" content="本站内容为个人技术博客及其它软件编程信息。本站采用python开发，用markdown来进行编辑，生成静态文本放在github上。" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    <title>一个非常非常简单的markdown编辑器 | 茶瓯葱丝</title>
+    <link rel="stylesheet" type="text/css" href="/styles/style.css">
+    <link rel="Stylesheet" type="text/css" href="/js/prettify/desert.css" />
+    <link rel="stylesheet" type="text/css" href="/styles/bootstrap-jian.css">
+    <script type="text/javascript"  src="/js/prettify/prettify.js"></script>
+	<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.codecos.com/rss.xml">
+</head>
+<body>
+		<div id="logo">
+			<span id="motto">人生没有对错，只有选择后的坚持，不后悔，走下去，就是对的</span>
+			<h1><a href="/index.html">Codecos | 茶瓯葱丝</a></h1>
+        </div>
+<div id="wrapper">
+<div id="content" class="index">
+     
+<h2>一个非常非常简单的markdown编辑器</h2>
+<div class="cnt">
+<p>之前一直使用<em>markdownPad</em>，功能是很强大，但是那个速度我就不想吐槽了，其实我只需要一个非常简单的markdown编辑器，只要简单的预览就够了，所以就有了这个markdown的编辑器。你可以在<a href="https://github.com/daimin/mdchick">这里</a>得到它的源码。</p>
+<hr />
+<p><strong>简单的介绍：</strong> </p>
+<ul>
+<li>
+<p>因为我的<a href="http://codecos.com">博客</a>是用python写的，所以其markdown也是用的python的库进行解析的，然后大多数的md的编辑器都和博客使用的库的解析结果有所不同，包括markdownPad，只是它稍微好些而已，所以我就想自己用python来做一款简单的markdown的编辑器，这样写起博客来，就非常顺畅了。</p>
+</li>
+<li>
+<p>编辑器使用<a href="http://www.riverbankcomputing.co.uk/software/pyqt/download/">pyqt4</a>来编写，为什么不用qt?因为我不会，而且我要的是python的程序，这样才能最好的和博客一致。pyqt应该是python中最强大的UI库之一吧，很好用，文档多，而且很多的示例，强烈推荐之。</p>
+</li>
+<li>
+<p>现在编辑器的功能只有编辑和预览的功能，后续应该会有<strong>加粗</strong>，<strong>斜体</strong>，<strong>链接</strong>，<strong>插入代码块</strong>，再加上nodepad的功能，不会更多了。</p>
+</li>
+</ul>
+<hr />
+<p>已经加上了<strong>加粗</strong>，<strong>斜体</strong>，<strong>链接</strong>，<strong>插入代码块</strong>，等一些简单的功能。如果感兴趣，请参考<a href="https://github.com/daimin/mdchick">源码</a></p>
+<blockquote>
+<p>今天晚上要回家了，开心，激动，嘎嘎！</p>
+</blockquote>
+</dir>
+<!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"vagasnail"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->
+
+    
+</div>
+<div id="footer">
+	<span style="color:#bbb;font-size:12px">
+	&copy; Powered by <a href="https://github.com/daimin/daimin.github.com" title="sologs">sologs</a> | Themed by <a href="http://blog.leezhong.com/" title="Limboy">Limboy</a>
+	</span>
+	<p style="clear:both"></p>
+</div>
+</div>
+<script type="text/javascript">
+function hasClass(obj, cls) {  
+    return obj.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));  
+}
+function addClass(obj, cls) {  
+    if (!this.hasClass(obj, cls)) obj.className += " " + cls;  
+} 
+
+function render_pretty(){
+    var pres = document.getElementsByTagName("pre");
+    for(var i = 0, len = pres.length; i < len; i++){
+        addClass(pres[i], "prettyprint linenums");
+    }
+    prettyPrint();
+
+}
+
+window.onload = function(){
+   render_pretty();
+};
+
+</script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+## -*- coding: utf-8 -*-
+<%inherit file="base.html"/>
+<%block name="header">
+</%block>
+
+<%block name="main">
+<h2>${post.title}</h2>
+<div class="cnt">
+${post.cont}
+</dir>
+<%include file="comment.html"/>
+</%block>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+<channel>
+    <title>${title}</title>  
+    <link>${domain}</link>  
+	<description>${description}</description>  
+    <language>zh-cn</language>  
+    <generator>sologd</generator>  
+	% for post in posts:
+    <item>  
+		<title>${post.title}</title>  
+		<link>http://${domain}/${post.url}</link>  
+		<description>${post.cont | x}</description>  
+		<author>daimin</author>  
+		<copyright></copyright>  
+		<pubDate>${post.date}</pubDate>  
+    </item>  
+	%endfor
+</channel>  
+</rss>  

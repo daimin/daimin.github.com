@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0025)http://blog.codecos.com/ -->
+<html>
+<head>
+    
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="keywords" content="java,python,php,nodejs,golang,linux,bae,web.py,linux,nginx,android,游戏,编程" />
+    <meta name="description" content="本站内容为个人技术博客及其它软件编程信息。本站采用python开发，用markdown来进行编辑，生成静态文本放在github上。" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    <title>Nginx 常用配置 | 茶瓯葱丝</title>
+    <link rel="stylesheet" type="text/css" href="/styles/style.css">
+    <link rel="Stylesheet" type="text/css" href="/js/prettify/desert.css" />
+    <link rel="stylesheet" type="text/css" href="/styles/bootstrap-jian.css">
+    <script type="text/javascript"  src="/js/prettify/prettify.js"></script>
+	<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.codecos.com/rss.xml">
+</head>
+<body>
+		<div id="logo">
+			<span id="motto">人生没有对错，只有选择后的坚持，不后悔，走下去，就是对的</span>
+			<h1><a href="/index.html">Codecos | 茶瓯葱丝</a></h1>
+        </div>
+<div id="wrapper">
+<div id="content" class="index">
+     
+<h2>Nginx 常用配置</h2>
+<div class="cnt">
+<ol>
+<li>
+<p>用Nginx做Web服务器，如果没有处理好日志，日志文件可能会很恐怖~10G、20G
+可以修改nginx.conf 找到access_log：</p>
+<pre><code>access_log /dev/null;
+error_log /dev/null;
+</code></pre>
+<p>这样全部把他们丢到系统的黑洞里了
+不用每时每刻都往系统磁盘疯狂的读写日志了 还延长硬盘的寿命</p>
+</li>
+<li>
+<p>检查配置 <code>/usr/local/webserver/nginx/sbin/nginx -t</code></p>
+</li>
+<li>
+<p>重启nginx和php-fpm</p>
+<pre><code>/etc/init.d/php-fpm restart
+killall -v nginx ; service nginx start
+</code></pre>
+</li>
+<li>
+<p>重载配置 <code>/usr/local/nginx/sbin/nginx -s reload</code></p>
+</li>
+<li>
+<p>是反向代理获得真实IP
+  先在代理配置中加上</p>
+<pre><code>proxy_set_header        Host $host; 
+proxy_set_header        X-Real-IP $remote_addr; 
+proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
+</code></pre>
+<p>然后，重载配置，可以从$_SERVER['HTTP_X_REAL_IP'] 和 $_SERVER['HTTP_X_FORWARDED_FOR']获取真实IP如果是服务器是Nginx，可以直接去，如果是Apache需要安装apache的一个第三方模块"mod_rpaf"了, 官方网站: http://stderr.net/apache/rpaf/。</p>
+</li>
+<li>
+<p>使用fcgi_cache来减少CPU压力</p>
+<pre><code>fastcgi_cache_path /data/ngx_fcgi_tmp  levels=1:2  keys_zone=cache_php:30m inactive=1d                max_size=10g;
+fastcgi_cache   cache_php;
+fastcgi_cache_valid   200 302  1h;
+fastcgi_cache_min_uses  1;
+fastcgi_cache_use_stale error  timeout invalid_header http_500;
+fastcgi_cache_key $host$request_uri;
+</code></pre>
+<p>说明：
+ <code>fastcgi_cache_path：fastcgi_cache</code>缓存目录，可以设置目录层级，比如1:2会生成16*256个字目录，cache_php是这个缓存空间的名字，cache是用多少内存（这样热门的内容nginx直接放内存，提高访问速度），inactive表示默认失效时间，max_size表示最多用多少硬盘空间。本来还有个fastcgi_temp_path参数，但发现似乎没用。</p>
+<ul>
+<li><code>fastcgi_cache_valid</code>：定义哪些http头要缓存</li>
+<li><code>fastcgi_cache_min_uses</code>：URL经过多少次请求将被缓存</li>
+<li><code>fastcgi_cache_use_stale</code>：定义哪些情况下用过期缓存</li>
+<li><code>fastcgi_cache_key</code>：定义fastcgi_cache的key，示例中就以请求的URI作为缓存的key，Nginx会取这个key的md5作为缓存文件，如果设置了缓存哈希目录，Nginx会从后往前取相应的位数做为目录</li>
+<li><code>fastcgi_cache</code>：用哪个缓存空间</li>
+</ul>
+</li>
+<li>
+<p>nginx 禁止IP访问</p>
+<pre><code>server {
+        listen       80 default_server;
+        return       500;
+}
+</code></pre>
+</li>
+<li>
+<p>禁止指定文件类型的访问 </p>
+<pre><code>location ~ /.*\.pem {
+        deny all;
+}
+</code></pre>
+</li>
+</ol>
+</dir>
+<!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"vagasnail"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->
+
+    
+</div>
+<div id="footer">
+	<span style="color:#bbb;font-size:12px">
+	&copy; Powered by <a href="https://github.com/daimin/daimin.github.com" title="sologs">sologs</a> | Themed by <a href="http://blog.leezhong.com/" title="Limboy">Limboy</a>
+	</span>
+	<p style="clear:both"></p>
+</div>
+</div>
+<script type="text/javascript">
+function hasClass(obj, cls) {  
+    return obj.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));  
+}
+function addClass(obj, cls) {  
+    if (!this.hasClass(obj, cls)) obj.className += " " + cls;  
+} 
+
+function render_pretty(){
+    var pres = document.getElementsByTagName("pre");
+    for(var i = 0, len = pres.length; i < len; i++){
+        addClass(pres[i], "prettyprint linenums");
+    }
+    prettyPrint();
+
+}
+
+window.onload = function(){
+   render_pretty();
+};
+
+</script>
+</body>
+</html>
