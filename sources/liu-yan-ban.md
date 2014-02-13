@@ -2,7 +2,7 @@ title:留言板
 
 tags:留言,github,python
 
-date:2014-02-12
+date:2013-02-12
 
 + 这个网站部署在github上面，用python生成的静态页面，用mako作为模板引擎，使用markdown来写作。
 

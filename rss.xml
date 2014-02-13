@@ -7,16 +7,6 @@
     <language>zh-cn</language>  
     <generator>sologd</generator>  
     <item>  
-		<title>留言板</title>  
-		<link>http://blog.codecos.com//posts/liu-yan-ban.html</link>  
-		<description>&lt;ul&gt;
-&lt;li&gt;这个网站部署在github上面，用python生成的静态页面，用mako作为模板引擎，使用markdown来写作。+ 这里记录自己的心情日志，技术分享等。有什么探讨的请留言给我。&amp;gt; 世上除了生死，都是小事。从现在开始，每天微笑吧。不管遇到了什么烦心事，都不要自己为难自己；无论今天发生多么糟糕的事，都不应该感到悲伤。今天是你往后日子里最年轻的一天了，因为有明天，今天永远只是起跑线。 &amp;gt;&amp;gt; 记住一句话：越努力，越幸运。&lt;/li&gt;
-&lt;/ul&gt;</description>  
-		<author>daimin</author>  
-		<copyright></copyright>  
-		<pubDate>2014-02-12</pubDate>  
-    </item>  
-    <item>  
 		<title>使用RSA在Java端私钥加密，PHP端公钥验证</title>  
 		<link>http://blog.codecos.com//posts/shi-yong-RSA-zai-Java-duan-si-yao-jia-mi-PHP-duan-gong-yao-yan-zheng.html</link>  
 		<description>&lt;p&gt;工作需要研究下RSA加密解密算法，一不小心差点把自己搞疯了，主要是我们服务器是PHP，而客户端肯定以后是Java了。所以我需要的是在Java端用私钥加密，而服务器用公钥进行验证。在这两端进行RSA加密解密需要严格的要求，这里我主要做一下记录。&lt;/p&gt;
@@ -1496,6 +1486,27 @@ fastcgi_cache_key $host$request_uri;
 		<author>daimin</author>  
 		<copyright></copyright>  
 		<pubDate>2013-07-30</pubDate>  
+    </item>  
+    <item>  
+		<title>留言板</title>  
+		<link>http://blog.codecos.com//posts/liu-yan-ban.html</link>  
+		<description>&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;这个网站部署在github上面，用python生成的静态页面，用mako作为模板引擎，使用markdown来写作。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;这里记录自己的心情日志，技术分享等。有什么探讨的请留言给我。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;世上除了生死，都是小事。从现在开始，每天微笑吧。不管遇到了什么烦心事，都不要自己为难自己；无论今天发生多么糟糕的事，都不应该感到悲伤。今天是你往后日子里最年轻的一天了，因为有明天，今天永远只是起跑线。 &lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;记住一句话：越努力，越幸运。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;</description>  
+		<author>daimin</author>  
+		<copyright></copyright>  
+		<pubDate>2013-02-12</pubDate>  
     </item>  
     <item>  
 		<title>jVaga，蛋疼的JS库</title>  

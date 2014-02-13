@@ -49,13 +49,15 @@ sources_dir = os.path.join(app_root, 'sources/')
 class Util:
     @staticmethod
     def read_file(f):
+        cont = []
         with open ( f ) as fileHandle:
            return fileHandle.read()
         return ''
     @staticmethod
-    def write_file(fname, data):
+    def write_file(fname, data, a=False):
         ### 需要解码，默认中文是编码的
-        with open(fname.decode('utf-8'), 'w') as fhandler:
+        act = 'a' if a is True else 'w'
+        with open(fname.decode('utf-8'), act) as fhandler:
             fhandler.write(data)
             
     @staticmethod
@@ -100,13 +102,13 @@ class MdReader:
     def get_mdfiles(self):
         fls = os.listdir(sources_dir)
         for mfl in fls:
+            if mfl[mfl.rfind("."):] not in ['.md', '.MD', '.markdown', '.MARKDOWN']: continue
             mdcont = Util.read_file(os.path.join(sources_dir, mfl))
             self.mdobjs.append(self.__parse(mdcont, mfl))
         return self.mdobjs 
             
     def __process_cont(self, cont):
-        cont = markdown.markdown(cont)
-        return cont
+        return markdown.markdown(cont)
             
     def __parse(self, mdcont, mfl):
         ## 先读前面6行
@@ -117,7 +119,7 @@ class MdReader:
                                 metaslines[1][metaslines[1].index(":") + 1:],\
                                 metaslines[2][metaslines[2].index(":") + 1:]
         mddict['tags']    = mddict['tags'].split(",")
-        mddict['content'] =  self.__process_cont("".join(lines[6:]))
+        mddict['content'] =  self.__process_cont("\n".join(lines[6:]))
         mddict['fname']   = mfl
         self.metas.append(dict(filter(lambda x:x[0]!='content', mddict.items())))
         return mddict
