@@ -16,6 +16,10 @@ import os
 import markdown
 import stat
 import time
+import sys
+
+reload(sys)
+sys.setdefaultencoding('utf-8')
 
 ##网站配置
 CONF = {
@@ -29,7 +33,8 @@ CONF = {
 
 
 
-app_root = os.path.dirname(__file__)
+app_root = os.getcwd()
+
 template_dir = os.path.join(app_root, 'templates/')
 
 lookup = TemplateLookup(
@@ -49,7 +54,6 @@ class Util:
         return ''
     @staticmethod
     def write_file(fname, data):
-        fname = r'%s' % fname
         ### 需要解码，默认中文是编码的
         with open(fname.decode('utf-8'), 'w') as fhandler:
             fhandler.write(data)
@@ -323,7 +327,8 @@ if __name__ == "__main__":
     start_time = time.clock()
     main()
     end_time = time.clock()
-    print  '############## 解析完成，花费【%f】秒 #############' % (end_time - start_time)
+    print  u'############## 解析完成，花费【%f】秒 #############' % (end_time - start_time)
+    raw_input("按回车键退出...".decode("utf-8").encode('gbk'))
     
     
     
