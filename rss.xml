@@ -7,6 +7,23 @@
     <language>zh-cn</language>  
     <generator>sologd</generator>  
     <item>  
+		<title>写了一个静态博客</title>  
+		<link>http://blog.codecos.com//posts/write-a-static-blog.html</link>  
+		<description>&lt;p&gt;BAE的域名要备案了，所以我的原来的博客&lt;a href=&#34;http://codecos.com&#34;&gt;http://codecos.com&lt;/a&gt;，无法使用了。找了一下国内的其它的免费的空间或引擎都是需要域名备案的。&lt;/p&gt;
+&lt;p&gt;之前就知道github是可以创建个人网站，还可以绑定一个域名，这货可是国外的，就不需要域名备案。&lt;/p&gt;
+&lt;p&gt;gihub pages使用的是Jekyll引擎，如果你以一定的结构存放markdown文档的话，是可以自动生成html的，我这里没有去用这个，学习一个东西好像没什么必要，你可以参考&lt;a href=&#34;http://www.ruanyifeng.com/blog/2012/08/blogging_with_jekyll.html&#34;&gt;这篇文章&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;我使用python开发的，网站根据一定的结构组织，使用mako模板引擎，markdown文档放在一个指定的目录，然后执行以下python脚本就可以解析markdown文档并使用模板生成整个网站的内容了。&lt;/p&gt;
+&lt;p&gt;对比我之前的网站，这个网站是全静态化的，速度上会有优势，而且文章和tag的URL更加的友好，总之我比较满意。&lt;/p&gt;
+&lt;p&gt;网站地址：&lt;a href=&#34;http://blog.codecos.com&#34;&gt;http://blog.codecos.com&lt;/a&gt;，就是这篇文章所在。&lt;/p&gt;
+&lt;p&gt;代码：&lt;a href=&#34;https://github.com/daimin/daimin.github.com&#34;&gt;https://github.com/daimin/daimin.github.com&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;下一步我该做一个怎样的应用呢？&lt;/p&gt;
+&lt;/blockquote&gt;</description>  
+		<author>daimin</author>  
+		<copyright></copyright>  
+		<pubDate>2014-02-13</pubDate>  
+    </item>  
+    <item>  
 		<title>使用RSA在Java端私钥加密，PHP端公钥验证</title>  
 		<link>http://blog.codecos.com//posts/shi-yong-RSA-zai-Java-duan-si-yao-jia-mi-PHP-duan-gong-yao-yan-zheng.html</link>  
 		<description>&lt;p&gt;工作需要研究下RSA加密解密算法，一不小心差点把自己搞疯了，主要是我们服务器是PHP，而客户端肯定以后是Java了。所以我需要的是在Java端用私钥加密，而服务器用公钥进行验证。在这两端进行RSA加密解密需要严格的要求，这里我主要做一下记录。&lt;/p&gt;
