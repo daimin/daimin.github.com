@@ -1,0 +1,186 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0025)http://blog.codecos.com/ -->
+<html>
+<head>
+    
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="keywords" content="java,python,php,nodejs,golang,linux,bae,web.py,linux,nginx,android,游戏,编程" />
+    <meta name="description" content="本站内容为个人技术博客及其它软件编程信息。本站采用python开发，用markdown来进行编辑，生成静态文本放在github上。" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    <title>用logstash+elasticsearch+Kibana+redis搭建实时日志查询、收集与分析平台 | 茶瓯葱丝</title>
+    <link rel="stylesheet" type="text/css" href="/styles/style.css">
+    <link rel="Stylesheet" type="text/css" href="/js/prettify/desert.css" />
+    <link rel="stylesheet" type="text/css" href="/styles/bootstrap-jian.css">
+    <script type="text/javascript"  src="/js/prettify/prettify.js"></script>
+	<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.codecos.com/rss.xml">
+</head>
+<body>
+		<div id="logo">
+			<span id="motto">人生没有对错，只有选择后的坚持，不后悔，走下去，就是对的</span>
+			<h1><a href="/index.html">Codecos | 茶瓯葱丝</a></h1>
+        </div>
+<div id="wrapper">
+<div id="content" class="index">
+     
+<h2>用logstash+elasticsearch+Kibana+redis搭建实时日志查询、收集与分析平台</h2>
+<div class="cnt">
+<p>hadoop之类的是高帅富用的，我们用不过来。这里搭建一个简单的日志平台。</p>
+<p>logstash是一个管理日志和事件的工具，你可以收集它们，解析它们，并存储它们以供以后使用(例如日志搜索)，logstash有一个内置的web界面，用来搜索你的所有日志。logstash在部署时有两种运行模式：standalone和centralized：</p>
+<ul>
+<li>
+<p>standalone：standalone的意思是所有的事情都在一台服务器上运行，包括日志收集、日志索引、前端WEB界面都部署在一台机器上。</p>
+</li>
+<li>
+<p>centralized：就是多服务器模式，从很多服务器运输(ship)日志到一台总的日志(collector)服务器上用来索引和查找。</p>
+<p>需要注意的是logstash本身并没有什么shipper和collector这种说法，因为不论是运输日志的进程还是汇集总的日志的进程运行的都是同一个程序，只是使用的配置文件不同而已。</p>
+</li>
+</ul>
+<h3>这里部署centralized模式</h3>
+<ol>
+<li>
+<p>准备两台机器：server1 (192.168.56.102)，server2(192.168.56.101)。</p>
+</li>
+<li>
+<p>server1和server2中都安装JDK6以上版本，并配置JAVA环境变量：</p>
+<pre><code>export JAVA_HOME=/data/softwares/jdk1.6.0_45
+export PATH=$JAVA_HOME/bin:$PATH
+export CLASSPATH=.:$JAVA_HOME/lib/*.jar
+</code></pre>
+</li>
+<li>
+<p>server1上面运行logstash shipper和redis，用来收集日志，其实server1可以是多台生产服务器，我们做的就是监控这些服务器的日志。server2是日志分析服务器，安装logstash indexer和elasticsearch以及Kibana。</p>
+</li>
+<li>
+<p>server1安装redis，直接yum install redis就可以了</p>
+</li>
+<li>
+<p>server1安装logstash，<code>wget https://download.elasticsearch.org/logstash/logstash/logstash-1.3.3-flatjar.jar</code>，这个包很大，因为Kibana集成到里面了。</p>
+</li>
+<li>
+<p>server1运行redis-server，运行redis数据库，编写shipper:</p>
+<pre><code>input {
+   file {
+      type =&gt; "syslog"
+      path =&gt; ["/var/log/messages", "/var/log/lastlog", "/var/log/*.log"]
+   }
+
+   file {
+       type =&gt; "nginx-access"
+       path =&gt; "/var/log/nginx/access.log"
+   }
+}
+
+output {
+    redis {
+        host =&gt; "192.168.56.102"
+        port =&gt; 6379
+        data_type =&gt; "list"
+        key =&gt; "logstash"
+    }
+}
+</code></pre>
+<p>保存为shipper.conf，然后执行<code>java -jar logstash-1.3.3-flatjar.jar agent -f shipper.conf</code>。</p>
+</li>
+<li>
+<p>将logstash从server1拷贝到server2中，并下载elasticsearch，<code>wget 'https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-0.90.7.tar.gz'</code>。</p>
+</li>
+<li>
+<p>安装elasticsearch，解压后，直接运行$elasticsearch_root/bin/elasticsearch -f，等待运行成功，注意其中的<strong>publish_address</strong>为之后在indexer.conf中output中配置的端口。</p>
+</li>
+<li>
+<p>运行indexer，编写indexer.conf:</p>
+<pre><code>input {
+  redis {
+    host =&gt; "192.168.56.102"
+    port =&gt; "6379"
+    data_type =&gt; "list"
+    key =&gt; "logstash"
+    type =&gt; "redis-input"
+  }
+}
+
+filter {
+   grok {
+      type =&gt; "linux-syslog"
+      pattern =&gt; "%{SYSLOGLINE}"
+   }
+
+   grok {
+       type =&gt; "nginx-access"
+       pattern =&gt; "%{IPORHOST:source_ip} - %{USERNAME:remote_user} \[%{HTTPDATE:timestamp}\] %{QS:request} %{INT:status} %{INT:body_bytes_sent} %{QS:http_referer} %{QS:http_user_agent} %{QS:x_forword} %{QS:upstream_cache_status}&amp;@&amp;(%{HOST:domain}|-)"
+   }
+}
+
+output {
+  elasticsearch {
+    host =&gt; "127.0.0.1"
+    port =&gt; "9301"
+  }
+}
+</code></pre>
+<p>执行<code>java -jar logstash-1.3.3-flatjar.jar agent -f indexer.conf</code>。</p>
+</li>
+<li>
+<p>server2上运行Kibana，<code>java -jar logstash-1.3.3-flatjar.jar web</code>，然后再浏览器中打开 <code>http://192.168.56.101:9292</code>，应该可以看到统计结果。</p>
+</li>
+<li>
+<p>上面的端口如果不能访问注意修改iptables，运行后如果页面还是不能访问，需要等几十秒。<strong>redis可以安装在server2上面，这样会不会更好？</strong></p>
+</li>
+</ol>
+<hr />
+<p><strong>关于filter的写法，这里我们最常使用的就是grok，可以参考logstash的官网，上面有很多介绍。 </strong></p>
+<p><strong>实际上我们可以用logstash完成很多功能，比如报警功能(使用metrics插件和ruby插件)，统计nginx访问日志，并按照自己的需求，这个就需要对grok进行编码了，主要就是正则表达式的编写，如果一个grok不够的话，还可以加上一个grok，诸如此类的。</strong></p>
+</dir>
+<!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"vagasnail"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->
+
+    
+</div>
+<div id="footer">
+	<span style="color:#bbb;font-size:12px">
+	&copy; Powered by <a href="https://github.com/daimin/daimin.github.com" title="sologs">sologs</a> | Themed by <a href="http://blog.leezhong.com/" title="Limboy">Limboy</a>
+	</span>
+	<p style="clear:both"></p>
+</div>
+</div>
+<script type="text/javascript">
+function hasClass(obj, cls) {  
+    return obj.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));  
+}
+function addClass(obj, cls) {  
+    if (!this.hasClass(obj, cls)) obj.className += " " + cls;  
+} 
+
+function render_pretty(){
+    var pres = document.getElementsByTagName("pre");
+    for(var i = 0, len = pres.length; i < len; i++){
+        addClass(pres[i], "prettyprint linenums");
+    }
+    prettyPrint();
+
+}
+
+window.onload = function(){
+   render_pretty();
+};
+
+</script>
+<script type="text/javascript">
+var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_5814730'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s23.cnzz.com/stat.php%3Fid%3D5814730%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+</script>
+</body>
+</html>

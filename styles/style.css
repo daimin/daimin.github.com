@@ -9,7 +9,7 @@ table {
 fieldset,img { 
 	border:0;
 }
-address,caption,cite,code,dfn,em,strong,th,var {
+address,caption,cite,code,dfn,th,var {
 	font-style:normal;
 	font-weight:normal;
 }
@@ -275,10 +275,11 @@ div.notice {
 em {
 	font-style:italic;
 }
-blockquote {
-	font-style:italic;
-	margin: 30px;
-}
+
+blockquote{display:block;text-align:justify;border-left:4px solid #ddd;}
+blockquote{margin:1.4em 0em;padding-left:1.5em;color:#6a6a6a;}
+blockquote p{margin:0;padding:0;}
+
 div#disqus_thread {
 	margin:50px 0 0;
 }
