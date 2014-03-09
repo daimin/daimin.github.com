@@ -16,6 +16,7 @@ import os
 import markdown
 import stat
 import time
+from HTMLParser import HTMLParser
 import sys
 
 reload(sys)
@@ -63,6 +64,17 @@ class Util:
     @staticmethod
     def change_ext(fname, cext):
         return fname[:fname.rindex('.')] + cext
+        
+    @staticmethod
+    def strip_tag(html):
+        html = html.strip()
+        html = html.strip("\n")
+        result = []
+        parse = HTMLParser()
+        parse.handle_data = result.append
+        parse.feed(html)
+        parse.close()
+        return "".join(result)
             
 class HTMLObj(object):
     dir = '/'
@@ -78,6 +90,13 @@ class Post(HTMLObj):
         super(Post, self).__init__(**kwargs)
         self.cont  = kwargs['cont'] if 'cont' in kwargs else ''
         self.tags  = kwargs['tags'] if 'tags' in kwargs else []
+        
+    def get_description(self):
+        cont, size = Util.strip_tag(self.cont), 50       
+        cont = cont.replace("\n", "")
+        if len(cont) > size:
+            cont = "%s..." % cont[0: 50]        
+        return cont
     
 class Tag(HTMLObj):
     dir = '/tags/'
@@ -85,10 +104,12 @@ class Tag(HTMLObj):
         super(Tag, self).__init__(**kwargs)
         self.count  = kwargs['count'] if 'count' in kwargs else 0
         
- ### 侧边栏显示的POST ###
+        
+### 侧边栏显示的POST ##############################################################
 side_posts = [
         Post(title="留言", url="liu-yan-ban.html")
               ]
+###################################################################################
     
 class MdReader:
     """markdown文件读取器
@@ -217,8 +238,10 @@ class StaticBase():
         if isinstance(self._staticpath, list):
             if self._type == 'post':
                 for (sp, cp) in self._staticpath:
-                    self.post  = Post(title=cp['title'], cont=cp['content'], date=cp['createdate'], url=sp)
-                    self.title = "%s | %s" % (self.post.title, CONF['title']) 
+                    self.post        = Post(title=cp['title'], cont=cp['content'], date=cp['createdate'], url=sp)
+                    self.title       = "%s | %s" % (self.post.title, CONF['title']) 
+                    self.keywords    = self.post.title
+                    self.description = self.post.get_description()
                     Util.write_file(sp, tempobj.render(**self.__dict__))
             elif self._type == 'tag':
                 for (sf, (tagtitle, tagposts)) in self._staticpath:
