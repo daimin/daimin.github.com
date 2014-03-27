@@ -1,5 +1,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	<url>
+		<loc>http://blog.codecos.com//posts/logstash-peizhi-shiyong-2.html</loc>
+		<lastmod>2014-03-26</lastmod>
+		<changefreq>monthly</changefreq>
+	</url>
+	<url>
+		<loc>http://blog.codecos.com//posts/php-resque-shiyong.html</loc>
+		<lastmod>2014-03-13</lastmod>
+		<changefreq>monthly</changefreq>
+	</url>
+	<url>
 		<loc>http://blog.codecos.com//posts/logstash-peizhi-shiyong.html</loc>
 		<lastmod>2014-03-02</lastmod>
 		<changefreq>monthly</changefreq>

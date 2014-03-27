@@ -7,6 +7,125 @@
     <language>zh-cn</language>  
     <generator>sologd</generator>  
     <item>  
+		<title>用logstash+elasticsearch+Kibana+redis搭建实时日志查询、收集与分析平台(二)</title>  
+		<link>http://blog.codecos.com//posts/logstash-peizhi-shiyong-2.html</link>  
+		<description>&lt;p&gt;最近又在整那个日志分析平台，之前由于服务器没到位，然后又其它任务要做，这里就搁置了，经理说这个还是要弄，下周就能给我个服务器，希望吧。&lt;/p&gt;
+&lt;p&gt;最近弄elasticsearch集群部署，其实我的集群，就是virtualbox上面的两个系统（s1,s2），可怜啊，搞得电脑慢死了。&lt;/p&gt;
+&lt;p&gt;elasticsearch是去中心化的，多个节点中哪台先起来，哪台就是master，如果master挂了，其它有成为master资格的节点中的一个就会成为master，这个由elasticsearch系统自己调配。&lt;/p&gt;
+&lt;p&gt;elasticsearch会将索引分片存储在不同的节点上，形成分布式搜索。&lt;/p&gt;
+&lt;p&gt;elasticsearch局域网集群设置：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;各个节点要设置相同的&lt;code&gt;cluster.name: elasticsearch&lt;/code&gt;；&lt;/li&gt;
+&lt;li&gt;不同的&lt;code&gt;node.name: &#34;Franz Kafka&#34;&lt;/code&gt;，&lt;code&gt;node.master: true&lt;/code&gt;设置节点是否有成为master节点的资格；&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;node.data: true&lt;/code&gt;指定该节点是否存储数据；&lt;/li&gt;
+&lt;li&gt;禁止广播侦测：&lt;code&gt;discovery.zen.ping.multicast.enabled: false&lt;/code&gt;；&lt;/li&gt;
+&lt;li&gt;设置可以成为master的节点地址：&lt;code&gt;discovery.zen.ping.unicast.hosts: [&#34;192.168.56.101&#34;]&lt;/code&gt;，这样当有新的节点加入的时候就能通过master就发现了。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;启动各个节点的elasticsearch。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;logstash的elasticsearch的设置，主要是indexer中的output的设置：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;elasticsearch {
+       protocol =&amp;gt; &#34;transport&#34;
+       embedded =&amp;gt; false
+       host =&amp;gt; &#34;192.168.56.101&#34;
+       port =&amp;gt; &#34;9300&#34;
+       cluster =&amp;gt; &#34;logstash_cluster&#34;
+       #node_name =&amp;gt; &#34;es_master&#34;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;protocol表示logstash采用何种方式和elasticsearch交互。&lt;br /&gt;
+protocol有三种类型：node、transport、http。  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;node会将自己作为一个elasticsearch节点加入集群，不过该节点只负责交互不存储数据；  &lt;/li&gt;
+&lt;li&gt;transport就不会将自己作为一个node，而是直接使用集群中现有的节点；  &lt;/li&gt;
+&lt;li&gt;http类型就是使用REST/HTTP去交互。  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;如果不填写protocol，jruby默认是node方式，而ruby环境默认是http。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;我使用node类型一直不成功，从节点一直提示找不到logstash新加入的节点，各位有谁知道的麻烦告知一下。&lt;/p&gt;
+&lt;/blockquote&gt;</description>  
+		<author>daimin</author>  
+		<copyright></copyright>  
+		<pubDate>2014-03-26</pubDate>  
+    </item>  
+    <item>  
+		<title>php-resque的安装和使用</title>  
+		<link>http://blog.codecos.com//posts/php-resque-shiyong.html</link>  
+		<description>&lt;blockquote&gt;
+&lt;p&gt;Resque 是 Github 基于 Redis 开发的 background job 系统。PHP-Resque 是把 Resque porting 到 PHP 的方案。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;redis的安装和运行就不多说，安装后运行就行了。&lt;/p&gt;
+&lt;p&gt;从github中下载php-redis,&lt;a href=&#34;https://github.com/chrisboulton/php-resque&#34;&gt;https://github.com/chrisboulton/php-resque&lt;/a&gt;。加压后进入解压目录。&lt;/p&gt;
+&lt;p&gt;安装Composer：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;apt-get install curl
+cd /usr/local/bin
+curl -s http://getcomposer.org/installer | php
+chmod a+x composer.phar
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;放置composer.phar到php-resque的安装目录，执行：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;php composer.phar install
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;可能会提示失败，是因为没有安装phpunit，执行如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;wget https://phar.phpunit.de/phpunit.phar
+chmod +x phpunit.phar
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;然后也是在php-resque目录中执行php phpunit.phar，应该会成功。&lt;/p&gt;
+&lt;p&gt;如果都成功的话，就安装好了php-resque了，接下来可以运行demo中的代码。&lt;/p&gt;
+&lt;p&gt;demo/job.php是一个简单的job:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;class PHP_Job
+{
+  // 每个Job都有这个方法，worker就是调用这个方法的。
+    public function perform()
+    {
+        fwrite(STDOUT, &#39;Start job! -&amp;gt; &#39;);
+        sleep(1);
+        fwrite(STDOUT, &#39;Job ended!&#39; . PHP_EOL);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;demo/queue.php是一个队列插入示例：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;?php
+if(empty($argv[1])) {
+    die(&#39;Specify the name of a job to add. e.g, php queue.php PHP_Job&#39;);
+}
+
+require __DIR__ . &#39;/init.php&#39;;
+date_default_timezone_set(&#39;Asia/Shanghai&#39;);
+//设置后台存储
+Resque::setBackend(&#39;127.0.0.1:6379&#39;);
+// job的参数
+$args = array(
+    &#39;time&#39; =&amp;gt; time(),
+    &#39;array&#39; =&amp;gt; array(
+        &#39;test&#39; =&amp;gt; &#39;test&#39;,
+    ),
+);
+
+//添加队列和job
+$jobId = Resque::enqueue($argv[1], $argv[2], $args, true);
+echo &#34;Queued job &#34;.$jobId.&#34;\n\n&#34;;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;命令行输入：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;php demo/queue.php default PHP_Job
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;demo/check_status.php 是检查job的执行情况。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;php demo/check_status.php jobid
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;worker的一个实现：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;?php
+
+date_default_timezone_set(&#39;Asia/Shanghai&#39;);
+require  __DIR__.&#39;/../../job.php&#39;;
+
+require __DIR__.&#39;/../bin/resque&#39;;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;这里要require 包含job代码的文件，如果该文件中没有队列中指定的job名的类(定义了perform的类)，job将执行失败。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;基本就是这样，我简单的记录一下，记忆力不好，怕忘了。&lt;/p&gt;</description>  
+		<author>daimin</author>  
+		<copyright></copyright>  
+		<pubDate>2014-03-13</pubDate>  
+    </item>  
+    <item>  
 		<title>用logstash+elasticsearch+Kibana+redis搭建实时日志查询、收集与分析平台</title>  
 		<link>http://blog.codecos.com//posts/logstash-peizhi-shiyong.html</link>  
 		<description>&lt;p&gt;hadoop之类的是高帅富用的，我们用不过来。这里搭建一个简单的日志平台。&lt;/p&gt;

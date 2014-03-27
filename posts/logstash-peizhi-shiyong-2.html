@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0025)http://blog.codecos.com/ -->
+<html>
+<head>
+    
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="keywords" content="用logstash+elasticsearch+Kibana+redis搭建实时日志查询、收集与分析平台(二)" />
+    <meta name="description" content="最近又在整那个日志分析平台，之前由于服务器没到位，然后又其它任务要做，这里就搁置了，经理说这个还是要..." />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    <title>用logstash+elasticsearch+Kibana+redis搭建实时日志查询、收集与分析平台(二) | 茶瓯葱丝</title>
+    <link rel="stylesheet" type="text/css" href="/styles/style.css">
+    <link rel="Stylesheet" type="text/css" href="/js/prettify/desert.css" />
+    <link rel="stylesheet" type="text/css" href="/styles/bootstrap-jian.css">
+    <script type="text/javascript"  src="/js/prettify/prettify.js"></script>
+	<link rel="alternate" type="application/rss+xml" title="RSS" href="http://blog.codecos.com/rss.xml">
+</head>
+<body>
+		<div id="logo">
+			<span id="motto">人生没有对错，只有选择后的坚持，不后悔，走下去，就是对的</span>
+			<h1><a href="/index.html">Codecos | 茶瓯葱丝</a></h1>
+        </div>
+<div id="wrapper">
+<div id="content" class="index">
+     
+<h2>用logstash+elasticsearch+Kibana+redis搭建实时日志查询、收集与分析平台(二)</h2>
+<div class="cnt">
+<p>最近又在整那个日志分析平台，之前由于服务器没到位，然后又其它任务要做，这里就搁置了，经理说这个还是要弄，下周就能给我个服务器，希望吧。</p>
+<p>最近弄elasticsearch集群部署，其实我的集群，就是virtualbox上面的两个系统（s1,s2），可怜啊，搞得电脑慢死了。</p>
+<p>elasticsearch是去中心化的，多个节点中哪台先起来，哪台就是master，如果master挂了，其它有成为master资格的节点中的一个就会成为master，这个由elasticsearch系统自己调配。</p>
+<p>elasticsearch会将索引分片存储在不同的节点上，形成分布式搜索。</p>
+<p>elasticsearch局域网集群设置：</p>
+<ul>
+<li>各个节点要设置相同的<code>cluster.name: elasticsearch</code>；</li>
+<li>不同的<code>node.name: "Franz Kafka"</code>，<code>node.master: true</code>设置节点是否有成为master节点的资格；</li>
+<li><code>node.data: true</code>指定该节点是否存储数据；</li>
+<li>禁止广播侦测：<code>discovery.zen.ping.multicast.enabled: false</code>；</li>
+<li>设置可以成为master的节点地址：<code>discovery.zen.ping.unicast.hosts: ["192.168.56.101"]</code>，这样当有新的节点加入的时候就能通过master就发现了。</li>
+</ul>
+<p>启动各个节点的elasticsearch。</p>
+<hr />
+<p>logstash的elasticsearch的设置，主要是indexer中的output的设置：</p>
+<pre><code>elasticsearch {
+       protocol =&gt; "transport"
+       embedded =&gt; false
+       host =&gt; "192.168.56.101"
+       port =&gt; "9300"
+       cluster =&gt; "logstash_cluster"
+       #node_name =&gt; "es_master"
+}
+</code></pre>
+<p>protocol表示logstash采用何种方式和elasticsearch交互。<br />
+protocol有三种类型：node、transport、http。  </p>
+<ul>
+<li>node会将自己作为一个elasticsearch节点加入集群，不过该节点只负责交互不存储数据；  </li>
+<li>transport就不会将自己作为一个node，而是直接使用集群中现有的节点；  </li>
+<li>http类型就是使用REST/HTTP去交互。  </li>
+</ul>
+<p>如果不填写protocol，jruby默认是node方式，而ruby环境默认是http。</p>
+<blockquote>
+<p>我使用node类型一直不成功，从节点一直提示找不到logstash新加入的节点，各位有谁知道的麻烦告知一下。</p>
+</blockquote>
+</dir>
+<!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"vagasnail"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->
+
+    
+</div>
+<div id="footer">
+	<span style="color:#bbb;font-size:12px">
+	&copy; Powered by <a href="https://github.com/daimin/daimin.github.com" title="sologs">sologs</a> | Themed by <a href="http://blog.leezhong.com/" title="Limboy">Limboy</a>
+	</span>
+	<p style="clear:both"></p>
+</div>
+</div>
+<script type="text/javascript">
+function hasClass(obj, cls) {  
+    return obj.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));  
+}
+function addClass(obj, cls) {  
+    if (!this.hasClass(obj, cls)) obj.className += " " + cls;  
+} 
+
+function render_pretty(){
+    var pres = document.getElementsByTagName("pre");
+    for(var i = 0, len = pres.length; i < len; i++){
+        addClass(pres[i], "prettyprint linenums");
+    }
+    prettyPrint();
+
+}
+
+window.onload = function(){
+   render_pretty();
+};
+
+</script>
+<script type="text/javascript">
+var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_5814730'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s23.cnzz.com/stat.php%3Fid%3D5814730%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+</script>
+</body>
+</html>

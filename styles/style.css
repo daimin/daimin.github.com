@@ -276,9 +276,14 @@ em {
 	font-style:italic;
 }
 
-blockquote{display:block;text-align:justify;border-left:4px solid #ddd;}
-blockquote{margin:1.4em 0em;padding-left:1.5em;color:#6a6a6a;}
-blockquote p{margin:0;padding:0;}
+blockquote{display:block;text-align:justify;border-left:6px solid #ccc;}
+blockquote{margin:1.4em 0em;padding:.1em 0 0.1em 1.2em;color:#6a6a6a;background-color:#ebebeb;
+-moz-border-radius:3px 3px 3px 3px;
+	-webkit-border-radius:3px;
+	border-radius:3px;
+	-moz-box-shadow:0 -1px 0 #FFFDDD;
+    }
+blockquote p{margin:0px 0px;padding:0;}
 
 div#disqus_thread {
 	margin:50px 0 0;
