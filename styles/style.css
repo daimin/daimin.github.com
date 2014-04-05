@@ -69,13 +69,13 @@ div#wrapper {
 	-webkit-border-radius:5px;
 	border-radius:5px;
 	-moz-box-shadow:0 1px 0 #FFFFFF;
-	background-color:#f4f4f4;
+	background-color:#fff;
 	color:#111;
 	font-size:14px;
 	line-height:190%;
 	margin:0 auto 50px;
 	padding:20px;
-	/*text-shadow:0 1px 0 #FFFFFF;*/
+	text-shadow:0 1px 0 #FFFFFF;
 	width:900px;
 }
 
@@ -97,7 +97,8 @@ div#wrapper {
 
 #content .posts li a {
 	font-weight:normal;
-	padding:5px;
+	padding:0px;
+    color:#333;
 }
 
 #content .posts li a:hover {
@@ -115,6 +116,7 @@ div#content img, div#content object {
 }
 div#content li {
 	margin-left:10px;
+    line-height:22px;
 }
 
 div#content .cnt li {
@@ -389,7 +391,7 @@ span.balloon {
 
 #motto {
 	margin: 15px 0;
-	color: #999;
+	color: #ccc;
 	font-size: 13px;
 	float:right;
 }
@@ -423,7 +425,7 @@ span.balloon {
 #logo h1 a{
 	font-weight:bold;
 	font-size:35px;
-	color:#fff;
+	color:#ddd;
 	letter-spacing:3px;
 }
 

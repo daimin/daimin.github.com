@@ -7,6 +7,259 @@
     <language>zh-cn</language>  
     <generator>sologd</generator>  
     <item>  
+		<title>安装scrapy</title>  
+		<link>http://blog.codecos.com//posts/an-zhuang-scrapy.html</link>  
+		<description>&lt;p&gt;scrapy超级难装，它依赖很多库，反正我在windows上面没有装成功，linux上面弄了N久终于装好了，现在来记录一下。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;要确保系统安装了如下的库，没有就执行安装。&lt;/p&gt;
+&lt;p&gt;yum install gcc libffi-devel python-devel openssl-devel&lt;/p&gt;
+&lt;p&gt;这里可能会失败，如果没有安装repo的key的话，你可以修改.repo文件，将其      &lt;strong&gt;gpgcheck=0&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;编译安装python，这个没什么好说的。&lt;/p&gt;
+&lt;p&gt;推荐使用豆瓣的，真心速度不错。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;安装Twisted，这个很简单。可是http://pypi.python.org在国内真的不稳定，而且好慢。所以你可以使用一下的镜像：&lt;/p&gt;
+&lt;p&gt;http://pypi.douban.com/  豆瓣&lt;br /&gt;
+   http://pypi.hustunique.com/  华中理工大学&lt;br /&gt;
+   http://pypi.sdutlinux.org/  山东理工大学&lt;br /&gt;
+   http://pypi.mirrors.ustc.edu.cn/  中国科学技术大学  &lt;/p&gt;
+&lt;p&gt;pip install Twisted -i http://pypi.douban.com/simple  &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;安装w3lib&lt;br /&gt;
+pip install w3lib -i http://pypi.douban.com/simple  &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;安装lxml&lt;br /&gt;
+pip install lxml -i http://pypi.douban.com/simple  &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;安装scrapy，这里要注意cffi，在豆瓣上面是没有的，你可以去其他的地方找，pypi.python.org,或者github上面应该会有吧。前面第一步安装那几个devel库就是为了让这个能成功编译安装。安装scrapy就十分简单了：&lt;br /&gt;
+pip install scrapy -i http://pypi.douban.com/simple&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;ok，好了，终于搞好了， &lt;br /&gt;
+准备用这个弄一个图书网站，爬虫 + 搜索引擎 + 大数据存储。哈哈！  &lt;/p&gt;
+&lt;/blockquote&gt;</description>  
+		<author>daimin</author>  
+		<copyright></copyright>  
+		<pubDate>2014-04-03</pubDate>  
+    </item>  
+    <item>  
+		<title>coreseek(sphinx)分布式设置</title>  
+		<link>http://blog.codecos.com//posts/coreseek-distributed-config.html</link>  
+		<description>&lt;p&gt;sphinx默认是单线程的，无论你是多少核的服务器，它始终只会使用一个核心。
+有两个办法可以实现sphinx多核利用，两种都是使用sphinx的分布式设置。&lt;/p&gt;
+&lt;h3&gt;1. 使用agent，远程索引声明&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;建立一个分布式索引，这个索引不会用来存储数据，只是用来合并查询数据，提供客户端调用而已&lt;/li&gt;
+&lt;li&gt;设置分布式索引的type=distributed&lt;/li&gt;
+&lt;li&gt;将local属性指向自身就行，这里就是dist&lt;/li&gt;
+&lt;li&gt;agent执行独立运行的searchd进程，可以是本机的，也可以在其它机器上面运行，不过注意的是agent的数据源必须相同，否则无法合并。&lt;/li&gt;
+&lt;li&gt;agent的数据源是我们采用一定的算法将一个数据源拆分成积分，如id取模或者是其它方式。&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;客户端进行搜索的时候就直接使用dist索引进程查询就行了。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;index dist
+{
+    type = distributed
+    local = chunk1
+    agent = localhost:9312:chunk2
+    agent = localhost:9312:chunk3
+    agent = localhost:9312:chunk4
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;2. 使用local，本地索引声明&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;严格来说不算是分布式，只是多线程搜索&lt;/li&gt;
+&lt;li&gt;coreseek4.1的手册上面明确的写着“全部本地索引会被依次搜索，仅使用1个CPU或核。”。&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;不过手册中没有翻译的文档中有一个dist_threads参数，这个参数指明并发查询现场数，里面写到，从sphinx-2.0.1-bata(coreseek4.1正是基于这个版本的sphinx)开始就可以使用了，它指明以多少个线程的方式去查询索引，线程数最好和索引数相同(不包括聚合索引，这里就是dist_test)。这里可以这样配置:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;index dist_test
+{
+    type = distributed
+    local = chunk1
+    local = chunk2
+    local = chunk3
+    local = chunk4
+}
+
+#...
+
+dist_threads = 4
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;这里的chunk1 - chunk4正是我们配置的多个索引，需要在同一份配置文件中配置，它们的数据源也是和上文一样的方式从一个数据源中拆分出来的。
+可以参考&lt;a href=&#34;http://www.oschina.net/translate/sphinx-search-performance-optimization-multi-threaded-search&#34;&gt;这篇文章&lt;/a&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;coreseek4.1 基于sphinx-2.0.1-bata，其多线程查询支持可能并不完善，可能我们需要升级更高版本的sphinx才能更好的支持这一特性(我在虚拟机上面配置，似乎就没有启用多线程)。&lt;br /&gt;
+而且基于数据源拆分实现的分布式，可能会有一些隐患，需要我们仔细分析。
+如果想实现比较完美的分布式搜索引擎可能solr，elasticsearch这些为分布式而生的搜索引擎会更符合我们的需要。&lt;/p&gt;
+&lt;/blockquote&gt;</description>  
+		<author>daimin</author>  
+		<copyright></copyright>  
+		<pubDate>2014-03-31</pubDate>  
+    </item>  
+    <item>  
+		<title>使用elasticsearch搭建一个搜索系统</title>  
+		<link>http://blog.codecos.com//posts/elasticsearch-flask-pyes-da-jian-shi-yong.html</link>  
+		<description>&lt;p&gt;要搭建一个日志分析系统，使用的elasticsearch+logstash+redis+kibana，搭建过程见之前的日志。&lt;/p&gt;
+&lt;p&gt;elasticsearch是一个分布式的搜索引擎，基于lucene，但是我们不需要学习太多的lucene的知识，就能很方便的使用。&lt;/p&gt;
+&lt;p&gt;它去中心化，会自动推举master，访问集群中的任何一个node，就是在和整个集群交互；添加节点只需要命名相同的集群名称，就能自动的加入。&lt;/p&gt;
+&lt;p&gt;相比sphinx来说:&lt;br /&gt;
+优点：&lt;br /&gt;
+它是实时(一定程度上)的，非常容易实现分布式，能直接搜索出文档，而不是像sphinx一样要用id去数据库查询文档内容。elasticsearch其实就如同一个数据库一般使用。elasticsearch对中文分词的支持也要比sphinx要好些，而且提供了更新丰富的api实现各种搜索需求。elasticsearch可以自动对索引分片，提高建立索引的速度。&lt;br /&gt;
+缺点:&lt;br /&gt;
+比sphinx的检索速度要慢，建立索引的速度也要慢点(elasticsearch可以自动分片存储)，生成的索引文件很大，比源文档要大得多。elasticsearch内存大户。&lt;/p&gt;
+&lt;p&gt;elasticsearch中文分词：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;可以直接下载 &lt;a href=&#34;https://github.com/medcl/elasticsearch-rtf/&#34;&gt;elasticsearch-rtf&lt;/a&gt;，也可以进去下载你自己需要的插件。  可以参见&lt;a href=&#34;http://zhousheng29.iteye.com/blog/1849536&#34;&gt;这篇博文&lt;/a&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;最新版本的elasticsearch使用mmseg插件时，可能会报错误，这是因为lunece4.6和mmseg插件不兼容，可以下载小于该版本的lucene来解决这个问题。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;pyes是python操作elasticsearch的工具库。从&lt;a href=&#34;https://github.com/aparo/pyes/&#34;&gt;github&lt;/a&gt;上下载就行，使用参见&lt;a href=&#34;http://pyes.readthedocs.org&#34;&gt;官方文档&lt;/a&gt;。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;创建索引&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;if self.__conn.indices.exists_index(self.__index_name):
+    return
+try:
+    #删除索引
+    self.__conn.indices.delete_index(self.__index_name)
+except:
+    pass
+#创建索引
+self.__conn.indices.create_index(self.__index_name)
+mapping = {
+       u&#39;date_added&#39;: {&#39;boost&#39;: 1.0,
+                      &#39;index&#39;: &#39;not_analyzed&#39;,
+                      &#39;store&#39;: &#39;yes&#39;,
+                      &#39;type&#39;: u&#39;date&#39;},
+       u&#39;title&#39;: {&#39;boost&#39;: 1.0,
+                   &#39;index&#39;: &#39;analyzed&#39;,
+                   &#39;store&#39;: &#39;yes&#39;,
+                   &#39;type&#39;: u&#39;string&#39;,
+                   &#34;indexAnalyzer&#34;:&#34;ik&#34;,
+                   &#34;searchAnalyzer&#34;:&#34;ik&#34;,
+                   },
+       u&#39;content&#39;: {&#39;boost&#39;: 1.0,
+                   &#39;index&#39;: &#39;analyzed&#39;,
+                   &#39;store&#39;: &#39;yes&#39;,
+                   &#39;type&#39;: u&#39;string&#39;,
+                   &#34;indexAnalyzer&#34;:&#34;ik&#34;,
+                   &#34;searchAnalyzer&#34;:&#34;ik&#34;,
+                   &#34;term_vector&#34; : &#34;with_positions_offsets&#34;}
+       }
+
+#索引映射
+self.__conn.indices.put_mapping(self.__index_type, {&#39;properties&#39;:mapping}, self.__index_name)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;插入数据&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;self.__conn.index(data, self.__index_name, self.__index_type)
+self.__conn.indices.refresh(self.__index_name)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;查询&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#q = StringQuery(qstr) #会查询所有字段，并自动对关键字分词
+
+#q = WildcardQuery(&#34;content&#34;, &#34;%s*&#34; % qstr) #通配符搜索
+#q = q.search()
+#q1 = TermQuery(&#34;title&#34;, qstr)  # 词条搜索，关键字不会分词
+#q.add(&#34;content&#34;, qstr)
+
+qtitle = TextQuery(&#34;title&#34;, qstr, boost=2) # 文本搜索，关键字会分词
+qcontent = TextQuery(&#34;content&#34;, qstr, boost=1)
+h = HighLighter([&#39;&amp;lt;span class=&#34;kw&#34;&amp;gt;&#39;], [&#39;&amp;lt;/span&amp;gt;&#39;], fragment_size=500) # 高亮
+#q = FilteredQuery(MatchAllQuery(), q) 
+#sort={&#39;date_added&#39;: {&#39;order&#39;: &#39;desc&#39;}}
+# BooleanQuery，会根据must(AND)或should(OR)来对Query进行组合
+# start起始，size获取大小
+q = Search(BoolQuery(BoolQuery(should=[qtitle, qcontent])),highlight=h, start=0, size=50)
+q.add_highlight(&#34;title&#34;)
+q.add_highlight(&#34;content&#34;)
+
+resultset = self.__conn.search(query=q, indices=self.__index_name,highlight=h, doc_types=[self.__index_type])
+list=[]
+for r in resultset:
+    if r._meta.highlight.has_key(&#34;title&#34;):
+        r[&#39;title&#39;] = r._meta.highlight[u&#34;title&#34;][0]
+    if r._meta.highlight.has_key(&#34;content&#34;):
+        r[&#39;content&#39;] = r._meta.highlight[u&#34;content&#34;][0]
+    list.append(r)
+
+return (list, resultset)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;简单的爬虫，用BeautifulSoup和正则表达式简单实现。数据直接存储在elasticsearch，只用sqlite保存URL的hash数据，以防重复抓取。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;if furl != self.__purl:
+    hashfurl = self.md5(furl)
+    if self.is_exist(hashfurl) :
+        return
+    else:
+        self.__add_url(hashfurl)
+
+time.sleep(0.5)
+self.__logger.debug( &#34;========================= fetch and parse %s ========================\n&#34; % furl)
+
+req = urllib2.Request(furl)
+try:
+    response = urllib2.urlopen(req)
+    restext  = response.read()
+
+    restext  = restext.decode(&#34;cp936&#34;).encode(&#34;UTF-8&#34;)
+except:
+    return
+soup = BeautifulSoup(restext)
+## 先拿文章
+title = soup.find_all(id=&#34;h1title&#34;)
+if title is not None and title &amp;lt;&amp;gt; []:
+    title = title[0].get_text()
+
+date_added = self.get_dateadded(soup)
+print date_added
+
+content = soup.find(id=&#34;endText&#34;)
+if content is not None:
+    content =  content.get_text()
+
+if content is not None and date_added is not None and title is not None:
+    self.save_new(title=title, content=content, date_added=date_added) 
+else:
+    self.__logger.warn( &#39;same attr is empty!!!!\n&#39;)
+
+
+links = soup.find_all(&#34;a&#34;)
+
+for link in links:
+    href = link.get(&#34;href&#34;)
+    #print href
+    if href is not None:
+        if self.__ptn.match(href):
+            self.parse(str(href))
+&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;记性不好，简单的记录。&lt;/p&gt;
+&lt;/blockquote&gt;</description>  
+		<author>daimin</author>  
+		<copyright></copyright>  
+		<pubDate>2014-03-29</pubDate>  
+    </item>  
+    <item>  
 		<title>用logstash+elasticsearch+Kibana+redis搭建实时日志查询、收集与分析平台(二)</title>  
 		<link>http://blog.codecos.com//posts/logstash-peizhi-shiyong-2.html</link>  
 		<description>&lt;p&gt;最近又在整那个日志分析平台，之前由于服务器没到位，然后又其它任务要做，这里就搁置了，经理说这个还是要弄，下周就能给我个服务器，希望吧。&lt;/p&gt;

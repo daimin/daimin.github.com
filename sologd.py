@@ -27,7 +27,7 @@ CONF = {
       "keywords"   : u"java,python,php,nodejs,golang,linux,bae,web.py,linux,nginx,android,游戏,编程",
       "description": u"本站内容为个人技术博客及其它软件编程信息。本站采用python开发，用markdown来进行编辑，生成静态文本放在github上。",
       "title"      : u"茶瓯葱丝",
-      "en_title"   : u"Codecos", 
+      "en_title"   : u"CODECOS", 
       "domain"     : u"blog.codecos.com",
       "motto"      : u"人生没有对错，只有选择后的坚持，不后悔，走下去，就是对的",
     }
@@ -207,7 +207,8 @@ class StaticBase():
     def __init__(self):
         ## 循环将CONF中的值赋给当前对象
         map(lambda x:setattr(self, x[0], x[1]), CONF.items())
-        self.fulltitle = '%s | %s' % (self.en_title, self.title)
+        ## 修改页面主标题
+        self.fulltitle = '%s' % (self.title)
         self._staticpath = None
         self._template   = None
         self._type       = None

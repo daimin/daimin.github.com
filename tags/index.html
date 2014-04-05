@@ -18,8 +18,8 @@
 </head>
 <body>
 		<div id="logo">
-			<span id="motto">人生没有对错，只有选择后的坚持，不后悔，走下去，就是对的</span>
-			<h1><a href="/index.html">Codecos | 茶瓯葱丝</a></h1>
+			<span id="motto"></span>
+			<h1><a href="/index.html">茶瓯葱丝</a></h1>
         </div>
 <div id="wrapper">
 <div id="content" class="index">
@@ -66,15 +66,18 @@
             <li><a href="/tags/逆袭.html">逆袭<span>(1)</span></a></li>
             <li><a href="/tags/中文编码.html">中文编码<span>(1)</span></a></li>
             <li><a href="/tags/php-resque.html">php-resque<span>(1)</span></a></li>
+            <li><a href="/tags/redis.html">redis<span>(1)</span></a></li>
             <li><a href="/tags/java.html">java<span>(4)</span></a></li>
             <li><a href="/tags/字符串.html">字符串<span>(1)</span></a></li>
-            <li><a href="/tags/英文字体.html">英文字体<span>(1)</span></a></li>
+            <li><a href="/tags/alias.html">alias<span>(1)</span></a></li>
+            <li><a href="/tags/flask.html">flask<span>(1)</span></a></li>
             <li><a href="/tags/搜索.html">搜索<span>(1)</span></a></li>
             <li><a href="/tags/清除BOM.html">清除BOM<span>(1)</span></a></li>
             <li><a href="/tags/show.html">show<span>(1)</span></a></li>
-            <li><a href="/tags/redis.html">redis<span>(1)</span></a></li>
-            <li><a href="/tags/pyqt.html">pyqt<span>(1)</span></a></li>
+            <li><a href="/tags/distributed.html">distributed<span>(1)</span></a></li>
             <li><a href="/tags/人生.html">人生<span>(1)</span></a></li>
+            <li><a href="/tags/pyqt.html">pyqt<span>(1)</span></a></li>
+            <li><a href="/tags/scrapy.html">scrapy<span>(1)</span></a></li>
             <li><a href="/tags/wordpress.html">wordpress<span>(1)</span></a></li>
             <li><a href="/tags/location.html">location<span>(1)</span></a></li>
             <li><a href="/tags/解释.html">解释<span>(1)</span></a></li>
@@ -93,7 +96,7 @@
             <li><a href="/tags/js.html">js<span>(2)</span></a></li>
             <li><a href="/tags/nginx.html">nginx<span>(4)</span></a></li>
             <li><a href="/tags/codecos.html">codecos<span>(2)</span></a></li>
-            <li><a href="/tags/coreseek.html">coreseek<span>(1)</span></a></li>
+            <li><a href="/tags/coreseek.html">coreseek<span>(2)</span></a></li>
             <li><a href="/tags/相册.html">相册<span>(1)</span></a></li>
             <li><a href="/tags/静态.html">静态<span>(1)</span></a></li>
             <li><a href="/tags/dps.html">dps<span>(1)</span></a></li>
@@ -103,15 +106,16 @@
             <li><a href="/tags/logstash.html">logstash<span>(2)</span></a></li>
             <li><a href="/tags/lightbox2.html">lightbox2<span>(1)</span></a></li>
             <li><a href="/tags/github.html">github<span>(3)</span></a></li>
-            <li><a href="/tags/sphinx.html">sphinx<span>(1)</span></a></li>
+            <li><a href="/tags/sphinx.html">sphinx<span>(2)</span></a></li>
             <li><a href="/tags/留言.html">留言<span>(1)</span></a></li>
             <li><a href="/tags/问题.html">问题<span>(1)</span></a></li>
             <li><a href="/tags/上传.html">上传<span>(1)</span></a></li>
+            <li><a href="/tags/pyes.html">pyes<span>(1)</span></a></li>
             <li><a href="/tags/Kibana.html">Kibana<span>(1)</span></a></li>
             <li><a href="/tags/电影.html">电影<span>(1)</span></a></li>
-            <li><a href="/tags/alias.html">alias<span>(1)</span></a></li>
+            <li><a href="/tags/英文字体.html">英文字体<span>(1)</span></a></li>
             <li><a href="/tags/bae.html">bae<span>(3)</span></a></li>
-            <li><a href="/tags/elasticsearch.html">elasticsearch<span>(2)</span></a></li>
+            <li><a href="/tags/elasticsearch.html">elasticsearch<span>(3)</span></a></li>
             <li><a href="/tags/uwsgi.html">uwsgi<span>(1)</span></a></li>
             <li><a href="/tags/邮件.html">邮件<span>(1)</span></a></li>
             <li><a href="/tags/方法.html">方法<span>(1)</span></a></li>
@@ -146,11 +150,36 @@ function render_pretty(){
 
 }
 
+(function(){
+   var mattos = [
+   "人生没有对错，只有选择后的坚持，不后悔，走下去，就是对的。",
+   "生活是一面镜子。你对它笑，它就对你笑；你对它哭，它也对你哭。",
+   "宁愿做过了后悔，也不要错过了后悔。",
+   "不要拿小人的错误来惩罚自己，不要在这些微不足道的事情上折磨浪费自己的宝贵时间。",
+   "环境不会改变，解决之道在于改变自己。",
+   "勇气是控制恐惧心理，而不是心里毫无恐惧。",
+   "两个人共尝一个痛苦只有半个痛苦，两个人共享一个欢乐却有两个欢乐。",
+   "好好管教自己，不要管别人。",
+   "得之坦然，失之淡然，顺其自然，争其必然。",
+   "人生是一条没有回程的单行线，上帝不会给你一张返程的票。",
+   "把事情办好的秘密就是行动。成功之路就是有条理思考之后的行动！行动！行动！",
+   "人生是一场旅行，在乎的不是目的地，是沿途的风景以及看风景的心情。",
+   "放弃谁都可以，千万不要放弃自己！",
+   "长得漂亮是优势，活得漂亮是本事。",
+   "人生最大的错误是不断担心会犯错。",
+   "一个人可以被毁灭，但不能给打败 -- 《老人与海》。",
+   "要么不要开始，要么不要结束。",
+   ];
+   document.getElementById("motto").innerHTML = mattos[parseInt(Math.random() * mattos.length)];
+   
+})();
+
 window.onload = function(){
    render_pretty();
 };
 
 </script>
+<script type="text/javascript" src="/js/jimdoclockzip.js"></script>
 <script type="text/javascript">
 var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_5814730'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s23.cnzz.com/stat.php%3Fid%3D5814730%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
 </script>
