@@ -2,7 +2,8 @@
 <!-- saved from url=(0025)http://blog.codecos.com/ -->
 <html>
 <head>
-    
+    
+
 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="keywords" content="用Python发垃圾邮件" />
@@ -23,9 +24,12 @@
         </div>
 <div id="wrapper">
 <div id="content" class="index">
-     
-<h2>用Python发垃圾邮件</h2>
-<div class="cnt">
+     
+
+<h2>用Python发垃圾邮件</h2>
+
+<div class="cnt">
+
 <p><img alt="qiniu_1376907717364.jpg" src="http://vaga-static.qiniudn.com/qiniu_1376907717364.jpg" title="解析页面发邮件" /></p>
 <blockquote>
 <p>这个程序写了很久了，是刚开始学习python的时候写的，主要就是抓取页面的邮箱，然后发送。直接看代码吧，是我少有的注释比较详细的代码了，希望会有点参考价值。</p>
@@ -61,8 +65,8 @@ from_addr = 'from@xxx.com'         #发送邮箱
     class MyThread(threading.Thread):
     # const
     smtpserver = 'smtp.gmail.com'  
-    username = 'vagasnail@gmail.com'  
-    password = 'dai253685'
+    username = '****'  
+    password = '****'
 
 
     def __init__(self,no,msg,to_addr):
@@ -148,22 +152,38 @@ if __name__ == "__main__":
         t = MyThread(tno,msg,to_addr)
         t.start()
         tno = tno + 1
-</code></pre>
-</dir>
-<!-- Duoshuo Comment BEGIN -->
-	<div class="ds-thread"></div>
-<script type="text/javascript">
-var duoshuoQuery = {short_name:"vagasnail"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = 'http://static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		|| document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
-<!-- Duoshuo Comment END -->
+</code></pre>
+
+</dir>
+
+<!-- Duoshuo Comment BEGIN -->
+
+	<div class="ds-thread"></div>
+
+<script type="text/javascript">
+
+var duoshuoQuery = {short_name:"vagasnail"};
+
+	(function() {
+
+		var ds = document.createElement('script');
+
+		ds.type = 'text/javascript';ds.async = true;
+
+		ds.src = 'http://static.duoshuo.com/embed.js';
+
+		ds.charset = 'UTF-8';
+
+		(document.getElementsByTagName('head')[0] 
+
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+
+	})();
+
+	</script>
+
+<!-- Duoshuo Comment END -->
+
 
     
 </div>
