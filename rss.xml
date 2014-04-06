@@ -18,10 +18,10 @@
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;编译安装python，这个没什么好说的。&lt;/p&gt;
-&lt;p&gt;推荐使用豆瓣的，真心速度不错。&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;安装Twisted，这个很简单。可是http://pypi.python.org在国内真的不稳定，而且好慢。所以你可以使用一下的镜像：&lt;/p&gt;
+&lt;p&gt;推荐使用豆瓣的，真心速度不错。&lt;/p&gt;
 &lt;p&gt;http://pypi.douban.com/  豆瓣&lt;br /&gt;
    http://pypi.hustunique.com/  华中理工大学&lt;br /&gt;
    http://pypi.sdutlinux.org/  山东理工大学&lt;br /&gt;

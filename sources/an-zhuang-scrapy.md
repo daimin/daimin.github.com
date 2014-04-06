@@ -14,11 +14,11 @@ scrapy超级难装，它依赖很多库，反正我在windows上面没有装成�
 
 2. 编译安装python，这个没什么好说的。
 
-    推荐使用豆瓣的，真心速度不错。
+    
 
 3. 安装Twisted，这个很简单。可是http://pypi.python.org在国内真的不稳定，而且好慢。所以你可以使用一下的镜像：
 
-   
+    推荐使用豆瓣的，真心速度不错。
 
        http://pypi.douban.com/  豆瓣  
        http://pypi.hustunique.com/  华中理工大学  
