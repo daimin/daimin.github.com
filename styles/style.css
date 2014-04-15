@@ -64,6 +64,7 @@ a:hover, a:hover span#eighty, a:hover span#beans {
 h1 a:hover {
 	color:#ddd;
 }
+
 div#wrapper {
 	-moz-border-radius:5px 5px 5px 5px;
 	-webkit-border-radius:5px;
@@ -427,6 +428,26 @@ span.balloon {
 	font-size:35px;
 	color:#ddd;
 	letter-spacing:3px;
+}
+
+#search-p{
+    width: 276px; height: 28px;float:left;
+    background-size: 200px 28px; 
+    background-image: url('/image/qbar_light@2x.png'); 
+    background-repeat: no-repeat; 
+    display: inline-block;
+}
+
+#q {
+	border: none;
+	width: 222px;
+	height: 26px;
+	margin: 0px 0px 2px 24px;
+	background-color: transparent;
+	font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", STHeiti !important;
+	font-size: 12px;
+	line-height: 16px;
+	outline: none;
 }
 
 #content .cnt p {
