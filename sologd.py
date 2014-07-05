@@ -27,7 +27,7 @@ CONF = {
       "keywords"   : u"java,python,php,nodejs,golang,linux,bae,web.py,linux,nginx,android,游戏,编程",
       "description": u"本站内容为个人技术博客及其它软件编程信息。本站采用python开发，用markdown来进行编辑，生成静态文本放在github上。",
       "title"      : u"茶瓯葱丝",
-      "en_title"   : u"CODECOS", 
+      "en_title"   : u"CODECOS",
       "domain"     : u"blog.codecos.com",
       "motto"      : u"人生没有对错，只有选择后的坚持，不后悔，走下去，就是对的",
     }
@@ -60,11 +60,11 @@ class Util:
         act = 'a' if a is True else 'w'
         with open(fname.decode('utf-8'), act) as fhandler:
             fhandler.write(data)
-            
+ 
     @staticmethod
     def change_ext(fname, cext):
         return fname[:fname.rindex('.')] + cext
-        
+    
     @staticmethod
     def strip_tag(html):
         html = html.strip()

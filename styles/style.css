@@ -24,7 +24,7 @@ h1,h2,h3,h4,h5,h6 {
 q:before,q:after {
 	content:'';
 }
-abbr,acronym { border:0;
+abbr,.acronym { border:0;
 }
 
 
@@ -35,12 +35,12 @@ html {
 body {
 	-moz-background-size:100% auto;
 	background-attachment:fixed;
-	background: #666 url(../image/bg.png);
+	/*background: #666 url(../image/bg.png);*/
 	background-position:center center;
 	font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 h2, h3, h4, h5, h6 {
-	color:#333333;
+	color:#444;
 }
 p, h2, h3, h4, h5, h6, ul {
 	margin:0;
@@ -77,7 +77,7 @@ div#wrapper {
 	margin:0 auto 50px;
 	padding:20px;
 	text-shadow:0 1px 0 #FFFFFF;
-	width:900px;
+	width:930px;
 }
 
 #content a {
@@ -113,7 +113,7 @@ div#content img, div#content object {
 	-webkit-border-radius:5px;
 	border-radius:5px;
 	-moz-box-shadow:0 1px 0 #FFFFFF;
-	max-width: 900px;
+	max-width: 960px;
 }
 div#content li {
 	margin-left:10px;
@@ -187,7 +187,7 @@ ul.posts li .date {
 }
 
 h2, h3, h4, h5, h6 {
-	font-weight:900;
+	font-weight:960;
 	line-height:100%;
 }
 h2 {
@@ -217,7 +217,7 @@ div#content li ul li {
 	/*list-style:circle inside none;*/
 }
 .index h2 {
-	margin-bottom:50px;
+	margin-bottom:20px;
 }
 .cnt h3 {
 	background:none repeat scroll 0 0 #DDDDDD;
@@ -371,7 +371,7 @@ span.balloon {
 
 #main {
 	float:right;
-	width:82%;
+	width:84%;
 }
 
 #main .posts {
@@ -392,7 +392,7 @@ span.balloon {
 
 #motto {
 	margin: 15px 0;
-	color: #ccc;
+	color: #999;
 	font-size: 13px;
 	float:right;
 }
@@ -426,7 +426,7 @@ span.balloon {
 #logo h1 a{
 	font-weight:bold;
 	font-size:35px;
-	color:#ddd;
+	color:#444;
 	letter-spacing:3px;
 }
 
