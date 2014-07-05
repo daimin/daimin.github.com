@@ -181,7 +181,8 @@ window.onload = function(){
 var dispatch = function() {
     q = document.getElementById("q");
     if (q.value != "") {
-        window.open('http://www.google.com/search?q=site:blog.codecos.com%20' + q.value, "_blank");
+        //"http://www.baidu.com/s?si=www.williamlong.info&cl=3&ct=2097152&tn=baidulocal&word="+wd
+        window.open('http://www.baidu.com/s?si=blog.codecos.com&cl=3&ct=2097152&tn=baidulocal&word=' + q.value, "_blank");
         return false;
     } else {
         return false;
