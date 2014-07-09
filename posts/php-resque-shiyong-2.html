@@ -5,11 +5,11 @@
     
 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="keywords" content="自省和计划" />
-    <meta name="description" content="技术上会的东西java: java基本语法熟练，熟悉android、javaweb开发，SSH框架之..." />
+    <meta name="keywords" content="php-resque的安装和使用" />
+    <meta name="description" content="Resque 是 Github 基于 Redis 开发的 background job 系统。PHP..." />
     <link rel="shortcut icon" href="/favicon.ico" />
 
-    <title>自省和计划 | 茶瓯葱丝</title>
+    <title>php-resque的安装和使用 | 茶瓯葱丝</title>
     <link rel="stylesheet" type="text/css" href="/styles/style.css">
     <link rel="Stylesheet" type="text/css" href="/js/prettify/desert.css" />
     <link rel="stylesheet" type="text/css" href="/styles/bootstrap-jian.css">
@@ -19,7 +19,7 @@
 <body>
 		<div id="logo">
 			<span id="motto"></span>
-			<h1><a href="/index.html" >茶瓯葱丝</a>
+			<h1><a href="/index.html">茶瓯葱丝</a>
             <form onsubmit="return dispatch()" style="display:inline">
             <span style="width: 210px; height: 26px; margin-left:24px; background-size: 210px 26px; background-image: url('/image/qbar_light@2x.png'); background-repeat: no-repeat; display: inline-block;">
             <input type="text" maxlength="40" name="q" id="q" value="">
@@ -31,30 +31,78 @@
 <div id="wrapper">
 <div id="content" class="index">
      
-<h2 class="post-title">自省和计划</h2>
+<h2 class="post-title">php-resque的安装和使用</h2>
 <div class="cnt">
-<h6>技术上会的东西</h6>
-<hr />
-<ol>
-<li>java: java基本语法熟练，熟悉android、javaweb开发，SSH框架之类的都忘记了。</li>
-<li>php: php语法熟练，能使用纯php构建web系统，codeigniter和thinkphp框架熟悉。</li>
-<li>python: python语法熟悉，web.py熟悉，django学习中，了解pyqt开发。</li>
-<li>JS相关: javascript掌握,jquery熟悉，能开发nodejs程序。</li>
-<li>数据库：比较熟悉的就只有mysql了。</li>
-<li>linux常用命令的使用，系统环境搭建，简单的系统维护都能做。</li>
-<li>其它：html、css都熟悉，除了不会做美术设计，其它的基本都OK了。c/c++也算了解，能做简单的开发。</li>
-</ol>
-<hr />
-<h5>接下来的该学的</h5>
-<ol>
-<li>python的django框架</li>
-<li>了解计算机网络知识</li>
-<li>操作系统知识</li>
-<li>数据结构和算法的知识</li>
-</ol>
 <blockquote>
-<p>除了django外，其它都是一些计算机基本知识了，学过这么多样的东西，其实真没必要再去学其它的具体开发技术了，如果还想做几年程序，计算机的基本知识和理论才是重要的，当然我也没那么偏激去学高等数学什么的。加油吧!</p>
-</blockquote>
+<p>Resque 是 Github 基于 Redis 开发的 background job 系统。PHP-Resque 是把 Resque porting 到 PHP 的方案。</p>
+</blockquote>
+<p>redis的安装和运行就不多说，安装后运行就行了。</p>
+<p>从github中下载php-redis,<a href="https://github.com/chrisboulton/php-resque">https://github.com/chrisboulton/php-resque</a>。加压后进入解压目录。</p>
+<p>安装Composer：</p>
+<pre><code>apt-get install curl
+cd /usr/local/bin
+curl -s http://getcomposer.org/installer | php
+chmod a+x composer.phar
+</code></pre>
+<p>放置composer.phar到php-resque的安装目录，执行：</p>
+<pre><code>php composer.phar install
+</code></pre>
+<p>可能会提示失败，是因为没有安装phpunit，执行如下：</p>
+<pre><code>wget https://phar.phpunit.de/phpunit.phar
+chmod +x phpunit.phar
+</code></pre>
+<p>然后也是在php-resque目录中执行php phpunit.phar，应该会成功。</p>
+<p>如果都成功的话，就安装好了php-resque了，接下来可以运行demo中的代码。</p>
+<p>demo/job.php是一个简单的job:</p>
+<pre><code>class PHP_Job
+{
+  // 每个Job都有这个方法，worker就是调用这个方法的。
+    public function perform()
+    {
+        fwrite(STDOUT, 'Start job! -&gt; ');
+        sleep(1);
+        fwrite(STDOUT, 'Job ended!' . PHP_EOL);
+    }
+}
+</code></pre>
+<p>demo/queue.php是一个队列插入示例：</p>
+<pre><code>&lt;?php
+if(empty($argv[1])) {
+    die('Specify the name of a job to add. e.g, php queue.php PHP_Job');
+}
+
+require __DIR__ . '/init.php';
+date_default_timezone_set('Asia/Shanghai');
+//设置后台存储
+Resque::setBackend('127.0.0.1:6379');
+// job的参数
+$args = array(
+    'time' =&gt; time(),
+    'array' =&gt; array(
+        'test' =&gt; 'test',
+    ),
+);
+
+//添加队列和job
+$jobId = Resque::enqueue($argv[1], $argv[2], $args, true);
+echo "Queued job ".$jobId."\n\n";
+</code></pre>
+<p>命令行输入：</p>
+<pre><code>php demo/queue.php default PHP_Job
+</code></pre>
+<p>demo/check_status.php 是检查job的执行情况。</p>
+<pre><code>php demo/check_status.php jobid
+</code></pre>
+<p>worker的一个实现：</p>
+<pre><code>&lt;?php
+
+date_default_timezone_set('Asia/Shanghai');
+require  __DIR__.'/../../job.php';
+
+require __DIR__.'/../bin/resque';
+</code></pre>
+<p><strong>这里要require 包含job代码的文件，如果该文件中没有队列中指定的job名的类(定义了perform的类)，job将执行失败。</strong></p>
+<p>基本就是这样，我简单的记录一下，记忆力不好，怕忘了。</p>
 </dir>
 <!-- Duoshuo Comment BEGIN -->
 	<div class="ds-thread"></div>

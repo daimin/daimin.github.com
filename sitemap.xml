@@ -1,5 +1,10 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	<url>
+		<loc>http://blog.codecos.com//posts/virtualbox-share-dir.html</loc>
+		<lastmod>2014-04-14</lastmod>
+		<changefreq>monthly</changefreq>
+	</url>
+	<url>
 		<loc>http://blog.codecos.com//posts/an-zhuang-scrapy.html</loc>
 		<lastmod>2014-04-03</lastmod>
 		<changefreq>monthly</changefreq>

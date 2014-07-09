@@ -5,11 +5,11 @@
     
 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="keywords" content="自省和计划" />
-    <meta name="description" content="技术上会的东西java: java基本语法熟练，熟悉android、javaweb开发，SSH框架之..." />
+    <meta name="keywords" content="使用VirtualBox使centos和win7共享文件夹设置" />
+    <meta name="description" content="简单的记录一下。VirtualBox非常好用比vmware好用多了。它的VirtualBox功能，可..." />
     <link rel="shortcut icon" href="/favicon.ico" />
 
-    <title>自省和计划 | 茶瓯葱丝</title>
+    <title>使用VirtualBox使centos和win7共享文件夹设置 | 茶瓯葱丝</title>
     <link rel="stylesheet" type="text/css" href="/styles/style.css">
     <link rel="Stylesheet" type="text/css" href="/js/prettify/desert.css" />
     <link rel="stylesheet" type="text/css" href="/styles/bootstrap-jian.css">
@@ -31,30 +31,28 @@
 <div id="wrapper">
 <div id="content" class="index">
      
-<h2 class="post-title">自省和计划</h2>
+<h2 class="post-title">使用VirtualBox使centos和win7共享文件夹设置</h2>
 <div class="cnt">
-<h6>技术上会的东西</h6>
-<hr />
-<ol>
-<li>java: java基本语法熟练，熟悉android、javaweb开发，SSH框架之类的都忘记了。</li>
-<li>php: php语法熟练，能使用纯php构建web系统，codeigniter和thinkphp框架熟悉。</li>
-<li>python: python语法熟悉，web.py熟悉，django学习中，了解pyqt开发。</li>
-<li>JS相关: javascript掌握,jquery熟悉，能开发nodejs程序。</li>
-<li>数据库：比较熟悉的就只有mysql了。</li>
-<li>linux常用命令的使用，系统环境搭建，简单的系统维护都能做。</li>
-<li>其它：html、css都熟悉，除了不会做美术设计，其它的基本都OK了。c/c++也算了解，能做简单的开发。</li>
-</ol>
-<hr />
-<h5>接下来的该学的</h5>
-<ol>
-<li>python的django框架</li>
-<li>了解计算机网络知识</li>
-<li>操作系统知识</li>
-<li>数据结构和算法的知识</li>
-</ol>
-<blockquote>
-<p>除了django外，其它都是一些计算机基本知识了，学过这么多样的东西，其实真没必要再去学其它的具体开发技术了，如果还想做几年程序，计算机的基本知识和理论才是重要的，当然我也没那么偏激去学高等数学什么的。加油吧!</p>
-</blockquote>
+<p>简单的记录一下。</p>
+<p>VirtualBox非常好用比vmware好用多了。它的VirtualBox功能，可以让我们直接在windows上面开发代码，而在虚拟机下面运行，这为像我这样不是很熟悉linux开发工具的很受力。</p>
+<p>首先共享文件夹，需要安装增强工具包。    </p>
+<ul>
+<li>
+<p>运行centos虚拟机，打开设备菜单中点击安装增强功能，悬浮鼠标在右下角的光盘图标上，可以看到当前光盘中是VBoxGuestAdditions.iso，这个是安装增强功能的镜像文件。</p>
+</li>
+<li>
+<p>进入centos，在/media下面mkdir cdrom，然后执行<code>mount -t iso9660 /dev/cdrom /media/cdrom</code>，挂载光驱到文件系统，打开/media/cdrom，这里可以看到<code>VBoxLinuxAdditions.run</code>，这个是我们需要运行的文件，这里就可以安装增强工具了。  </p>
+</li>
+<li>
+<p>不过首先要安装<code>yum install kernel-devel kernel-headers</code>以及<code>yum install gcc</code>和<code>yum install make</code>，这样安装了还是不行，需要链接一下安装的kernel库，<code>ln -s /usr/src/kernels/2.6.32-431.11.2.el6.x86_64/ /usr/src/linux</code>。</p>
+</li>
+<li>
+<p>最后在挂载光驱中执行<code>./VBoxLinuxAdditions.run</code>，等待完成就OK，这里可能有几个错误，不过没有关系，它主要是因为UI系统的功能没有安装成功，如果你没有安装x11的话。</p>
+</li>
+</ul>
+<p>OK，安装增强工具完成，开始设置共享文件夹。</p>
+<p>虚拟机的设备菜单中选择“共享文件夹”，添加固定分配的共享文件夹，选择需要共享到虚拟机的win7文件夹。设置完成后，进行centos，执行<code>mkdir /mnt/share</code>，然后执行<code>mount -t vboxsf pywork /mnt/share</code>，<strong>需要注意挂载文件夹名不要和共享文件夹名相同</strong>。</p>
+<p>进行/mnt/share，执行<code>ls -l</code>，可以看到win7的文件夹内容完全可以在linux下面访问了，而且可以直接用centos下面的命令，运行之。</p>
 </dir>
 <!-- Duoshuo Comment BEGIN -->
 	<div class="ds-thread"></div>

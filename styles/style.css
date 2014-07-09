@@ -425,9 +425,10 @@ span.balloon {
 
 #logo h1 a{
 	font-weight:bold;
-	font-size:35px;
-	color:#444;
+	font-size:36px;
+	color:#5f5f5f;
 	letter-spacing:3px;
+    font-family:SimHei;
 }
 
 #search-p{
@@ -483,4 +484,10 @@ div#disqus_thread li{
 
 div#disqus_thread li ul li {
 	list-style:none;
+}
+
+.post-title{
+    color:#7e7e7e;
+    font-size:25px;
+    font-weight:bold;
 }
