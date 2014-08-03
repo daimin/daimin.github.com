@@ -28,7 +28,7 @@ CONF = {
       "description": u"本站内容为个人技术博客及其它软件编程信息。本站采用python开发，用markdown来进行编辑，生成静态文本放在github上。",
       "title"      : u"茶瓯葱丝",
       "en_title"   : u"CODECOS",
-      "domain"     : u"blog.codecos.com",
+      "domain"     : u"daimin.github.io",
       "motto"      : u"人生没有对错，只有选择后的坚持，不后悔，走下去，就是对的",
     }
 

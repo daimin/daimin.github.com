@@ -2,13 +2,13 @@
 <rss version="2.0">
 <channel>
     <title>茶瓯葱丝</title>  
-    <link>blog.codecos.com</link>  
+    <link>daimin.github.io</link>  
 	<description>本站内容为个人技术博客及其它软件编程信息。本站采用python开发，用markdown来进行编辑，生成静态文本放在github上。</description>  
     <language>zh-cn</language>  
     <generator>sologd</generator>  
     <item>  
 		<title>使用VirtualBox使centos和win7共享文件夹设置</title>  
-		<link>http://blog.codecos.com//posts/virtualbox-share-dir.html</link>  
+		<link>http://daimin.github.io//posts/virtualbox-share-dir.html</link>  
 		<description>&lt;p&gt;简单的记录一下。&lt;/p&gt;
 &lt;p&gt;VirtualBox非常好用比vmware好用多了。它的VirtualBox功能，可以让我们直接在windows上面开发代码，而在虚拟机下面运行，这为像我这样不是很熟悉linux开发工具的很受力。&lt;/p&gt;
 &lt;p&gt;首先共享文件夹，需要安装增强工具包。    &lt;/p&gt;
@@ -35,7 +35,7 @@
     </item>  
     <item>  
 		<title>安装scrapy</title>  
-		<link>http://blog.codecos.com//posts/an-zhuang-scrapy.html</link>  
+		<link>http://daimin.github.io//posts/an-zhuang-scrapy.html</link>  
 		<description>&lt;p&gt;scrapy超级难装，它依赖很多库，反正我在windows上面没有装成功，linux上面弄了N久终于装好了，现在来记录一下。&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;
@@ -78,7 +78,7 @@ pip install scrapy -i http://pypi.douban.com/simple&lt;/p&gt;
     </item>  
     <item>  
 		<title>coreseek(sphinx)分布式设置</title>  
-		<link>http://blog.codecos.com//posts/coreseek-distributed-config.html</link>  
+		<link>http://daimin.github.io//posts/coreseek-distributed-config.html</link>  
 		<description>&lt;p&gt;sphinx默认是单线程的，无论你是多少核的服务器，它始终只会使用一个核心。
 有两个办法可以实现sphinx多核利用，两种都是使用sphinx的分布式设置。&lt;/p&gt;
 &lt;h3&gt;1. 使用agent，远程索引声明&lt;/h3&gt;
@@ -137,7 +137,7 @@ dist_threads = 4
     </item>  
     <item>  
 		<title>使用elasticsearch搭建一个搜索系统</title>  
-		<link>http://blog.codecos.com//posts/elasticsearch-flask-pyes-da-jian-shi-yong.html</link>  
+		<link>http://daimin.github.io//posts/elasticsearch-flask-pyes-da-jian-shi-yong.html</link>  
 		<description>&lt;p&gt;要搭建一个日志分析系统，使用的elasticsearch+logstash+redis+kibana，搭建过程见之前的日志。&lt;/p&gt;
 &lt;p&gt;elasticsearch是一个分布式的搜索引擎，基于lucene，但是我们不需要学习太多的lucene的知识，就能很方便的使用。&lt;/p&gt;
 &lt;p&gt;它去中心化，会自动推举master，访问集群中的任何一个node，就是在和整个集群交互；添加节点只需要命名相同的集群名称，就能自动的加入。&lt;/p&gt;
@@ -288,7 +288,7 @@ for link in links:
     </item>  
     <item>  
 		<title>用logstash+elasticsearch+Kibana+redis搭建实时日志查询、收集与分析平台(二)</title>  
-		<link>http://blog.codecos.com//posts/logstash-peizhi-shiyong-2.html</link>  
+		<link>http://daimin.github.io//posts/logstash-peizhi-shiyong-2.html</link>  
 		<description>&lt;p&gt;最近又在整那个日志分析平台，之前由于服务器没到位，然后又其它任务要做，这里就搁置了，经理说这个还是要弄，下周就能给我个服务器，希望吧。&lt;/p&gt;
 &lt;p&gt;最近弄elasticsearch集群部署，其实我的集群，就是virtualbox上面的两个系统（s1,s2），可怜啊，搞得电脑慢死了。&lt;/p&gt;
 &lt;p&gt;elasticsearch是去中心化的，多个节点中哪台先起来，哪台就是master，如果master挂了，其它有成为master资格的节点中的一个就会成为master，这个由elasticsearch系统自己调配。&lt;/p&gt;
@@ -330,7 +330,7 @@ protocol有三种类型：node、transport、http。  &lt;/p&gt;
     </item>  
     <item>  
 		<title>php-resque的安装和使用</title>  
-		<link>http://blog.codecos.com//posts/php-resque-shiyong.html</link>  
+		<link>http://daimin.github.io//posts/php-resque-shiyong.html</link>  
 		<description>&lt;blockquote&gt;
 &lt;p&gt;Resque 是 Github 基于 Redis 开发的 background job 系统。PHP-Resque 是把 Resque porting 到 PHP 的方案。&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -407,7 +407,7 @@ require __DIR__.&#39;/../bin/resque&#39;;
     </item>  
     <item>  
 		<title>用logstash+elasticsearch+Kibana+redis搭建实时日志查询、收集与分析平台</title>  
-		<link>http://blog.codecos.com//posts/logstash-peizhi-shiyong.html</link>  
+		<link>http://daimin.github.io//posts/logstash-peizhi-shiyong.html</link>  
 		<description>&lt;p&gt;hadoop之类的是高帅富用的，我们用不过来。这里搭建一个简单的日志平台。&lt;/p&gt;
 &lt;p&gt;logstash是一个管理日志和事件的工具，你可以收集它们，解析它们，并存储它们以供以后使用(例如日志搜索)，logstash有一个内置的web界面，用来搜索你的所有日志。logstash在部署时有两种运行模式：standalone和centralized：&lt;/p&gt;
 &lt;ul&gt;
@@ -520,7 +520,7 @@ output {
     </item>  
     <item>  
 		<title>写了一个静态博客</title>  
-		<link>http://blog.codecos.com//posts/write-a-static-blog.html</link>  
+		<link>http://daimin.github.io//posts/write-a-static-blog.html</link>  
 		<description>&lt;p&gt;BAE的域名要备案了，所以我的原来的博客&lt;a href=&#34;http://codecos.com&#34;&gt;http://codecos.com&lt;/a&gt;，无法使用了。找了一下国内的其它的免费的空间或引擎都是需要域名备案的。&lt;/p&gt;
 &lt;p&gt;之前就知道github是可以创建个人网站，还可以绑定一个域名，这货可是国外的，就不需要域名备案。&lt;/p&gt;
 &lt;p&gt;gihub pages使用的是Jekyll引擎，如果你以一定的结构存放markdown文档的话，是可以自动生成html的，我这里没有去用这个，学习一个东西好像没什么必要，你可以参考&lt;a href=&#34;http://www.ruanyifeng.com/blog/2012/08/blogging_with_jekyll.html&#34;&gt;这篇文章&lt;/a&gt;。&lt;/p&gt;
@@ -537,7 +537,7 @@ output {
     </item>  
     <item>  
 		<title>使用RSA在Java端私钥加密，PHP端公钥验证</title>  
-		<link>http://blog.codecos.com//posts/shi-yong-RSA-zai-Java-duan-si-yao-jia-mi-PHP-duan-gong-yao-yan-zheng.html</link>  
+		<link>http://daimin.github.io//posts/shi-yong-RSA-zai-Java-duan-si-yao-jia-mi-PHP-duan-gong-yao-yan-zheng.html</link>  
 		<description>&lt;p&gt;工作需要研究下RSA加密解密算法，一不小心差点把自己搞疯了，主要是我们服务器是PHP，而客户端肯定以后是Java了。所以我需要的是在Java端用私钥加密，而服务器用公钥进行验证。在这两端进行RSA加密解密需要严格的要求，这里我主要做一下记录。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;首先是Java端：&lt;/strong&gt;   &lt;/p&gt;
 &lt;ol&gt;
@@ -632,7 +632,7 @@ S3rD9bNIj0jGHUBT5Dxf98+TnEojWECeg5ZibZ51xzN8tChqB7MmApBIGwIDAQAB
     </item>  
     <item>  
 		<title>走着走着，花就开了</title>  
-		<link>http://blog.codecos.com//posts/zou-zhao-zou-zhao-hua-jiu-kai-le.html</link>  
+		<link>http://daimin.github.io//posts/zou-zhao-zou-zhao-hua-jiu-kai-le.html</link>  
 		<description>&lt;p&gt;优柔寡断，是人生最大的负能量。&lt;/p&gt;
 &lt;p&gt;人生没什么好优柔的。&lt;/p&gt;
 &lt;p&gt;从生命角度去看，你人生路径上的任何一种选择都是错误的，无论你怎么选，都有差错；&lt;/p&gt;
@@ -648,7 +648,7 @@ S3rD9bNIj0jGHUBT5Dxf98+TnEojWECeg5ZibZ51xzN8tChqB7MmApBIGwIDAQAB
     </item>  
     <item>  
 		<title>自省和计划</title>  
-		<link>http://blog.codecos.com//posts/zi-sheng-he-ji-hua.html</link>  
+		<link>http://daimin.github.io//posts/zi-sheng-he-ji-hua.html</link>  
 		<description>&lt;h6&gt;技术上会的东西&lt;/h6&gt;
 &lt;hr /&gt;
 &lt;ol&gt;
@@ -677,7 +677,7 @@ S3rD9bNIj0jGHUBT5Dxf98+TnEojWECeg5ZibZ51xzN8tChqB7MmApBIGwIDAQAB
     </item>  
     <item>  
 		<title>一个非常非常简单的markdown编辑器</title>  
-		<link>http://blog.codecos.com//posts/yi-ge-fei-chang-fei-chang-jian-dan-de-markdown-bian-ji-qi.html</link>  
+		<link>http://daimin.github.io//posts/yi-ge-fei-chang-fei-chang-jian-dan-de-markdown-bian-ji-qi.html</link>  
 		<description>&lt;p&gt;之前一直使用&lt;em&gt;markdownPad&lt;/em&gt;，功能是很强大，但是那个速度我就不想吐槽了，其实我只需要一个非常简单的markdown编辑器，只要简单的预览就够了，所以就有了这个markdown的编辑器。你可以在&lt;a href=&#34;https://github.com/daimin/mdchick&#34;&gt;这里&lt;/a&gt;得到它的源码。&lt;/p&gt;
 &lt;hr /&gt;
 &lt;p&gt;&lt;strong&gt;简单的介绍：&lt;/strong&gt; &lt;/p&gt;
@@ -703,7 +703,7 @@ S3rD9bNIj0jGHUBT5Dxf98+TnEojWECeg5ZibZ51xzN8tChqB7MmApBIGwIDAQAB
     </item>  
     <item>  
 		<title>用python进行博客的迁移</title>  
-		<link>http://blog.codecos.com//posts/yong-python-jin-xing-bo-ke-de-qian-yi.html</link>  
+		<link>http://daimin.github.io//posts/yong-python-jin-xing-bo-ke-de-qian-yi.html</link>  
 		<description>&lt;p&gt;今天将原来的博客的博文全部移植到了 &lt;a href=&#34;codecos.com&#34;&gt;codecos&lt;/a&gt; 上面，其实blogjava.net里面有功能的，它是导出为xml，可是我看导出后的xml，解析起来，还要比直接解析html麻烦些，所以还是用python写了一个抓取的脚本。&lt;/p&gt;
 &lt;p&gt;脚本的功能用到了多线程、urllib2进行GET请求，urllib2、urllib1、cookielib进行POST请求，BeautifulSoup对html数据进行分析。&lt;/p&gt;
 &lt;ol&gt;
@@ -783,7 +783,7 @@ u.read()
     </item>  
     <item>  
 		<title>PHP+Mysql+Sphinx(coreseek)站内搜索引擎的搭建</title>  
-		<link>http://blog.codecos.com//posts/PHP-Mysql-Sphinx-coreseek-zhan-nei-sou-suo-yin-qing-de-da-jian.html</link>  
+		<link>http://daimin.github.io//posts/PHP-Mysql-Sphinx-coreseek-zhan-nei-sou-suo-yin-qing-de-da-jian.html</link>  
 		<description>&lt;p&gt;后台搜索速度越来越慢，考虑着用专业的搜索工具。 &lt;br /&gt;
 Sphinx是一个基于SQL的全文检索引擎，可以结合MySQL,PostgreSQL做全文搜索，它可以提供比数据库本身更专业的搜索功能，使得应用程序更容易实现专业化的全文检索。 它提供php,java,ruby,python等多种语言的api。
 我这里使用的是coreseek，Coreseek为应用提供全文检索功能，目前的版本（2.x 3.x）基于Sphinx 0.9.8，支持使用Python定义数据源，支持中文分词。&lt;/p&gt;
@@ -922,7 +922,7 @@ print_r($res[&#39;matches&#39;]);
     </item>  
     <item>  
 		<title>Nginx+uWsgi+web.py 搭建与简单测试</title>  
-		<link>http://blog.codecos.com//posts/Nginx-uWsgi-web-py-da-jian-yu-jian-dan-ce-shi.html</link>  
+		<link>http://daimin.github.io//posts/Nginx-uWsgi-web-py-da-jian-yu-jian-dan-ce-shi.html</link>  
 		<description>&lt;blockquote&gt;
 &lt;p&gt;Nginx + uWsgi + web.py 效率真是不错。&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -1005,7 +1005,7 @@ daemonize = /data/www/webpy/uwsgi.log
     </item>  
     <item>  
 		<title>BAE中文编码引起的程序崩溃</title>  
-		<link>http://blog.codecos.com//posts/BAE-zhong-wen-bian-ma-yin-qi-de-cheng-xu-beng-kui.html</link>  
+		<link>http://daimin.github.io//posts/BAE-zhong-wen-bian-ma-yin-qi-de-cheng-xu-beng-kui.html</link>  
 		<description>&lt;p&gt;&lt;img alt=&#34;qiniu_1377505253074.jpg&#34; src=&#34;http://vaga-static.qiniudn.com/qiniu_1377505253074.jpg&#34; title=&#34;python&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;我的博客修改了一些东西，主要是中文编码问题，在自己的机器上面是没有问题的。只是在BAE上面会有问题，而且这个问题又不是每次都出现，所以很纠结，查看了很久的日志&lt;em&gt;因为日志查询真的很慢啊，有木有啊&lt;/em&gt;，在&lt;code&gt;index.py&lt;/code&gt;中加上了如下的代码。&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;import sys
@@ -1020,7 +1020,7 @@ sys.setdefaultencoding(&#39;utf-8&#39;)
     </item>  
     <item>  
 		<title>mysql 用法备忘</title>  
-		<link>http://blog.codecos.com//posts/mysql-yong-fa-bei-wang.html</link>  
+		<link>http://daimin.github.io//posts/mysql-yong-fa-bei-wang.html</link>  
 		<description>&lt;blockquote&gt;
 &lt;p&gt;工作中一直都用mysql，遇到一些问题，需要查来查去，下一次遇到相同的又忘记，又要查，很不方便啊，这次记在这里，备查。&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -1098,7 +1098,7 @@ kill connection threadid;
     </item>  
     <item>  
 		<title>在BAE上面搭建基于web.py的博客（一）</title>  
-		<link>http://blog.codecos.com//posts/zai-BAE-shang-mian-da-jian-ji-yu-web-py-de-bo-ke-yi.html</link>  
+		<link>http://daimin.github.io//posts/zai-BAE-shang-mian-da-jian-ji-yu-web-py-de-bo-ke-yi.html</link>  
 		<description>&lt;ol&gt;
 &lt;li&gt;下载安装python，我这里安装的是python2.6.5。你可以从&lt;a href=&#34;http://www.python.org/getit/&#34;&gt;这里&lt;/a&gt;下载安装，我使用的系统是windowsxp。你只要下载相应的版本了。然后点击安装就可以了。&lt;/li&gt;
 &lt;li&gt;下载web.py，从&lt;a href=&#34;http://webpy.org/install&#34;&gt;这里&lt;/a&gt;下载，对于web.py我没有安装，直接放置到工程木下面而已。你可以解压压缩包，然后运行&lt;code&gt;python setup.py install&lt;/code&gt;。&lt;/li&gt;
@@ -1211,7 +1211,7 @@ script : index.py
     </item>  
     <item>  
 		<title>用Python发垃圾邮件</title>  
-		<link>http://blog.codecos.com//posts/yong-Python-fa-la-ji-you-jian.html</link>  
+		<link>http://daimin.github.io//posts/yong-Python-fa-la-ji-you-jian.html</link>  
 		<description>&lt;p&gt;&lt;img alt=&#34;qiniu_1376907717364.jpg&#34; src=&#34;http://vaga-static.qiniudn.com/qiniu_1376907717364.jpg&#34; title=&#34;解析页面发邮件&#34; /&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;这个程序写了很久了，是刚开始学习python的时候写的，主要就是抓取页面的邮箱，然后发送。直接看代码吧，是我少有的注释比较详细的代码了，希望会有点参考价值。&lt;/p&gt;
@@ -1341,7 +1341,7 @@ if __name__ == &#34;__main__&#34;:
     </item>  
     <item>  
 		<title>数值调整后职业DPS模拟 DK逆袭</title>  
-		<link>http://blog.codecos.com//posts/shu-zhi-diao-zheng-hou-zhi-ye-DPS-mo-ni-DK-ni-xi.html</link>  
+		<link>http://daimin.github.io//posts/shu-zhi-diao-zheng-hou-zhi-ye-DPS-mo-ni-DK-ni-xi.html</link>  
 		<description>&lt;h3&gt;第一轮数值调整后的DPS模拟，火法跌下神坛，盗贼战士异军突起，DK上演史上最大逆袭&lt;/h3&gt;
 &lt;p&gt;&lt;img alt=&#34;qiniu_1376708801189.jpg&#34; src=&#34;http://vaga-static.qiniudn.com/qiniu_1376708801189.jpg&#34; title=&#34;Optional title&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img alt=&#34;qiniu_1376708819184.jpg&#34; src=&#34;http://vaga-static.qiniudn.com/qiniu_1376708819184.jpg&#34; title=&#34;Optional title&#34; /&gt;&lt;/p&gt;
@@ -1354,7 +1354,7 @@ if __name__ == &#34;__main__&#34;:
     </item>  
     <item>  
 		<title>BAE中web.py上传问题处理</title>  
-		<link>http://blog.codecos.com//posts/BAE-zhong-web-py-shang-chuan-wen-ti-chu-li.html</link>  
+		<link>http://daimin.github.io//posts/BAE-zhong-web-py-shang-chuan-wen-ti-chu-li.html</link>  
 		<description>&lt;blockquote&gt;
 &lt;p&gt;这个问题困扰我了两天，在BAE中使用web.py默认的上传方式是不能上传的，通过不懈的努力终于解决了。&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -1404,7 +1404,7 @@ s1.close()
     </item>  
     <item>  
 		<title>css hack的简单使用</title>  
-		<link>http://blog.codecos.com//posts/css-hack-de-jian-dan-shi-yong.html</link>  
+		<link>http://daimin.github.io//posts/css-hack-de-jian-dan-shi-yong.html</link>  
 		<description>&lt;p&gt;&lt;img alt=&#34;pic_1376622770249.jpg&#34; src=&#34;http://vaga-static.qiniudn.com/pic_1376622770249.jpg&#34; title=&#34;IE hack&#34; /&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;今天调布局，很是麻烦啊，为毛世界上要有IE这样坑爹的浏览器，而且在TC竟然还占绝大多数。
@@ -1454,7 +1454,7 @@ margin-left:/*\**/:603px\9; /* 所有浏览器IE浏览器 */
     </item>  
     <item>  
 		<title>MYSQL show 命令详解</title>  
-		<link>http://blog.codecos.com//posts/MYSQL-show-ming-ling-xiang-jie.html</link>  
+		<link>http://daimin.github.io//posts/MYSQL-show-ming-ling-xiang-jie.html</link>  
 		<description>&lt;p&gt;&lt;code&gt;show tables或show tables from database_name或show database_name.tables;&lt;/code&gt;&lt;br /&gt;
 解释：显示当前数据库中所有表的名称&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;show databases;&lt;/code&gt;&lt;br /&gt;
@@ -1497,7 +1497,7 @@ margin-left:/*\**/:603px\9; /* 所有浏览器IE浏览器 */
     </item>  
     <item>  
 		<title>Python-字符串操作方法(转)</title>  
-		<link>http://blog.codecos.com//posts/Python-zi-fu-chuan-cao-zuo-fang-fa-zhuan.html</link>  
+		<link>http://daimin.github.io//posts/Python-zi-fu-chuan-cao-zuo-fang-fa-zhuan.html</link>  
 		<description>&lt;p&gt;&lt;strong&gt;字符串中字符大小写的变换：&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;S.lower()   #小写&lt;/li&gt;
@@ -1585,7 +1585,7 @@ margin-left:/*\**/:603px\9; /* 所有浏览器IE浏览器 */
     </item>  
     <item>  
 		<title>删除PHP文件中的BOM字符</title>  
-		<link>http://blog.codecos.com//posts/shan-chu-PHP-wen-jian-zhong-de-BOM-zi-fu.html</link>  
+		<link>http://daimin.github.io//posts/shan-chu-PHP-wen-jian-zhong-de-BOM-zi-fu.html</link>  
 		<description>&lt;p&gt;&lt;code&gt;BOM&lt;/code&gt;是微软搞出来的，比如如果你用windows上面的记事本程序，另存一个文本文件为utf-8编码，那么在文件头就加上了&lt;strong&gt;BOM(0xEF 0xBB 0xBF，即BOM)&lt;/strong&gt;，用来鉴别文件编码格式，但是这在html中就是一行啊，我们在Windows上面写php很容易就加上了BOM。下面是一个脚本，专门用来清除BOM的。&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;&amp;lt;?php
 //remove the utf-8 boms
@@ -1648,7 +1648,7 @@ fclose($filenum);
     </item>  
     <item>  
 		<title>豆瓣api的电影信息查询app</title>  
-		<link>http://blog.codecos.com//posts/dou-ban-api-de-dian-ying-xin-xi-cha-xun.html</link>  
+		<link>http://daimin.github.io//posts/dou-ban-api-de-dian-ying-xin-xi-cha-xun.html</link>  
 		<description>&lt;blockquote&gt;
 &lt;p&gt;其实很简单的的app，就是可以根据关键字查询电影，生成一个电影列表，然后点击列表项里面能显示详细介绍。&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -1737,7 +1737,7 @@ HttpResponse response = httpclient.execute(httpGet);
     </item>  
     <item>  
 		<title>Nginx 常用配置</title>  
-		<link>http://blog.codecos.com//posts/Nginx-chang-yong-pei-zhi.html</link>  
+		<link>http://daimin.github.io//posts/Nginx-chang-yong-pei-zhi.html</link>  
 		<description>&lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;用Nginx做Web服务器，如果没有处理好日志，日志文件可能会很恐怖~10G、20G
@@ -1810,7 +1810,7 @@ fastcgi_cache_key $host$request_uri;
     </item>  
     <item>  
 		<title>博客换了新的主题了</title>  
-		<link>http://blog.codecos.com//posts/bo-ke-huan-le-xin-de-zhu-ti-le.html</link>  
+		<link>http://daimin.github.io//posts/bo-ke-huan-le-xin-de-zhu-ti-le.html</link>  
 		<description>&lt;blockquote&gt;
 &lt;p&gt;终于将新的主题换了上去，不过好像还没有之前的顺眼，但是之前的主题不适合内容展示，所以没办法，只能换一个了。&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -1828,7 +1828,7 @@ fastcgi_cache_key $host$request_uri;
     </item>  
     <item>  
 		<title>PHP数组的插入顺序</title>  
-		<link>http://blog.codecos.com//posts/PHP-shu-zu-de-cha-ru-shun-xu.html</link>  
+		<link>http://daimin.github.io//posts/PHP-shu-zu-de-cha-ru-shun-xu.html</link>  
 		<description>&lt;blockquote&gt;
 &lt;p&gt;这个问题，纠结了我2个小时，一直的找bug。&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -1854,7 +1854,7 @@ fastcgi_cache_key $host$request_uri;
     </item>  
     <item>  
 		<title>Nginx中一个server配置多个location</title>  
-		<link>http://blog.codecos.com//posts/Nginx-zhong-yi-ge-server-pei-zhi-duo-ge.html</link>  
+		<link>http://daimin.github.io//posts/Nginx-zhong-yi-ge-server-pei-zhi-duo-ge.html</link>  
 		<description>&lt;h5&gt;nginx中的location的匹配规则是“先匹配正则，再匹配普通”，同级的就是先后顺序了。&lt;/h5&gt;
 &lt;hr /&gt;
 &lt;p&gt;&lt;strong&gt;我这里需要实现：&lt;/strong&gt;&lt;/p&gt;
@@ -1913,7 +1913,7 @@ fastcgi_cache_key $host$request_uri;
     </item>  
     <item>  
 		<title>新增了一个相册</title>  
-		<link>http://blog.codecos.com//posts/xin-zeng-le-yi-ge-xiang-ce.html</link>  
+		<link>http://daimin.github.io//posts/xin-zeng-le-yi-ge-xiang-ce.html</link>  
 		<description>&lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;里面都是GF的图片，为此她埋怨我了不少，哈哈。可以通过 &lt;a href=&#34;http://codecos.com/photo/&#34;&gt;这里&lt;/a&gt;访问&lt;/p&gt;
@@ -1936,7 +1936,7 @@ fastcgi_cache_key $host$request_uri;
     </item>  
     <item>  
 		<title>最近准备干啥</title>  
-		<link>http://blog.codecos.com//posts/zui-jin-zhun-bei-gan-sha.html</link>  
+		<link>http://daimin.github.io//posts/zui-jin-zhun-bei-gan-sha.html</link>  
 		<description>&lt;blockquote&gt;
 &lt;p&gt;想练一练Java，具体来说是Android，预备是两个：&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -1950,7 +1950,7 @@ fastcgi_cache_key $host$request_uri;
     </item>  
     <item>  
 		<title>Nginx中alias和root的区别(转)</title>  
-		<link>http://blog.codecos.com//posts/Nginx-zhong-alias-he-root-de-qu-bie-zhuan.html</link>  
+		<link>http://daimin.github.io//posts/Nginx-zhong-alias-he-root-de-qu-bie-zhuan.html</link>  
 		<description>&lt;p&gt;nginx貌似没有虚拟目录的说法，因为它本来就是完完全全根据目录来设计并工作的。&lt;/p&gt;
 &lt;p&gt;如果非要给nginx安上一个虚拟目录的说法，那就只有alias标签比较“像”，干脆来说说alias标签和root标签的区别吧。&lt;/p&gt;
 &lt;p&gt;最基本的区别：alias指定的目录是准确的，root是指定目录的上级目录，并且该上级目录要含有location指定名称的同名目录。使用alias标签的目录块中不能使用rewrite的break。&lt;/p&gt;
@@ -1982,7 +1982,7 @@ fastcgi_cache_key $host$request_uri;
     </item>  
     <item>  
 		<title>netbeans英文字体修改</title>  
-		<link>http://blog.codecos.com//posts/netbeans-ying-wen-zi-ti-xiu-gai.html</link>  
+		<link>http://daimin.github.io//posts/netbeans-ying-wen-zi-ti-xiu-gai.html</link>  
 		<description>&lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;将 &lt;code&gt;JDK_HOME/jre/lib&lt;/code&gt; 目录下的&lt;code&gt;fontconfig.properties.src&lt;/code&gt;复制一份文件&lt;code&gt;fontconfig.properties&lt;/code&gt;，并放在该目录下。&lt;/p&gt;
@@ -2003,7 +2003,7 @@ fastcgi_cache_key $host$request_uri;
     </item>  
     <item>  
 		<title>修改博客的编辑器为Markdown</title>  
-		<link>http://blog.codecos.com//posts/xiu-gai-bo-ke-de-bian-ji-qi-wei.html</link>  
+		<link>http://daimin.github.io//posts/xiu-gai-bo-ke-de-bian-ji-qi-wei.html</link>  
 		<description>&lt;ul&gt;
 &lt;li&gt;采用的是&lt;a href=&#34;http://oscargodson.github.io/EpicEditor/&#34;&gt;EpicEditor&lt;/a&gt;
 语法链接在上面有，其实挺简单的，比KindEditor来说，虽然功能上面肯定要弱很多，但是很能激发起写作的欲望，以后多在这里写一些东西。&lt;/li&gt;
@@ -2018,7 +2018,7 @@ fastcgi_cache_key $host$request_uri;
     </item>  
     <item>  
 		<title>留言板</title>  
-		<link>http://blog.codecos.com//posts/liu-yan-ban.html</link>  
+		<link>http://daimin.github.io//posts/liu-yan-ban.html</link>  
 		<description>&lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;这个网站部署在github上面，用python生成的静态页面，用mako作为模板引擎，使用markdown来写作。&lt;/p&gt;
@@ -2039,7 +2039,7 @@ fastcgi_cache_key $host$request_uri;
     </item>  
     <item>  
 		<title>jVaga，蛋疼的JS库</title>  
-		<link>http://blog.codecos.com//posts/jVaga-dan-teng-de-JS-ku.html</link>  
+		<link>http://daimin.github.io//posts/jVaga-dan-teng-de-JS-ku.html</link>  
 		<description>&lt;p&gt;很简单的，没多少代码，应该还有很多BUG，先做个标记在这里。
 我的目标就是 &lt;strong&gt;Make you easy use&lt;/strong&gt;。
 主要就是模仿Jquery的使用，肯定没有jquery强大，但是肯定也要简单许多。&lt;/p&gt;
