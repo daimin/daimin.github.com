@@ -2,14 +2,14 @@
 <!-- saved from url=(0025)http://daimin.github.io/ -->
 <html>
 <head>
-    
+    
 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="keywords" content="mysql 用法备忘" />
+    <meta name="keywords" content="mysql 用法备忘" />
     <meta name="description" content="工作中一直都用mysql，遇到一些问题，需要查来查去，下一次遇到相同的又忘记，又要查，很不方便啊，这..." />
     <link rel="shortcut icon" href="/favicon.ico" />
 
-    <title>mysql 用法备忘 | 茶瓯葱丝</title>
+    <title>mysql 用法备忘 | 茶瓯葱丝</title>
     <link rel="stylesheet" type="text/css" href="/styles/style.css">
     <link rel="Stylesheet" type="text/css" href="/js/prettify/desert.css" />
     <link rel="stylesheet" type="text/css" href="/styles/bootstrap-jian.css">
@@ -21,7 +21,7 @@
 			<span id="motto"></span>
 			<h1><a href="/index.html" >茶瓯葱丝</a>
             <form onsubmit="return dispatch()" style="display:inline">
-            <span style="width: 210px; height: 26px; margin-left:24px; background-size: 210px 26px; background-image: url('/image/qbar_light@2x.png'); background-repeat: no-repeat; display: inline-block;">
+            <span style="width: 240px; height: 26px; margin-left:24px; background-size: 240px 26px; background-image: url('/image/qbar_light@2x.png'); background-repeat: no-repeat; display: inline-block;">
             <input type="text" maxlength="40" name="q" id="q" value="">
             </span>
             </form>
@@ -30,9 +30,9 @@
         </div>
 <div id="wrapper">
 <div id="content" class="index">
-     
-<h2 class="post-title">mysql 用法备忘</h2>
-<div class="cnt">
+     
+<h2 class="post-title">mysql 用法备忘</h2>
+<div class="cnt">
 <blockquote>
 <p>工作中一直都用mysql，遇到一些问题，需要查来查去，下一次遇到相同的又忘记，又要查，很不方便啊，这次记在这里，备查。</p>
 </blockquote>
@@ -41,17 +41,22 @@
 <li>
 <p>Alter语句用法   </p>
 <ul>
-<li>修改列的类型信息 <br />
-ALTER TABLE 【表名字】 CHANGE 【列名称】【新列名称（这里可以用和原来列同名即可）】 BIGINT NOT NULL  COMMENT '注释说明'</li>
-<li>重命名列 <br />
-ALTER TABLE 【表名字】 CHANGE 【列名称】【新列名称】 BIGINT NOT NULL  COMMENT '注释说明'</li>
-<li>重命名表 <br />
-ALTER TABLE 【表名字】 RENAME 【表新名字】</li>
+<li>修改列的类型信息   </li>
 </ul>
 </li>
+</ol>
+<p>ALTER TABLE 【表名字】 CHANGE 【列名称】【新列名称（这里可以用和原来列同名即可）】 BIGINT NOT NULL  COMMENT '注释说明'</p>
+<pre><code>* 重命名列
+</code></pre>
+<p>ALTER TABLE 【表名字】 CHANGE 【列名称】【新列名称】 BIGINT NOT NULL  COMMENT '注释说明'</p>
+<pre><code>* 重命名表
+</code></pre>
+<p>ALTER TABLE 【表名字】 RENAME 【表新名字】</p>
+<ol>
 <li>
 <p>显示运行线程和杀死线程   </p>
 <pre><code>show processlist;
+
 kill connection threadid;
 </code></pre>
 </li>
@@ -72,28 +77,33 @@ kill connection threadid;
 <p><code>ALTER TABLE tbl_name CONVERT TO CHARACTER SET charset_name;</code> 转换表及所有字符字段的字符集</p>
 </li>
 <li>
-<p>mysql添加用户 <br />
-<strong>好吧BAE不让我录入下面的sql语句，我读进行过滤了的啊，坑啊，难怪那么慢，过滤了多少东西啊，无力吐槽，图片看你怎么过滤！！！</strong>
-   <img alt="qiniu_1377508847990.gif" src="http://vaga-static.qiniudn.com/qiniu_1377508847990.gif" title="mysql" /></p>
+<p>mysql添加用户   </p>
 </li>
+</ol>
+<p><strong>好吧BAE不让我录入下面的sql语句，我读进行过滤了的啊，坑啊，难怪那么慢，过滤了多少东西啊，无力吐槽，图片看你怎么过滤！！！</strong></p>
+<p><img alt="qiniu_1377508847990.gif" src="http://vaga-static.qiniudn.com/qiniu_1377508847990.gif" title="mysql" /></p>
+<ol>
 <li>
-<p>绑定mysql服务到指定IP
-    命令行启动时，使用 <br />
-<code>/usr/local/mysql/bin/mysqld_safe --bind-address=127.0.0.1</code> 即可。<br />
-    如果需要修改服务脚本，编辑/etc/init.d/mysqld，找到第330行，将此内容：
-<code>$bindir/mysqld_safe --datadir=$datadir --pid-file=$server_pid_file $other_args</code> <br />
-修改为： <br />
-<code>$bindir/mysqld_safe --datadir=$datadir --pid-file=$server_pid_file --bind-address=127.0.0.1 $other_args</code>
-即可。<br />
-    启动服务后，使用netstat -nat|grep 3306可以看到服务只绑定在127.0.0.1上。</p>
+<p>绑定mysql服务到指定IP</p>
+<p>命令行启动时，使用   </p>
+<p><code>/usr/local/mysql/bin/mysqld_safe --bind-address=127.0.0.1</code> 即可。  </p>
+<p>如果需要修改服务脚本，编辑/etc/init.d/mysqld，找到第330行，将此内容：</p>
 </li>
+</ol>
+<p><code>$bindir/mysqld_safe --datadir=$datadir --pid-file=$server_pid_file $other_args</code>   </p>
+<p>修改为：   </p>
+<p><code>$bindir/mysqld_safe --datadir=$datadir --pid-file=$server_pid_file --bind-address=127.0.0.1 $other_args</code></p>
+<p>即可。  </p>
+<pre><code>启动服务后，使用netstat -nat|grep 3306可以看到服务只绑定在127.0.0.1上。
+</code></pre>
+<ol>
+<li>distinct 和 group by    </li>
+</ol>
+<p>这两种语句其实都差不都，distinct使用起来会方便些，group by 在加了索引后效率会高一些。</p>
+<ol>
 <li>
-<p>distinct 和 group by  <br />
-   这两种语句其实都差不都，distinct使用起来会方便些，group by 在加了索引后效率会高一些。</p>
-</li>
-<li>
-<p>DATE_FORMAT 函数用法 <br />
-    DATE_FORMAT(paytime, '%Y-%m-%d')，这里paytime是待格式化的日期，%Y就是年，%m月，%d日，很简单。</p>
+<p>DATE_FORMAT 函数用法   </p>
+<p>DATE_FORMAT(paytime, '%Y-%m-%d')，这里paytime是待格式化的日期，%Y就是年，%m月，%d日，很简单。</p>
 </li>
 <li>
 <p>insert和select</p>
@@ -103,22 +113,22 @@ kill connection threadid;
 </ol>
 <blockquote>
 <p>以后遇到新的问题，还会增加在这里。</p>
-</blockquote>
-</dir>
-<!-- Duoshuo Comment BEGIN -->
-	<div class="ds-thread"></div>
-<script type="text/javascript">
-var duoshuoQuery = {short_name:"vagasnail"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = 'http://static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		|| document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
-<!-- Duoshuo Comment END -->
+</blockquote>
+</dir>
+<!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"vagasnail"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->
 
 </div>
 <div id="footer">

@@ -2,14 +2,14 @@
 <!-- saved from url=(0025)http://daimin.github.io/ -->
 <html>
 <head>
-    
+    
 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="keywords" content="豆瓣api的电影信息查询app" />
+    <meta name="keywords" content="豆瓣api的电影信息查询app" />
     <meta name="description" content="其实很简单的的app，就是可以根据关键字查询电影，生成一个电影列表，然后点击列表项里面能显示详细介绍..." />
     <link rel="shortcut icon" href="/favicon.ico" />
 
-    <title>豆瓣api的电影信息查询app | 茶瓯葱丝</title>
+    <title>豆瓣api的电影信息查询app | 茶瓯葱丝</title>
     <link rel="stylesheet" type="text/css" href="/styles/style.css">
     <link rel="Stylesheet" type="text/css" href="/js/prettify/desert.css" />
     <link rel="stylesheet" type="text/css" href="/styles/bootstrap-jian.css">
@@ -21,7 +21,7 @@
 			<span id="motto"></span>
 			<h1><a href="/index.html" >茶瓯葱丝</a>
             <form onsubmit="return dispatch()" style="display:inline">
-            <span style="width: 210px; height: 26px; margin-left:24px; background-size: 210px 26px; background-image: url('/image/qbar_light@2x.png'); background-repeat: no-repeat; display: inline-block;">
+            <span style="width: 240px; height: 26px; margin-left:24px; background-size: 240px 26px; background-image: url('/image/qbar_light@2x.png'); background-repeat: no-repeat; display: inline-block;">
             <input type="text" maxlength="40" name="q" id="q" value="">
             </span>
             </form>
@@ -30,9 +30,9 @@
         </div>
 <div id="wrapper">
 <div id="content" class="index">
-     
-<h2 class="post-title">豆瓣api的电影信息查询app</h2>
-<div class="cnt">
+     
+<h2 class="post-title">豆瓣api的电影信息查询app</h2>
+<div class="cnt">
 <blockquote>
 <p>其实很简单的的app，就是可以根据关键字查询电影，生成一个电影列表，然后点击列表项里面能显示详细介绍。</p>
 </blockquote>
@@ -40,22 +40,34 @@
 <h4>一，原理</h4>
 <ol>
 <li>
-<p>使用<a href="http://www.douban.com">豆瓣</a>的api，现在是v2版本了，可以从<a href="http://developers.douban.com/wiki/?title=api_v2">这里</a>查看详细。需要注意的是必须设置<code>User-Agent</code>这个请求头，否则返回的就是500错误了。
-          httpGet.setHeader("User-Agent", "Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.22 (KHTML,     like Gecko) Chrome/25.0.1364.172 Safari/537.22");</p>
+<p>使用<a href="http://www.douban.com">豆瓣</a>的api，现在是v2版本了，可以从<a href="http://developers.douban.com/wiki/?title=api_v2">这里</a>查看详细。需要注意的是必须设置<code>User-Agent</code>这个请求头，否则返回的就是500错误了。</p>
+<pre><code>  httpGet.setHeader("User-Agent", "Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.22 (KHTML,     like Gecko) Chrome/25.0.1364.172 Safari/537.22");
+</code></pre>
 </li>
 <li>
 <p>至于android那边我用的HttpClient，这个很简单的。</p>
 <pre><code>String uString= Douban.HOST + "search?q=" + ch + "&amp;start=" + off + "&amp;count=" +   Douban.PAGE_SIZE;
+
 HttpGet httpGet = new HttpGet(uString);
-HttpParams httpParams = new BasicHttpParams();  
-HttpConnectionParams.setConnectionTimeout(httpParams,  
-         Douban.NET_TIME_OUT);  
-HttpConnectionParams.setSoTimeout(httpParams,  
-     Douban.NET_TIME_OUT); 
+
+HttpParams httpParams = new BasicHttpParams();
+
+HttpConnectionParams.setConnectionTimeout(httpParams,
+
+         Douban.NET_TIME_OUT);
+
+HttpConnectionParams.setSoTimeout(httpParams,
+
+     Douban.NET_TIME_OUT);
+
 httpGet.setParams(httpParams);
+
 //X，竟然要模仿浏览器
+
 httpGet.setHeader("User-Agent", "Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.22 (KHTML, like         Gecko) Chrome/25.0.1364.172 Safari/537.22");
+
 HttpClient httpclient = new DefaultHttpClient();
+
 HttpResponse response = httpclient.execute(httpGet);
 </code></pre>
 </li>
@@ -67,42 +79,69 @@ HttpResponse response = httpclient.execute(httpGet);
 <pre><code> public class ImageLoader extends AsyncTask&lt;Integer, Integer, String&gt; {
 
     private ImageView imgView;
+
     private String url = null;
+
     private Bitmap bm = null;
 
-    public ImageLoader(ImageView imgView, String url) {  
-        super();  
+    public ImageLoader(ImageView imgView, String url) {
+
+        super();
+
         this.imgView = imgView;
+
         this.url = url;
+
     }
 
     @Override
+
     protected String doInBackground(Integer... arg0) {
 
         InputStream is = null;
+
         URL aryURI = null;
+
         try {
+
             aryURI = new URL(url);
+
             is = aryURI.openStream();
+
             bm = BitmapFactory.decodeStream(is);
 
         } catch (MalformedURLException e) {
+
             e.printStackTrace();
+
         } catch (IOException e) {
+
             e.printStackTrace();
+
         }finally{
+
             try {
+
                 is.close();
+
             } catch (IOException e) {
+
                 e.printStackTrace();
+
             }
+
         }
+
         return null;
+
     }
 
     @Override
+
     protected void onPostExecute(String result) {
+
         this.imgView.setImageBitmap(bm);
+
     }
 
 }
@@ -114,22 +153,22 @@ HttpResponse response = httpclient.execute(httpGet);
 <li>
 <p>可以从<a href="http://vagascanner.googlecode.com/files/FDouBan.zip">这里</a>下载。</p>
 </li>
-</ol>
-</dir>
-<!-- Duoshuo Comment BEGIN -->
-	<div class="ds-thread"></div>
-<script type="text/javascript">
-var duoshuoQuery = {short_name:"vagasnail"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = 'http://static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		|| document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
-<!-- Duoshuo Comment END -->
+</ol>
+</dir>
+<!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"vagasnail"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->
 
 </div>
 <div id="footer">

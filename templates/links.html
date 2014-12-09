@@ -25,10 +25,15 @@
         </ul>
     </div>
 <div id="main">
-        <ul id="tags">
-        % for tag in tags:
-            <li><a href="${tag.url}">${tag.title}<span>(${tag.count})</span></a></li>
+<div id="links-div">
+    % for type_, tlinks in links:
+        <div class="links-type">${type_}</div>
+        <ul class="links">
+        % for link in tlinks:
+            <li><a class="link-title" href="${link.url}" target="_blank">${link.title} </a><span class="link-desc">${link.desc}</span></li>    
         % endfor
         </ul>
+    % endfor
+</div>
 </div>
 </%block>

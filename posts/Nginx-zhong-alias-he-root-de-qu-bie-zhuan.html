@@ -2,14 +2,14 @@
 <!-- saved from url=(0025)http://daimin.github.io/ -->
 <html>
 <head>
-    
+    
 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="keywords" content="Nginx中alias和root的区别(转)" />
+    <meta name="keywords" content="Nginx中alias和root的区别(转)" />
     <meta name="description" content="nginx貌似没有虚拟目录的说法，因为它本来就是完完全全根据目录来设计并工作的。如果非要给nginx..." />
     <link rel="shortcut icon" href="/favicon.ico" />
 
-    <title>Nginx中alias和root的区别(转) | 茶瓯葱丝</title>
+    <title>Nginx中alias和root的区别(转) | 茶瓯葱丝</title>
     <link rel="stylesheet" type="text/css" href="/styles/style.css">
     <link rel="Stylesheet" type="text/css" href="/js/prettify/desert.css" />
     <link rel="stylesheet" type="text/css" href="/styles/bootstrap-jian.css">
@@ -21,7 +21,7 @@
 			<span id="motto"></span>
 			<h1><a href="/index.html" >茶瓯葱丝</a>
             <form onsubmit="return dispatch()" style="display:inline">
-            <span style="width: 210px; height: 26px; margin-left:24px; background-size: 210px 26px; background-image: url('/image/qbar_light@2x.png'); background-repeat: no-repeat; display: inline-block;">
+            <span style="width: 240px; height: 26px; margin-left:24px; background-size: 240px 26px; background-image: url('/image/qbar_light@2x.png'); background-repeat: no-repeat; display: inline-block;">
             <input type="text" maxlength="40" name="q" id="q" value="">
             </span>
             </form>
@@ -30,26 +30,32 @@
         </div>
 <div id="wrapper">
 <div id="content" class="index">
-     
-<h2 class="post-title">Nginx中alias和root的区别(转)</h2>
-<div class="cnt">
+     
+<h2 class="post-title">Nginx中alias和root的区别(转)</h2>
+<div class="cnt">
 <p>nginx貌似没有虚拟目录的说法，因为它本来就是完完全全根据目录来设计并工作的。</p>
 <p>如果非要给nginx安上一个虚拟目录的说法，那就只有alias标签比较“像”，干脆来说说alias标签和root标签的区别吧。</p>
 <p>最基本的区别：alias指定的目录是准确的，root是指定目录的上级目录，并且该上级目录要含有location指定名称的同名目录。使用alias标签的目录块中不能使用rewrite的break。</p>
 <p>说不明白，看下配置：</p>
 <pre><code>location /abc/ {
+
     alias /home/html/abc/;
+
 }
 </code></pre>
 <p>在这段配置下，http://test/abc/a.html 就指定的是 /home/html/abc/a.html。这段配置亦可改成</p>
 <pre><code>location /abc/ {
+
     root /home/html/;
+
 }
 </code></pre>
 <p>这样，nginx就会去找/home/html/目录下的abc目录了，得到的结果是相同的。</p>
 <p>但是，如果我把alias的配置改成：</p>
 <pre><code>location /abc/ {
+
     alias /home/html/def/;
+
 }
 </code></pre>
 <p>那么nginx将会从/home/html/def/取数据，这段配置还不能直接使用root配置，如果非要配置，只有在/home/html/下建立一个 def-&gt;abc的软link（快捷方式）了。</p>
@@ -57,22 +63,22 @@
 <p>至于alias和root的区别，我估计还没有说完全，如果在配置时发现奇异问题，不妨把这两者换换试试。</p>
 <blockquote>
 <p>原文链接：nginx 虚拟目录？的配置[http://www.sudone.com/nginx/nginx_alias.html]</p>
-</blockquote>
-</dir>
-<!-- Duoshuo Comment BEGIN -->
-	<div class="ds-thread"></div>
-<script type="text/javascript">
-var duoshuoQuery = {short_name:"vagasnail"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = 'http://static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		|| document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
-<!-- Duoshuo Comment END -->
+</blockquote>
+</dir>
+<!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"vagasnail"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->
 
 </div>
 <div id="footer">

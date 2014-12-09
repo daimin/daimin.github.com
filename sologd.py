@@ -18,6 +18,7 @@ import stat
 import time
 from HTMLParser import HTMLParser
 import sys
+from xml.dom import minidom
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
@@ -75,6 +76,37 @@ class Util:
         parse.feed(html)
         parse.close()
         return "".join(result)
+    
+    @staticmethod
+    def load_links_xml():
+        def get_ele_val(node, name):
+            sms = node.getElementsByTagName(name)
+            if sms is not None and len(sms) > 0:
+                return sms[0].childNodes[0].nodeValue  
+            return None
+        cates = {'42652': u"高手博客", '42653': '技术网站'}
+        with open("MyBlogData.xml") as xf:
+            with open("links.lk", "w") as lf:
+                doc = minidom.parse(xf)
+                for blog_node in doc.getElementsByTagName('CnblogsData'):
+                    for linknode in blog_node.getElementsByTagName('blog_Links'):
+                        lf.write("%s|%s|%s|%s\n" % (
+                            cates.get(get_ele_val(linknode, 'CategoryID'), ''),\
+                            get_ele_val(linknode, 'Title'), \
+                            get_ele_val(linknode, 'Url'), \
+                            "" if get_ele_val(linknode, 'Description') is None else get_ele_val(linknode, 'Description')
+                            ))
+                    '''
+                    <LinkID>189984</LinkID>
+                    <Title>Java究竟怎么玩</Title>
+                    <Url>http://blog.csdn.net/cping1982</Url>
+                    <Active>1</Active>
+                    <CategoryID>42652</CategoryID>
+                    <BlogID>12621</BlogID>
+                    <PostID>-1</PostID>
+                    <NewWindow>0</NewWindow>
+                    <UpdateTime>2009-11-07T10:49:46.673</UpdateTime>
+                    '''
             
 class HTMLObj(object):
     dir = '/'
@@ -103,6 +135,16 @@ class Tag(HTMLObj):
     def __init__(self, **kwargs):
         super(Tag, self).__init__(**kwargs)
         self.count  = kwargs['count'] if 'count' in kwargs else 0
+
+class Link(HTMLObj):
+    def __init__(self, **kwargs):
+        super(Link, self).__init__(**kwargs)
+        self.type = kwargs.get("type", '')
+        self.desc = kwargs.get("desc", '')
+        self.url  = kwargs.get("url", '')
+
+    def __str__(self):
+        return 'title=%s, type=%s, url=%s, desc=%s' %(self.title, self.type, self.url, self.desc)
         
         
 ### 侧边栏显示的POST ##############################################################
@@ -117,15 +159,20 @@ class MdReader:
     def __init__(self):
         self.mdobjs     = []
         self.metas      = []
+        self.links      = []
         self.toptags   = None
         self.postbydate = None
         
     def get_mdfiles(self):
         fls = os.listdir(sources_dir)
         for mfl in fls:
-            if mfl[mfl.rfind("."):] not in ['.md', '.MD', '.markdown', '.MARKDOWN']: continue
+            ext = mfl[mfl.rfind("."):]
+            if mfl[mfl.rfind("."):] not in ['.md', '.MD', '.markdown', '.MARKDOWN', ".lk"]: continue
             mdcont = Util.read_file(os.path.join(sources_dir, mfl))
-            self.mdobjs.append(self.__parse(mdcont, mfl))
+            if '.lk' not in mfl:
+                self.mdobjs.append(self.__parse(mdcont, mfl))
+            else:
+                self.__parse_links(mdcont)
         return self.mdobjs 
             
     def __process_cont(self, cont):
@@ -133,6 +180,7 @@ class MdReader:
             
     def __parse(self, mdcont, mfl):
         ## 先读前面6行
+
         mddict = {}
         lines = mdcont.split("\n")
         metaslines = filter(lambda x:x is not None and x.strip() !='', lines[0:6])
@@ -144,6 +192,20 @@ class MdReader:
         mddict['fname']   = mfl
         self.metas.append(dict(filter(lambda x:x[0]!='content', mddict.items())))
         return mddict
+
+    def __parse_links(self, cont):
+        links = cont.split("\n")
+        for link in links:
+            link = link.strip()
+            if len(link) == 0:
+                continue
+            metas = link.split("|")
+            type_ = metas[0] if len(metas) > 0 else u'未分类'
+            title = metas[1] if len(metas) > 1 else u''
+            url   = metas[2] if len(metas) > 2 else u''
+            desc  = metas[3] if len(metas) > 3 else u''
+            self.links.append(Link(type=type_, title=title, url=url, desc=desc))
+            
     
     def get_top5tags(self):
         """拿到文章数排序前5的标签
@@ -164,6 +226,7 @@ class MdReader:
         for m in self.metas:
             for t in m['tags']:
                 if t is None or t.strip() == '': continue
+                t = t.strip()
                 if t in tagscount:
                     tagscount[t] += 1
                 else:
@@ -197,6 +260,7 @@ class MdReader:
                         tagsposts[tt.title] = [dict(filter(lambda x:x[0] != 'tags', m.items()))]
         ###排序
         return dict(map(lambda x:(x[0], sorted(x[1], key=lambda x:x['createdate'], reverse=(not o))), tagsposts.items()))
+
     
          
 class StaticBase():
@@ -293,6 +357,8 @@ class StaticTagIndex(StaticBase):
         self.tags = []
         for (title, count) in tagscount.items():
             self.tags.append(Tag(title=title, count=count, url="%s.html" % title))
+        self.tags = sorted(self.tags, key=lambda x:x.count, reverse=True)
+
         self._staticpath = os.path.join(app_root + Tag.dir, 'index.html')
             
 class StaticTag(StaticBase):
@@ -330,6 +396,30 @@ class StaticRss(StaticBase):
         self._staticpath = os.path.join(app_root + HTMLObj.dir , 'rss.xml') 
         self.posts = self._mdreader.get_posts_order_date(False)
 
+class StaticLinks(StaticBase):
+
+    def __init__(self):
+        StaticBase.__init__(self)
+        self._template = "links.html"
+        self._type       = 'links'
+
+    def _parse_data(self):
+        StaticBase._parse_data(self)
+        self._staticpath = []
+        typed_links = {}
+        for link in self._mdreader.links:
+            if link.type in typed_links:
+                typed_links[link.type].append(link)
+            else:
+                typed_links[link.type] = [ link ]
+
+        typed_links = sorted(typed_links.iteritems(), key=lambda x:x[0], reverse=False)    
+        self.links = typed_links
+
+        self._staticpath = os.path.join(app_root, 'links.html')
+        #for (title, posts) in self._mdreader.get_tags_posts(False).items():
+        #    self._staticpath.append((os.path.join(app_root + Tag.dir, title + ".html"), (title, posts)))
+
 def main():
     staticIdx = StaticIndex()
     staticIdx.run()
@@ -349,12 +439,16 @@ def main():
     staticRss = StaticRss()
     staticRss.run() 
 
+    staticLinks = StaticLinks()
+    staticLinks.run() 
+
 if __name__ == "__main__":
-    start_time = time.clock()
+    start_time = time.time()
     main()
-    end_time = time.clock()
+    #Util.load_links_xml()
+    end_time = time.time()
     print  u'############## 解析完成，花费【%f】秒 #############' % (end_time - start_time)
-    raw_input("按回车键退出...".decode("utf-8").encode('gbk'))
+    raw_input(u"按回车键退出...")
     
     
     

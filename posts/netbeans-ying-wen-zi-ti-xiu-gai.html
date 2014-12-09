@@ -2,14 +2,14 @@
 <!-- saved from url=(0025)http://daimin.github.io/ -->
 <html>
 <head>
-    
+    
 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="keywords" content="netbeans英文字体修改" />
+    <meta name="keywords" content="netbeans英文字体修改" />
     <meta name="description" content="将 JDK_HOME/jre/lib 目录下的fontconfig.properties.src复制..." />
     <link rel="shortcut icon" href="/favicon.ico" />
 
-    <title>netbeans英文字体修改 | 茶瓯葱丝</title>
+    <title>netbeans英文字体修改 | 茶瓯葱丝</title>
     <link rel="stylesheet" type="text/css" href="/styles/style.css">
     <link rel="Stylesheet" type="text/css" href="/js/prettify/desert.css" />
     <link rel="stylesheet" type="text/css" href="/styles/bootstrap-jian.css">
@@ -21,7 +21,7 @@
 			<span id="motto"></span>
 			<h1><a href="/index.html" >茶瓯葱丝</a>
             <form onsubmit="return dispatch()" style="display:inline">
-            <span style="width: 210px; height: 26px; margin-left:24px; background-size: 210px 26px; background-image: url('/image/qbar_light@2x.png'); background-repeat: no-repeat; display: inline-block;">
+            <span style="width: 240px; height: 26px; margin-left:24px; background-size: 240px 26px; background-image: url('/image/qbar_light@2x.png'); background-repeat: no-repeat; display: inline-block;">
             <input type="text" maxlength="40" name="q" id="q" value="">
             </span>
             </form>
@@ -30,38 +30,38 @@
         </div>
 <div id="wrapper">
 <div id="content" class="index">
-     
-<h2 class="post-title">netbeans英文字体修改</h2>
-<div class="cnt">
+     
+<h2 class="post-title">netbeans英文字体修改</h2>
+<div class="cnt">
 <ol>
 <li>
 <p>将 <code>JDK_HOME/jre/lib</code> 目录下的<code>fontconfig.properties.src</code>复制一份文件<code>fontconfig.properties</code>，并放在该目录下。</p>
 </li>
 <li>
-<p>编辑文件<code>fontconfig.properties</code>，查找到下面一行：<br />
-<code>sequence.monospaced.GBK=chinese-ms936, alphabetic,dingbats,symbol</code><br />
-可以发现由于中文<strong>monospaced</strong>字体缺省查找顺序是先使用<strong>chinese-ms936</strong>，结果造成了英文被宋体来          显示。纠正非常简单，只需将<strong>chinese-ms936</strong>和<strong>alphabetic</strong>调换顺序就可以了： 
-<code>sequence.monospaced.GBK=alphabetic,chinese-ms936,dingbats,symbol</code></p>
+<p>编辑文件<code>fontconfig.properties</code>，查找到下面一行：  </p>
 </li>
 </ol>
+<p><code>sequence.monospaced.GBK=chinese-ms936, alphabetic,dingbats,symbol</code>  </p>
+<p>可以发现由于中文<strong>monospaced</strong>字体缺省查找顺序是先使用<strong>chinese-ms936</strong>，结果造成了英文被宋体来          显示。纠正非常简单，只需将<strong>chinese-ms936</strong>和<strong>alphabetic</strong>调换顺序就可以了： </p>
+<p><code>sequence.monospaced.GBK=alphabetic,chinese-ms936,dingbats,symbol</code></p>
 <blockquote>
 <p>google开始收录这个博客了，可是百度还说我没有添加网站。法克！</p>
-</blockquote>
-</dir>
-<!-- Duoshuo Comment BEGIN -->
-	<div class="ds-thread"></div>
-<script type="text/javascript">
-var duoshuoQuery = {short_name:"vagasnail"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = 'http://static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		|| document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
-<!-- Duoshuo Comment END -->
+</blockquote>
+</dir>
+<!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"vagasnail"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->
 
 </div>
 <div id="footer">

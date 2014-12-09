@@ -2,14 +2,14 @@
 <!-- saved from url=(0025)http://daimin.github.io/ -->
 <html>
 <head>
-    
+    
 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="keywords" content="css hack的简单使用" />
+    <meta name="keywords" content="css hack的简单使用" />
     <meta name="description" content="今天调布局，很是麻烦啊，为毛世界上要有IE这样坑爹的浏览器，而且在TC竟然还占绝大多数。总结了几点：..." />
     <link rel="shortcut icon" href="/favicon.ico" />
 
-    <title>css hack的简单使用 | 茶瓯葱丝</title>
+    <title>css hack的简单使用 | 茶瓯葱丝</title>
     <link rel="stylesheet" type="text/css" href="/styles/style.css">
     <link rel="Stylesheet" type="text/css" href="/js/prettify/desert.css" />
     <link rel="stylesheet" type="text/css" href="/styles/bootstrap-jian.css">
@@ -21,7 +21,7 @@
 			<span id="motto"></span>
 			<h1><a href="/index.html" >茶瓯葱丝</a>
             <form onsubmit="return dispatch()" style="display:inline">
-            <span style="width: 210px; height: 26px; margin-left:24px; background-size: 210px 26px; background-image: url('/image/qbar_light@2x.png'); background-repeat: no-repeat; display: inline-block;">
+            <span style="width: 240px; height: 26px; margin-left:24px; background-size: 240px 26px; background-image: url('/image/qbar_light@2x.png'); background-repeat: no-repeat; display: inline-block;">
             <input type="text" maxlength="40" name="q" id="q" value="">
             </span>
             </form>
@@ -30,67 +30,83 @@
         </div>
 <div id="wrapper">
 <div id="content" class="index">
-     
-<h2 class="post-title">css hack的简单使用</h2>
-<div class="cnt">
+     
+<h2 class="post-title">css hack的简单使用</h2>
+<div class="cnt">
 <p><img alt="pic_1376622770249.jpg" src="http://vaga-static.qiniudn.com/pic_1376622770249.jpg" title="IE hack" /></p>
 <blockquote>
-<p>今天调布局，很是麻烦啊，为毛世界上要有IE这样坑爹的浏览器，而且在TC竟然还占绝大多数。
-总结了几点：</p>
+<p>今天调布局，很是麻烦啊，为毛世界上要有IE这样坑爹的浏览器，而且在TC竟然还占绝大多数。</p>
 </blockquote>
+<p>总结了几点：</p>
 <ol>
 <li>
 <p>第一种</p>
 <pre><code>margin-left:-601px; /*所有的浏览器*/
+
 *margin-left:-601px; /*ie6,ie7*/
+
 _margin-left:-601px; /*只有ie6*/
+
 *margin-left:-602px !important; /*只有ie7*/
+
 margin-left:/*\**/:603px\9; /* 所有浏览器IE浏览器 */
 </code></pre>
 </li>
 <li>
 <p>第二种，利用条件注释语句：</p>
 <pre><code>&lt;!--[if IE]&gt;
-    此内容只有IE可见 
+
+    此内容只有IE可见
+
 &lt;![endif]--&gt;
 
 &lt;!--[if IE 8]&gt;
+
     只有IE8
+
 &lt;![endif]--&gt;
 
 &lt;!--[if !IE 7]&gt;
+
     除了IE7的IE浏览器
+
 &lt;![endif]--&gt;
 
 &lt;!--[if gt IE 7]&gt;
+
     高于IE7的IE浏览器
+
 &lt;![endif]--&gt;
 
 &lt;!--[if lt IE 7]&gt;
+
     低于IE7的IE浏览器
+
 &lt;![endif]--&gt;
 
 &lt;!--[if lte IE 7]&gt;
+
     低于或等于IE7的IE浏览器
+
 &lt;![endif]--&gt;
 </code></pre>
 </li>
-</ol>
-</dir>
-<!-- Duoshuo Comment BEGIN -->
-	<div class="ds-thread"></div>
-<script type="text/javascript">
-var duoshuoQuery = {short_name:"vagasnail"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = 'http://static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		|| document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
-<!-- Duoshuo Comment END -->
+</ol>
+</dir>
+<!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"vagasnail"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->
 
 </div>
 <div id="footer">

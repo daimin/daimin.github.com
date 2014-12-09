@@ -2,7 +2,7 @@
 <!-- saved from url=(0025)http://daimin.github.io/ -->
 <html>
 <head>
-    
+    
 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="keywords" content="coreseek(sphinx)分布式设置" />
@@ -21,7 +21,7 @@
 			<span id="motto"></span>
 			<h1><a href="/index.html" >茶瓯葱丝</a>
             <form onsubmit="return dispatch()" style="display:inline">
-            <span style="width: 210px; height: 26px; margin-left:24px; background-size: 210px 26px; background-image: url('/image/qbar_light@2x.png'); background-repeat: no-repeat; display: inline-block;">
+            <span style="width: 240px; height: 26px; margin-left:24px; background-size: 240px 26px; background-image: url('/image/qbar_light@2x.png'); background-repeat: no-repeat; display: inline-block;">
             <input type="text" maxlength="40" name="q" id="q" value="">
             </span>
             </form>
@@ -30,9 +30,9 @@
         </div>
 <div id="wrapper">
 <div id="content" class="index">
-     
-<h2 class="post-title">coreseek(sphinx)分布式设置</h2>
-<div class="cnt">
+     
+<h2 class="post-title">coreseek(sphinx)分布式设置</h2>
+<div class="cnt">
 <p>sphinx默认是单线程的，无论你是多少核的服务器，它始终只会使用一个核心。
 有两个办法可以实现sphinx多核利用，两种都是使用sphinx的分布式设置。</p>
 <h3>1. 使用agent，远程索引声明</h3>
@@ -42,9 +42,7 @@
 <li>将local属性指向自身就行，这里就是dist</li>
 <li>agent执行独立运行的searchd进程，可以是本机的，也可以在其它机器上面运行，不过注意的是agent的数据源必须相同，否则无法合并。</li>
 <li>agent的数据源是我们采用一定的算法将一个数据源拆分成积分，如id取模或者是其它方式。</li>
-<li>
-<p>客户端进行搜索的时候就直接使用dist索引进程查询就行了。</p>
-<pre><code>index dist
+<li>客户端进行搜索的时候就直接使用dist索引进程查询就行了。<pre><code>index dist
 {
     type = distributed
     local = chunk1
@@ -84,22 +82,22 @@ dist_threads = 4
 <p>coreseek4.1 基于sphinx-2.0.1-bata，其多线程查询支持可能并不完善，可能我们需要升级更高版本的sphinx才能更好的支持这一特性(我在虚拟机上面配置，似乎就没有启用多线程)。<br />
 而且基于数据源拆分实现的分布式，可能会有一些隐患，需要我们仔细分析。
 如果想实现比较完美的分布式搜索引擎可能solr，elasticsearch这些为分布式而生的搜索引擎会更符合我们的需要。</p>
-</blockquote>
-</dir>
-<!-- Duoshuo Comment BEGIN -->
-	<div class="ds-thread"></div>
-<script type="text/javascript">
-var duoshuoQuery = {short_name:"vagasnail"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = 'http://static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		|| document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
-<!-- Duoshuo Comment END -->
+</blockquote>
+</dir>
+<!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"vagasnail"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->
 
 </div>
 <div id="footer">

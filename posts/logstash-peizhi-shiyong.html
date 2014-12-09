@@ -2,7 +2,7 @@
 <!-- saved from url=(0025)http://daimin.github.io/ -->
 <html>
 <head>
-    
+    
 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="keywords" content="用logstash+elasticsearch+Kibana+redis搭建实时日志查询、收集与分析平台" />
@@ -21,7 +21,7 @@
 			<span id="motto"></span>
 			<h1><a href="/index.html" >茶瓯葱丝</a>
             <form onsubmit="return dispatch()" style="display:inline">
-            <span style="width: 210px; height: 26px; margin-left:24px; background-size: 210px 26px; background-image: url('/image/qbar_light@2x.png'); background-repeat: no-repeat; display: inline-block;">
+            <span style="width: 240px; height: 26px; margin-left:24px; background-size: 240px 26px; background-image: url('/image/qbar_light@2x.png'); background-repeat: no-repeat; display: inline-block;">
             <input type="text" maxlength="40" name="q" id="q" value="">
             </span>
             </form>
@@ -30,9 +30,9 @@
         </div>
 <div id="wrapper">
 <div id="content" class="index">
-     
-<h2 class="post-title">用logstash+elasticsearch+Kibana+redis搭建实时日志查询、收集与分析平台</h2>
-<div class="cnt">
+     
+<h2 class="post-title">用logstash+elasticsearch+Kibana+redis搭建实时日志查询、收集与分析平台</h2>
+<div class="cnt">
 <p>hadoop之类的是高帅富用的，我们用不过来。这里搭建一个简单的日志平台。</p>
 <p>logstash是一个管理日志和事件的工具，你可以收集它们，解析它们，并存储它们以供以后使用(例如日志搜索)，logstash有一个内置的web界面，用来搜索你的所有日志。logstash在部署时有两种运行模式：standalone和centralized：</p>
 <ul>
@@ -138,22 +138,22 @@ output {
 </ol>
 <hr />
 <p><strong>关于filter的写法，这里我们最常使用的就是grok，可以参考logstash的官网，上面有很多介绍。 </strong></p>
-<p><strong>实际上我们可以用logstash完成很多功能，比如报警功能(使用metrics插件和ruby插件)，统计nginx访问日志，并按照自己的需求，这个就需要对grok进行编码了，主要就是正则表达式的编写，如果一个grok不够的话，还可以加上一个grok，诸如此类的。</strong></p>
-</dir>
-<!-- Duoshuo Comment BEGIN -->
-	<div class="ds-thread"></div>
-<script type="text/javascript">
-var duoshuoQuery = {short_name:"vagasnail"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = 'http://static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		|| document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
-<!-- Duoshuo Comment END -->
+<p><strong>实际上我们可以用logstash完成很多功能，比如报警功能(使用metrics插件和ruby插件)，统计nginx访问日志，并按照自己的需求，这个就需要对grok进行编码了，主要就是正则表达式的编写，如果一个grok不够的话，还可以加上一个grok，诸如此类的。</strong></p>
+</dir>
+<!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"vagasnail"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->
 
 </div>
 <div id="footer">

@@ -2,14 +2,14 @@
 <!-- saved from url=(0025)http://daimin.github.io/ -->
 <html>
 <head>
-    
+    
 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="keywords" content="BAE中web.py上传问题处理" />
+    <meta name="keywords" content="BAE中web.py上传问题处理" />
     <meta name="description" content="这个问题困扰我了两天，在BAE中使用web.py默认的上传方式是不能上传的，通过不懈的努力终于解决了..." />
     <link rel="shortcut icon" href="/favicon.ico" />
 
-    <title>BAE中web.py上传问题处理 | 茶瓯葱丝</title>
+    <title>BAE中web.py上传问题处理 | 茶瓯葱丝</title>
     <link rel="stylesheet" type="text/css" href="/styles/style.css">
     <link rel="Stylesheet" type="text/css" href="/js/prettify/desert.css" />
     <link rel="stylesheet" type="text/css" href="/styles/bootstrap-jian.css">
@@ -21,7 +21,7 @@
 			<span id="motto"></span>
 			<h1><a href="/index.html" >茶瓯葱丝</a>
             <form onsubmit="return dispatch()" style="display:inline">
-            <span style="width: 210px; height: 26px; margin-left:24px; background-size: 210px 26px; background-image: url('/image/qbar_light@2x.png'); background-repeat: no-repeat; display: inline-block;">
+            <span style="width: 240px; height: 26px; margin-left:24px; background-size: 240px 26px; background-image: url('/image/qbar_light@2x.png'); background-repeat: no-repeat; display: inline-block;">
             <input type="text" maxlength="40" name="q" id="q" value="">
             </span>
             </form>
@@ -30,9 +30,9 @@
         </div>
 <div id="wrapper">
 <div id="content" class="index">
-     
-<h2 class="post-title">BAE中web.py上传问题处理</h2>
-<div class="cnt">
+     
+<h2 class="post-title">BAE中web.py上传问题处理</h2>
+<div class="cnt">
 <blockquote>
 <p>这个问题困扰我了两天，在BAE中使用web.py默认的上传方式是不能上传的，通过不懈的努力终于解决了。</p>
 </blockquote>
@@ -40,6 +40,7 @@
 <li>
 <p>首先你要设置tempfile库的tempdir，BAE文档上面说修改了tempfile的临时目录，但是实际是在web.py中还是使用的系统默认的/tmp/xxx目录，所以首先需要修改。</p>
 <pre><code>from bae.core import const
+
 tempfile.tempdir = const.APP_TMPDIR
 </code></pre>
 <p>可以放置在app运行之前的代码前，保证其能被设置一次就够了。</p>
@@ -50,47 +51,57 @@ tempfile.tempdir = const.APP_TMPDIR
 <p>web.data()中获取的数据就是字符串，可以直接保存为文件，但是还是不能正常使用，因为里面有协议头和其它一些乱七八糟的东西，我们只要中间的entity就OK了。</p>
 <p>前面大概包括空行是4行：</p>
 <pre><code>------WebKitFormBoundaryecUZ2xK6QjVl5e3K
+
 Content-Disposition: form-data; name="attac"; filename="jquery.edatagrid.js"
+
 Content-Type: application/x-javascript
 </code></pre>
 <p>后面是5行：</p>
 <pre><code>------WebKitFormBoundaryecUZ2xK6QjVl5e3K
+
 Content-Disposition: form-data; name="name"
 
 pxblog
+
 ------WebKitFormBoundaryecUZ2xK6QjVl5e3K--
 </code></pre>
 <p>ok,去掉这几行</p>
 <pre><code>d = web.data()
+
 import StringIO
+
 s1 = StringIO.StringIO(d)
+
 s2 = StringIO.StringIO()
+
 lines =  s1.readlines()
+
 lines = lines[4:-5]
+
 s1.close()
 </code></pre>
 <p>现在的lines中就是我们所要的数据了，然后保存起来就是我们所要的。</p>
 </li>
 <li>
-<p>其实从Content-Disposition中可以得到filename，然后取得文件信息。
-<img alt="pic_1376642423074.jpg" src="http://vaga-static.qiniudn.com/pic_1376642423074.jpg" title="悲剧" /></p>
+<p>其实从Content-Disposition中可以得到filename，然后取得文件信息。</p>
 </li>
-</ol>
-</dir>
-<!-- Duoshuo Comment BEGIN -->
-	<div class="ds-thread"></div>
-<script type="text/javascript">
-var duoshuoQuery = {short_name:"vagasnail"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = 'http://static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		|| document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
-<!-- Duoshuo Comment END -->
+</ol>
+<p><img alt="pic_1376642423074.jpg" src="http://vaga-static.qiniudn.com/pic_1376642423074.jpg" title="悲剧" /></p>
+</dir>
+<!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"vagasnail"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->
 
 </div>
 <div id="footer">

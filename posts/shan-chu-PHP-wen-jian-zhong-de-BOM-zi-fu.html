@@ -2,14 +2,14 @@
 <!-- saved from url=(0025)http://daimin.github.io/ -->
 <html>
 <head>
-    
+    
 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="keywords" content="删除PHP文件中的BOM字符" />
+    <meta name="keywords" content="删除PHP文件中的BOM字符" />
     <meta name="description" content="BOM是微软搞出来的，比如如果你用windows上面的记事本程序，另存一个文本文件为utf-8编码，..." />
     <link rel="shortcut icon" href="/favicon.ico" />
 
-    <title>删除PHP文件中的BOM字符 | 茶瓯葱丝</title>
+    <title>删除PHP文件中的BOM字符 | 茶瓯葱丝</title>
     <link rel="stylesheet" type="text/css" href="/styles/style.css">
     <link rel="Stylesheet" type="text/css" href="/js/prettify/desert.css" />
     <link rel="stylesheet" type="text/css" href="/styles/bootstrap-jian.css">
@@ -21,7 +21,7 @@
 			<span id="motto"></span>
 			<h1><a href="/index.html" >茶瓯葱丝</a>
             <form onsubmit="return dispatch()" style="display:inline">
-            <span style="width: 210px; height: 26px; margin-left:24px; background-size: 210px 26px; background-image: url('/image/qbar_light@2x.png'); background-repeat: no-repeat; display: inline-block;">
+            <span style="width: 240px; height: 26px; margin-left:24px; background-size: 240px 26px; background-image: url('/image/qbar_light@2x.png'); background-repeat: no-repeat; display: inline-block;">
             <input type="text" maxlength="40" name="q" id="q" value="">
             </span>
             </form>
@@ -30,80 +30,133 @@
         </div>
 <div id="wrapper">
 <div id="content" class="index">
-     
-<h2 class="post-title">删除PHP文件中的BOM字符</h2>
-<div class="cnt">
+     
+<h2 class="post-title">删除PHP文件中的BOM字符</h2>
+<div class="cnt">
 <p><code>BOM</code>是微软搞出来的，比如如果你用windows上面的记事本程序，另存一个文本文件为utf-8编码，那么在文件头就加上了<strong>BOM(0xEF 0xBB 0xBF，即BOM)</strong>，用来鉴别文件编码格式，但是这在html中就是一行啊，我们在Windows上面写php很容易就加上了BOM。下面是一个脚本，专门用来清除BOM的。</p>
 <pre><code>&lt;?php
+
 //remove the utf-8 boms
+
 //by magicbug at gmail dot com
+
 if (isset($_GET['dir'])){ //要去除的文件目录，无参数则为文件当前目录。
+
 $basedir=$_GET['dir'];
+
 }else{
+
 $basedir = '.';
+
 }
+
 $auto = 1;
+
 checkdir($basedir);
+
 function checkdir($basedir){
+
 if ($dh = opendir($basedir)) {
+
    while (($file = readdir($dh)) !== false) {
+
     if ($file != '.' &amp;&amp; $file != '..'){
+
      if (!is_dir($basedir."/".$file)) {
+
       echo "filename: $basedir/
+
 $file ".checkBOM("$basedir/$file")." &lt;br&gt;";
+
      }else{
+
       $dirname = $basedir."/".
+
 $file;
+
       checkdir($dirname);
+
      }
+
     }
+
    }
+
 closedir($dh);
+
 }
+
 }
+
 function checkBOM ($filename) {
+
 global $auto;
+
 $contents = file_get_contents($filename);
+
 $charset[1] = substr($contents, 0, 1);
+
 $charset[2] = substr($contents, 1, 1);
+
 $charset[3] = substr($contents, 2, 1);
+
 if (ord($charset[1]) == 239 &amp;&amp; ord($charset[2]) == 187 &amp;&amp;
+
 ord($charset[3]) == 191) {
+
    if ($auto == 1) {
+
     $rest = substr($contents, 3);
+
     rewrite ($filename, $rest);
+
     return ("&lt;font color=red&gt;BOM found,
+
 automatically removed.&lt;/font&gt;");
+
    } else {
+
     return ("&lt;font color=red&gt;BOM found.
+
 &lt;/font&gt;");
+
    }
+
 }
+
 else return ("BOM Not Found.");
+
 }
+
 function rewrite ($filename, $data) {
+
 $filenum = fopen($filename, "w");
+
 flock($filenum, LOCK_EX);
+
 fwrite($filenum, $data);
+
 fclose($filenum);
+
 }
+
 ?&gt;
-</code></pre>
-</dir>
-<!-- Duoshuo Comment BEGIN -->
-	<div class="ds-thread"></div>
-<script type="text/javascript">
-var duoshuoQuery = {short_name:"vagasnail"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = 'http://static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		|| document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
-<!-- Duoshuo Comment END -->
+</code></pre>
+</dir>
+<!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"vagasnail"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->
 
 </div>
 <div id="footer">

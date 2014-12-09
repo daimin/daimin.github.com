@@ -2,14 +2,14 @@
 <!-- saved from url=(0025)http://daimin.github.io/ -->
 <html>
 <head>
-    
+    
 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="keywords" content="MYSQL show 命令详解" />
+    <meta name="keywords" content="MYSQL show 命令详解" />
     <meta name="description" content="show tables或show tables from database_name或show da..." />
     <link rel="shortcut icon" href="/favicon.ico" />
 
-    <title>MYSQL show 命令详解 | 茶瓯葱丝</title>
+    <title>MYSQL show 命令详解 | 茶瓯葱丝</title>
     <link rel="stylesheet" type="text/css" href="/styles/style.css">
     <link rel="Stylesheet" type="text/css" href="/js/prettify/desert.css" />
     <link rel="stylesheet" type="text/css" href="/styles/bootstrap-jian.css">
@@ -21,7 +21,7 @@
 			<span id="motto"></span>
 			<h1><a href="/index.html" >茶瓯葱丝</a>
             <form onsubmit="return dispatch()" style="display:inline">
-            <span style="width: 210px; height: 26px; margin-left:24px; background-size: 210px 26px; background-image: url('/image/qbar_light@2x.png'); background-repeat: no-repeat; display: inline-block;">
+            <span style="width: 240px; height: 26px; margin-left:24px; background-size: 240px 26px; background-image: url('/image/qbar_light@2x.png'); background-repeat: no-repeat; display: inline-block;">
             <input type="text" maxlength="40" name="q" id="q" value="">
             </span>
             </form>
@@ -30,60 +30,60 @@
         </div>
 <div id="wrapper">
 <div id="content" class="index">
-     
-<h2 class="post-title">MYSQL show 命令详解</h2>
-<div class="cnt">
-<p><code>show tables或show tables from database_name或show database_name.tables;</code><br />
-解释：显示当前数据库中所有表的名称</p>
-<p><code>show databases;</code><br />
-解释：显示mysql中所有数据库的名称</p>
-<p><code>show processlist;</code><br />
-解释：显示系统中正在运行的所有进程，也就是当前正在执行的查询。大多数用户可以查看
-他们自己的进程，但是如果他们拥有process权限，就可以查看所有人的进程，包括密码。</p>
-<p><code>show table status;</code><br />
-解释：显示当前使用或者指定的database中的每个表的信息。信息包括表类型和表的最新更新时间</p>
-<p><code>show columns from table_name from database_name; 或show columns from database_name.table_name;</code>或<code>show fields;</code>
-解释：显示表中列名称（和 desc table_name 命令的效果是一样的）</p>
-<p><code>show grants for user_name@localhost;</code><br />
-解释：显示一个用户的权限，显示结果类似于grant 命令</p>
-<p><code>show index from table_name;或show keys;</code><br />
-解释：显示表的索引</p>
-<p><code>show status;</code><br />
-解释：显示一些系统特定资源的信息，例如，正在运行的线程数量</p>
-<p><code>show variables;</code><br />
-解释：显示系统变量的名称和值</p>
-<p><code>show privileges;</code><br />
-解释：显示服务器所支持的不同权限</p>
-<p><code>show create database database_name;</code><br />
-解释：显示创建指定数据库的SQL语句</p>
-<p><code>show create table table_name;</code><br />
-解释：显示创建指定数据表的SQL语句</p>
-<p><code>show engies;</code><br />
-解释：显示安装以后可用的存储引擎和默认引擎。</p>
-<p><code>show innodb status;</code><br />
-解释：显示innoDB存储引擎的状态</p>
-<p><code>show logs;</code><br />
-解释：显示BDB存储引擎的日志</p>
-<p><code>show warnings;</code><br />
-解释：显示最后一个执行的语句所产生的错误、警告和通知</p>
-<p><code>show errors;</code><br />
-解释：只显示最后一个执行语句所产生的错误</p>
-<p>上面的大部分命令都可以用like，比如 <code>show table like ‘%abce%’</code>  。</p>
-</dir>
-<!-- Duoshuo Comment BEGIN -->
-	<div class="ds-thread"></div>
-<script type="text/javascript">
-var duoshuoQuery = {short_name:"vagasnail"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = 'http://static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		|| document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
-<!-- Duoshuo Comment END -->
+     
+<h2 class="post-title">MYSQL show 命令详解</h2>
+<div class="cnt">
+<p><code>show tables或show tables from database_name或show database_name.tables;</code>  </p>
+<p>解释：显示当前数据库中所有表的名称</p>
+<p><code>show databases;</code>  </p>
+<p>解释：显示mysql中所有数据库的名称</p>
+<p><code>show processlist;</code>  </p>
+<p>解释：显示系统中正在运行的所有进程，也就是当前正在执行的查询。大多数用户可以查看</p>
+<p>他们自己的进程，但是如果他们拥有process权限，就可以查看所有人的进程，包括密码。</p>
+<p><code>show table status;</code>  </p>
+<p>解释：显示当前使用或者指定的database中的每个表的信息。信息包括表类型和表的最新更新时间</p>
+<p><code>show columns from table_name from database_name; 或show columns from database_name.table_name;</code>或<code>show fields;</code></p>
+<p>解释：显示表中列名称（和 desc table_name 命令的效果是一样的）</p>
+<p><code>show grants for user_name@localhost;</code>  </p>
+<p>解释：显示一个用户的权限，显示结果类似于grant 命令</p>
+<p><code>show index from table_name;或show keys;</code>  </p>
+<p>解释：显示表的索引</p>
+<p><code>show status;</code>  </p>
+<p>解释：显示一些系统特定资源的信息，例如，正在运行的线程数量</p>
+<p><code>show variables;</code>  </p>
+<p>解释：显示系统变量的名称和值</p>
+<p><code>show privileges;</code>  </p>
+<p>解释：显示服务器所支持的不同权限</p>
+<p><code>show create database database_name;</code>  </p>
+<p>解释：显示创建指定数据库的SQL语句</p>
+<p><code>show create table table_name;</code>  </p>
+<p>解释：显示创建指定数据表的SQL语句</p>
+<p><code>show engies;</code>  </p>
+<p>解释：显示安装以后可用的存储引擎和默认引擎。</p>
+<p><code>show innodb status;</code>  </p>
+<p>解释：显示innoDB存储引擎的状态</p>
+<p><code>show logs;</code>  </p>
+<p>解释：显示BDB存储引擎的日志</p>
+<p><code>show warnings;</code>  </p>
+<p>解释：显示最后一个执行的语句所产生的错误、警告和通知</p>
+<p><code>show errors;</code>  </p>
+<p>解释：只显示最后一个执行语句所产生的错误</p>
+<p>上面的大部分命令都可以用like，比如 <code>show table like ‘%abce%’</code>  。</p>
+</dir>
+<!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"vagasnail"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->
 
 </div>
 <div id="footer">

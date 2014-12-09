@@ -2,14 +2,14 @@
 <!-- saved from url=(0025)http://daimin.github.io/ -->
 <html>
 <head>
-    
+    
 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="keywords" content="Nginx中一个server配置多个location" />
+    <meta name="keywords" content="Nginx中一个server配置多个location" />
     <meta name="description" content="nginx中的location的匹配规则是“先匹配正则，再匹配普通”，同级的就是先后顺序了。我这里需..." />
     <link rel="shortcut icon" href="/favicon.ico" />
 
-    <title>Nginx中一个server配置多个location | 茶瓯葱丝</title>
+    <title>Nginx中一个server配置多个location | 茶瓯葱丝</title>
     <link rel="stylesheet" type="text/css" href="/styles/style.css">
     <link rel="Stylesheet" type="text/css" href="/js/prettify/desert.css" />
     <link rel="stylesheet" type="text/css" href="/styles/bootstrap-jian.css">
@@ -21,7 +21,7 @@
 			<span id="motto"></span>
 			<h1><a href="/index.html" >茶瓯葱丝</a>
             <form onsubmit="return dispatch()" style="display:inline">
-            <span style="width: 210px; height: 26px; margin-left:24px; background-size: 210px 26px; background-image: url('/image/qbar_light@2x.png'); background-repeat: no-repeat; display: inline-block;">
+            <span style="width: 240px; height: 26px; margin-left:24px; background-size: 240px 26px; background-image: url('/image/qbar_light@2x.png'); background-repeat: no-repeat; display: inline-block;">
             <input type="text" maxlength="40" name="q" id="q" value="">
             </span>
             </form>
@@ -30,9 +30,9 @@
         </div>
 <div id="wrapper">
 <div id="content" class="index">
-     
-<h2 class="post-title">Nginx中一个server配置多个location</h2>
-<div class="cnt">
+     
+<h2 class="post-title">Nginx中一个server配置多个location</h2>
+<div class="cnt">
 <h5>nginx中的location的匹配规则是“先匹配正则，再匹配普通”，同级的就是先后顺序了。</h5>
 <hr />
 <p><strong>我这里需要实现：</strong></p>
@@ -46,60 +46,80 @@
 <li>
 <p>一个特定的url使用一个别名，这里要用别名，不要用root，alias指定的目录是准确的，root是指定目录的上级目录 </p>
 <pre><code>  location /texasholdem/bug/ {
+
        alias /data1/www/texasholdem/bug/;
+
        index  index.php index.html index.htm ;
+
   }
 </code></pre>
 </li>
 <li>
 <p>指定域名的配置  </p>
 <pre><code> location / {
-     root   /data1/www/wp/; 
+
+     root   /data1/www/wp/;
+
      index  index.php index.html index.htm ;
+
  }
 </code></pre>
 </li>
 <li>
-<p>对应特定的url的phpfpm配置，注意root的值，root就是document_root
-因为就上文来说document_root就是/data1/www/，这里不能用alias。  </p>
-<pre><code> location ~ /texasholdem/bug/(.*)\.php$ {
-    root           /data1/www/;
-    fastcgi_pass   127.0.0.1:9000;
-    fastcgi_index  index.php;
-    fastcgi_intercept_errors on;
-    fastcgi_param  SCRIPT_FILENAME   $document_root$fastcgi_script_name;
-    include        fastcgi_params;
-}
-</code></pre>
+<p>对应特定的url的phpfpm配置，注意root的值，root就是document_root</p>
 </li>
-<li>
-<p>域名的php配置，只要配置相同的root就行了。</p>
-<pre><code>location ~ \.php$ {
+</ol>
+<p>因为就上文来说document_root就是/data1/www/，这里不能用alias。  </p>
+<pre><code>     location ~ /texasholdem/bug/(.*)\.php$ {
+
+        root           /data1/www/;
+
+        fastcgi_pass   127.0.0.1:9000;
+
+        fastcgi_index  index.php;
+
+        fastcgi_intercept_errors on;
+
+        fastcgi_param  SCRIPT_FILENAME   $document_root$fastcgi_script_name;
+
+        include        fastcgi_params;
+
+    }
+</code></pre>
+<ol>
+<li>域名的php配置，只要配置相同的root就行了。<pre><code>location ~ \.php$ {
+
     root           /data1/www/wp/;
+
     fastcgi_pass   127.0.0.1:9000;
+
     fastcgi_index  index.php;
+
     fastcgi_intercept_errors on;
+
     fastcgi_param  SCRIPT_FILENAME   $document_root$fastcgi_script_name;
+
     include        fastcgi_params;
+
 }
 </code></pre>
 </li>
-</ol>
-</dir>
-<!-- Duoshuo Comment BEGIN -->
-	<div class="ds-thread"></div>
-<script type="text/javascript">
-var duoshuoQuery = {short_name:"vagasnail"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = 'http://static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		|| document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
-<!-- Duoshuo Comment END -->
+</ol>
+</dir>
+<!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"vagasnail"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->
 
 </div>
 <div id="footer">

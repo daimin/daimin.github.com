@@ -404,8 +404,9 @@ span.balloon {
 
 #tags li{
 	float: left;
-	line-height:28px;
-	margin-right:8px;
+	height:24px;
+	line-height:24px;
+	margin-right:10px;
 }
 #tags li a{
 	color:#444;
@@ -416,6 +417,34 @@ span.balloon {
 	color:#888;
 }
 
+#links-div{
+	margin-top: -10px;
+	margin-left: 12px;
+}
+
+#links-div .links{
+   margin-top: 8px;
+}
+
+#links-div .links .link-title{
+   font-weight: normal;
+   color: #4f4f4f;
+}
+
+#links-div .links .link-desc{
+    color: #a4a4a4;
+    font-size: 12px;
+    font-weight: normal;
+    margin-left: 2px;
+}
+
+#links-div .links-type{
+	font-size: 18px;
+	font-weight: bold;
+	color: #8f8f8f;
+	margin-bottom: 3px;
+	margin-top: 18px;
+}
 
 
 #logo {

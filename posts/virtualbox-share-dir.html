@@ -2,7 +2,7 @@
 <!-- saved from url=(0025)http://daimin.github.io/ -->
 <html>
 <head>
-    
+    
 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="keywords" content="使用VirtualBox使centos和win7共享文件夹设置" />
@@ -21,7 +21,7 @@
 			<span id="motto"></span>
 			<h1><a href="/index.html" >茶瓯葱丝</a>
             <form onsubmit="return dispatch()" style="display:inline">
-            <span style="width: 210px; height: 26px; margin-left:24px; background-size: 210px 26px; background-image: url('/image/qbar_light@2x.png'); background-repeat: no-repeat; display: inline-block;">
+            <span style="width: 240px; height: 26px; margin-left:24px; background-size: 240px 26px; background-image: url('/image/qbar_light@2x.png'); background-repeat: no-repeat; display: inline-block;">
             <input type="text" maxlength="40" name="q" id="q" value="">
             </span>
             </form>
@@ -30,9 +30,9 @@
         </div>
 <div id="wrapper">
 <div id="content" class="index">
-     
-<h2 class="post-title">使用VirtualBox使centos和win7共享文件夹设置</h2>
-<div class="cnt">
+     
+<h2 class="post-title">使用VirtualBox使centos和win7共享文件夹设置</h2>
+<div class="cnt">
 <p>简单的记录一下。</p>
 <p>VirtualBox非常好用比vmware好用多了。它的VirtualBox功能，可以让我们直接在windows上面开发代码，而在虚拟机下面运行，这为像我这样不是很熟悉linux开发工具的很受力。</p>
 <p>首先共享文件夹，需要安装增强工具包。    </p>
@@ -52,22 +52,22 @@
 </ul>
 <p>OK，安装增强工具完成，开始设置共享文件夹。</p>
 <p>虚拟机的设备菜单中选择“共享文件夹”，添加固定分配的共享文件夹，选择需要共享到虚拟机的win7文件夹。设置完成后，进行centos，执行<code>mkdir /mnt/share</code>，然后执行<code>mount -t vboxsf pywork /mnt/share</code>，<strong>需要注意挂载文件夹名不要和共享文件夹名相同</strong>。</p>
-<p>进行/mnt/share，执行<code>ls -l</code>，可以看到win7的文件夹内容完全可以在linux下面访问了，而且可以直接用centos下面的命令，运行之。</p>
-</dir>
-<!-- Duoshuo Comment BEGIN -->
-	<div class="ds-thread"></div>
-<script type="text/javascript">
-var duoshuoQuery = {short_name:"vagasnail"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = 'http://static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		|| document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
-<!-- Duoshuo Comment END -->
+<p>进行/mnt/share，执行<code>ls -l</code>，可以看到win7的文件夹内容完全可以在linux下面访问了，而且可以直接用centos下面的命令，运行之。</p>
+</dir>
+<!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"vagasnail"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->
 
 </div>
 <div id="footer">
