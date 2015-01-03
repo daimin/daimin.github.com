@@ -1,76 +1,58 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<!-- saved from url=(0025)http://daimin.github.io/ -->
-<html>
-<head>
-    
-
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="keywords" content="在BAE上面搭建基于web.py的博客（一）" />
-    <meta name="description" content="下载安装python，我这里安装的是python2.6.5。你可以从这里下载安装，我使用的系统是wi..." />
-    <link rel="shortcut icon" href="/favicon.ico" />
-
-    <title>在BAE上面搭建基于web.py的博客（一） | 茶瓯葱丝</title>
-    <link rel="stylesheet" type="text/css" href="/styles/style.css">
-    <link rel="Stylesheet" type="text/css" href="/js/prettify/desert.css" />
-    <link rel="stylesheet" type="text/css" href="/styles/bootstrap-jian.css">
-    <script type="text/javascript"  src="/js/prettify/prettify.js"></script>
-	<link rel="alternate" type="application/rss+xml" title="RSS" href="http://daimin.github.io/rss.xml">
-</head>
-<body>
-		<div id="logo">
-			<span id="motto"></span>
-			<h1><a href="/index.html" >茶瓯葱丝</a>
-            <form onsubmit="return dispatch()" style="display:inline">
-            <span style="width: 240px; height: 26px; margin-left:24px; background-size: 240px 26px; background-image: url('/image/qbar_light@2x.png'); background-repeat: no-repeat; display: inline-block;">
-            <input type="text" maxlength="40" name="q" id="q" value="">
-            </span>
-            </form>
-            </h1>
-            
-        </div>
-<div id="wrapper">
-<div id="content" class="index">
-     
-<h2 class="post-title">在BAE上面搭建基于web.py的博客（一）</h2>
-<div class="cnt">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0025)http://daimin.github.io/ -->
+<html>
+<head>
+    
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="keywords" content="在BAE上面搭建基于web.py的博客（一）" />
+    <meta name="description" content="下载安装python，我这里安装的是python2.6.5。你可以从这里下载安装，我使用的系统是wi..." />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    <title>在BAE上面搭建基于web.py的博客（一） | 茶瓯葱丝</title>
+    <link rel="stylesheet" type="text/css" href="/styles/style.css">
+    <link rel="Stylesheet" type="text/css" href="/js/prettify/desert.css" />
+    <link rel="stylesheet" type="text/css" href="/styles/bootstrap-jian.css">
+    <script type="text/javascript"  src="/js/prettify/prettify.js"></script>
+	<link rel="alternate" type="application/rss+xml" title="RSS" href="http://daimin.github.io/rss.xml">
+</head>
+<body>
+		<div id="logo">
+			<span id="motto"></span>
+			<h1><a href="/index.html" >茶瓯葱丝</a>
+            <form onsubmit="return dispatch()" style="display:inline">
+            <span style="width: 240px; height: 26px; margin-left:24px; background-size: 240px 26px; background-image: url('/image/qbar_light@2x.png'); background-repeat: no-repeat; display: inline-block;">
+            <input type="text" maxlength="40" name="q" id="q" value="">
+            </span>
+            </form>
+            </h1>
+            
+        </div>
+<div id="wrapper">
+<div id="content" class="index">
+     
+<h2 class="post-title">在BAE上面搭建基于web.py的博客（一）</h2>
+<div class="cnt">
 <ol>
-<li>
-<p>下载安装python，我这里安装的是python2.6.5。你可以从<a href="http://www.python.org/getit/">这里</a>下载安装，我使用的系统是windowsxp。你只要下载相应的版本了。然后点击安装就可以了。</p>
-</li>
-<li>
-<p>下载web.py，从<a href="http://webpy.org/install">这里</a>下载，对于web.py我没有安装，直接放置到工程木下面而已。你可以解压压缩包，然后运行<code>python setup.py install</code>。</p>
-</li>
-<li>
-<p>我使用的开发工具的pydev，这是一个eclipse的python开发插件，如果你感觉卡，可以调整eclipse.ini的-Xms，默认好像是40m，可以到-Xms256m。</p>
-</li>
-<li>
-<p>模板引擎，web.py自带有一个模板引擎，但是功能较弱，而且运行速度也不怎么样，我最开始也是使用的这个引擎，但是用起来有很多局限性，我这里推荐<a href="http://www.makotemplates.org/">mako</a>，这个引擎的速度号称是python里面最快的模板引擎了，具体我也没有验证过，不过确实好用，确定就是文档比较少，不过你还是可以在网上找到一些资料，如：<a href="http://www.cnblogs.com/RChen/archive/2007/06/15/mako_doc_translation_2.html">http://www.cnblogs.com/RChen/archive/2007/06/15/mako_doc_translation_2.html</a></p>
-</li>
-<li>
-<p>关于前端页面，你可以自己写一套，你也可以去拿一套现存的，你不知道哪里有？wordpress那么多好看的主题，难道不是吗？找到你心仪的主题，然后很快的用web.py改成你自己的网站，岂不是很爽。不过不要忘记加上主题的作者信息。</p>
-</li>
-<li>
-<p>使用markdown进行写作，比如我现在写的这篇文件就是用markdown写的，<a href="https://pypi.python.org/pypi/Markdown">python的markdown处理包</a>，下载对应你的python版本的包。</p>
-</li>
-<li>
-<p>BAE百度的人品之作，速度不错，免费配额也不错，Python支持也不错，比起国外的还要靠谱很多。 </p>
-</li>
+<li>下载安装python，我这里安装的是python2.6.5。你可以从<a href="http://www.python.org/getit/">这里</a>下载安装，我使用的系统是windowsxp。你只要下载相应的版本了。然后点击安装就可以了。</li>
+<li>下载web.py，从<a href="http://webpy.org/install">这里</a>下载，对于web.py我没有安装，直接放置到工程木下面而已。你可以解压压缩包，然后运行<code>python setup.py install</code>。</li>
+<li>我使用的开发工具的pydev，这是一个eclipse的python开发插件，如果你感觉卡，可以调整eclipse.ini的-Xms，默认好像是40m，可以到-Xms256m。</li>
+<li>模板引擎，web.py自带有一个模板引擎，但是功能较弱，而且运行速度也不怎么样，我最开始也是使用的这个引擎，但是用起来有很多局限性，我这里推荐<a href="http://www.makotemplates.org/">mako</a>，这个引擎的速度号称是python里面最快的模板引擎了，具体我也没有验证过，不过确实好用，确定就是文档比较少，不过你还是可以在网上找到一些资料，如：<a href="http://www.cnblogs.com/RChen/archive/2007/06/15/mako_doc_translation_2.html">http://www.cnblogs.com/RChen/archive/2007/06/15/mako_doc_translation_2.html</a></li>
+<li>关于前端页面，你可以自己写一套，你也可以去拿一套现存的，你不知道哪里有？wordpress那么多好看的主题，难道不是吗？找到你心仪的主题，然后很快的用web.py改成你自己的网站，岂不是很爽。不过不要忘记加上主题的作者信息。</li>
+<li>使用markdown进行写作，比如我现在写的这篇文件就是用markdown写的，<a href="https://pypi.python.org/pypi/Markdown">python的markdown处理包</a>，下载对应你的python版本的包。</li>
+<li>BAE百度的人品之作，速度不错，免费配额也不错，Python支持也不错，比起国外的还要靠谱很多。 </li>
 <li>
 <p>最简单的helloworld。你可以在<a href="http://webpy.org/cookbook/helloworld.zh-cn">web.py cookbook</a>上面找到。  </p>
 <pre><code>import web
 
 urls = ("/.*", "hello")
-
 app = web.application(urls, globals())
 
 class hello:
-
     def GET(self):
-
         return 'Hello, world!'
 
 if __name__ == "__main__":
-
     app.run()
 </code></pre>
 </li>
@@ -86,223 +68,161 @@ if __name__ == "__main__":
 <li>
 <p>定义urls</p>
 <pre><code>urls = (
-
    r'/(\d*)', 'Index',
-
 )
 </code></pre>
+<p>url采用的一个url的正则匹配一个逻辑处理类，我这里称之为handler。
+   (\d*)对应了Index的GET或POST方法的出self参数外的第一个参数。
+   注意url配置，要用r前缀，表示不对正则中的\进行转义。</p>
+</li>
+<li>
+<p>3个root变量</p>
+<pre><code>app_root = os.path.dirname(__file__)
+templates_root = os.path.join(app_root, 'templates/' + conf.theme)
+static_root = os.path.join(app_root, 'static')
+</code></pre>
+</li>
+<li>
+<p>定义mako的模板渲染器</p>
+<pre><code>render = render_mako(
+    templates_root,
+    input_encoding='utf-8',
+    output_encoding='utf-8',
+)
+</code></pre>
+</li>
+<li>
+<p>定义一个基类，因为业务中，我们有很多都是相同的，那么我们就放在基类中进行处理。</p>
+<pre><code>class Base():
+    def __init__(self):
+        self._conf = conf.site
+        #do what you want.
+</code></pre>
+</li>
+<li>
+<p>定义Index类。</p>
+<pre><code>class Index(Base):
+    def __init__(self):
+        Base.__init__(self)#必须调用基类的构造函数
+
+    def GET(self, page):
+        self.say = "Hello World"
+        return render.index(page=self)
+</code></pre>
+<p>在子类的构造函数中必须要调用基类的构造函数，web.py中用GET方法处理客户端的get请求，对应的POST方法处理post请求，GET和POST方法中的处理第一个参数外的参数，都是对应url中的捕获组中的值。</p>
+<p><code>render.index</code>中的index表示一个模板文件，其中的参数是可以在模板中直接访问的，如果是web.py的模板，就需要$def with (page)后才可以使用，mako中可以直接使用的。</p>
+</li>
+<li>
+<p>运行</p>
+<p>本机就这样运行，然后在浏览器中输入localhost:8080，就可以访问了，8080可以修改为你绑定的端口。</p>
+<pre><code>web.config.debug = True
+app = web.application(urls, globals())
+app.notfound = errNotFound
+if __name__ == "__main__":
+    app.run()
+</code></pre>
+<p>如果是在BAE上面就是这样，</p>
+<pre><code>app = web.application(urls, globals()).wsgifunc()
+
+from bae.core.wsgi import WSGIApplication
+application = WSGIApplication(app)
+</code></pre>
+<p>然后还要在BAE上面注意的是<strong>修改app.conf的handler</strong>加上：</p>
+<pre><code>- url : /(\d*)
+script : index.py
+</code></pre>
+<p><strong>之后还要着重的介绍一下BAE的使用。</strong></p>
 </li>
 </ul>
 </li>
 </ol>
-<p>url采用的一个url的正则匹配一个逻辑处理类，我这里称之为handler。</p>
-<p>(\d*)对应了Index的GET或POST方法的出self参数外的第一个参数。</p>
-<p>注意url配置，要用r前缀，表示不对正则中的\进行转义。</p>
-<pre><code>* 3个root变量
-
-
-
-        app_root = os.path.dirname(__file__)
-
-        templates_root = os.path.join(app_root, 'templates/' + conf.theme)
-
-        static_root = os.path.join(app_root, 'static')
-
-
-
-* 定义mako的模板渲染器
-
-
-
-        render = render_mako(
-
-            templates_root,
-
-            input_encoding='utf-8',
-
-            output_encoding='utf-8',
-
-        )
-
-
-
-* 定义一个基类，因为业务中，我们有很多都是相同的，那么我们就放在基类中进行处理。
-
-
-
-        class Base():
-
-            def __init__(self):
-
-                self._conf = conf.site
-
-                #do what you want.
-
-
-
-* 定义Index类。
-
-
-
-        class Index(Base):
-
-            def __init__(self):
-
-                Base.__init__(self)#必须调用基类的构造函数
-
-
-
-            def GET(self, page):
-
-                self.say = "Hello World"
-
-                return render.index(page=self)
-
-
-
-
-
-    在子类的构造函数中必须要调用基类的构造函数，web.py中用GET方法处理客户端的get请求，对应的POST方法处理post请求，GET和POST方法中的处理第一个参数外的参数，都是对应url中的捕获组中的值。
-
-
-
-    `render.index`中的index表示一个模板文件，其中的参数是可以在模板中直接访问的，如果是web.py的模板，就需要$def with (page)后才可以使用，mako中可以直接使用的。
-
-
-
-* 运行
-
-
-
-    本机就这样运行，然后在浏览器中输入localhost:8080，就可以访问了，8080可以修改为你绑定的端口。
-
-
-
-        web.config.debug = True
-
-        app = web.application(urls, globals())
-
-        app.notfound = errNotFound
-
-        if __name__ == "__main__":
-
-            app.run()
-
-
-
-    如果是在BAE上面就是这样，
-
-
-
-        app = web.application(urls, globals()).wsgifunc()
-
-
-
-        from bae.core.wsgi import WSGIApplication
-
-        application = WSGIApplication(app)
-
-
-
-    然后还要在BAE上面注意的是**修改app.conf的handler**加上：
-
-
-
-        - url : /(\d*)
-
-        script : index.py
-
-
-
-    **之后还要着重的介绍一下BAE的使用。**
-</code></pre>
 <blockquote>
 <p>有什么不对的地方还请留言指正，大家一起学习。</p>
-</blockquote>
-</dir>
-<!-- Duoshuo Comment BEGIN -->
-	<div class="ds-thread"></div>
-<script type="text/javascript">
-var duoshuoQuery = {short_name:"vagasnail"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = 'http://static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		|| document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
-<!-- Duoshuo Comment END -->
-
-</div>
-<div id="footer">
-	<span style="color:#bbb;font-size:12px">
-	&copy; Powered by <a href="https://github.com/daimin/daimin.github.com" title="sologs">sologs</a> | Themed by <a href="http://blog.leezhong.com/" title="Limboy">Limboy</a>
-	</span>
-	<p style="clear:both"></p>
-</div>
-</div>
-<script type="text/javascript">
-function hasClass(obj, cls) {  
-    return obj.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));  
-}
-function addClass(obj, cls) {  
-    if (!this.hasClass(obj, cls)) obj.className += " " + cls;  
-} 
-
-function render_pretty(){
-    var pres = document.getElementsByTagName("pre");
-    for(var i = 0, len = pres.length; i < len; i++){
-        addClass(pres[i], "prettyprint linenums");
-    }
-    prettyPrint();
-
-}
-
-(function(){
-   var mattos = [
-   "人生没有对错，只有选择后的坚持，不后悔，走下去，就是对的。",
-   "生活是一面镜子。你对它笑，它就对你笑；你对它哭，它也对你哭。",
-   "宁愿做过了后悔，也不要错过了后悔。",
-   "不要拿小人的错误来惩罚自己，不要在这些微不足道的事情上折磨浪费自己的宝贵时间。",
-   "环境不会改变，解决之道在于改变自己。",
-   "勇气是控制恐惧心理，而不是心里毫无恐惧。",
-   "两个人共尝一个痛苦只有半个痛苦，两个人共享一个欢乐却有两个欢乐。",
-   "好好管教自己，不要管别人。",
-   "得之坦然，失之淡然，顺其自然，争其必然。",
-   "人生是一条没有回程的单行线，上帝不会给你一张返程的票。",
-   "把事情办好的秘密就是行动。成功之路就是有条理思考之后的行动！行动！行动！",
-   "人生是一场旅行，在乎的不是目的地，是沿途的风景以及看风景的心情。",
-   "放弃谁都可以，千万不要放弃自己！",
-   "长得漂亮是优势，活得漂亮是本事。",
-   "人生最大的错误是不断担心会犯错。",
-   "一个人可以被毁灭，但不能给打败 -- 《老人与海》。",
-   "要么不要开始，要么不要结束。",
-   ];
-   document.getElementById("motto").innerHTML = mattos[parseInt(Math.random() * mattos.length)];
-   
-})();
-
-window.onload = function(){
-   render_pretty();
-};
-
-var dispatch = function() {
-    q = document.getElementById("q");
-    if (q.value != "") {
-        //"http://www.baidu.com/s?si=www.williamlong.info&cl=3&ct=2097152&tn=baidulocal&word="+wd
-        window.open('http://www.baidu.com/s?si=daimin.github.io&cl=3&ct=2097152&tn=bds&word=' + q.value, "_blank");
-        return false;
-    } else {
-        return false;
-    }
-};
-
-</script>
-<script type="text/javascript" src="/js/jimdoclockzip.js"></script>
-<script type="text/javascript">
-var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_5814730'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s23.cnzz.com/stat.php%3Fid%3D5814730%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
-</script>
-</body>
-</html>
+</blockquote>
+</dir>
+<!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"vagasnail"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->
+
+</div>
+<div id="footer">
+	<span style="color:#bbb;font-size:12px">
+	&copy; Powered by <a href="https://github.com/daimin/daimin.github.com" title="sologs">sologs</a> | Themed by <a href="http://blog.leezhong.com/" title="Limboy">Limboy</a>
+	</span>
+	<p style="clear:both"></p>
+</div>
+</div>
+<script type="text/javascript">
+function hasClass(obj, cls) {  
+    return obj.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));  
+}
+function addClass(obj, cls) {  
+    if (!this.hasClass(obj, cls)) obj.className += " " + cls;  
+} 
+
+function render_pretty(){
+    var pres = document.getElementsByTagName("pre");
+    for(var i = 0, len = pres.length; i < len; i++){
+        addClass(pres[i], "prettyprint linenums");
+    }
+    prettyPrint();
+
+}
+
+(function(){
+   var mattos = [
+   "人生没有对错，只有选择后的坚持，不后悔，走下去，就是对的。",
+   "生活是一面镜子。你对它笑，它就对你笑；你对它哭，它也对你哭。",
+   "宁愿做过了后悔，也不要错过了后悔。",
+   "不要拿小人的错误来惩罚自己，不要在这些微不足道的事情上折磨浪费自己的宝贵时间。",
+   "环境不会改变，解决之道在于改变自己。",
+   "勇气是控制恐惧心理，而不是心里毫无恐惧。",
+   "两个人共尝一个痛苦只有半个痛苦，两个人共享一个欢乐却有两个欢乐。",
+   "好好管教自己，不要管别人。",
+   "得之坦然，失之淡然，顺其自然，争其必然。",
+   "人生是一条没有回程的单行线，上帝不会给你一张返程的票。",
+   "把事情办好的秘密就是行动。成功之路就是有条理思考之后的行动！行动！行动！",
+   "人生是一场旅行，在乎的不是目的地，是沿途的风景以及看风景的心情。",
+   "放弃谁都可以，千万不要放弃自己！",
+   "长得漂亮是优势，活得漂亮是本事。",
+   "人生最大的错误是不断担心会犯错。",
+   "一个人可以被毁灭，但不能给打败 -- 《老人与海》。",
+   "要么不要开始，要么不要结束。",
+   ];
+   document.getElementById("motto").innerHTML = mattos[parseInt(Math.random() * mattos.length)];
+   
+})();
+
+window.onload = function(){
+   render_pretty();
+};
+
+var dispatch = function() {
+    q = document.getElementById("q");
+    if (q.value != "") {
+        //"http://www.baidu.com/s?si=www.williamlong.info&cl=3&ct=2097152&tn=baidulocal&word="+wd
+        window.open('http://www.baidu.com/s?si=daimin.github.io&cl=3&ct=2097152&tn=bds&word=' + q.value, "_blank");
+        return false;
+    } else {
+        return false;
+    }
+};
+
+</script>
+<script type="text/javascript" src="/js/jimdoclockzip.js"></script>
+<script type="text/javascript">
+var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_5814730'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s23.cnzz.com/stat.php%3Fid%3D5814730%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+</script>
+</body>
+</html>
