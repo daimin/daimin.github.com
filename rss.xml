@@ -7,6 +7,20 @@
     <language>zh-cn</language>  
     <generator>sologd</generator>  
     <item>  
+		<title>走过2014</title>  
+		<link>http://daimin.github.io//posts/zou-guo-2014.html</link>  
+		<description>&lt;p&gt;2014年就这么安静的过去，很平淡，却让我比较舒服。  &lt;/p&gt;
+&lt;p&gt;2014年春节的时候换了一家公司，其实不是换，因为上家公司解散了，去年就面好了现在这家公司，于是年后换了房子后就直接来上班了。&lt;/p&gt;
+&lt;p&gt;妈网是一家才开始发展的公司，制度有些不成熟，有些不大气，不过有一点还好就是比较自由，其实就是大家都没有什么事情干，做好手上那么一丁点的事情就可以自己学习感兴趣的了。在这里感觉还是有很大的进步，对自己以后的职业发展还是比较有信心了，但我却觉得到了我该离开的时候了，过完年后吧。&lt;/p&gt;
+&lt;p&gt;今年最大的一件事情，就是结婚了，拍婚纱照，准备婚礼，包括结婚那天，其实很忙很累，却非常的高兴，是啊！和心爱的人儿步入婚姻，相许今生，这世上还有什么比这更值得高兴而幸福的事情了呢？&lt;/p&gt;
+&lt;p&gt;然后就是回来广州上班了，生活比较平静，工作也比较安逸，我却知道我要再去折腾一下，为爱人，为家人，为以后的孩子，也是为自己。&lt;/p&gt;
+&lt;p&gt;2015的打算？换个工作，称心如意，不是很忙，不是很闲，不是很简单，也不是很廉价。我最想的，也是老婆、父母最想的就是孩子，多少次，都在想那个可爱的小家伙，什么时候会来到我们身边呢？&lt;/p&gt;
+&lt;p&gt;一直觉得，能够生活的平平淡淡，简简单单，身体健健康康，和心爱的人一起把孩子带大，照顾好双方的父母。等我们在外面做不动了就回到家乡，安静的生活，有时候出去旅游一下，养养鸡鸭，或是去地里劳作下，或是再敲敲自己喜欢的代码。如果这是我们的一辈子，该是多么幸福的事情啊！&lt;/p&gt;</description>  
+		<author>daimin</author>  
+		<copyright></copyright>  
+		<pubDate>2015-01-01</pubDate>  
+    </item>  
+    <item>  
 		<title>使用VirtualBox使centos和win7共享文件夹设置</title>  
 		<link>http://daimin.github.io//posts/virtualbox-share-dir.html</link>  
 		<description>&lt;p&gt;简单的记录一下。&lt;/p&gt;
@@ -2460,17 +2474,12 @@ fastcgi_cache_key $host$request_uri;
 &lt;p&gt;终于将新的主题换了上去，不过好像还没有之前的顺眼，但是之前的主题不适合内容展示，所以没办法，只能换一个了。&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;ul&gt;
-&lt;li&gt;后台还是一如之前的简单，没有列表，只有一个添加和编辑页面。&lt;/li&gt;
+&lt;li&gt;后台还是一如之前的简单，没有列表，只有一个添加和编辑页面。    &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt; 准备加入：&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;草稿功能&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;图片上传功能&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;</description>  
+&lt;p&gt;&lt;strong&gt;准备加入:&lt;/strong&gt; &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; * 草稿功能
+ * 图片上传功能
+&lt;/code&gt;&lt;/pre&gt;</description>  
 		<author>daimin</author>  
 		<copyright></copyright>  
 		<pubDate>2013-08-08</pubDate>  
