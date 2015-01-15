@@ -1,38 +1,38 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<!-- saved from url=(0025)http://daimin.github.io/ -->
-<html>
-<head>
-    
-
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="keywords" content="Nginx+uWsgi+web.py 搭建与简单测试" />
-    <meta name="description" content="Nginx + uWsgi + web.py 效率真是不错。安装uWsgi  首先是下载 http:..." />
-    <link rel="shortcut icon" href="/favicon.ico" />
-
-    <title>Nginx+uWsgi+web.py 搭建与简单测试 | 茶瓯葱丝</title>
-    <link rel="stylesheet" type="text/css" href="/styles/style.css">
-    <link rel="Stylesheet" type="text/css" href="/js/prettify/desert.css" />
-    <link rel="stylesheet" type="text/css" href="/styles/bootstrap-jian.css">
-    <script type="text/javascript"  src="/js/prettify/prettify.js"></script>
-	<link rel="alternate" type="application/rss+xml" title="RSS" href="http://daimin.github.io/rss.xml">
-</head>
-<body>
-		<div id="logo">
-			<span id="motto"></span>
-			<h1><a href="/index.html" >茶瓯葱丝</a>
-            <form onsubmit="return dispatch()" style="display:inline">
-            <span style="width: 240px; height: 26px; margin-left:24px; background-size: 240px 26px; background-image: url('/image/qbar_light@2x.png'); background-repeat: no-repeat; display: inline-block;">
-            <input type="text" maxlength="40" name="q" id="q" value="">
-            </span>
-            </form>
-            </h1>
-            
-        </div>
-<div id="wrapper">
-<div id="content" class="index">
-     
-<h2 class="post-title">Nginx+uWsgi+web.py 搭建与简单测试</h2>
-<div class="cnt">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0025)http://daimin.github.io/ -->
+<html>
+<head>
+    
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="keywords" content="Nginx+uWsgi+web.py 搭建与简单测试" />
+    <meta name="description" content="Nginx + uWsgi + web.py 效率真是不错。安装uWsgi  首先是下载 http:..." />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    <title>Nginx+uWsgi+web.py 搭建与简单测试 | 茶瓯葱丝</title>
+    <link rel="stylesheet" type="text/css" href="/styles/style.css">
+    <link rel="Stylesheet" type="text/css" href="/js/prettify/desert.css" />
+    <link rel="stylesheet" type="text/css" href="/styles/bootstrap-jian.css">
+    <script type="text/javascript"  src="/js/prettify/prettify.js"></script>
+	<link rel="alternate" type="application/rss+xml" title="RSS" href="http://daimin.github.io/rss.xml">
+</head>
+<body>
+		<div id="logo">
+			<span id="motto"></span>
+			<h1><a href="/index.html" >茶瓯葱丝</a>
+            <form onsubmit="return dispatch()" style="display:inline">
+            <span style="width: 240px; height: 26px; margin-left:24px; background-size: 240px 26px; background-image: url('/image/qbar_light@2x.png'); background-repeat: no-repeat; display: inline-block;">
+            <input type="text" maxlength="40" name="q" id="q" value="">
+            </span>
+            </form>
+            </h1>
+            
+        </div>
+<div id="wrapper">
+<div id="content" class="index">
+     
+<h2 class="post-title">Nginx+uWsgi+web.py 搭建与简单测试</h2>
+<div class="cnt">
 <blockquote>
 <p>Nginx + uWsgi + web.py 效率真是不错。</p>
 </blockquote>
@@ -40,9 +40,15 @@
 <li>
 <p>安装uWsgi  </p>
 <ul>
-<li>首先是下载 <a href="http://projects.unbit.it/downloads/uwsgi-1.9.14.tar.gz">http://projects.unbit.it/downloads/uwsgi-1.9.14.tar.gz</a></li>
-<li>解压 <code>sudo python setup.py build</code></li>
-<li>安装 <code>make</code></li>
+<li>
+<p>首先是下载 <a href="http://projects.unbit.it/downloads/uwsgi-1.9.14.tar.gz">http://projects.unbit.it/downloads/uwsgi-1.9.14.tar.gz</a></p>
+</li>
+<li>
+<p>解压 <code>sudo python setup.py build</code></p>
+</li>
+<li>
+<p>安装 <code>make</code></p>
+</li>
 </ul>
 </li>
 <li>
@@ -51,16 +57,27 @@
 <li>
 <p>nginx配置</p>
 <pre><code>location / {
+
   include uwsgi_params;
+
   #uwsgi_pass 127.0.0.1:9002;
+
   #对应uwsgi.ini配置的socket文件
+
   uwsgi_pass unix:/tmp/uwsgi.sock;
+
 }
+
 #静态文件访问
+
 location /static/ {
+
   if (-f $request_filename) {
+
     rewrite ^/static/(.*)$  /static/$1 break;
+
   }
+
 }
 </code></pre>
 </li>
@@ -69,30 +86,46 @@ location /static/ {
 <pre><code>import web
 
 urls = ("/.*", "hello")
+
 app = web.application(urls, globals())
 
 class hello:
+
     def GET(self):
+
         return 'Hello, world!'
 
 #if __name__ == "__main__": #注意将改行注释掉
+
 application = app.wsgifunc()
 </code></pre>
 </li>
 <li>
 <p>uWsgi的配置</p>
 <pre><code>[uwsgi]
+
 #socket = 127.0.0.1:9002
+
 #用socket文件方式
+
 socket = /tmp/uwsgi.sock
+
 chdir = /data/www/webpy/
+
 processes = 8
+
 threads = 2
+
 master = true
+
 module = index
+
 ;pidfile = /data/uwsgi-bin/uwsgi.pid
+
 ;listen = 128
+
 #守护进程方式运行，并指明日志文件
+
 daemonize = /data/www/webpy/uwsgi.log
 </code></pre>
 <p>注意chdir指向程序目录，module是主运行文件，见上，加入pidfile后好像对性能有影响，所以这里注释掉。</p>
@@ -101,98 +134,98 @@ daemonize = /data/www/webpy/uwsgi.log
 <p>运行 <code>sudo uwsgi uwsgi.ini</code></p>
 </li>
 <li>
-<p>测试<br />
-   测试使用的是apache的ab工具。<code>ab -n1000 -c100 http://192.168.1.1:8080/</code>，结果如下： </p>
+<p>测试  </p>
 </li>
 </ol>
+<p>测试使用的是apache的ab工具。<code>ab -n1000 -c100 http://192.168.1.1:8080/</code>，结果如下： </p>
 <p><img alt="qiniu_1377586380417.gif" src="http://vaga-static.qiniudn.com/qiniu_1377586380417.gif" title="web.py" /></p>
 <p>拿php来测试下，同样的服务器,同样的nginx，使用的是nginx + php-fpm fastcgi的模式。</p>
 <p><img alt="qiniu_1377586409480.gif" src="http://vaga-static.qiniudn.com/qiniu_1377586409480.gif" title="php" /></p>
-<p><strong>看得出比PHP还是快了不少</strong></p>
-</dir>
-<!-- Duoshuo Comment BEGIN -->
-	<div class="ds-thread"></div>
-<script type="text/javascript">
-var duoshuoQuery = {short_name:"vagasnail"};
-	(function() {
-		var ds = document.createElement('script');
-		ds.type = 'text/javascript';ds.async = true;
-		ds.src = 'http://static.duoshuo.com/embed.js';
-		ds.charset = 'UTF-8';
-		(document.getElementsByTagName('head')[0] 
-		|| document.getElementsByTagName('body')[0]).appendChild(ds);
-	})();
-	</script>
-<!-- Duoshuo Comment END -->
-
-</div>
-<div id="footer">
-	<span style="color:#bbb;font-size:12px">
-	&copy; Powered by <a href="https://github.com/daimin/daimin.github.com" title="sologs">sologs</a> | Themed by <a href="http://blog.leezhong.com/" title="Limboy">Limboy</a>
-	</span>
-	<p style="clear:both"></p>
-</div>
-</div>
-<script type="text/javascript">
-function hasClass(obj, cls) {  
-    return obj.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));  
-}
-function addClass(obj, cls) {  
-    if (!this.hasClass(obj, cls)) obj.className += " " + cls;  
-} 
-
-function render_pretty(){
-    var pres = document.getElementsByTagName("pre");
-    for(var i = 0, len = pres.length; i < len; i++){
-        addClass(pres[i], "prettyprint linenums");
-    }
-    prettyPrint();
-
-}
-
-(function(){
-   var mattos = [
-   "人生没有对错，只有选择后的坚持，不后悔，走下去，就是对的。",
-   "生活是一面镜子。你对它笑，它就对你笑；你对它哭，它也对你哭。",
-   "宁愿做过了后悔，也不要错过了后悔。",
-   "不要拿小人的错误来惩罚自己，不要在这些微不足道的事情上折磨浪费自己的宝贵时间。",
-   "环境不会改变，解决之道在于改变自己。",
-   "勇气是控制恐惧心理，而不是心里毫无恐惧。",
-   "两个人共尝一个痛苦只有半个痛苦，两个人共享一个欢乐却有两个欢乐。",
-   "好好管教自己，不要管别人。",
-   "得之坦然，失之淡然，顺其自然，争其必然。",
-   "人生是一条没有回程的单行线，上帝不会给你一张返程的票。",
-   "把事情办好的秘密就是行动。成功之路就是有条理思考之后的行动！行动！行动！",
-   "人生是一场旅行，在乎的不是目的地，是沿途的风景以及看风景的心情。",
-   "放弃谁都可以，千万不要放弃自己！",
-   "长得漂亮是优势，活得漂亮是本事。",
-   "人生最大的错误是不断担心会犯错。",
-   "一个人可以被毁灭，但不能给打败 -- 《老人与海》。",
-   "要么不要开始，要么不要结束。",
-   ];
-   document.getElementById("motto").innerHTML = mattos[parseInt(Math.random() * mattos.length)];
-   
-})();
-
-window.onload = function(){
-   render_pretty();
-};
-
-var dispatch = function() {
-    q = document.getElementById("q");
-    if (q.value != "") {
-        //"http://www.baidu.com/s?si=www.williamlong.info&cl=3&ct=2097152&tn=baidulocal&word="+wd
-        window.open('http://www.baidu.com/s?si=daimin.github.io&cl=3&ct=2097152&tn=bds&word=' + q.value, "_blank");
-        return false;
-    } else {
-        return false;
-    }
-};
-
-</script>
-<script type="text/javascript" src="/js/jimdoclockzip.js"></script>
-<script type="text/javascript">
-var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_5814730'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s23.cnzz.com/stat.php%3Fid%3D5814730%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
-</script>
-</body>
-</html>
+<p><strong>看得出比PHP还是快了不少</strong></p>
+</dir>
+<!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"vagasnail"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->
+
+</div>
+<div id="footer">
+	<span style="color:#bbb;font-size:12px">
+	&copy; Powered by <a href="https://github.com/daimin/daimin.github.com" title="sologs">sologs</a> | Themed by <a href="http://blog.leezhong.com/" title="Limboy">Limboy</a>
+	</span>
+	<p style="clear:both"></p>
+</div>
+</div>
+<script type="text/javascript">
+function hasClass(obj, cls) {  
+    return obj.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));  
+}
+function addClass(obj, cls) {  
+    if (!this.hasClass(obj, cls)) obj.className += " " + cls;  
+} 
+
+function render_pretty(){
+    var pres = document.getElementsByTagName("pre");
+    for(var i = 0, len = pres.length; i < len; i++){
+        addClass(pres[i], "prettyprint linenums");
+    }
+    prettyPrint();
+
+}
+
+(function(){
+   var mattos = [
+   "人生没有对错，只有选择后的坚持，不后悔，走下去，就是对的。",
+   "生活是一面镜子。你对它笑，它就对你笑；你对它哭，它也对你哭。",
+   "宁愿做过了后悔，也不要错过了后悔。",
+   "不要拿小人的错误来惩罚自己，不要在这些微不足道的事情上折磨浪费自己的宝贵时间。",
+   "环境不会改变，解决之道在于改变自己。",
+   "勇气是控制恐惧心理，而不是心里毫无恐惧。",
+   "两个人共尝一个痛苦只有半个痛苦，两个人共享一个欢乐却有两个欢乐。",
+   "好好管教自己，不要管别人。",
+   "得之坦然，失之淡然，顺其自然，争其必然。",
+   "人生是一条没有回程的单行线，上帝不会给你一张返程的票。",
+   "把事情办好的秘密就是行动。成功之路就是有条理思考之后的行动！行动！行动！",
+   "人生是一场旅行，在乎的不是目的地，是沿途的风景以及看风景的心情。",
+   "放弃谁都可以，千万不要放弃自己！",
+   "长得漂亮是优势，活得漂亮是本事。",
+   "人生最大的错误是不断担心会犯错。",
+   "一个人可以被毁灭，但不能给打败 -- 《老人与海》。",
+   "要么不要开始，要么不要结束。",
+   ];
+   document.getElementById("motto").innerHTML = mattos[parseInt(Math.random() * mattos.length)];
+   
+})();
+
+window.onload = function(){
+   render_pretty();
+};
+
+var dispatch = function() {
+    q = document.getElementById("q");
+    if (q.value != "") {
+        //"http://www.baidu.com/s?si=www.williamlong.info&cl=3&ct=2097152&tn=baidulocal&word="+wd
+        window.open('http://www.baidu.com/s?si=daimin.github.io&cl=3&ct=2097152&tn=bds&word=' + q.value, "_blank");
+        return false;
+    } else {
+        return false;
+    }
+};
+
+</script>
+<script type="text/javascript" src="/js/jimdoclockzip.js"></script>
+<script type="text/javascript">
+var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_5814730'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s23.cnzz.com/stat.php%3Fid%3D5814730%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+</script>
+</body>
+</html>
