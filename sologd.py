@@ -448,7 +448,7 @@ if __name__ == "__main__":
     #Util.load_links_xml()
     end_time = time.time()
     print  u'############## 解析完成，花费【%f】秒 #############' % (end_time - start_time)
-    raw_input(u"按回车键退出...")
+    #raw_input(u"按回车键退出...")
     
     
     

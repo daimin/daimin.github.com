@@ -1,115 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cb9eca96-e170-4276-bab0-7980bce9c9b6" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/2014.html" afterPath="$PROJECT_DIR$/tags/2014.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/2015.html" afterPath="$PROJECT_DIR$/tags/2015.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/posts/BAE-zhong-web-py-shang-chuan-wen-ti-chu-li.html" afterPath="$PROJECT_DIR$/posts/BAE-zhong-web-py-shang-chuan-wen-ti-chu-li.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/posts/BAE-zhong-wen-bian-ma-yin-qi-de-cheng-xu-beng-kui.html" afterPath="$PROJECT_DIR$/posts/BAE-zhong-wen-bian-ma-yin-qi-de-cheng-xu-beng-kui.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/BOM.html" afterPath="$PROJECT_DIR$/tags/BOM.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/Kibana.html" afterPath="$PROJECT_DIR$/tags/Kibana.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/posts/MYSQL-show-ming-ling-xiang-jie.html" afterPath="$PROJECT_DIR$/posts/MYSQL-show-ming-ling-xiang-jie.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/posts/Nginx-chang-yong-pei-zhi.html" afterPath="$PROJECT_DIR$/posts/Nginx-chang-yong-pei-zhi.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/posts/Nginx-uWsgi-web-py-da-jian-yu-jian-dan-ce-shi.html" afterPath="$PROJECT_DIR$/posts/Nginx-uWsgi-web-py-da-jian-yu-jian-dan-ce-shi.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/posts/Nginx-zhong-alias-he-root-de-qu-bie-zhuan.html" afterPath="$PROJECT_DIR$/posts/Nginx-zhong-alias-he-root-de-qu-bie-zhuan.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/posts/Nginx-zhong-yi-ge-server-pei-zhi-duo-ge.html" afterPath="$PROJECT_DIR$/posts/Nginx-zhong-yi-ge-server-pei-zhi-duo-ge.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/posts/PHP-Mysql-Sphinx-coreseek-zhan-nei-sou-suo-yin-qing-de-da-jian.html" afterPath="$PROJECT_DIR$/posts/PHP-Mysql-Sphinx-coreseek-zhan-nei-sou-suo-yin-qing-de-da-jian.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/posts/PHP-shu-zu-de-cha-ru-shun-xu.html" afterPath="$PROJECT_DIR$/posts/PHP-shu-zu-de-cha-ru-shun-xu.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/posts/Python-zi-fu-chuan-cao-zuo-fang-fa-zhuan.html" afterPath="$PROJECT_DIR$/posts/Python-zi-fu-chuan-cao-zuo-fang-fa-zhuan.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/VirtualBox.html" afterPath="$PROJECT_DIR$/tags/VirtualBox.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/alias.html" afterPath="$PROJECT_DIR$/tags/alias.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/posts/an-zhuang-scrapy.html" afterPath="$PROJECT_DIR$/posts/an-zhuang-scrapy.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/api.html" afterPath="$PROJECT_DIR$/tags/api.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/bae.html" afterPath="$PROJECT_DIR$/tags/bae.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/base.html" afterPath="$PROJECT_DIR$/templates/base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/bloomfilter.html" afterPath="$PROJECT_DIR$/tags/bloomfilter.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/posts/bo-ke-huan-le-xin-de-zhu-ti-le.html" afterPath="$PROJECT_DIR$/posts/bo-ke-huan-le-xin-de-zhu-ti-le.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/codecos.html" afterPath="$PROJECT_DIR$/tags/codecos.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/posts/coreseek-distributed-config.html" afterPath="$PROJECT_DIR$/posts/coreseek-distributed-config.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/coreseek.html" afterPath="$PROJECT_DIR$/tags/coreseek.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/posts/css-hack-de-jian-dan-shi-yong.html" afterPath="$PROJECT_DIR$/posts/css-hack-de-jian-dan-shi-yong.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/css.html" afterPath="$PROJECT_DIR$/tags/css.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/posts/da-shu-ju-chu-li-de-yi-xie-suan-fa-xue-xi.html" afterPath="$PROJECT_DIR$/posts/da-shu-ju-chu-li-de-yi-xie-suan-fa-xue-xi.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/distributed.html" afterPath="$PROJECT_DIR$/tags/distributed.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/dk.html" afterPath="$PROJECT_DIR$/tags/dk.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/posts/dou-ban-api-de-dian-ying-xin-xi-cha-xun.html" afterPath="$PROJECT_DIR$/posts/dou-ban-api-de-dian-ying-xin-xi-cha-xun.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/douban.html" afterPath="$PROJECT_DIR$/tags/douban.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/dps.html" afterPath="$PROJECT_DIR$/tags/dps.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/posts/elasticsearch-flask-pyes-da-jian-shi-yong.html" afterPath="$PROJECT_DIR$/posts/elasticsearch-flask-pyes-da-jian-shi-yong.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/elasticsearch.html" afterPath="$PROJECT_DIR$/tags/elasticsearch.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/flask.html" afterPath="$PROJECT_DIR$/tags/flask.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/github.html" afterPath="$PROJECT_DIR$/tags/github.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/hack.html" afterPath="$PROJECT_DIR$/tags/hack.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/index.html" afterPath="$PROJECT_DIR$/tags/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/posts/jVaga-dan-teng-de-JS-ku.html" afterPath="$PROJECT_DIR$/posts/jVaga-dan-teng-de-JS-ku.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/java.html" afterPath="$PROJECT_DIR$/tags/java.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/lightbox2.html" afterPath="$PROJECT_DIR$/tags/lightbox2.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/links.html" afterPath="$PROJECT_DIR$/links.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/posts/liu-yan-ban.html" afterPath="$PROJECT_DIR$/posts/liu-yan-ban.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/location.html" afterPath="$PROJECT_DIR$/tags/location.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/posts/logstash-peizhi-shiyong-2.html" afterPath="$PROJECT_DIR$/posts/logstash-peizhi-shiyong-2.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/posts/logstash-peizhi-shiyong.html" afterPath="$PROJECT_DIR$/posts/logstash-peizhi-shiyong.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/logstash.html" afterPath="$PROJECT_DIR$/tags/logstash.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/markdown.html" afterPath="$PROJECT_DIR$/tags/markdown.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/posts/mysql-yong-fa-bei-wang.html" afterPath="$PROJECT_DIR$/posts/mysql-yong-fa-bei-wang.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/mysql.html" afterPath="$PROJECT_DIR$/tags/mysql.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/posts/netbeans-ying-wen-zi-ti-xiu-gai.html" afterPath="$PROJECT_DIR$/posts/netbeans-ying-wen-zi-ti-xiu-gai.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/netbeans.html" afterPath="$PROJECT_DIR$/tags/netbeans.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/nginx.html" afterPath="$PROJECT_DIR$/tags/nginx.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/photo.html" afterPath="$PROJECT_DIR$/tags/photo.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/posts/php-resque-shiyong.html" afterPath="$PROJECT_DIR$/posts/php-resque-shiyong.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/php-resque.html" afterPath="$PROJECT_DIR$/tags/php-resque.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/php.html" afterPath="$PROJECT_DIR$/tags/php.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/pyes.html" afterPath="$PROJECT_DIR$/tags/pyes.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/posts/python-xiang-guan-zhi-shi-dian-zong-jie.html" afterPath="$PROJECT_DIR$/posts/python-xiang-guan-zhi-shi-dian-zong-jie.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/python.html" afterPath="$PROJECT_DIR$/tags/python.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/redis.html" afterPath="$PROJECT_DIR$/tags/redis.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/scrapy.html" afterPath="$PROJECT_DIR$/tags/scrapy.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/server.html" afterPath="$PROJECT_DIR$/tags/server.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/posts/shan-chu-PHP-wen-jian-zhong-de-BOM-zi-fu.html" afterPath="$PROJECT_DIR$/posts/shan-chu-PHP-wen-jian-zhong-de-BOM-zi-fu.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/posts/shi-yong-RSA-zai-Java-duan-si-yao-jia-mi-PHP-duan-gong-yao-yan-zheng.html" afterPath="$PROJECT_DIR$/posts/shi-yong-RSA-zai-Java-duan-si-yao-jia-mi-PHP-duan-gong-yao-yan-zheng.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/show.html" afterPath="$PROJECT_DIR$/tags/show.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/posts/shu-zhi-diao-zheng-hou-zhi-ye-DPS-mo-ni-DK-ni-xi.html" afterPath="$PROJECT_DIR$/posts/shu-zhi-diao-zheng-hou-zhi-ye-DPS-mo-ni-DK-ni-xi.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/sphinx.html" afterPath="$PROJECT_DIR$/tags/sphinx.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/string.html" afterPath="$PROJECT_DIR$/tags/string.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/trie.html" afterPath="$PROJECT_DIR$/tags/trie.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/utf-8.html" afterPath="$PROJECT_DIR$/tags/utf-8.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/posts/virtualbox-share-dir.html" afterPath="$PROJECT_DIR$/posts/virtualbox-share-dir.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/web.py.html" afterPath="$PROJECT_DIR$/tags/web.py.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/win7.html" afterPath="$PROJECT_DIR$/tags/win7.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/wordpress.html" afterPath="$PROJECT_DIR$/tags/wordpress.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/wow.html" afterPath="$PROJECT_DIR$/tags/wow.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/posts/write-a-static-blog.html" afterPath="$PROJECT_DIR$/posts/write-a-static-blog.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/posts/xin-zeng-le-yi-ge-xiang-ce.html" afterPath="$PROJECT_DIR$/posts/xin-zeng-le-yi-ge-xiang-ce.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/posts/xiu-gai-bo-ke-de-bian-ji-qi-wei.html" afterPath="$PROJECT_DIR$/posts/xiu-gai-bo-ke-de-bian-ji-qi-wei.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/posts/yi-ge-fei-chang-fei-chang-jian-dan-de-markdown-bian-ji-qi.html" afterPath="$PROJECT_DIR$/posts/yi-ge-fei-chang-fei-chang-jian-dan-de-markdown-bian-ji-qi.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/posts/yong-Python-fa-la-ji-you-jian.html" afterPath="$PROJECT_DIR$/posts/yong-Python-fa-la-ji-you-jian.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/posts/yong-python-jin-xing-bo-ke-de-qian-yi.html" afterPath="$PROJECT_DIR$/posts/yong-python-jin-xing-bo-ke-de-qian-yi.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/posts/zai-BAE-shang-mian-da-jian-ji-yu-web-py-de-bo-ke-yi.html" afterPath="$PROJECT_DIR$/posts/zai-BAE-shang-mian-da-jian-ji-yu-web-py-de-bo-ke-yi.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/posts/zi-sheng-he-ji-hua.html" afterPath="$PROJECT_DIR$/posts/zi-sheng-he-ji-hua.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/posts/zou-guo-2014.html" afterPath="$PROJECT_DIR$/posts/zou-guo-2014.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/posts/zou-zhao-zou-zhao-hua-jiu-kai-le.html" afterPath="$PROJECT_DIR$/posts/zou-zhao-zou-zhao-hua-jiu-kai-le.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/posts/zui-jin-zhun-bei-gan-sha.html" afterPath="$PROJECT_DIR$/posts/zui-jin-zhun-bei-gan-sha.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/上传.html" afterPath="$PROJECT_DIR$/tags/上传.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/主题.html" afterPath="$PROJECT_DIR$/tags/主题.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/人生.html" afterPath="$PROJECT_DIR$/tags/人生.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/共享.html" afterPath="$PROJECT_DIR$/tags/共享.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/命令.html" afterPath="$PROJECT_DIR$/tags/命令.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/字符串.html" afterPath="$PROJECT_DIR$/tags/字符串.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/工作.html" afterPath="$PROJECT_DIR$/tags/工作.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/教程.html" afterPath="$PROJECT_DIR$/tags/教程.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/数组.html" afterPath="$PROJECT_DIR$/tags/数组.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/方法.html" afterPath="$PROJECT_DIR$/tags/方法.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/生活.html" afterPath="$PROJECT_DIR$/tags/生活.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/电影.html" afterPath="$PROJECT_DIR$/tags/电影.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/留言.html" afterPath="$PROJECT_DIR$/tags/留言.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/相册.html" afterPath="$PROJECT_DIR$/tags/相册.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/算法.html" afterPath="$PROJECT_DIR$/tags/算法.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/豆瓣.html" afterPath="$PROJECT_DIR$/tags/豆瓣.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/配置.html" afterPath="$PROJECT_DIR$/tags/配置.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/静态.html" afterPath="$PROJECT_DIR$/tags/静态.html" />
-    </list>
+    <list default="true" id="cb9eca96-e170-4276-bab0-7980bce9c9b6" name="Default" comment="" />
     <ignored path="daimin.github.com.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -134,8 +26,8 @@
       <file leaf-file-name="base.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/base.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7093596" vertical-offset="72" max-vertical-offset="1998">
-              <caret line="20" column="22" selection-start-line="20" selection-start-column="22" selection-end-line="20" selection-end-column="22" />
+            <state vertical-scroll-proportion="0.62068963" vertical-offset="72" max-vertical-offset="1998">
+              <caret line="18" column="6" selection-start-line="18" selection-start-column="6" selection-end-line="18" selection-end-column="6" />
               <folding />
             </state>
           </provider>
@@ -268,6 +160,7 @@
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
     <property name="recentsLimit" value="5" />
+    <property name="FullScreen" value="false" />
   </component>
   <component name="RunManager" selected="Python.sologd">
     <configuration default="false" name="sologd" type="PythonConfigurationType" factoryName="Python" temporary="true">
@@ -419,6 +312,9 @@
     </recent_temporary>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration">
+    <configuration>$USER_HOME$/.subversion</configuration>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="cb9eca96-e170-4276-bab0-7980bce9c9b6" name="Default" comment="" />
@@ -439,7 +335,7 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32956153" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32956153" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -488,8 +384,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/base.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7093596" vertical-offset="72" max-vertical-offset="1998">
-          <caret line="20" column="22" selection-start-line="20" selection-start-column="22" selection-end-line="20" selection-end-column="22" />
+        <state vertical-scroll-proportion="0.62068963" vertical-offset="72" max-vertical-offset="1998">
+          <caret line="18" column="6" selection-start-line="18" selection-start-column="6" selection-end-line="18" selection-end-column="6" />
           <folding />
         </state>
       </provider>
