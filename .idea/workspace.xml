@@ -1,0 +1,501 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="cb9eca96-e170-4276-bab0-7980bce9c9b6" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/2014.html" afterPath="$PROJECT_DIR$/tags/2014.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/2015.html" afterPath="$PROJECT_DIR$/tags/2015.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/posts/BAE-zhong-web-py-shang-chuan-wen-ti-chu-li.html" afterPath="$PROJECT_DIR$/posts/BAE-zhong-web-py-shang-chuan-wen-ti-chu-li.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/posts/BAE-zhong-wen-bian-ma-yin-qi-de-cheng-xu-beng-kui.html" afterPath="$PROJECT_DIR$/posts/BAE-zhong-wen-bian-ma-yin-qi-de-cheng-xu-beng-kui.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/BOM.html" afterPath="$PROJECT_DIR$/tags/BOM.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/Kibana.html" afterPath="$PROJECT_DIR$/tags/Kibana.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/posts/MYSQL-show-ming-ling-xiang-jie.html" afterPath="$PROJECT_DIR$/posts/MYSQL-show-ming-ling-xiang-jie.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/posts/Nginx-chang-yong-pei-zhi.html" afterPath="$PROJECT_DIR$/posts/Nginx-chang-yong-pei-zhi.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/posts/Nginx-uWsgi-web-py-da-jian-yu-jian-dan-ce-shi.html" afterPath="$PROJECT_DIR$/posts/Nginx-uWsgi-web-py-da-jian-yu-jian-dan-ce-shi.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/posts/Nginx-zhong-alias-he-root-de-qu-bie-zhuan.html" afterPath="$PROJECT_DIR$/posts/Nginx-zhong-alias-he-root-de-qu-bie-zhuan.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/posts/Nginx-zhong-yi-ge-server-pei-zhi-duo-ge.html" afterPath="$PROJECT_DIR$/posts/Nginx-zhong-yi-ge-server-pei-zhi-duo-ge.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/posts/PHP-Mysql-Sphinx-coreseek-zhan-nei-sou-suo-yin-qing-de-da-jian.html" afterPath="$PROJECT_DIR$/posts/PHP-Mysql-Sphinx-coreseek-zhan-nei-sou-suo-yin-qing-de-da-jian.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/posts/PHP-shu-zu-de-cha-ru-shun-xu.html" afterPath="$PROJECT_DIR$/posts/PHP-shu-zu-de-cha-ru-shun-xu.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/posts/Python-zi-fu-chuan-cao-zuo-fang-fa-zhuan.html" afterPath="$PROJECT_DIR$/posts/Python-zi-fu-chuan-cao-zuo-fang-fa-zhuan.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/VirtualBox.html" afterPath="$PROJECT_DIR$/tags/VirtualBox.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/alias.html" afterPath="$PROJECT_DIR$/tags/alias.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/posts/an-zhuang-scrapy.html" afterPath="$PROJECT_DIR$/posts/an-zhuang-scrapy.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/api.html" afterPath="$PROJECT_DIR$/tags/api.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/bae.html" afterPath="$PROJECT_DIR$/tags/bae.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/base.html" afterPath="$PROJECT_DIR$/templates/base.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/bloomfilter.html" afterPath="$PROJECT_DIR$/tags/bloomfilter.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/posts/bo-ke-huan-le-xin-de-zhu-ti-le.html" afterPath="$PROJECT_DIR$/posts/bo-ke-huan-le-xin-de-zhu-ti-le.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/codecos.html" afterPath="$PROJECT_DIR$/tags/codecos.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/posts/coreseek-distributed-config.html" afterPath="$PROJECT_DIR$/posts/coreseek-distributed-config.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/coreseek.html" afterPath="$PROJECT_DIR$/tags/coreseek.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/posts/css-hack-de-jian-dan-shi-yong.html" afterPath="$PROJECT_DIR$/posts/css-hack-de-jian-dan-shi-yong.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/css.html" afterPath="$PROJECT_DIR$/tags/css.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/posts/da-shu-ju-chu-li-de-yi-xie-suan-fa-xue-xi.html" afterPath="$PROJECT_DIR$/posts/da-shu-ju-chu-li-de-yi-xie-suan-fa-xue-xi.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/distributed.html" afterPath="$PROJECT_DIR$/tags/distributed.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/dk.html" afterPath="$PROJECT_DIR$/tags/dk.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/posts/dou-ban-api-de-dian-ying-xin-xi-cha-xun.html" afterPath="$PROJECT_DIR$/posts/dou-ban-api-de-dian-ying-xin-xi-cha-xun.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/douban.html" afterPath="$PROJECT_DIR$/tags/douban.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/dps.html" afterPath="$PROJECT_DIR$/tags/dps.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/posts/elasticsearch-flask-pyes-da-jian-shi-yong.html" afterPath="$PROJECT_DIR$/posts/elasticsearch-flask-pyes-da-jian-shi-yong.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/elasticsearch.html" afterPath="$PROJECT_DIR$/tags/elasticsearch.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/flask.html" afterPath="$PROJECT_DIR$/tags/flask.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/github.html" afterPath="$PROJECT_DIR$/tags/github.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/hack.html" afterPath="$PROJECT_DIR$/tags/hack.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/index.html" afterPath="$PROJECT_DIR$/tags/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/posts/jVaga-dan-teng-de-JS-ku.html" afterPath="$PROJECT_DIR$/posts/jVaga-dan-teng-de-JS-ku.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/java.html" afterPath="$PROJECT_DIR$/tags/java.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/lightbox2.html" afterPath="$PROJECT_DIR$/tags/lightbox2.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/links.html" afterPath="$PROJECT_DIR$/links.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/posts/liu-yan-ban.html" afterPath="$PROJECT_DIR$/posts/liu-yan-ban.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/location.html" afterPath="$PROJECT_DIR$/tags/location.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/posts/logstash-peizhi-shiyong-2.html" afterPath="$PROJECT_DIR$/posts/logstash-peizhi-shiyong-2.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/posts/logstash-peizhi-shiyong.html" afterPath="$PROJECT_DIR$/posts/logstash-peizhi-shiyong.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/logstash.html" afterPath="$PROJECT_DIR$/tags/logstash.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/markdown.html" afterPath="$PROJECT_DIR$/tags/markdown.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/posts/mysql-yong-fa-bei-wang.html" afterPath="$PROJECT_DIR$/posts/mysql-yong-fa-bei-wang.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/mysql.html" afterPath="$PROJECT_DIR$/tags/mysql.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/posts/netbeans-ying-wen-zi-ti-xiu-gai.html" afterPath="$PROJECT_DIR$/posts/netbeans-ying-wen-zi-ti-xiu-gai.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/netbeans.html" afterPath="$PROJECT_DIR$/tags/netbeans.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/nginx.html" afterPath="$PROJECT_DIR$/tags/nginx.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/photo.html" afterPath="$PROJECT_DIR$/tags/photo.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/posts/php-resque-shiyong.html" afterPath="$PROJECT_DIR$/posts/php-resque-shiyong.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/php-resque.html" afterPath="$PROJECT_DIR$/tags/php-resque.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/php.html" afterPath="$PROJECT_DIR$/tags/php.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/pyes.html" afterPath="$PROJECT_DIR$/tags/pyes.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/python.html" afterPath="$PROJECT_DIR$/tags/python.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/redis.html" afterPath="$PROJECT_DIR$/tags/redis.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rss.xml" afterPath="$PROJECT_DIR$/rss.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/scrapy.html" afterPath="$PROJECT_DIR$/tags/scrapy.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/server.html" afterPath="$PROJECT_DIR$/tags/server.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/posts/shan-chu-PHP-wen-jian-zhong-de-BOM-zi-fu.html" afterPath="$PROJECT_DIR$/posts/shan-chu-PHP-wen-jian-zhong-de-BOM-zi-fu.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/posts/shi-yong-RSA-zai-Java-duan-si-yao-jia-mi-PHP-duan-gong-yao-yan-zheng.html" afterPath="$PROJECT_DIR$/posts/shi-yong-RSA-zai-Java-duan-si-yao-jia-mi-PHP-duan-gong-yao-yan-zheng.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/show.html" afterPath="$PROJECT_DIR$/tags/show.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/posts/shu-zhi-diao-zheng-hou-zhi-ye-DPS-mo-ni-DK-ni-xi.html" afterPath="$PROJECT_DIR$/posts/shu-zhi-diao-zheng-hou-zhi-ye-DPS-mo-ni-DK-ni-xi.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sitemap.xml" afterPath="$PROJECT_DIR$/sitemap.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/sphinx.html" afterPath="$PROJECT_DIR$/tags/sphinx.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/string.html" afterPath="$PROJECT_DIR$/tags/string.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/styles/style.css" afterPath="$PROJECT_DIR$/styles/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/trie.html" afterPath="$PROJECT_DIR$/tags/trie.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/utf-8.html" afterPath="$PROJECT_DIR$/tags/utf-8.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/posts/virtualbox-share-dir.html" afterPath="$PROJECT_DIR$/posts/virtualbox-share-dir.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/web.py.html" afterPath="$PROJECT_DIR$/tags/web.py.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/win7.html" afterPath="$PROJECT_DIR$/tags/win7.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/wordpress.html" afterPath="$PROJECT_DIR$/tags/wordpress.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/wow.html" afterPath="$PROJECT_DIR$/tags/wow.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/posts/write-a-static-blog.html" afterPath="$PROJECT_DIR$/posts/write-a-static-blog.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/posts/xin-zeng-le-yi-ge-xiang-ce.html" afterPath="$PROJECT_DIR$/posts/xin-zeng-le-yi-ge-xiang-ce.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/posts/xiu-gai-bo-ke-de-bian-ji-qi-wei.html" afterPath="$PROJECT_DIR$/posts/xiu-gai-bo-ke-de-bian-ji-qi-wei.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/posts/yi-ge-fei-chang-fei-chang-jian-dan-de-markdown-bian-ji-qi.html" afterPath="$PROJECT_DIR$/posts/yi-ge-fei-chang-fei-chang-jian-dan-de-markdown-bian-ji-qi.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/posts/yong-Python-fa-la-ji-you-jian.html" afterPath="$PROJECT_DIR$/posts/yong-Python-fa-la-ji-you-jian.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/posts/yong-python-jin-xing-bo-ke-de-qian-yi.html" afterPath="$PROJECT_DIR$/posts/yong-python-jin-xing-bo-ke-de-qian-yi.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/posts/zai-BAE-shang-mian-da-jian-ji-yu-web-py-de-bo-ke-yi.html" afterPath="$PROJECT_DIR$/posts/zai-BAE-shang-mian-da-jian-ji-yu-web-py-de-bo-ke-yi.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/posts/zi-sheng-he-ji-hua.html" afterPath="$PROJECT_DIR$/posts/zi-sheng-he-ji-hua.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/posts/zou-guo-2014.html" afterPath="$PROJECT_DIR$/posts/zou-guo-2014.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/posts/zou-zhao-zou-zhao-hua-jiu-kai-le.html" afterPath="$PROJECT_DIR$/posts/zou-zhao-zou-zhao-hua-jiu-kai-le.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/posts/zui-jin-zhun-bei-gan-sha.html" afterPath="$PROJECT_DIR$/posts/zui-jin-zhun-bei-gan-sha.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/上传.html" afterPath="$PROJECT_DIR$/tags/上传.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/主题.html" afterPath="$PROJECT_DIR$/tags/主题.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/人生.html" afterPath="$PROJECT_DIR$/tags/人生.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/共享.html" afterPath="$PROJECT_DIR$/tags/共享.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/命令.html" afterPath="$PROJECT_DIR$/tags/命令.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/字符串.html" afterPath="$PROJECT_DIR$/tags/字符串.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/工作.html" afterPath="$PROJECT_DIR$/tags/工作.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/教程.html" afterPath="$PROJECT_DIR$/tags/教程.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/数组.html" afterPath="$PROJECT_DIR$/tags/数组.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/方法.html" afterPath="$PROJECT_DIR$/tags/方法.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/生活.html" afterPath="$PROJECT_DIR$/tags/生活.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/电影.html" afterPath="$PROJECT_DIR$/tags/电影.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/留言.html" afterPath="$PROJECT_DIR$/tags/留言.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/相册.html" afterPath="$PROJECT_DIR$/tags/相册.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/算法.html" afterPath="$PROJECT_DIR$/tags/算法.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/豆瓣.html" afterPath="$PROJECT_DIR$/tags/豆瓣.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/配置.html" afterPath="$PROJECT_DIR$/tags/配置.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tags/静态.html" afterPath="$PROJECT_DIR$/tags/静态.html" />
+    </list>
+    <ignored path="daimin.github.com.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="DaemonCodeAnalyzer">
+    <disable_hints />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="daimin.github.com" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="base.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/base.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-1.3333334" vertical-offset="72" max-vertical-offset="1980">
+              <caret line="6" column="3" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="style.css" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/styles/style.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.6756757" vertical-offset="972" max-vertical-offset="9504">
+              <caret line="79" column="11" selection-start-line="79" selection-start-column="11" selection-end-line="79" selection-end-column="11" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="sologd.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/sologd.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="8154">
+              <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindManager">
+    <FindUsagesManager>
+      <setting name="OPEN_NEW_TAB" value="true" />
+    </FindUsagesManager>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="changedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/templates/base.html" />
+        <option value="$PROJECT_DIR$/styles/style.css" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="y" value="23" />
+    <option name="width" value="1280" />
+    <option name="height" value="773" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectReloadState">
+    <option name="STATE" value="0" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="daimin.github.com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="daimin.github.com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="daimin.github.com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="daimin.github.com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="daimin.github.com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="daimin.github.com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="daimin.github.com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="styles" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="options.lastSelected" value="pyconsole" />
+    <property name="options.splitter.main.proportions" value="0.3" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
+    <property name="recentsLimit" value="5" />
+  </component>
+  <component name="RunManager" selected="Python.sologd">
+    <configuration default="false" name="sologd" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="daimin.github.com" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/sologd.py" />
+      <option name="PARAMETERS" value="" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="py.test">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="daimin.github.com" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="testToRun" value="" />
+      <option name="keywords" value="" />
+      <option name="params" value="" />
+      <option name="USE_PARAM" value="false" />
+      <option name="USE_KEYWORD" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Nosetests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="daimin.github.com" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="daimin.github.com" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Unittests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="daimin.github.com" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Doctests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="daimin.github.com" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Attests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="daimin.github.com" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <method />
+    </configuration>
+    <list size="1">
+      <item index="0" class="java.lang.String" itemvalue="Python.sologd" />
+    </list>
+    <recent_temporary>
+      <list size="1">
+        <item index="0" class="java.lang.String" itemvalue="Python.sologd" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="cb9eca96-e170-4276-bab0-7980bce9c9b6" name="Default" comment="" />
+      <created>1425725302754</created>
+      <updated>1425725302754</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="23" width="1280" height="773" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2494043" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32956153" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+      <collection />
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="myTodoPanelSettings">
+      <TodoPanelSettings />
+    </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/templates/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.3333334" vertical-offset="72" max-vertical-offset="1980">
+          <caret line="6" column="3" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sologd.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="8154">
+          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/styles/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6756757" vertical-offset="972" max-vertical-offset="9504">
+          <caret line="79" column="11" selection-start-line="79" selection-start-column="11" selection-end-line="79" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
+

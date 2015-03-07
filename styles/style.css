@@ -77,7 +77,7 @@ div#wrapper {
 	margin:0 auto 50px;
 	padding:20px;
 	text-shadow:0 1px 0 #FFFFFF;
-	width:930px;
+	width:72%;
 }
 
 #content a {
@@ -113,7 +113,7 @@ div#content img, div#content object {
 	-webkit-border-radius:5px;
 	border-radius:5px;
 	-moz-box-shadow:0 1px 0 #FFFFFF;
-	max-width: 960px;
+	max-width: 62%;
 }
 div#content li {
 	margin-left:10px;

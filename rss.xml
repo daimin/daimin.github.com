@@ -7,6 +7,136 @@
     <language>zh-cn</language>  
     <generator>sologd</generator>  
     <item>  
+		<title>python相关知识点总结</title>  
+		<link>http://daimin.github.io//posts/python-xiang-guan-zhi-shi-dian-zong-jie.html</link>  
+		<description>&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;operator.itemgetter函数，它的值指名从第几个元素操作
+比如:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;a = [(&#39;a&#39;,1),(&#39;b&#39;,3),(&#39;c&#39;,2)]
+a.sort(key=operator.itemgetter(1))
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;结果：
+[(&#39;a&#39;, 1), (&#39;c&#39;, 2), (&#39;b&#39;, 3)]&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;a.sort(key=operator.itemgetter(0))
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;结果：
+[(&#39;a&#39;, 1), (&#39;b&#39;, 3), (&#39;c&#39;, 2)]&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;os.walk 和os.path.walk &lt;br /&gt;
+    os.walk有3个参数，top,topdown和onerror，top是要遍历的根目录，topdown为True则从根目录到子目录，否则先遍历子目录，后根目录，onerror是发生错误时候回调的函数。
+os.walk返回3个值，root、dirs、files，root是当前遍历的相对根目录，dirs是当前根目录下的所有目录列表,files是文件列表。&lt;/p&gt;
+&lt;p&gt;os.path.walk没有返回，用来遍历目录并给每次遍历目录数回调函数，参数1是待遍历的目录，参数2是回调函数，参数3是回传给回调函数的参数。回调函数有3个参数，参数1便是os.path.walk函数的第3个参数传递的值，参数2是当前目录下的所有子目录列表，参数3是文件列表。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;hashlib的update函数会在上次加密的基础上继续加密&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; m.update(&#34;aaa&#34;)
+&amp;gt;&amp;gt;&amp;gt; print m.hexdigest()
+5d793fc5b00a2348c3fb9ab59e5ca98a
+&amp;gt;&amp;gt;&amp;gt; print m.hexdigest()
+5d793fc5b00a2348c3fb9ab59e5ca98a
+&amp;gt;&amp;gt;&amp;gt; m.update(&#34;aaa&#34;)
+&amp;gt;&amp;gt;&amp;gt; print m.hexdigest()
+e09c80c42fda55f9d992e59ca6b3307d
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;python使用绝对路径运行项目的时候，必须保证自己依赖的库和模块在绝对路径中能够找到，否则就切换到相对路径中执行。比如cron执行python时，可以先cd到当前项目路劲，然后执行当前的python脚本文件，cd xxxx;python xxxx.py&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;python的类变量和java的不一样。对于JAVA来说，类变量只有一份，子类也是使用的父类的类变量，除非在子类中覆盖了父类的类变量，那么子类就会使用自己的类变量。而对于python来说，如果子类改变的类变量的值，那么不会影响到父类，其其它的子类。但是深究来说，我们重写给子类的类变量赋值，其实就相当于覆盖了该变量，因为python是动态变量，所以归根是一样的。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;python中 // 一直执行取整除法，不过对于/，python2和python3会有不同，python3是浮点除法，不过在python2中可以通过引入 &lt;code&gt;from __future__ import division&lt;/code&gt; 使/为浮点除&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;列表切片如果不存在，会返回空列表，而索引访问则会报错：IndexError: list index out of range&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; s = [1,3,24]
+&amp;gt;&amp;gt;&amp;gt; s[10:]
+&amp;gt;&amp;gt;&amp;gt; []
+&amp;gt;&amp;gt;&amp;gt; s[10]
+&amp;gt;&amp;gt;&amp;gt; IndexError: list index out of range
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;xrange(N)，将返回0..N-1的生成器，range(N)讲返回0..N-1的列表&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;lambda 表达式创建的函数其实是一个闭包函数，和普通函数是不一样的。如果调用一个lambda函数，可能会产生闭包函数已经完成调用，导致每次的值都是最后一次的值，可以在函数中定义额外的参数来保存每一次的值。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;def multipliers():
+    return [lambda x : i * x for i in range(4)]`  #  late binding 变量的值是在函数被调用的时候被查找的，那么这个时候循环早已完成，那么i的值就是循环最后的值了，也就是3.
+
+def multipliers():
+    return [lambda x, i=i : i * x for i in range(4)]  #这里使用了一个额外的参数i来绑定(消除lage binding)闭包中的i的值，那么在调用的适合，使用的i就是默认参数中的i的值了。
+
+print [m(2) for m in multipliers()]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;对于函数的默认参数，只会在函数定义的时候创建，之后无论多少次的使用，都是使用的同一个。
+如：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;def extendList(val, list=[]):
+   list.append(val)
+   return list
+
+list1 = extendList(10)
+list2 = extendList(123,[])
+list3 = extendList(&#39;a&#39;)
+
+print &#34;list1 = %s&#34; % list1
+print &#34;list2 = %s&#34; % list2
+print &#34;list3 = %s&#34; % list3
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;最后的结果会是： &lt;br /&gt;
+   list1 = [10, &#39;a&#39;]&lt;br /&gt;
+   list2 = [123] &lt;br /&gt;
+   list3 = [10, &#39;a&#39;]&lt;br /&gt;
+   list1和list3使用的是同一个列表，只有list2，重新传入了一个list，所以是使用的传入的list。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;type(x) 返回x的描述x的类型的type对象，，而isinstance(obj,class)，直接判断obj是否是class的实例，能作用于各种subclass，或者是新旧类型的类声明方式。而type(x)它不能对subclass起作用，对旧的类声明方式(class A:pass)也无作用，type(x)会返回&lt;type “instance”&gt;对象，与原类对象并不相等，新的类声明方式(class A(object):pass)是相等的，但是对于subclass也是不起作用的。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;builtin&lt;/strong&gt;模块代表了python中默认内置的函数的对象,如果碰到要重写buildin函数，可以import &lt;strong&gt;buildin&lt;/strong&gt;然后调用buildin函数，这样不会对对当前scope的函数造成影响。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;os模块是和操作系统相关的，sys适合解释器相关的。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;copy 仅拷贝对象本身，而不拷贝对象中引用的其它对象。 deepcopy 除拷贝对象本身，而且拷贝对象中引用的其它对象。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;os.path是module，包含了各种处理长文件名(路径名)的函数。sys.path是由目录名构成的列表，python解释器依据这个查找模块及初始化。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;re.match() 函数只检查 RE 是否在字符串开始处匹配，而 re.search() 则是扫描整个字符串。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;reduce是对集合中的item 进行归并，其实和map/reduce中的reduce的概念差不多。它有两个参数，分别代表前一次迭代的值及本次迭代item的值。它还拥有一个startval。
+简单实现：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;def reduce_impl(func, argvs, startVal=None):
+   if startVal is not None:
+       argv1 = startVal
+   else:
+       argv1 = argvs[0]
+
+   for argv2 in argvs[1:]:
+       argv1 = func(argv1, argv2)
+   return argv1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;生成器和函数的主要区别在于函数 return a value，生成器 yield a value同时标记或记忆 point of the yield 以便于在下次调用时从标记点恢复执行。 yield 使函数转换成生成器，而生成器反过来又返回迭代器。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description>  
+		<author>daimin</author>  
+		<copyright></copyright>  
+		<pubDate>2015-02-14</pubDate>  
+    </item>  
+    <item>  
 		<title>走过2014</title>  
 		<link>http://daimin.github.io//posts/zou-guo-2014.html</link>  
 		<description>&lt;p&gt;2014年就这么安静的过去，很平淡，却让我比较舒服。  &lt;/p&gt;
