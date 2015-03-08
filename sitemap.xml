@@ -15,6 +15,11 @@
 		<changefreq>monthly</changefreq>
 	</url>
 	<url>
+		<loc>http://daimin.github.io//posts/celery-shi-yong.html</loc>
+		<lastmod>2014-08-28</lastmod>
+		<changefreq>monthly</changefreq>
+	</url>
+	<url>
 		<loc>http://daimin.github.io//posts/virtualbox-share-dir.html</loc>
 		<lastmod>2014-04-14</lastmod>
 		<changefreq>monthly</changefreq>
