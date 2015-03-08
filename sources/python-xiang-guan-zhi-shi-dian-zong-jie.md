@@ -2,7 +2,7 @@ title:python相关知识点总结
 
 tags:python
 
-date:2015-02-14
+date:2014-02-14
 
 1. operator.itemgetter函数，它的值指名从第几个元素操作
 比如:
