@@ -176,8 +176,26 @@ from __future__ import division # '/'除法现在是浮点除
 <li>
 <p><code>__init__.py</code>中的<code>__path__</code>代表当前包的路劲，只要将当前包下的模块的解决路劲加入到path中，就可以从直接从包中引入了这些模块了。 </p>
 </li>
+<li>
+<p>如果一个累中<code>__slots__ = ("name", "age")</code>，那么就不能动态绑定其它的属性了，只能是<code>__slots__</code>中的。  </p>
+</li>
+<li>
+<p>enumerate 会返回索引和元素</p>
+<pre><code>l = [1,2,32,4,22,5]
+
+for idx, it in enumerate(l):
+print "{}=&gt;{}".format(idx, it)
+</code></pre>
+</li>
 </ol>
-<p>24.如果一个累中<code>__slots__ = ("name", "age")</code>，那么就不能动态绑定其它的属性了，只能是<code>__slots__</code>中的。  </p>
+<p>output:</p>
+<pre><code>    0=&gt;1
+    1=&gt;2
+    2=&gt;32
+    3=&gt;4
+    4=&gt;22
+    5=&gt;5
+</code></pre>
 </dir>
 <!-- Duoshuo Comment BEGIN -->
 	<div class="ds-thread"></div>
