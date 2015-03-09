@@ -59,15 +59,17 @@ bitmap一般采用bit位置表示值，而1或0表示是否存在该值&lt;/p&gt
    &lt;code&gt;brew install rabbitmq&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;linux:
   &lt;code&gt;sudo apt-get install rabbitmq-server&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;celery，直接pip install celery就行了
-2. task&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;    from celery import Celery
-    app = Celery(&#39;tasks&#39;, broker=&#39;amqp://guest@localhost//&#39;)
+&lt;p&gt;celery，直接pip install celery就行了&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;task&lt;pre&gt;&lt;code&gt;from celery import Celery
+app = Celery(&#39;tasks&#39;, broker=&#39;amqp://guest@localhost//&#39;)
 
-    @app.task
-    def add(x, y):
-        return x + y
+@app.task
+def add(x, y):
+    return x + y
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
 &lt;p&gt;在同级目录运行&lt;code&gt;$ celery -A tasks worker --loglevel=info&lt;/code&gt; 启动一个worker。并将add加入的任务队列中。&lt;/p&gt;
 &lt;p&gt;在当前目录重新打开一个python命令行窗口，输入：   &lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;    &amp;gt;&amp;gt;&amp;gt; from tasks import add
@@ -121,12 +123,12 @@ app.config_from_object(Config)
 &lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;总结&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;celery作为异步队列一般不需要太关心执行的结果，可&lt;code&gt;@app.task(ignore_result=True)&lt;/code&gt;忽略结果，也可以在config中设置&lt;code&gt;CELERY_IGNORE_RESULT=True&lt;/code&gt;&lt;/p&gt;
-&lt;/li&gt;
+&lt;ul&gt;
+&lt;li&gt;celery作为异步队列一般不需要太关心执行的结果，可&lt;code&gt;@app.task(ignore_result=True)&lt;/code&gt;忽略结果，也可以在config中设置&lt;code&gt;CELERY_IGNORE_RESULT=True&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;default_retry_delay=300, max_retries=5可以设置重试的时隔和最多次数，retry机制也是celery可靠的特点。&lt;/li&gt;
 &lt;li&gt;可以通过设置具有优先级的worker来决定那些任务需要优先执行。  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
 &lt;/ol&gt;</description>  
 		<author>daimin</author>  
 		<copyright></copyright>  

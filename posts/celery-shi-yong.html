@@ -43,15 +43,17 @@
    <code>brew install rabbitmq</code></p>
 <p>linux:
   <code>sudo apt-get install rabbitmq-server</code></p>
-<p>celery，直接pip install celery就行了
-2. task</p>
-<pre><code>    from celery import Celery
-    app = Celery('tasks', broker='amqp://guest@localhost//')
+<p>celery，直接pip install celery就行了</p>
+<ol>
+<li>task<pre><code>from celery import Celery
+app = Celery('tasks', broker='amqp://guest@localhost//')
 
-    @app.task
-    def add(x, y):
-        return x + y
+@app.task
+def add(x, y):
+    return x + y
 </code></pre>
+</li>
+</ol>
 <p>在同级目录运行<code>$ celery -A tasks worker --loglevel=info</code> 启动一个worker。并将add加入的任务队列中。</p>
 <p>在当前目录重新打开一个python命令行窗口，输入：   </p>
 <pre><code>    &gt;&gt;&gt; from tasks import add
@@ -105,12 +107,12 @@ app.config_from_object(Config)
 <ol>
 <li>
 <p>总结</p>
-</li>
-<li>
-<p>celery作为异步队列一般不需要太关心执行的结果，可<code>@app.task(ignore_result=True)</code>忽略结果，也可以在config中设置<code>CELERY_IGNORE_RESULT=True</code></p>
-</li>
+<ul>
+<li>celery作为异步队列一般不需要太关心执行的结果，可<code>@app.task(ignore_result=True)</code>忽略结果，也可以在config中设置<code>CELERY_IGNORE_RESULT=True</code></li>
 <li>default_retry_delay=300, max_retries=5可以设置重试的时隔和最多次数，retry机制也是celery可靠的特点。</li>
 <li>可以通过设置具有优先级的worker来决定那些任务需要优先执行。  </li>
+</ul>
+</li>
 </ol>
 </dir>
 <!-- Duoshuo Comment BEGIN -->

@@ -15,6 +15,7 @@ date:2014-08-28
   `sudo apt-get install rabbitmq-server`
   
   celery，直接pip install celery就行了
+  
 2. task
 
         from celery import Celery
@@ -74,6 +75,6 @@ date:2014-08-28
    
 5. 总结
 
-   * celery作为异步队列一般不需要太关心执行的结果，可`@app.task(ignore_result=True)`忽略结果，也可以在config中设置`CELERY_IGNORE_RESULT=True`
-   * default_retry_delay=300, max_retries=5可以设置重试的时隔和最多次数，retry机制也是celery可靠的特点。
-   * 可以通过设置具有优先级的worker来决定那些任务需要优先执行。  
+      * celery作为异步队列一般不需要太关心执行的结果，可`@app.task(ignore_result=True)`忽略结果，也可以在config中设置`CELERY_IGNORE_RESULT=True`
+     * default_retry_delay=300, max_retries=5可以设置重试的时隔和最多次数，retry机制也是celery可靠的特点。
+     * 可以通过设置具有优先级的worker来决定那些任务需要优先执行。  
