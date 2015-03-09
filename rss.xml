@@ -763,7 +763,27 @@ print &#34;list3 = %s&#34; % list3
 &lt;li&gt;
 &lt;p&gt;生成器和函数的主要区别在于函数 return a value，生成器 yield a value同时标记或记忆 point of the yield 以便于在下次调用时从标记点恢复执行。 yield 使函数转换成生成器，而生成器反过来又返回迭代器。&lt;/p&gt;
 &lt;/li&gt;
-&lt;/ol&gt;</description>  
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;__future__&lt;/code&gt;模块是未来python版本默认支持的特性，比如python3就支持了。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;from __future__ import unicode_literals # 默认字符串都是unicode的了
+from __future__ import print_function # print语句现在是一个函数
+from __future__ import division # &#39;/&#39;除法现在是浮点除
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;__builtins__&lt;/code&gt;是对内建模块的引用，python2.*的&lt;code&gt;__builtin__&lt;/code&gt;或python3.x的&lt;code&gt;builtins&lt;/code&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;(i for i in [1,2,3,4])&lt;/code&gt; 生成生成器，&lt;code&gt;[i for i in[1,2,3,4]]&lt;/code&gt; 生成列表。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;__all__ = [&#34;add&#34;, &#34;x&#34;]&lt;/code&gt;，表示在import * 的时候，只会import 这些成员。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;__init__.py&lt;/code&gt;中的&lt;code&gt;__path__&lt;/code&gt;代表当前包的路劲，只要将当前包下的模块的解决路劲加入到path中，就可以从直接从包中引入了这些模块了。 &lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;24.如果一个累中&lt;code&gt;__slots__ = (&#34;name&#34;, &#34;age&#34;)&lt;/code&gt;，那么就不能动态绑定其它的属性了，只能是&lt;code&gt;__slots__&lt;/code&gt;中的。  &lt;/p&gt;</description>  
 		<author>daimin</author>  
 		<copyright></copyright>  
 		<pubDate>2014-02-14</pubDate>  

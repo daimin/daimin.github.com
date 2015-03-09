@@ -157,7 +157,27 @@ print "list3 = %s" % list3
 <li>
 <p>生成器和函数的主要区别在于函数 return a value，生成器 yield a value同时标记或记忆 point of the yield 以便于在下次调用时从标记点恢复执行。 yield 使函数转换成生成器，而生成器反过来又返回迭代器。</p>
 </li>
+<li>
+<p><code>__future__</code>模块是未来python版本默认支持的特性，比如python3就支持了。</p>
+<pre><code>from __future__ import unicode_literals # 默认字符串都是unicode的了
+from __future__ import print_function # print语句现在是一个函数
+from __future__ import division # '/'除法现在是浮点除
+</code></pre>
+</li>
+<li>
+<p><code>__builtins__</code>是对内建模块的引用，python2.*的<code>__builtin__</code>或python3.x的<code>builtins</code>。</p>
+</li>
+<li>
+<p><code>(i for i in [1,2,3,4])</code> 生成生成器，<code>[i for i in[1,2,3,4]]</code> 生成列表。</p>
+</li>
+<li>
+<p><code>__all__ = ["add", "x"]</code>，表示在import * 的时候，只会import 这些成员。</p>
+</li>
+<li>
+<p><code>__init__.py</code>中的<code>__path__</code>代表当前包的路劲，只要将当前包下的模块的解决路劲加入到path中，就可以从直接从包中引入了这些模块了。 </p>
+</li>
 </ol>
+<p>24.如果一个累中<code>__slots__ = ("name", "age")</code>，那么就不能动态绑定其它的属性了，只能是<code>__slots__</code>中的。  </p>
 </dir>
 <!-- Duoshuo Comment BEGIN -->
 	<div class="ds-thread"></div>

@@ -38,9 +38,9 @@ os.walk返回3个值，root、dirs、files，root是当前遍历的相对根目�
 
 5. python的类变量和java的不一样。对于JAVA来说，类变量只有一份，子类也是使用的父类的类变量，除非在子类中覆盖了父类的类变量，那么子类就会使用自己的类变量。而对于python来说，如果子类改变的类变量的值，那么不会影响到父类，其其它的子类。但是深究来说，我们重写给子类的类变量赋值，其实就相当于覆盖了该变量，因为python是动态变量，所以归根是一样的。
 
-5. python中 // 一直执行取整除法，不过对于/，python2和python3会有不同，python3是浮点除法，不过在python2中可以通过引入 `from __future__ import division` 使/为浮点除
+6. python中 // 一直执行取整除法，不过对于/，python2和python3会有不同，python3是浮点除法，不过在python2中可以通过引入 `from __future__ import division` 使/为浮点除
 
-6. 列表切片如果不存在，会返回空列表，而索引访问则会报错：IndexError: list index out of range
+7. 列表切片如果不存在，会返回空列表，而索引访问则会报错：IndexError: list index out of range
 
         >>> s = [1,3,24]
         >>> s[10:]
@@ -48,9 +48,9 @@ os.walk返回3个值，root、dirs、files，root是当前遍历的相对根目�
         >>> s[10]
         >>> IndexError: list index out of range
 
-7. xrange(N)，将返回0..N-1的生成器，range(N)讲返回0..N-1的列表
+8. xrange(N)，将返回0..N-1的生成器，range(N)讲返回0..N-1的列表
 
-8. lambda 表达式创建的函数其实是一个闭包函数，和普通函数是不一样的。如果调用一个lambda函数，可能会产生闭包函数已经完成调用，导致每次的值都是最后一次的值，可以在函数中定义额外的参数来保存每一次的值。
+9. lambda 表达式创建的函数其实是一个闭包函数，和普通函数是不一样的。如果调用一个lambda函数，可能会产生闭包函数已经完成调用，导致每次的值都是最后一次的值，可以在函数中定义额外的参数来保存每一次的值。
 
         def multipliers():
             return [lambda x : i * x for i in range(4)]`  #  late binding 变量的值是在函数被调用的时候被查找的，那么这个时候循环早已完成，那么i的值就是循环最后的值了，也就是3.
@@ -61,7 +61,7 @@ os.walk返回3个值，root、dirs、files，root是当前遍历的相对根目�
         print [m(2) for m in multipliers()]
 
 
-9. 对于函数的默认参数，只会在函数定义的时候创建，之后无论多少次的使用，都是使用的同一个。
+10. 对于函数的默认参数，只会在函数定义的时候创建，之后无论多少次的使用，都是使用的同一个。
 如：
 
         def extendList(val, list=[]):
@@ -82,19 +82,19 @@ os.walk返回3个值，root、dirs、files，root是当前遍历的相对根目�
    list3 = [10, 'a']  
    list1和list3使用的是同一个列表，只有list2，重新传入了一个list，所以是使用的传入的list。
 
-10. type(x) 返回x的描述x的类型的type对象，，而isinstance(obj,class)，直接判断obj是否是class的实例，能作用于各种subclass，或者是新旧类型的类声明方式。而type(x)它不能对subclass起作用，对旧的类声明方式(class A:pass)也无作用，type(x)会返回<type “instance”>对象，与原类对象并不相等，新的类声明方式(class A(object):pass)是相等的，但是对于subclass也是不起作用的。
+11. type(x) 返回x的描述x的类型的type对象，，而isinstance(obj,class)，直接判断obj是否是class的实例，能作用于各种subclass，或者是新旧类型的类声明方式。而type(x)它不能对subclass起作用，对旧的类声明方式(class A:pass)也无作用，type(x)会返回<type “instance”>对象，与原类对象并不相等，新的类声明方式(class A(object):pass)是相等的，但是对于subclass也是不起作用的。
 
-11. __builtin__模块代表了python中默认内置的函数的对象,如果碰到要重写buildin函数，可以import __buildin__然后调用buildin函数，这样不会对对当前scope的函数造成影响。
+12. __builtin__模块代表了python中默认内置的函数的对象,如果碰到要重写buildin函数，可以import __buildin__然后调用buildin函数，这样不会对对当前scope的函数造成影响。
 
-12. os模块是和操作系统相关的，sys适合解释器相关的。
+13. os模块是和操作系统相关的，sys适合解释器相关的。
 
-13. copy 仅拷贝对象本身，而不拷贝对象中引用的其它对象。 deepcopy 除拷贝对象本身，而且拷贝对象中引用的其它对象。
+14. copy 仅拷贝对象本身，而不拷贝对象中引用的其它对象。 deepcopy 除拷贝对象本身，而且拷贝对象中引用的其它对象。
 
-14. os.path是module，包含了各种处理长文件名(路径名)的函数。sys.path是由目录名构成的列表，python解释器依据这个查找模块及初始化。
+15. os.path是module，包含了各种处理长文件名(路径名)的函数。sys.path是由目录名构成的列表，python解释器依据这个查找模块及初始化。
 
-15. re.match() 函数只检查 RE 是否在字符串开始处匹配，而 re.search() 则是扫描整个字符串。
+16. re.match() 函数只检查 RE 是否在字符串开始处匹配，而 re.search() 则是扫描整个字符串。
 
-16. reduce是对集合中的item 进行归并，其实和map/reduce中的reduce的概念差不多。它有两个参数，分别代表前一次迭代的值及本次迭代item的值。它还拥有一个startval。
+17. reduce是对集合中的item 进行归并，其实和map/reduce中的reduce的概念差不多。它有两个参数，分别代表前一次迭代的值及本次迭代item的值。它还拥有一个startval。
 简单实现：
 
         def reduce_impl(func, argvs, startVal=None):
@@ -108,7 +108,23 @@ os.walk返回3个值，root、dirs、files，root是当前遍历的相对根目�
            return argv1
 
 
-17.  生成器和函数的主要区别在于函数 return a value，生成器 yield a value同时标记或记忆 point of the yield 以便于在下次调用时从标记点恢复执行。 yield 使函数转换成生成器，而生成器反过来又返回迭代器。
+18.  生成器和函数的主要区别在于函数 return a value，生成器 yield a value同时标记或记忆 point of the yield 以便于在下次调用时从标记点恢复执行。 yield 使函数转换成生成器，而生成器反过来又返回迭代器。
+
+19. `__future__`模块是未来python版本默认支持的特性，比如python3就支持了。
+
+        from __future__ import unicode_literals # 默认字符串都是unicode的了
+        from __future__ import print_function # print语句现在是一个函数
+        from __future__ import division # '/'除法现在是浮点除
+
+20. `__builtins__`是对内建模块的引用，python2.*的`__builtin__`或python3.x的`builtins`。
+
+21. `(i for i in [1,2,3,4])` 生成生成器，`[i for i in[1,2,3,4]]` 生成列表。
+
+22. `__all__ = ["add", "x"]`，表示在import * 的时候，只会import 这些成员。
+
+23. `__init__.py`中的`__path__`代表当前包的路劲，只要将当前包下的模块的解决路劲加入到path中，就可以从直接从包中引入了这些模块了。 
+
+24.如果一个累中`__slots__ = ("name", "age")`，那么就不能动态绑定其它的属性了，只能是`__slots__`中的。  
 
 
 
