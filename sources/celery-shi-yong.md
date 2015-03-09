@@ -71,6 +71,7 @@ date:2014-08-28
 4. flower
    
    celery监控工具，直接`pip install flower`就行了，然后运行flower命令，就可以查看celery的运行清空。
+   
 5. 总结
 
    * celery作为异步队列一般不需要太关心执行的结果，可`@app.task(ignore_result=True)`忽略结果，也可以在config中设置`CELERY_IGNORE_RESULT=True`
