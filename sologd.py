@@ -245,6 +245,7 @@ class MdReader:
         if self.postbydate is not None:
             return self.postbydate
         self.postbydate = []
+        self.mdobjs = filter(m not None, self.mdobjs()
         sposts = sorted(self.mdobjs, key=lambda x:x['createdate'], reverse=(not o))
         for p in sposts:
             self.postbydate.append(Post(date=p['createdate'], title=p['title'], cont=p['content'], url=Util.change_ext(p['fname'], '.html')))
