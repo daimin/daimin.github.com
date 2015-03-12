@@ -7,11 +7,11 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; minimum-scale=1.0; user-scalable=no;" />
     <meta name="format-detection" content="telephone=no" />
-    <meta name="keywords" content="java,python,php,nodejs,golang,linux,bae,web.py,linux,nginx,android,游戏,编程" />
-    <meta name="description" content="本站内容为个人技术博客及其它软件编程信息。本站采用python开发，用markdown来进行编辑，生成静态文本放在github上。" />
+    <meta name="keywords" content="python协程使用" />
+    <meta name="description" content="协程是一种比线程更轻量级的执行体。它不是有系统内核控制调度，而是自己协同调度。Python通过yie..." />
     <link rel="shortcut icon" href="/favicon.ico" />
 
-    <title>python | 茶瓯葱丝</title>
+    <title>python协程使用 | 茶瓯葱丝</title>
     <link rel="stylesheet" type="text/css" href="/styles/style.css">
     <link rel="Stylesheet" type="text/css" href="/js/prettify/desert.css" />
     <link rel="stylesheet" type="text/css" href="/styles/bootstrap-jian.css">
@@ -33,39 +33,90 @@
 <div id="wrapper">
 <div id="content" class="index">
      
-<div id="sidebar">
-        <ul>
-            <li>
-                <a href="/index.html">首页</a>
-                <ul>
-                        <li><a href="/tags/python.html" title="python"> python</a></li>
-                        <li><a href="/tags/php.html" title="php"> php</a></li>
-                        <li><a href="/tags/nginx.html" title="nginx"> nginx</a></li>
-                        <li><a href="/tags/markdown.html" title="markdown"> markdown</a></li>
-                        <li><a href="/tags/java.html" title="java"> java</a></li>
-                </ul>
-            </li>
-            <li><a href="/tags/">标签</a></li>
-            <li><a href="http://daimin.github.io/rss.xml">订阅</a></li>
-            <li><a href="/links.html">友链</a></li>
-                <li><a href="/posts/liu-yan-ban.html" title="留言">留言</a></li>
-            
-        </ul>
-    </div>
-<div id="main">
-        <ul class="posts">
-            <li><p class="date" cate="reading">2015-03-10</p> <a href="/posts/pythono-xie-cheng-shi-yong.html">python协程使用</a></li>
-            <li><p class="date" cate="reading">2014-02-14</p> <a href="/posts/python-xiang-guan-zhi-shi-dian-zong-jie.html">python相关知识点总结</a></li>
-            <li><p class="date" cate="reading">2014-02-13</p> <a href="/posts/write-a-static-blog.html">写了一个静态博客</a></li>
-            <li><p class="date" cate="reading">2013-10-10</p> <a href="/posts/zi-sheng-he-ji-hua.html">自省和计划</a></li>
-            <li><p class="date" cate="reading">2013-09-25</p> <a href="/posts/yi-ge-fei-chang-fei-chang-jian-dan-de-markdown-bian-ji-qi.html">一个非常非常简单的markdown编辑器</a></li>
-            <li><p class="date" cate="reading">2013-08-23</p> <a href="/posts/zai-BAE-shang-mian-da-jian-ji-yu-web-py-de-bo-ke-yi.html">在BAE上面搭建基于web.py的博客（一）</a></li>
-            <li><p class="date" cate="reading">2013-08-19</p> <a href="/posts/yong-Python-fa-la-ji-you-jian.html">用Python发垃圾邮件</a></li>
-            <li><p class="date" cate="reading">2013-08-12</p> <a href="/posts/Python-zi-fu-chuan-cao-zuo-fang-fa-zhuan.html">Python-字符串操作方法(转)</a></li>
-            <li><p class="date" cate="reading">2013-02-12</p> <a href="/posts/liu-yan-ban.html">留言板</a></li>
-        </ul>
+<h2 class="post-title">python协程使用</h2>
+<div class="cnt">
+<p>协程是一种比线程更轻量级的执行体。它不是有系统内核控制调度，而是自己协同调度。Python通过yield提供了对协程的基本支持，但是不完全。而第三方的gevent为Python提供了比较完善的协程支持。</p>
+<pre><code>from gevent import monkey
+# 由于切换是在IO操作时自动完成，所以gevent需要修改Python自带的一些标准库，这一过程在启动时通过monkey
+monkey.patch_socket()
+import gevent
 
-</div>
+def f(n):
+    for i in range(n):
+        print gevent.getcurrent(), i
+        gevent.sleep(0) # 要想协程起作用，可以通过gevent.sleep()交出控制权
+
+
+g1 = gevent.spawn(f, 5)
+g2 = gevent.spawn(f, 5)
+g3 = gevent.spawn(f, 5)
+
+g1.join()
+g2.join()
+g3.join()
+
+output:
+&lt;Greenlet at 0x10bc44c30: f(5)&gt; 0
+&lt;Greenlet at 0x10bd600f0: f(5)&gt; 0
+&lt;Greenlet at 0x10bd60190: f(5)&gt; 0
+&lt;Greenlet at 0x10bc44c30: f(5)&gt; 1
+&lt;Greenlet at 0x10bd600f0: f(5)&gt; 1
+&lt;Greenlet at 0x10bd60190: f(5)&gt; 1
+&lt;Greenlet at 0x10bc44c30: f(5)&gt; 2
+&lt;Greenlet at 0x10bd600f0: f(5)&gt; 2
+&lt;Greenlet at 0x10bd60190: f(5)&gt; 2
+&lt;Greenlet at 0x10bc44c30: f(5)&gt; 3
+&lt;Greenlet at 0x10bd600f0: f(5)&gt; 3
+&lt;Greenlet at 0x10bd60190: f(5)&gt; 3
+&lt;Greenlet at 0x10bc44c30: f(5)&gt; 4
+&lt;Greenlet at 0x10bd600f0: f(5)&gt; 4
+&lt;Greenlet at 0x10bd60190: f(5)&gt; 4
+</code></pre>
+<p>可以看到协程的交替运行了。</p>
+<p>在实际的使用中，我们不需要使用gevent.sleep去控制，而是在遇到io时候，gevent会自动控制。</p>
+<pre><code>from gevent import monkey
+# 由于切换是在IO操作时自动完成，所以gevent需要修改Python自带的一些标准库，这一过程在启动时通过monkey
+monkey.patch_socket()
+import gevent
+import urllib2
+
+def f(url):
+    print 'GET: %s' % url
+    resp = urllib2.urlopen(url)
+    data = resp.read()
+    print '%d bytes received from %s.' % (len(data), url)
+
+
+gevent.joinall([
+    gevent.spawn(f, 'http://www.baidu.com/'),
+    gevent.spawn(f, 'http://www.taobao.com/'),
+    gevent.spawn(f, 'http://www.163.com/'),
+])
+
+output:
+GET: http://www.baidu.com/
+GET: http://www.taobao.com/
+GET: http://www.163.com/
+46944 bytes received from http://www.taobao.com/.
+88998 bytes received from http://www.baidu.com/.
+662118 bytes received from http://www.163.com/.
+</code></pre>
+<p>可以看出在同一个进程中执行，但是顺序却不同了，可见网络io的时候是并发执行的。</p>
+</dir>
+<!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"vagasnail"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->
 
 </div>
 <div id="footer">

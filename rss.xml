@@ -7,6 +7,80 @@
     <language>zh-cn</language>  
     <generator>sologd</generator>  
     <item>  
+		<title>python协程使用</title>  
+		<link>http://daimin.github.io//posts/pythono-xie-cheng-shi-yong.html</link>  
+		<description>&lt;p&gt;协程是一种比线程更轻量级的执行体。它不是有系统内核控制调度，而是自己协同调度。Python通过yield提供了对协程的基本支持，但是不完全。而第三方的gevent为Python提供了比较完善的协程支持。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;from gevent import monkey
+# 由于切换是在IO操作时自动完成，所以gevent需要修改Python自带的一些标准库，这一过程在启动时通过monkey
+monkey.patch_socket()
+import gevent
+
+def f(n):
+    for i in range(n):
+        print gevent.getcurrent(), i
+        gevent.sleep(0) # 要想协程起作用，可以通过gevent.sleep()交出控制权
+
+
+g1 = gevent.spawn(f, 5)
+g2 = gevent.spawn(f, 5)
+g3 = gevent.spawn(f, 5)
+
+g1.join()
+g2.join()
+g3.join()
+
+output:
+&amp;lt;Greenlet at 0x10bc44c30: f(5)&amp;gt; 0
+&amp;lt;Greenlet at 0x10bd600f0: f(5)&amp;gt; 0
+&amp;lt;Greenlet at 0x10bd60190: f(5)&amp;gt; 0
+&amp;lt;Greenlet at 0x10bc44c30: f(5)&amp;gt; 1
+&amp;lt;Greenlet at 0x10bd600f0: f(5)&amp;gt; 1
+&amp;lt;Greenlet at 0x10bd60190: f(5)&amp;gt; 1
+&amp;lt;Greenlet at 0x10bc44c30: f(5)&amp;gt; 2
+&amp;lt;Greenlet at 0x10bd600f0: f(5)&amp;gt; 2
+&amp;lt;Greenlet at 0x10bd60190: f(5)&amp;gt; 2
+&amp;lt;Greenlet at 0x10bc44c30: f(5)&amp;gt; 3
+&amp;lt;Greenlet at 0x10bd600f0: f(5)&amp;gt; 3
+&amp;lt;Greenlet at 0x10bd60190: f(5)&amp;gt; 3
+&amp;lt;Greenlet at 0x10bc44c30: f(5)&amp;gt; 4
+&amp;lt;Greenlet at 0x10bd600f0: f(5)&amp;gt; 4
+&amp;lt;Greenlet at 0x10bd60190: f(5)&amp;gt; 4
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;可以看到协程的交替运行了。&lt;/p&gt;
+&lt;p&gt;在实际的使用中，我们不需要使用gevent.sleep去控制，而是在遇到io时候，gevent会自动控制。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;from gevent import monkey
+# 由于切换是在IO操作时自动完成，所以gevent需要修改Python自带的一些标准库，这一过程在启动时通过monkey
+monkey.patch_socket()
+import gevent
+import urllib2
+
+def f(url):
+    print &#39;GET: %s&#39; % url
+    resp = urllib2.urlopen(url)
+    data = resp.read()
+    print &#39;%d bytes received from %s.&#39; % (len(data), url)
+
+
+gevent.joinall([
+    gevent.spawn(f, &#39;http://www.baidu.com/&#39;),
+    gevent.spawn(f, &#39;http://www.taobao.com/&#39;),
+    gevent.spawn(f, &#39;http://www.163.com/&#39;),
+])
+
+output:
+GET: http://www.baidu.com/
+GET: http://www.taobao.com/
+GET: http://www.163.com/
+46944 bytes received from http://www.taobao.com/.
+88998 bytes received from http://www.baidu.com/.
+662118 bytes received from http://www.163.com/.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;可以看出在同一个进程中执行，但是顺序却不同了，可见网络io的时候是并发执行的。&lt;/p&gt;</description>  
+		<author>daimin</author>  
+		<copyright></copyright>  
+		<pubDate>2015-03-10</pubDate>  
+    </item>  
+    <item>  
 		<title>走过2014</title>  
 		<link>http://daimin.github.io//posts/zou-guo-2014.html</link>  
 		<description>&lt;p&gt;2014年就这么安静的过去，很平淡，却让我比较舒服。  &lt;/p&gt;
@@ -726,14 +800,12 @@ print &#34;list1 = %s&#34; % list1
 print &#34;list2 = %s&#34; % list2
 print &#34;list3 = %s&#34; % list3
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
 &lt;p&gt;最后的结果会是： &lt;br /&gt;
-   list1 = [10, &#39;a&#39;]&lt;br /&gt;
-   list2 = [123] &lt;br /&gt;
-   list3 = [10, &#39;a&#39;]&lt;br /&gt;
-   list1和list3使用的是同一个列表，只有list2，重新传入了一个list，所以是使用的传入的list。&lt;/p&gt;
-&lt;ol&gt;
+list1 = [10, &#39;a&#39;]&lt;br /&gt;
+list2 = [123] &lt;br /&gt;
+list3 = [10, &#39;a&#39;]&lt;br /&gt;
+list1和list3使用的是同一个列表，只有list2，重新传入了一个list，所以是使用的传入的list。&lt;/p&gt;
+&lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;type(x) 返回x的描述x的类型的type对象，，而isinstance(obj,class)，直接判断obj是否是class的实例，能作用于各种subclass，或者是新旧类型的类声明方式。而type(x)它不能对subclass起作用，对旧的类声明方式(class A:pass)也无作用，type(x)会返回&lt;type “instance”&gt;对象，与原类对象并不相等，新的类声明方式(class A(object):pass)是相等的，但是对于subclass也是不起作用的。&lt;/p&gt;
 &lt;/li&gt;

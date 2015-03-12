@@ -114,14 +114,12 @@ print "list1 = %s" % list1
 print "list2 = %s" % list2
 print "list3 = %s" % list3
 </code></pre>
-</li>
-</ol>
 <p>最后的结果会是： <br />
-   list1 = [10, 'a']<br />
-   list2 = [123] <br />
-   list3 = [10, 'a']<br />
-   list1和list3使用的是同一个列表，只有list2，重新传入了一个list，所以是使用的传入的list。</p>
-<ol>
+list1 = [10, 'a']<br />
+list2 = [123] <br />
+list3 = [10, 'a']<br />
+list1和list3使用的是同一个列表，只有list2，重新传入了一个list，所以是使用的传入的list。</p>
+</li>
 <li>
 <p>type(x) 返回x的描述x的类型的type对象，，而isinstance(obj,class)，直接判断obj是否是class的实例，能作用于各种subclass，或者是新旧类型的类声明方式。而type(x)它不能对subclass起作用，对旧的类声明方式(class A:pass)也无作用，type(x)会返回<type “instance”>对象，与原类对象并不相等，新的类声明方式(class A(object):pass)是相等的，但是对于subclass也是不起作用的。</p>
 </li>
