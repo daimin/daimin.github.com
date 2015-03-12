@@ -184,9 +184,13 @@ class MdReader:
         mddict = {}
         lines = mdcont.split("\n")
         metaslines = filter(lambda x:x is not None and x.strip() !='', lines[0:6])
-        mddict['title'], mddict['tags'], mddict['createdate'] = metaslines[0][metaslines[0].index(":") + 1:],\
+        try:
+            mddict['title'], mddict['tags'], mddict['createdate'] = metaslines[0][metaslines[0].index(":") + 1:],\
                                 metaslines[1][metaslines[1].index(":") + 1:],\
                                 metaslines[2][metaslines[2].index(":") + 1:]
+        except:
+            return None
+
         mddict['tags']    = mddict['tags'].split(",")
         mddict['content'] =  self.__process_cont("\n".join(lines[6:]))
         mddict['fname']   = mfl
