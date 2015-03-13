@@ -7,6 +7,18 @@
     <language>zh-cn</language>  
     <generator>sologd</generator>  
     <item>  
+		<title>计算机基础知识</title>  
+		<link>http://daimin.github.io//posts/jisuanji-jichu-zhishi.html</link>  
+		<description>&lt;ol&gt;
+&lt;li&gt;计算下100的反码是多少？&lt;pre&gt;&lt;code&gt;首先100的二机制是01100100，它的反码是10011011，因为是有符号的，那么这个数表示为：因为最高位是1，那么肯定是负数，将该数取反就是100，即01100100，然后负数要+1，也就是101，那么10011011也就是-101。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description>  
+		<author>daimin</author>  
+		<copyright></copyright>  
+		<pubDate>2015-03-13</pubDate>  
+    </item>  
+    <item>  
 		<title>python协程使用</title>  
 		<link>http://daimin.github.io//posts/pythono-xie-cheng-shi-yong.html</link>  
 		<description>&lt;p&gt;协程是一种比线程更轻量级的执行体。它不是有系统内核控制调度，而是自己协同调度。Python通过yield提供了对协程的基本支持，但是不完全。而第三方的gevent为Python提供了比较完善的协程支持。&lt;/p&gt;
@@ -719,7 +731,7 @@ output {
 		<pubDate>2014-03-02</pubDate>  
     </item>  
     <item>  
-		<title>python相关知识点总结</title>  
+		<title>python相关知识点整理</title>  
 		<link>http://daimin.github.io//posts/python-xiang-guan-zhi-shi-dian-zong-jie.html</link>  
 		<description>&lt;ol&gt;
 &lt;li&gt;
@@ -879,7 +891,26 @@ print &#34;{}=&amp;gt;{}&#34;.format(idx, it)
     3=&amp;gt;4
     4=&amp;gt;22
     5=&amp;gt;5
-&lt;/code&gt;&lt;/pre&gt;</description>  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;inspect提供自省功能&lt;/p&gt;
+&lt;p&gt;(1).对是否是模块，框架，函数等进行类型检查。&lt;/p&gt;
+&lt;p&gt;(2).获取源码&lt;/p&gt;
+&lt;p&gt;(3).获取类或函数的参数的信息&lt;/p&gt;
+&lt;p&gt;(4).解析堆栈&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;inspect.stack() # 得到当前代码的调用堆栈
+is{module|class|function|method|builtin}(obj): #检查对象是否为模块、类、函数、方法、内建函数或方法。
+isroutine(obj): #用于检查对象是否为函数、方法、内建函数或方法等等可调用类型。用这个方法会比多个is*()更方便，不过它的实现仍然是用了多个is*()。
+getmembers(object[, predicate]):# dir函数的升级版本
+getmodule # 它返回object的定义所在的模块对象。
+# 此外还可以返回源码
+get{file|sourcefile}(object): #获取object的定义所在的模块的文件名|源代码文件名
+getargvalues(frame): # 仅用于栈帧，获取栈帧中保存的该次函数调用的参数值，返回元组
+#... 还有很多自省相关的函数
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description>  
 		<author>daimin</author>  
 		<copyright></copyright>  
 		<pubDate>2014-02-14</pubDate>  

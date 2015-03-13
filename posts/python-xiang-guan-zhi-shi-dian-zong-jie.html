@@ -7,11 +7,11 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; minimum-scale=1.0; user-scalable=no;" />
     <meta name="format-detection" content="telephone=no" />
-    <meta name="keywords" content="python相关知识点总结" />
+    <meta name="keywords" content="python相关知识点整理" />
     <meta name="description" content="operator.itemgetter函数，它的值指名从第几个元素操作比如:a = [('a',1)..." />
     <link rel="shortcut icon" href="/favicon.ico" />
 
-    <title>python相关知识点总结 | 茶瓯葱丝</title>
+    <title>python相关知识点整理 | 茶瓯葱丝</title>
     <link rel="stylesheet" type="text/css" href="/styles/style.css">
     <link rel="Stylesheet" type="text/css" href="/js/prettify/desert.css" />
     <link rel="stylesheet" type="text/css" href="/styles/bootstrap-jian.css">
@@ -33,7 +33,7 @@
 <div id="wrapper">
 <div id="content" class="index">
      
-<h2 class="post-title">python相关知识点总结</h2>
+<h2 class="post-title">python相关知识点整理</h2>
 <div class="cnt">
 <ol>
 <li>
@@ -194,6 +194,25 @@ print "{}=&gt;{}".format(idx, it)
     4=&gt;22
     5=&gt;5
 </code></pre>
+<ol>
+<li>
+<p>inspect提供自省功能</p>
+<p>(1).对是否是模块，框架，函数等进行类型检查。</p>
+<p>(2).获取源码</p>
+<p>(3).获取类或函数的参数的信息</p>
+<p>(4).解析堆栈</p>
+<pre><code>inspect.stack() # 得到当前代码的调用堆栈
+is{module|class|function|method|builtin}(obj): #检查对象是否为模块、类、函数、方法、内建函数或方法。
+isroutine(obj): #用于检查对象是否为函数、方法、内建函数或方法等等可调用类型。用这个方法会比多个is*()更方便，不过它的实现仍然是用了多个is*()。
+getmembers(object[, predicate]):# dir函数的升级版本
+getmodule # 它返回object的定义所在的模块对象。
+# 此外还可以返回源码
+get{file|sourcefile}(object): #获取object的定义所在的模块的文件名|源代码文件名
+getargvalues(frame): # 仅用于栈帧，获取栈帧中保存的该次函数调用的参数值，返回元组
+#... 还有很多自省相关的函数
+</code></pre>
+</li>
+</ol>
 </dir>
 <!-- Duoshuo Comment BEGIN -->
 	<div class="ds-thread"></div>

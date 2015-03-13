@@ -1,4 +1,4 @@
-title:python相关知识点总结
+title:python相关知识点整理
 
 tags:python
 
@@ -141,4 +141,25 @@ os.walk返回3个值，root、dirs、files，root是当前遍历的相对根目�
         3=>4
         4=>22
         5=>5
+        
+26. inspect提供自省功能
+
+    (1).对是否是模块，框架，函数等进行类型检查。
+
+    (2).获取源码
+
+    (3).获取类或函数的参数的信息
+
+    (4).解析堆栈
+    
+        inspect.stack() # 得到当前代码的调用堆栈
+        is{module|class|function|method|builtin}(obj): #检查对象是否为模块、类、函数、方法、内建函数或方法。
+        isroutine(obj): #用于检查对象是否为函数、方法、内建函数或方法等等可调用类型。用这个方法会比多个is*()更方便，不过它的实现仍然是用了多个is*()。
+        getmembers(object[, predicate]):# dir函数的升级版本
+        getmodule # 它返回object的定义所在的模块对象。
+        # 此外还可以返回源码
+        get{file|sourcefile}(object): #获取object的定义所在的模块的文件名|源代码文件名
+        getargvalues(frame): # 仅用于栈帧，获取栈帧中保存的该次函数调用的参数值，返回元组
+        #... 还有很多自省相关的函数
+        
 
