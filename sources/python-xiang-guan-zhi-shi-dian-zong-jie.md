@@ -134,7 +134,7 @@ os.walk返回3个值，root、dirs、files，root是当前遍历的相对根目�
         for idx, it in enumerate(l):
         print "{}=>{}".format(idx, it)
    
-   output:
+    output:
        
         0=>1
         1=>2
