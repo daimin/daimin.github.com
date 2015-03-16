@@ -115,6 +115,7 @@ os.walk返回3个值，root、dirs、files，root是当前遍历的相对根目�
         from __future__ import unicode_literals # 默认字符串都是unicode的了
         from __future__ import print_function # print语句现在是一个函数
         from __future__ import division # '/'除法现在是浮点除
+        from __future__ import absolute_import # 要使用绝对导入，而不能使用相对导入的方式
 
 20. `__builtins__`是对内建模块的引用，python2.*的`__builtin__`或python3.x的`builtins`。
 
