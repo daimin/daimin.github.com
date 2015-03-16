@@ -142,7 +142,8 @@ os.walk返回3个值，root、dirs、files，root是当前遍历的相对根目�
         3=>4
         4=>22
         5=>5
-        
+
+  
 26. inspect提供自省功能
 
     (1).对是否是模块，框架，函数等进行类型检查。
@@ -162,6 +163,7 @@ os.walk返回3个值，root、dirs、files，root是当前遍历的相对根目�
         get{file|sourcefile}(object): #获取object的定义所在的模块的文件名|源代码文件名
         getargvalues(frame): # 仅用于栈帧，获取栈帧中保存的该次函数调用的参数值，返回元组
         #... 还有很多自省相关的函数
+
 
 27. requests的编码 
 
