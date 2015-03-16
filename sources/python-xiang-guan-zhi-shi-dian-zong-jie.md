@@ -162,5 +162,11 @@ os.walk返回3个值，root、dirs、files，root是当前遍历的相对根目�
         get{file|sourcefile}(object): #获取object的定义所在的模块的文件名|源代码文件名
         getargvalues(frame): # 仅用于栈帧，获取栈帧中保存的该次函数调用的参数值，返回元组
         #... 还有很多自省相关的函数
-        
+
+27. requests的编码 
+
+        r = request.get("http://xxx.com")
+        print r.encoding
+
+    r.encoding 可以得到requests猜测的response的数据的编码，但是可能不正确，你可以自己检查response的编码，然后设置r.encoding='xxx'，这样下一次调用r.text的时候就会使用r.encoding的编码将r.text的值转换为当前python解释器所用的字符编码的字符。
 
