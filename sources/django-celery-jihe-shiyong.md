@@ -4,7 +4,7 @@ tag:django,celery
 
 date:2015-03-20
 
->>>自行安装django,celery,flower,rabbitmq,mysql 
+>自行安装django,celery,flower,rabbitmq,mysql 
 
          
 1. 创建django项目

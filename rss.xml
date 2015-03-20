@@ -10,11 +10,7 @@
 		<title>django和celery简单结合使用</title>  
 		<link>http://daimin.github.io//posts/django-celery-jihe-shiyong.html</link>  
 		<description>&lt;blockquote&gt;
-&lt;blockquote&gt;
-&lt;blockquote&gt;
 &lt;p&gt;自行安装django,celery,flower,rabbitmq,mysql &lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/blockquote&gt;
 &lt;/blockquote&gt;
 &lt;ol&gt;
 &lt;li&gt;
