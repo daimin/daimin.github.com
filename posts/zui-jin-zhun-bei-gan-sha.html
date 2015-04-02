@@ -81,7 +81,7 @@ function addClass(obj, cls) {
 function render_pretty(){
     var pres = document.getElementsByTagName("pre");
     for(var i = 0, len = pres.length; i < len; i++){
-        addClass(pres[i], "prettyprint");
+        addClass(pres[i], "prettyprint linenumber");
     }
     prettyPrint();
 
