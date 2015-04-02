@@ -56,6 +56,23 @@ CONTAINER ID        IMAGE                   COMMAND             CREATED         
 docker run -i -t -p 40080:80 learn/tutorial bash # 映射vm的40080到learn/tutorial容器的80端口。
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;ssh映射&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;docker容器中安装ssh服务，并启动。commit后退出。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;boot2docker ssh -L 50080:localhost:40080 -L 50443:localhost:40443 -L50022:localhost:40022&lt;/code&gt;，映射多个ip到localhost，并启动vm。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;docker run -i -t -p 40080:80 -p 40443:443 -p 40022:22 daimin/test bash&lt;/code&gt;，映射端口方式启动docker容器，这个时候40022映射到了容器的22端口，也就是ssh端口，然后开启ssh服务。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在mac后台&lt;code&gt;ssh -p 50022 root@localhost&lt;/code&gt;，发现提示输入用户密码，然后成功登录。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
 &lt;/ol&gt;</description>  
 		<author>daimin</author>  
 		<copyright></copyright>  

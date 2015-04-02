@@ -42,6 +42,17 @@ date:2015-04-01
         boot2docker ssh -L 50080:localhost:40080  #这条命令可以在  boot2docker-vm  运行时执行，建立多个不同的映射就是执行多次，映射本机的50080到vm的40080
 
         docker run -i -t -p 40080:80 learn/tutorial bash # 映射vm的40080到learn/tutorial容器的80端口。
+        
+11. ssh映射
+
+     * docker容器中安装ssh服务，并启动。commit后退出。
+     
+     * `boot2docker ssh -L 50080:localhost:40080 -L 50443:localhost:40443 -L50022:localhost:40022`，映射多个ip到localhost，并启动vm。
+     
+     * `docker run -i -t -p 40080:80 -p 40443:443 -p 40022:22 daimin/test bash`，映射端口方式启动docker容器，这个时候40022映射到了容器的22端口，也就是ssh端口，然后开启ssh服务。
+     
+     * 在mac后台`ssh -p 50022 root@localhost`，发现提示输入用户密码，然后成功登录。
+     
 
     
 
