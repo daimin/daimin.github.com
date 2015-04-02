@@ -173,3 +173,32 @@ os.walk返回3个值，root、dirs、files，root是当前遍历的相对根目�
 
     r.encoding 可以得到requests猜测的response的数据的编码，但是可能不正确，你可以自己检查response的编码，然后设置r.encoding='xxx'，这样下一次调用r.text的时候就会使用r.encoding的编码将r.text的值转换为当前python解释器所用的字符编码的字符。
 
+28. hashlib.md5编码错误
+    
+    `hashlib.md5(u"中文字符")`是会报错的`UnicodeEncodeError`  
+    这个时候只要将需要hash的字符串先encode一下就行了。
+    
+29. collections.defaultdict
+
+    defaultdict(default_factory), 这样default的每个一value都是一个default_factory类型   
+    如：
+    
+        s = [('yellow', 1), ('blue', 2), ('yellow', 3), ('blue', 4), ('red', 1)]
+
+        # defaultdict
+        d = collections.defaultdict(list)
+        for k, v in s:
+            d[k].append(v)
+        print d
+        # output: defaultdict(<type 'list'>, {'blue': [2, 4], 'red': [1], 'yellow': [1, 3]})
+        
+        # 类似这样使用dict
+        g = {}
+        for k, v in s:
+        g.setdefault(k, []).append(v)
+        print g
+        # output: {'blue': [2, 4], 'red': [1], 'yellow': [1, 3]}
+        
+    defaultdict会比dict的setdefault的速度要快
+            
+            

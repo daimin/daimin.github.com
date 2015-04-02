@@ -7,6 +7,61 @@
     <language>zh-cn</language>  
     <generator>sologd</generator>  
     <item>  
+		<title>mac上docker的安装和简单使用</title>  
+		<link>http://daimin.github.io//posts/docker-anzhuang-shiyong.html</link>  
+		<description>&lt;blockquote&gt;
+&lt;p&gt;本来在centos上面安装docker，本来都成功了，但是运行不起来，发生如下错误：
+&lt;code&gt;FATA[0000] inappropriate ioctl for device&lt;/code&gt;，应该是内核版本太低，想升级内核，结果发现使用的vps无法升级内核，无奈只能在mbp上面安装了。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;安装boot2docker，官网网速太慢，在百度网盘上面找了一个1.4.1版本的，速度飞快，链接在&lt;a href=&#34;http://pan.baidu.com/s/1eQxouwa&#34;&gt;这里&lt;/a&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;安装好boot2docker，然后执行&lt;code&gt;boot2docker init&lt;/code&gt;就行，初始化启动成功后，使用&lt;code&gt;boot2docker ssh&lt;/code&gt;进入虚拟机(boot2docker采用virualbox)，可以在virualbox看到我们启动的主机。&lt;code&gt;export DOCKER_HOST=tcp://$(boot2docker ip 2&amp;gt;/dev/null):2375&lt;/code&gt;在本机配置docker的host。&lt;/p&gt;
+&lt;p&gt;Mac OS X -- boot2docker -- container 三者之间的关系
+&lt;img alt=&#34;&#34; src=&#34;http://vaga-static.qiniudn.com/docker-install-800x417.png&#34; /&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;进入虚拟机后其实docker已经启动了，如果没有执行&lt;code&gt;docker -d&lt;/code&gt;。执行&lt;code&gt;docker images&lt;/code&gt;会看到我们的docker镜像，如果没有，执行&lt;code&gt;docker pull learn/tutorial&lt;/code&gt;，这样会拉取一个教程性质的镜像。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;docker镜像其实也是类似于虚拟机的沙盒环境，不过肯定更轻量级，而且性能损耗更少。类似于ubuntu环境，可以用 &lt;code&gt;apt-get install&lt;/code&gt; 来安装软件。&lt;code&gt;docker run learn/tutorial echo hello world&lt;/code&gt;在指定的image上执行命令，不过这个是没有交互的，比如在镜像安装软件必须&lt;code&gt;docker run learn/tutorial apt-get install ping -y&lt;/code&gt;。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;可以直接进入docker镜像命令行，&lt;code&gt;docker run -i -t  learn/tutorial  sh&lt;/code&gt;(其实就是在镜像中运行sh命令而已)。在docker安装服务器上执行&lt;code&gt;docker ps&lt;/code&gt;可以看到运行的实例(容器)。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;docker search ubuntu&lt;/code&gt; 查询于ubuntu相关的镜像，也可以查询其它的镜像，如：&lt;code&gt;docker search centos&lt;/code&gt;等等。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在运行该镜像的容器中安装了软件，需要把新的内容保存到该镜像中去，否则下次启动该镜像又恢复成原样&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;uqiu@localhost ~&amp;gt; docker ps -l
+CONTAINER ID        IMAGE                   COMMAND             CREATED             STATUS              PORTS               NAMES
+95903c1a2bf7        learn/tutorial:latest   /bin/bash           6 minutes ago       Up 5 minutes        80/tcp              thirsty_colden
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;看到容器的 ID，然后执行&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;docker commit 95903c1a2bf7 learn/tutorial:latest&lt;/code&gt;  #把当前容器的修改提交到镜像 learn/tutorial  中去。记住要在退出之前提交。镜像名其实是可以指定为其它名称的，只是下次进来时，需要使用修改后的镜像名才能进入最近的修改。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;检查容器的运行信息，&lt;code&gt;docker inspect 0911&lt;/code&gt;，最后的参数是容器的id前4位。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;docker push learn/ping&lt;/code&gt;，发布自己的镜像，learn/ping是镜像名。前提是在&lt;a href=&#34;https://hub.docker.com/&#34;&gt;https://hub.docker.com/&lt;/a&gt;注册自己的帐号。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;端口映射&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;boot2docker ssh -L 50080:localhost:40080  #这条命令可以在  boot2docker-vm  运行时执行，建立多个不同的映射就是执行多次，映射本机的50080到vm的40080
+
+docker run -i -t -p 40080:80 learn/tutorial bash # 映射vm的40080到learn/tutorial容器的80端口。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description>  
+		<author>daimin</author>  
+		<copyright></copyright>  
+		<pubDate>2015-04-01</pubDate>  
+    </item>  
+    <item>  
 		<title>在iTerm2中的vim使用solarized配色</title>  
 		<link>http://daimin.github.io//posts/iterm2-vim-solarized-shiyong.html</link>  
 		<description>&lt;blockquote&gt;
@@ -1065,6 +1120,33 @@ getargvalues(frame): # 仅用于栈帧，获取栈帧中保存的该次函数调
 print r.encoding
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;r.encoding 可以得到requests猜测的response的数据的编码，但是可能不正确，你可以自己检查response的编码，然后设置r.encoding=&#39;xxx&#39;，这样下一次调用r.text的时候就会使用r.encoding的编码将r.text的值转换为当前python解释器所用的字符编码的字符。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;hashlib.md5编码错误&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;hashlib.md5(u&#34;中文字符&#34;)&lt;/code&gt;是会报错的&lt;code&gt;UnicodeEncodeError&lt;/code&gt;&lt;br /&gt;
+这个时候只要将需要hash的字符串先encode一下就行了。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;collections.defaultdict&lt;/p&gt;
+&lt;p&gt;defaultdict(default_factory), 这样default的每个一value都是一个default_factory类型 &lt;br /&gt;
+如：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;s = [(&#39;yellow&#39;, 1), (&#39;blue&#39;, 2), (&#39;yellow&#39;, 3), (&#39;blue&#39;, 4), (&#39;red&#39;, 1)]
+
+# defaultdict
+d = collections.defaultdict(list)
+for k, v in s:
+    d[k].append(v)
+print d
+# output: defaultdict(&amp;lt;type &#39;list&#39;&amp;gt;, {&#39;blue&#39;: [2, 4], &#39;red&#39;: [1], &#39;yellow&#39;: [1, 3]})
+
+# 类似这样使用dict
+g = {}
+for k, v in s:
+g.setdefault(k, []).append(v)
+print g
+# output: {&#39;blue&#39;: [2, 4], &#39;red&#39;: [1], &#39;yellow&#39;: [1, 3]}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;defaultdict会比dict的setdefault的速度要快&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;</description>  
 		<author>daimin</author>  
