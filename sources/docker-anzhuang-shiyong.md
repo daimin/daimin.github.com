@@ -51,9 +51,38 @@ date:2015-04-01
      
      * `docker run -i -t -p 40080:80 -p 40443:443 -p 40022:22 daimin/test bash`，映射端口方式启动docker容器，这个时候40022映射到了容器的22端口，也就是ssh端口，然后开启ssh服务。
      
-     * 在mac后台`ssh -p 50022 root@localhost`，发现提示输入用户密码，然后成功登录。
+     * 在控制台输入`ssh -p 50022 root@localhost`，发现提示输入用户密码，然后成功登录。
      
 
+12. 用Dockerfile制作我们的image
+
+    编写Dockerfile
     
+        # sshd
+        #
+        # VERSION 0.0.1
 
+        FROM centos:latest
+        MAINTAINER Dai Min "daimin@mama.cn"
 
+        # make sure the package respository is up to date
+        RUN yum clean all
+        RUN yum install -y openssh-server   # 安装ssh服务端
+        RUN sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config # 修改sshd_config文件为密码登录，当然你可以自己修改为公钥登录
+        RUN sed -i 's/PubkeyAuthentication yes/PubkeyAuthentication no/g' /etc/ssh/sshd_config  # 关闭公钥登录
+        RUN sed -i 's/UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config # 必须要关闭，否则登录后马上掉线
+
+        RUN mkdir /var/run/sshd  # ssh运行目录
+        RUN echo "root:123" | chpasswd  # 修改root密码
+        
+        # 下面这两句比较特殊，在centos6上必须要有，否则创建出来的容器sshd不能登录  
+        RUN ssh-keygen -t dsa -f /etc/ssh/ssh_host_dsa_key
+        RUN ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key
+
+        # Expose port 22 from the container to the host
+        EXPOSE 22
+        CMD ["/usr/sbin/sshd", "-D"]  # 运行ssh服务
+        
+    然后进入到Dockerfile所在目录，执行`docker build -t eg_sshd .`，等待命令成功，`docker run -d -P --name=mytest eg_ssh`，在后台运行容器。
+    
+    然后用`sudo docker inspect mytest`查看容器信息，找到ip，如果容器ip连接不了，就使用其映射到的本机ip，如 `ssh -p 40022 root@127.0.0.1`，发现可以登录了。 

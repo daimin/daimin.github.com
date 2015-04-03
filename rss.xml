@@ -69,9 +69,40 @@ docker run -i -t -p 40080:80 learn/tutorial bash # 映射vm的40080到learn/tuto
 &lt;p&gt;&lt;code&gt;docker run -i -t -p 40080:80 -p 40443:443 -p 40022:22 daimin/test bash&lt;/code&gt;，映射端口方式启动docker容器，这个时候40022映射到了容器的22端口，也就是ssh端口，然后开启ssh服务。&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;在mac后台&lt;code&gt;ssh -p 50022 root@localhost&lt;/code&gt;，发现提示输入用户密码，然后成功登录。&lt;/p&gt;
+&lt;p&gt;在控制台输入&lt;code&gt;ssh -p 50022 root@localhost&lt;/code&gt;，发现提示输入用户密码，然后成功登录。&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;用Dockerfile制作我们的image&lt;/p&gt;
+&lt;p&gt;编写Dockerfile&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# sshd
+#
+# VERSION 0.0.1
+
+FROM centos:latest
+MAINTAINER Dai Min &#34;daimin@mama.cn&#34;
+
+# make sure the package respository is up to date
+RUN yum clean all
+RUN yum install -y openssh-server   # 安装ssh服务端
+RUN sed -i &#39;s/PasswordAuthentication no/PasswordAuthentication yes/g&#39; /etc/ssh/sshd_config # 修改sshd_config文件为密码登录，当然你可以自己修改为公钥登录
+RUN sed -i &#39;s/PubkeyAuthentication yes/PubkeyAuthentication no/g&#39; /etc/ssh/sshd_config  # 关闭公钥登录
+RUN sed -i &#39;s/UsePAM yes/UsePAM no/g&#39; /etc/ssh/sshd_config # 必须要关闭，否则登录后马上掉线
+
+RUN mkdir /var/run/sshd  # ssh运行目录
+RUN echo &#34;root:123&#34; | chpasswd  # 修改root密码
+
+# 下面这两句比较特殊，在centos6上必须要有，否则创建出来的容器sshd不能登录  
+RUN ssh-keygen -t dsa -f /etc/ssh/ssh_host_dsa_key
+RUN ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key
+
+# Expose port 22 from the container to the host
+EXPOSE 22
+CMD [&#34;/usr/sbin/sshd&#34;, &#34;-D&#34;]  # 运行ssh服务
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;然后进入到Dockerfile所在目录，执行&lt;code&gt;docker build -t eg_sshd .&lt;/code&gt;，等待命令成功，&lt;code&gt;docker run -d -P --name=mytest eg_ssh&lt;/code&gt;，在后台运行容器。&lt;/p&gt;
+&lt;p&gt;然后用&lt;code&gt;sudo docker inspect mytest&lt;/code&gt;查看容器信息，找到ip，如果容器ip连接不了，就使用其映射到的本机ip，如 &lt;code&gt;ssh -p 40022 root@127.0.0.1&lt;/code&gt;，发现可以登录了。 &lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;</description>  
 		<author>daimin</author>  
