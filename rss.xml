@@ -7,8 +7,8 @@
     <language>zh-cn</language>  
     <generator>sologd</generator>  
     <item>  
-		<title>php-resque的安装和使用</title>  
-		<link>http://daimin.github.io//posts/phpstorm配置xdebug调试.html</link>  
+		<title>phpstorm配置xdebug调试</title>  
+		<link>http://daimin.github.io//posts/phpstorm-peizhi-xdebug-tiaoshi.html</link>  
 		<description>&lt;h1&gt;phpstorm配置xdebug调试&lt;/h1&gt;
 &lt;ol&gt;
 &lt;li&gt;安装xdebug，记得xdebug的版本和php的版本一致。&lt;/li&gt;

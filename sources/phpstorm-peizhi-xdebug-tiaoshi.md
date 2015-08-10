@@ -1,4 +1,4 @@
-title:php-resque的安装和使用
+title:phpstorm配置xdebug调试
 
 tags:php,phpstorm,xdebug
 
