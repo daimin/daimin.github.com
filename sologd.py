@@ -23,6 +23,8 @@ from xml.dom import minidom
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
+template = 'default'
+
 ##网站配置
 CONF = {
       "keywords"   : u"java,python,php,nodejs,golang,linux,bae,web.py,linux,nginx,android,游戏,编程",
@@ -37,7 +39,7 @@ CONF = {
 
 app_root = os.getcwd()
 
-template_dir = os.path.join(app_root, 'templates/')
+template_dir = os.path.join(app_root, 'templates/%s/' % template)
 
 lookup = TemplateLookup(
                         directories     = [template_dir],
@@ -61,11 +63,11 @@ class Util:
         act = 'a' if a is True else 'w'
         with open(fname.decode('utf-8'), act) as fhandler:
             fhandler.write(data)
- 
+
     @staticmethod
     def change_ext(fname, cext):
         return fname[:fname.rindex('.')] + cext
-    
+
     @staticmethod
     def strip_tag(html):
         html = html.strip()
@@ -76,13 +78,13 @@ class Util:
         parse.feed(html)
         parse.close()
         return "".join(result)
-    
+
     @staticmethod
     def load_links_xml():
         def get_ele_val(node, name):
             sms = node.getElementsByTagName(name)
             if sms is not None and len(sms) > 0:
-                return sms[0].childNodes[0].nodeValue  
+                return sms[0].childNodes[0].nodeValue
             return None
         cates = {'42652': u"高手博客", '42653': '技术网站'}
         with open("MyBlogData.xml") as xf:
@@ -107,29 +109,29 @@ class Util:
                     <NewWindow>0</NewWindow>
                     <UpdateTime>2009-11-07T10:49:46.673</UpdateTime>
                     '''
-            
+
 class HTMLObj(object):
     dir = '/'
-    
+
     def __init__(self, **kwargs):
         self.title = kwargs['title'] if 'title' in kwargs else ''
         self.url   = self.dir + kwargs['url'] if 'url' in kwargs else ''
         self.date  = kwargs['date'] if 'date' in kwargs else ''
-        
+
 class Post(HTMLObj):
     dir = '/posts/'
     def __init__(self, **kwargs):
         super(Post, self).__init__(**kwargs)
         self.cont  = kwargs['cont'] if 'cont' in kwargs else ''
         self.tags  = kwargs['tags'] if 'tags' in kwargs else []
-        
+
     def get_description(self):
-        cont, size = Util.strip_tag(self.cont), 50       
+        cont, size = Util.strip_tag(self.cont), 50
         cont = cont.replace("\n", "")
         if len(cont) > size:
-            cont = "%s..." % cont[0: 50]        
+            cont = "%s..." % cont[0: 50]
         return cont
-    
+
 class Tag(HTMLObj):
     dir = '/tags/'
     def __init__(self, **kwargs):
@@ -145,14 +147,14 @@ class Link(HTMLObj):
 
     def __str__(self):
         return 'title=%s, type=%s, url=%s, desc=%s' %(self.title, self.type, self.url, self.desc)
-        
-        
+
+
 ### 侧边栏显示的POST ##############################################################
 side_posts = [
         Post(title="留言", url="liu-yan-ban.html")
               ]
 ###################################################################################
-    
+
 class MdReader:
     """markdown文件读取器
     """
@@ -162,7 +164,7 @@ class MdReader:
         self.links      = []
         self.toptags   = None
         self.postbydate = None
-        
+
     def get_mdfiles(self):
         fls = os.listdir(sources_dir)
         for mfl in fls:
@@ -173,11 +175,11 @@ class MdReader:
                 self.mdobjs.append(self.__parse(mdcont, mfl))
             else:
                 self.__parse_links(mdcont)
-        return self.mdobjs 
-            
+        return self.mdobjs
+
     def __process_cont(self, cont):
         return markdown.markdown(cont)
-            
+
     def __parse(self, mdcont, mfl):
         ## 先读前面6行
 
@@ -209,22 +211,22 @@ class MdReader:
             url   = metas[2] if len(metas) > 2 else u''
             desc  = metas[3] if len(metas) > 3 else u''
             self.links.append(Link(type=type_, title=title, url=url, desc=desc))
-            
-    
+
+
     def get_top5tags(self):
         """拿到文章数排序前5的标签
         """
         if self.toptags is not None:
             return self.toptags[0:5]
-        
+
         self.toptags = []
-                    
-        toptags = self.get_tag_count()        
+
+        toptags = self.get_tag_count()
         toptags = sorted(toptags.items(), key=lambda x:x[1], reverse=True)
         for t in toptags:
             self.toptags.append(Tag(title=t[0], url="%s.html" % t[0]))
         return self.toptags[0:5]
-    
+
     def get_tag_count(self):
         tagscount = {}
         for m in self.metas:
@@ -236,8 +238,8 @@ class MdReader:
                 else:
                     tagscount[t] = 1
         return tagscount
-    
-    
+
+
     def get_posts_order_date(self, o=False):
         """根据创建日期排序
         ###o=True则是顺序，False是倒序
@@ -250,7 +252,7 @@ class MdReader:
         for p in sposts:
             self.postbydate.append(Post(date=p['createdate'], title=p['title'], cont=p['content'], url=Util.change_ext(p['fname'], '.html')))
         return self.postbydate
-    
+
     def get_tags_posts(self, o=False):
         """得到各标签的文章排序
         """
@@ -266,13 +268,13 @@ class MdReader:
         ###排序
         return dict(map(lambda x:(x[0], sorted(x[1], key=lambda x:x['createdate'], reverse=(not o))), tagsposts.items()))
 
-    
-         
+
+
 class StaticBase():
-    
+
     _MDreader     = None
-    
-    
+
+
     def __init__(self):
         ## 循环将CONF中的值赋给当前对象
         map(lambda x:setattr(self, x[0], x[1]), CONF.items())
@@ -281,8 +283,8 @@ class StaticBase():
         self._staticpath = None
         self._template   = None
         self._type       = None
-        
-        
+
+
     def run(self):
         if StaticBase._MDreader is None:
             StaticBase._MDreader = MdReader()
@@ -290,16 +292,16 @@ class StaticBase():
         self._mdreader = StaticBase._MDreader
         self._parse_data()
         self._static();
-        
+
     def get_template(self):
         if self._template is None:  return None
         return  lookup.get_template(self._template)
-        
+
     def _parse_data(self):
         global side_posts
         self.sidetags  = self._mdreader.get_top5tags()
         self.sideposts = side_posts
-    
+
     def _static(self):
         """静态化
         """
@@ -309,18 +311,18 @@ class StaticBase():
             if self._type == 'post':
                 for (sp, cp) in self._staticpath:
                     self.post        = Post(title=cp['title'], cont=cp['content'], date=cp['createdate'], url=sp)
-                    self.title       = "%s | %s" % (self.post.title, CONF['title']) 
+                    self.title       = "%s | %s" % (self.post.title, CONF['title'])
                     self.keywords    = self.post.title
                     self.description = self.post.get_description()
                     Util.write_file(sp, tempobj.render(**self.__dict__))
             elif self._type == 'tag':
                 for (sf, (tagtitle, tagposts)) in self._staticpath:
                     self.posts = [Post(title=tp['title'], date=tp['createdate'], url=Util.change_ext(tp['fname'], '.html')) for tp in tagposts]
-                    self.title = "%s | %s" % (tagtitle, CONF['title']) 
+                    self.title = "%s | %s" % (tagtitle, CONF['title'])
                     Util.write_file(sf, tempobj.render(**self.__dict__))
-                
+
         else:
-            Util.write_file(self._staticpath, tempobj.render(**self.__dict__)) 
+            Util.write_file(self._staticpath, tempobj.render(**self.__dict__))
 
 
 
@@ -328,22 +330,22 @@ class StaticIndex(StaticBase):
 
     def __init__(self):
         StaticBase.__init__(self)
-        
-        
+
+
     def _parse_data(self):
         StaticBase._parse_data(self)
-        self._staticpath = os.path.join(app_root + HTMLObj.dir , 'index.html') 
+        self._staticpath = os.path.join(app_root + HTMLObj.dir , 'index.html')
         self._template   = 'index.html'
         self.posts = self._mdreader.get_posts_order_date(False)
-        
-        
+
+
 class StaticPost(StaticBase):
 
     def __init__(self):
         StaticBase.__init__(self)
         self._template   = 'post.html'
         self._type       = 'post'
-        
+
     def _parse_data(self):
         StaticBase._parse_data(self)
         self._staticpath = []
@@ -355,7 +357,7 @@ class StaticTagIndex(StaticBase):
     def __init__(self):
         StaticBase.__init__(self)
         self._template   = 'tagIndex.html'
-        
+
     def _parse_data(self):
         StaticBase._parse_data(self)
         tagscount = self._mdreader.get_tag_count()
@@ -365,40 +367,40 @@ class StaticTagIndex(StaticBase):
         self.tags = sorted(self.tags, key=lambda x:x.count, reverse=True)
 
         self._staticpath = os.path.join(app_root + Tag.dir, 'index.html')
-            
+
 class StaticTag(StaticBase):
 
     def __init__(self):
         StaticBase.__init__(self)
         self._template   = 'tag.html'
         self._type       = 'tag'
-        
+
     def _parse_data(self):
         StaticBase._parse_data(self)
         self._staticpath = []
         for (title, posts) in self._mdreader.get_tags_posts(False).items():
             self._staticpath.append((os.path.join(app_root + Tag.dir, title + ".html"), (title, posts)))
-            
+
 class StaticSitemap(StaticBase):
 
     def __init__(self):
         StaticBase.__init__(self)
         self._template   = 'sitemap.xml'
-        
+
     def _parse_data(self):
         StaticBase._parse_data(self)
-        self._staticpath = os.path.join(app_root + HTMLObj.dir , 'sitemap.xml') 
+        self._staticpath = os.path.join(app_root + HTMLObj.dir , 'sitemap.xml')
         self.posts = self._mdreader.get_posts_order_date(False)
-            
+
 class StaticRss(StaticBase):
 
     def __init__(self):
         StaticBase.__init__(self)
         self._template   = 'rss.xml'
-        
+
     def _parse_data(self):
         StaticBase._parse_data(self)
-        self._staticpath = os.path.join(app_root + HTMLObj.dir , 'rss.xml') 
+        self._staticpath = os.path.join(app_root + HTMLObj.dir , 'rss.xml')
         self.posts = self._mdreader.get_posts_order_date(False)
 
 class StaticLinks(StaticBase):
@@ -418,7 +420,7 @@ class StaticLinks(StaticBase):
             else:
                 typed_links[link.type] = [ link ]
 
-        typed_links = sorted(typed_links.iteritems(), key=lambda x:x[0], reverse=False)    
+        typed_links = sorted(typed_links.iteritems(), key=lambda x:x[0], reverse=False)
         self.links = typed_links
 
         self._staticpath = os.path.join(app_root, 'links.html')
@@ -428,24 +430,24 @@ class StaticLinks(StaticBase):
 def main():
     staticIdx = StaticIndex()
     staticIdx.run()
-    
+
     staticPost = StaticPost()
     staticPost.run()
-    
+
     staticTagIdx = StaticTagIndex()
     staticTagIdx.run()
-    
+
     staticTag = StaticTag()
-    staticTag.run()   
-    
+    staticTag.run()
+
     staticSitemap = StaticSitemap()
-    staticSitemap.run()     
-    
+    staticSitemap.run()
+
     staticRss = StaticRss()
-    staticRss.run() 
+    staticRss.run()
 
     staticLinks = StaticLinks()
-    staticLinks.run() 
+    staticLinks.run()
 
 if __name__ == "__main__":
     start_time = time.time()
@@ -454,7 +456,3 @@ if __name__ == "__main__":
     end_time = time.time()
     print  u'############## 解析完成，花费【%f】秒 #############' % (end_time - start_time)
     #raw_input(u"按回车键退出...")
-    
-    
-    
-    
