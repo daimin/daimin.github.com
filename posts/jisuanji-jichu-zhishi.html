@@ -112,8 +112,8 @@ window.onload = function(){
 var dispatch = function() {
     q = document.getElementById("q");
     if (q.value != "") {
-        //"http://www.baidu.com/s?si=www.williamlong.info&cl=3&ct=2097152&tn=baidulocal&word="+wd
-        window.open('http://www.baidu.com/s?si=daimin.github.io&cl=3&ct=2097152&tn=bds&word=' + q.value, "_blank");
+        //window.open('http://www.baidu.com/s?si=daimin.github.io&cl=3&ct=2097152&tn=bds&word=' + q.value, "_blank");
+        window.open('https://www.google.com.hk/search?q=site:daimin.github.io/t ' + q.value + '&gws_rd=cr,ssl', '_blank');
         return false;
     } else {
         return false;
