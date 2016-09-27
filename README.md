@@ -28,6 +28,7 @@ github pages使用的是Jekyll引擎，如果你以一定的结构存放markdown
   * **index.html** 首页
   * **image** 图片目录
   * **CNAME** github配置CNAME 域名文件
+  * **run** `./run` 执行脚本，并提交到github的快捷命令脚本(Linux/OSX)
 
 ##感谢
 * 感谢python
