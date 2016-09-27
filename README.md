@@ -8,4 +8,4 @@ github pages使用的是Jekyll引擎，如果你以一定的结构存放markdown
 我使用python开发的，网站根据一定的结构组织，使用mako模板引擎，markdown文档放在一个指定的目录，然后执行以下python脚本就可以解析markdown文档并使用模板生成整个网站的内容了。
 
 对比我之前的网站，这个网站是全静态化的，速度上会有优势，而且文章和tag的URL更加的友好，总之我比较满意。
-网站地址：[http://blog.codecos.com](http://blog.codecos.com)，就是这篇文章所在。
+网站地址：[http://daimin.github.io](http://daimin.github.io)，就是这篇文章所在。
