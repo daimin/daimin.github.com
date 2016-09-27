@@ -15,19 +15,19 @@ github pages使用的是Jekyll引擎，如果你以一定的结构存放markdown
   
   ![](image/QQ20160927-0@2x.png)
 
-  * templates 是模板，可以修改页面
-  * tags是程序自动生成的标签
-  * styles css文件所在目录
-  * sources 我们书写的markdown文件
-  * sologd.py 处理脚本，通过执行`python sologd.py`生成博客html
-  * sitemap.xml 自动生成的网站地图
-  * rss.xml 自动生成的rss文件
-  * posts 生成的博客文章html文件
-  * links.html 生成的外链页面
-  * js js文件所在目录
-  * index.html 首页
-  * image 图片目录
-  * CNAME github配置CNAME 域名文件
+  * **templates** 是模板，可以修改页面
+  * **tags** 是程序自动生成的标签
+  * **styles** css文件所在目录
+  * **sources** 我们书写的markdown文件
+  * **sologd.py** 处理脚本，通过执行`python sologd.py`生成博客html
+  * **sitemap.xml** 自动生成的网站地图
+  * **rss.xml** 自动生成的rss文件
+  * **posts** 生成的博客文章html文件
+  * **links.html** 生成的外链页面
+  * **js** js文件所在目录
+  * **index.html** 首页
+  * **image** 图片目录
+  * **CNAME** github配置CNAME 域名文件
 
 ##感谢
 * 感谢python
