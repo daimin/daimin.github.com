@@ -51,12 +51,14 @@ sources_dir = os.path.join(app_root, 'sources/')
 
 
 class Util:
+    
     @staticmethod
     def read_file(f):
         cont = []
         with open ( f ) as fileHandle:
            return fileHandle.read()
         return ''
+
     @staticmethod
     def write_file(fname, data, a=False):
         ### 需要解码，默认中文是编码的
@@ -124,6 +126,7 @@ class Post(HTMLObj):
         super(Post, self).__init__(**kwargs)
         self.cont  = kwargs['cont'] if 'cont' in kwargs else ''
         self.tags  = kwargs['tags'] if 'tags' in kwargs else []
+        self.id_   = kwargs['id_'] if 'id_' in kwargs else ''
 
     def get_description(self):
         cont, size = Util.strip_tag(self.cont), 50
@@ -310,7 +313,7 @@ class StaticBase():
         if isinstance(self._staticpath, list):
             if self._type == 'post':
                 for (sp, cp) in self._staticpath:
-                    self.post        = Post(title=cp['title'], cont=cp['content'], date=cp['createdate'], url=sp)
+                    self.post        = Post(title=cp['title'], cont=cp['content'], date=cp['createdate'], url=sp, id_=cp['fname'][:cp['fname'].rfind('.')])
                     self.title       = "%s | %s" % (self.post.title, CONF['title'])
                     self.keywords    = self.post.title
                     self.description = self.post.get_description()
