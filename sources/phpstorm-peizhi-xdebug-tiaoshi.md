@@ -16,7 +16,7 @@ date:2015-08-07
         xdebug.remote_port = 9000
         xdebug.idekey = PHPSTORM
 
-其中remote_host 是指调试客户端的地址，即IDE所在的IP，同理remote_port 是客户端的端口，这两项在远程调试的情况下注意修改
+	其中remote_host 是指调试客户端的地址，即IDE所在的IP，同理remote_port 是客户端的端口，这两项在远程调试的情况下注意修改
         
 3. 打开phpStorm，进入File>Settings>PHP>Servers。 这里要填写服务器端的相关信息，name填localhost，host填localhost，port填80，debugger选XDebug。这里设置的是将要进行xdebug调试的服务器地址。在这之前请设置好php解释器。
 4. 进入File>Settings>PHP>Debug，看到XDebug选项卡，port填9000，其他默认。这里的port地址是你在php.ini中xdebug配置中的`xdebug.remote_port`的值。

@@ -38,7 +38,9 @@
 <h1>phpstorm配置xdebug调试</h1>
 <ol>
 <li>安装xdebug，记得xdebug的版本和php的版本一致。</li>
-<li>配置php.ini中关于xdebug的配置。<pre><code>[xdebug]
+<li>
+<p>配置php.ini中关于xdebug的配置。</p>
+<pre><code>[xdebug]
 zend_extension="Your xdebug install path"
 xdebug.remote_enable = On
 xdebug.remote_handler = dbgp   
@@ -46,11 +48,11 @@ xdebug.remote_host= localhost
 xdebug.remote_port = 9000
 xdebug.idekey = PHPSTORM
 </code></pre>
-</li>
-</ol>
 <p>其中remote_host 是指调试客户端的地址，即IDE所在的IP，同理remote_port 是客户端的端口，这两项在远程调试的情况下注意修改</p>
-<ol>
-<li>打开phpStorm，进入File&gt;Settings&gt;PHP&gt;Servers。 这里要填写服务器端的相关信息，name填localhost，host填localhost，port填80，debugger选XDebug。这里设置的是将要进行xdebug调试的服务器地址。在这之前请设置好php解释器。</li>
+</li>
+<li>
+<p>打开phpStorm，进入File&gt;Settings&gt;PHP&gt;Servers。 这里要填写服务器端的相关信息，name填localhost，host填localhost，port填80，debugger选XDebug。这里设置的是将要进行xdebug调试的服务器地址。在这之前请设置好php解释器。</p>
+</li>
 <li>进入File&gt;Settings&gt;PHP&gt;Debug，看到XDebug选项卡，port填9000，其他默认。这里的port地址是你在php.ini中xdebug配置中的<code>xdebug.remote_port</code>的值。</li>
 <li>进入File&gt;Settings&gt;PHP&gt;Debug&gt;DBGp Proxy，IDE key 填 PHPSTORM，host 填localhost，port 填80。这里的IDE KEY是你在php.ini中xdebug配置中的<code>xdebug.idekey</code>的值。</li>
 <li>
