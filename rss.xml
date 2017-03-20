@@ -38,12 +38,13 @@ v3 := 10  //不需要var，声明和初始化一起，声明后的不能用:=初
 &lt;ul&gt;
 &lt;li&gt;字面常量就是硬编码的数字，字符串等等。&lt;/li&gt;
 &lt;li&gt;定义常量: &lt;code&gt;const A int = 1&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;枚举&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;const (
+&lt;li&gt;枚举&lt;pre&gt;&lt;code&gt;const (
     A = iota //在const使用重置为0
     B
-)&lt;/p&gt;
+)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;数组&lt;/p&gt;
@@ -127,11 +128,7 @@ rect = Rect{width: 100, height:200}&lt;/p&gt;
 &lt;/ol&gt;
 &lt;hr /&gt;
 &lt;blockquote&gt;
-&lt;blockquote&gt;
-&lt;blockquote&gt;
 &lt;p&gt;如上，先这样。。。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/blockquote&gt;
 &lt;/blockquote&gt;</description>  
 		<author>daimin</author>  
 		<copyright></copyright>  
