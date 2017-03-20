@@ -1,5 +1,10 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	<url>
+		<loc>http://daimin.github.io//posts/golang-xiang-guan.html</loc>
+		<lastmod>2017-03-21</lastmod>
+		<changefreq>monthly</changefreq>
+	</url>
+	<url>
 		<loc>http://daimin.github.io//posts/php-shuzu-args-or-duixiang-args.html</loc>
 		<lastmod>2017-03-17</lastmod>
 		<changefreq>monthly</changefreq>

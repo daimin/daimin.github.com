@@ -7,6 +7,137 @@
     <language>zh-cn</language>  
     <generator>sologd</generator>  
     <item>  
+		<title>golang相关</title>  
+		<link>http://daimin.github.io//posts/golang-xiang-guan.html</link>  
+		<description>&lt;hr /&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;变量定义： &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;和其它语言不一样，它将类型放在后面，&lt;code&gt;var a int&lt;/code&gt; ，它不需要分号。还可以这样声明：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var (
+    v1 int
+    v2 string
+)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;初始化：如下三种都是合法：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var v1 int = 10
+var v2 = 10 //编译器可以自动推导出类型
+v3 := 10  //不需要var，声明和初始化一起，声明后的不能用:=初始化
+* 赋值，它也支持这种 `i, j = j, i`，这里i和j就交换了值。
+* 字符串类型必须是双引号
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;常量&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;字面常量就是硬编码的数字，字符串等等。&lt;/li&gt;
+&lt;li&gt;定义常量: &lt;code&gt;const A int = 1&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;枚举&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;const (
+    A = iota //在const使用重置为0
+    B
+)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;数组&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;golang的数组是大小不可以变的，定义的时候就要给定，&lt;code&gt;[32] byte&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;数组切片后就成了另外一个类型了：数组切片，这个时候大小就可以自动变化了。&lt;/li&gt;
+&lt;li&gt;数组遍历用range关键字，也可以用传统的for语句，推荐range&lt;/li&gt;
+&lt;li&gt;数组是值类型，赋值和参数传递的时候都会复制所有元素。&lt;/li&gt;
+&lt;li&gt;数组切片：myArray[:5]将数组切片，也可以make一个数组切片&lt;pre&gt;&lt;code&gt;mys1 := make([]int, 5) // 初始值为0，初始大小为5
+mys2 := make([]int, 5, 10) //初始值为0，初始大小为5，预留10个大小
+mys3 := []int{1,2,3,4,5} //直接初始化一个包含5个元素的切片
+* cap函数，返回数组(**这里的数组包括切片，下同**)大小;len函数返回当前的个数;append给数组添加元素
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;map，键值对集合&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;var myMap map[string] PersonInfo&lt;/code&gt;，键类型是string，值类型为PersonInfo&lt;/li&gt;
+&lt;li&gt;make创建map：&lt;code&gt;myMap = make(map[string] PersonInfo, 100)&lt;/code&gt;，创建map并指定初始大小&lt;/li&gt;
+&lt;li&gt;delete删除元素 &lt;code&gt;delete(myMap, &#34;1234&#34;)&lt;/code&gt;，删除键值&#34;1234&#34;的元素&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;查找&lt;/p&gt;
+&lt;p&gt;value, ok := myMap[&#34;1234&#34;]
+if ok { // finded
+    // do what you want
+}&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;错误处理&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;error接口，所有的错误都实现了这个接口&lt;/li&gt;
+&lt;li&gt;defer 相当于try...catch语句的finally。&lt;/li&gt;
+&lt;li&gt;panic打印错误，并终止流程，病返回调用函数处，由上层panic继续执行，知道goroutine被终止。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;接口&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;golang接口很宽松，只要实现了方法就算是实现了接口，并不需要显示的实现。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;interface{} 表示any类型&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;类，golang的类就是结构体&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;对象是引用类型，而结构体是值类型&lt;/p&gt;
+&lt;p&gt;//建立对象，它是引用类型（推荐，因为类一般比较大，引用省内存）
+rect1 := new(Rect)
+rect2 := &amp;amp;Rect{}
+rect3 := &amp;amp;Rect{0, 0, 100, 200}
+rect4 := &amp;amp;Rect{width: 100, height:200}&lt;/p&gt;
+&lt;p&gt;// 也可以，它是值类型
+rect = Rect{}
+rect = Rect{0, 0, 100, 200}
+rect = Rect{width: 100, height:200}&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;没有构造函数&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;并发&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;goroutine就是go实现的协程，语言级实现，函数调用前面加一个go关键字就是并发执行了。&lt;/li&gt;
+&lt;li&gt;golang的并发通讯，推荐channel，如：&lt;code&gt;ch := make(chan int)&lt;/code&gt;，&lt;code&gt;ch &amp;lt;- 1&lt;/code&gt;表示向chan中写入1，&lt;code&gt;&amp;lt;-ch&lt;/code&gt;表示从chan中读取，在读取。写入后操作是阻塞的，直到被读取，读取钱读取也是阻塞的，知道被写入。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;var ch2 chan&amp;lt;- float64&lt;/code&gt; 单向的channel，只能被写；&lt;code&gt;var ch3 &amp;lt;-chan int&lt;/code&gt;只能被读。&lt;/li&gt;
+&lt;li&gt;close(ch)关闭channel&lt;/li&gt;
+&lt;li&gt;多核运行，可能需要设置&lt;code&gt;runtime.GOMAXPROCS(16)&lt;/code&gt; 16就是核心数&lt;/li&gt;
+&lt;li&gt;锁，实现并发通讯的另一种方式，原则上就是锁住共享内存&lt;/li&gt;
+&lt;li&gt;实现IPC就只有两种方式：&lt;strong&gt;共享内存&lt;/strong&gt;和&lt;strong&gt;消息传递&lt;/strong&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr /&gt;
+&lt;blockquote&gt;
+&lt;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;如上，先这样。。。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;</description>  
+		<author>daimin</author>  
+		<copyright></copyright>  
+		<pubDate>2017-03-21</pubDate>  
+    </item>  
+    <item>  
 		<title>数组参数还是对象参数</title>  
 		<link>http://daimin.github.io//posts/php-shuzu-args-or-duixiang-args.html</link>  
 		<description>&lt;p&gt;在PHP中给函数传参数的时候，一般来说为了避免参数过长我们可以选择传数组或者是封装一个参数类来传对象。
