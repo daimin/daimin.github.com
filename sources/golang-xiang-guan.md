@@ -47,6 +47,7 @@ date:2017-03-21
             mys1 := make([]int, 5) // 初始值为0，初始大小为5
             mys2 := make([]int, 5, 10) //初始值为0，初始大小为5，预留10个大小
             mys3 := []int{1,2,3,4,5} //直接初始化一个包含5个元素的切片
+
     * cap函数，返回数组(**这里的数组包括切片，下同**)大小;len函数返回当前的个数;append给数组添加元素
 
 4. map，键值对集合
@@ -56,10 +57,10 @@ date:2017-03-21
     * delete删除元素 `delete(myMap, "1234")`，删除键值"1234"的元素
     * 查找
 
-        value, ok := myMap["1234"]
-        if ok { // finded
-            // do what you want
-        }
+            value, ok := myMap["1234"]
+            if ok { // finded
+                // do what you want
+            }
 
 5. 错误处理
 
@@ -76,16 +77,16 @@ date:2017-03-21
 
     * 对象是引用类型，而结构体是值类型
         
-        //建立对象，它是引用类型（推荐，因为类一般比较大，引用省内存）
-        rect1 := new(Rect)
-        rect2 := &Rect{}
-        rect3 := &Rect{0, 0, 100, 200}
-        rect4 := &Rect{width: 100, height:200}
+            //建立对象，它是引用类型（推荐，因为类一般比较大，引用省内存）
+            rect1 := new(Rect)
+            rect2 := &Rect{}
+            rect3 := &Rect{0, 0, 100, 200}
+            rect4 := &Rect{width: 100, height:200}
 
-        // 也可以，它是值类型
-        rect = Rect{}
-        rect = Rect{0, 0, 100, 200}
-        rect = Rect{width: 100, height:200}
+            // 也可以，它是值类型
+            rect = Rect{}
+            rect = Rect{0, 0, 100, 200}
+            rect = Rect{width: 100, height:200}
 
     * 没有构造函数
 

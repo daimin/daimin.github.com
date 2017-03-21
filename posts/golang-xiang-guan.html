@@ -79,11 +79,15 @@ v3 := 10  //不需要var，声明和初始化一起，声明后的不能用:=初
 <li>数组切片后就成了另外一个类型了：数组切片，这个时候大小就可以自动变化了。</li>
 <li>数组遍历用range关键字，也可以用传统的for语句，推荐range</li>
 <li>数组是值类型，赋值和参数传递的时候都会复制所有元素。</li>
-<li>数组切片：myArray[:5]将数组切片，也可以make一个数组切片<pre><code>mys1 := make([]int, 5) // 初始值为0，初始大小为5
+<li>
+<p>数组切片：myArray[:5]将数组切片，也可以make一个数组切片</p>
+<pre><code>mys1 := make([]int, 5) // 初始值为0，初始大小为5
 mys2 := make([]int, 5, 10) //初始值为0，初始大小为5，预留10个大小
 mys3 := []int{1,2,3,4,5} //直接初始化一个包含5个元素的切片
-* cap函数，返回数组(**这里的数组包括切片，下同**)大小;len函数返回当前的个数;append给数组添加元素
 </code></pre>
+</li>
+<li>
+<p>cap函数，返回数组(<strong>这里的数组包括切片，下同</strong>)大小;len函数返回当前的个数;append给数组添加元素</p>
 </li>
 </ul>
 </li>
@@ -93,12 +97,11 @@ mys3 := []int{1,2,3,4,5} //直接初始化一个包含5个元素的切片
 <li><code>var myMap map[string] PersonInfo</code>，键类型是string，值类型为PersonInfo</li>
 <li>make创建map：<code>myMap = make(map[string] PersonInfo, 100)</code>，创建map并指定初始大小</li>
 <li>delete删除元素 <code>delete(myMap, "1234")</code>，删除键值"1234"的元素</li>
-<li>
-<p>查找</p>
-<p>value, ok := myMap["1234"]
+<li>查找<pre><code>value, ok := myMap["1234"]
 if ok { // finded
     // do what you want
-}</p>
+}
+</code></pre>
 </li>
 </ul>
 </li>
@@ -124,15 +127,17 @@ if ok { // finded
 <ul>
 <li>
 <p>对象是引用类型，而结构体是值类型</p>
-<p>//建立对象，它是引用类型（推荐，因为类一般比较大，引用省内存）
+<pre><code>//建立对象，它是引用类型（推荐，因为类一般比较大，引用省内存）
 rect1 := new(Rect)
 rect2 := &amp;Rect{}
 rect3 := &amp;Rect{0, 0, 100, 200}
-rect4 := &amp;Rect{width: 100, height:200}</p>
-<p>// 也可以，它是值类型
+rect4 := &amp;Rect{width: 100, height:200}
+
+// 也可以，它是值类型
 rect = Rect{}
 rect = Rect{0, 0, 100, 200}
-rect = Rect{width: 100, height:200}</p>
+rect = Rect{width: 100, height:200}
+</code></pre>
 </li>
 <li>
 <p>没有构造函数</p>

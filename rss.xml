@@ -53,11 +53,15 @@ v3 := 10  //不需要var，声明和初始化一起，声明后的不能用:=初
 &lt;li&gt;数组切片后就成了另外一个类型了：数组切片，这个时候大小就可以自动变化了。&lt;/li&gt;
 &lt;li&gt;数组遍历用range关键字，也可以用传统的for语句，推荐range&lt;/li&gt;
 &lt;li&gt;数组是值类型，赋值和参数传递的时候都会复制所有元素。&lt;/li&gt;
-&lt;li&gt;数组切片：myArray[:5]将数组切片，也可以make一个数组切片&lt;pre&gt;&lt;code&gt;mys1 := make([]int, 5) // 初始值为0，初始大小为5
+&lt;li&gt;
+&lt;p&gt;数组切片：myArray[:5]将数组切片，也可以make一个数组切片&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;mys1 := make([]int, 5) // 初始值为0，初始大小为5
 mys2 := make([]int, 5, 10) //初始值为0，初始大小为5，预留10个大小
 mys3 := []int{1,2,3,4,5} //直接初始化一个包含5个元素的切片
-* cap函数，返回数组(**这里的数组包括切片，下同**)大小;len函数返回当前的个数;append给数组添加元素
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;cap函数，返回数组(&lt;strong&gt;这里的数组包括切片，下同&lt;/strong&gt;)大小;len函数返回当前的个数;append给数组添加元素&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
@@ -67,12 +71,11 @@ mys3 := []int{1,2,3,4,5} //直接初始化一个包含5个元素的切片
 &lt;li&gt;&lt;code&gt;var myMap map[string] PersonInfo&lt;/code&gt;，键类型是string，值类型为PersonInfo&lt;/li&gt;
 &lt;li&gt;make创建map：&lt;code&gt;myMap = make(map[string] PersonInfo, 100)&lt;/code&gt;，创建map并指定初始大小&lt;/li&gt;
 &lt;li&gt;delete删除元素 &lt;code&gt;delete(myMap, &#34;1234&#34;)&lt;/code&gt;，删除键值&#34;1234&#34;的元素&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;查找&lt;/p&gt;
-&lt;p&gt;value, ok := myMap[&#34;1234&#34;]
+&lt;li&gt;查找&lt;pre&gt;&lt;code&gt;value, ok := myMap[&#34;1234&#34;]
 if ok { // finded
     // do what you want
-}&lt;/p&gt;
+}
+&lt;/code&gt;&lt;/pre&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
@@ -98,15 +101,17 @@ if ok { // finded
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;对象是引用类型，而结构体是值类型&lt;/p&gt;
-&lt;p&gt;//建立对象，它是引用类型（推荐，因为类一般比较大，引用省内存）
+&lt;pre&gt;&lt;code&gt;//建立对象，它是引用类型（推荐，因为类一般比较大，引用省内存）
 rect1 := new(Rect)
 rect2 := &amp;amp;Rect{}
 rect3 := &amp;amp;Rect{0, 0, 100, 200}
-rect4 := &amp;amp;Rect{width: 100, height:200}&lt;/p&gt;
-&lt;p&gt;// 也可以，它是值类型
+rect4 := &amp;amp;Rect{width: 100, height:200}
+
+// 也可以，它是值类型
 rect = Rect{}
 rect = Rect{0, 0, 100, 200}
-rect = Rect{width: 100, height:200}&lt;/p&gt;
+rect = Rect{width: 100, height:200}
+&lt;/code&gt;&lt;/pre&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;没有构造函数&lt;/p&gt;
