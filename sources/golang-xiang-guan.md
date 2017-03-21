@@ -89,6 +89,24 @@ date:2017-03-21
             rect = Rect{width: 100, height:200}
 
     * 没有构造函数
+    
+    * 利用组合实现继承
+
+            type A struct {
+            }
+
+            func (a *A) say() {
+                fmt.Println("Hello")
+            }
+
+            type AA struct {
+                A
+            }
+
+            aa := &AA{}
+	        aa.say()
+            
+            // 这里AA的对象就拥有了A类所有的属性和方法
 
 8. 并发
 
