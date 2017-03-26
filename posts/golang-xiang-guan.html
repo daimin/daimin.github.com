@@ -7,11 +7,11 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
     <meta name="format-detection" content="telephone=no" />
-    <meta name="keywords" content="golang相关" />
+    <meta name="keywords" content="golang相关" />
     <meta name="description" content="变量定义： 和其它语言不一样，它将类型放在后面，var a int ，它不需要分号。还可以这样声明：..." />
     <link rel="shortcut icon" href="/favicon.ico" />
 
-    <title>golang相关 | 茶瓯葱丝</title>
+    <title>golang相关 | 茶瓯葱丝</title>
     <link rel="stylesheet" type="text/css" href="/styles/style.css">
     <link rel="Stylesheet" type="text/css" href="/js/prettify/desert.css" />
     <link rel="stylesheet" type="text/css" href="/styles/bootstrap-jian.css">
@@ -33,7 +33,7 @@
 <div id="wrapper">
 <div id="content" class="index">
      
-<h2 class="post-title">golang相关</h2>
+<h2 class="post-title">golang相关</h2>
 <div class="cnt">
 <hr />
 <ol>
@@ -52,7 +52,7 @@
 <p>初始化：如下三种都是合法：</p>
 <pre><code>var v1 int = 10
 var v2 = 10 //编译器可以自动推导出类型
-v3 := 10  //不需要var，声明和初始化一起，声明后的不能用:=初始化
+v3 := 10  //不需要var，声明和初始化一起，声明后的不能用:=初始化，这种简式的变量声明只能放在函数内部
 * 赋值，它也支持这种 `i, j = j, i`，这里i和j就交换了值。
 * 字符串类型必须是双引号
 </code></pre>
@@ -119,8 +119,9 @@ if ok { // finded
 <li>
 <p>golang接口很宽松，只要实现了方法就算是实现了接口，并不需要显示的实现。</p>
 </li>
+<li>interface{} 表示any类型</li>
 <li>
-<p>interface{} 表示any类型</p>
+<p>用组合实现了继承，可以见第7点。</p>
 </li>
 <li>
 <p>类，golang的类就是结构体</p>
@@ -141,6 +142,25 @@ rect = Rect{width: 100, height:200}
 </li>
 <li>
 <p>没有构造函数</p>
+</li>
+<li>
+<p>利用组合实现继承</p>
+<pre><code>type A struct {
+}
+
+func (a *A) say() {
+    fmt.Println("Hello")
+}
+
+type AA struct {
+    A
+}
+
+aa := &amp;AA{}
+aa.say()
+
+// 这里AA的对象就拥有了A类所有的属性和方法，接口的继承也是同理
+</code></pre>
 </li>
 </ul>
 </li>
@@ -163,7 +183,7 @@ rect = Rect{width: 100, height:200}
 </blockquote>
 </dir>
 <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="golang-xiang-guan" data-title="golang相关" data-url="/posts//data2/pyworks/daimin.github.com/posts/golang-xiang-guan.html"></div>
+    <div class="ds-thread" data-thread-key="golang-xiang-guan" data-title="golang相关" data-url="/posts//data2/pyworks/daimin.github.com/posts/golang-xiang-guan.html"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
