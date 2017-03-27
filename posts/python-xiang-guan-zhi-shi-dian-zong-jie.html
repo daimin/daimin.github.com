@@ -1,0 +1,353 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0025)http://daimin.github.io/ -->
+<html>
+<head>
+    
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="keywords" content="python相关知识点整理" />
+    <meta name="description" content="operator.itemgetter函数，它的值指名从第几个元素操作比如:a = [('a',1)..." />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    <title>python相关知识点整理 | 茶瓯葱丝</title>
+    <link rel="stylesheet" type="text/css" href="/styles/style.css">
+    <link rel="Stylesheet" type="text/css" href="/js/prettify/desert.css" />
+    <link rel="stylesheet" type="text/css" href="/styles/bootstrap-jian.css">
+    <script type="text/javascript"  src="/js/prettify/prettify.js"></script>
+	<link rel="alternate" type="application/rss+xml" title="RSS" href="http://daimin.github.io/rss.xml">
+</head>
+<body>
+		<div id="logo">
+			<span id="motto"></span>
+			<h1><a href="/index.html" >茶瓯葱丝</a>
+            <form onsubmit="return dispatch()" style="display:inline">
+            <span style="width: 240px; height: 26px; margin-left:24px; background-size: 240px 26px; background-image: url('/image/qbar_light@2x.png'); background-repeat: no-repeat; display: inline-block;">
+            <input type="text" maxlength="40" name="q" id="q" value="">
+            </span>
+            </form>
+            </h1>
+            
+        </div>
+<div id="wrapper">
+<div id="content" class="index">
+     
+<h2 class="post-title">python相关知识点整理</h2>
+<div class="cnt">
+<ol>
+<li>
+<p>operator.itemgetter函数，它的值指名从第几个元素操作
+比如:</p>
+<pre><code>a = [('a',1),('b',3),('c',2)]
+a.sort(key=operator.itemgetter(1))
+</code></pre>
+<p>结果：
+[('a', 1), ('c', 2), ('b', 3)]</p>
+<pre><code>a.sort(key=operator.itemgetter(0))
+</code></pre>
+<p>结果：
+[('a', 1), ('b', 3), ('c', 2)]</p>
+</li>
+<li>
+<p>os.walk 和os.path.walk <br />
+    os.walk有3个参数，top,topdown和onerror，top是要遍历的根目录，topdown为True则从根目录到子目录，否则先遍历子目录，后根目录，onerror是发生错误时候回调的函数。
+os.walk返回3个值，root、dirs、files，root是当前遍历的相对根目录，dirs是当前根目录下的所有目录列表,files是文件列表。</p>
+<p>os.path.walk没有返回，用来遍历目录并给每次遍历目录数回调函数，参数1是待遍历的目录，参数2是回调函数，参数3是回传给回调函数的参数。回调函数有3个参数，参数1便是os.path.walk函数的第3个参数传递的值，参数2是当前目录下的所有子目录列表，参数3是文件列表。</p>
+</li>
+<li>
+<p>hashlib的update函数会在上次加密的基础上继续加密</p>
+<pre><code>&gt;&gt;&gt; m.update("aaa")
+&gt;&gt;&gt; print m.hexdigest()
+5d793fc5b00a2348c3fb9ab59e5ca98a
+&gt;&gt;&gt; print m.hexdigest()
+5d793fc5b00a2348c3fb9ab59e5ca98a
+&gt;&gt;&gt; m.update("aaa")
+&gt;&gt;&gt; print m.hexdigest()
+e09c80c42fda55f9d992e59ca6b3307d
+</code></pre>
+</li>
+<li>
+<p>python使用绝对路径运行项目的时候，必须保证自己依赖的库和模块在绝对路径中能够找到，否则就切换到相对路径中执行。比如cron执行python时，可以先cd到当前项目路劲，然后执行当前的python脚本文件，cd xxxx;python xxxx.py</p>
+</li>
+<li>
+<p>python的类变量和java的不一样。对于JAVA来说，类变量只有一份，子类也是使用的父类的类变量，除非在子类中覆盖了父类的类变量，那么子类就会使用自己的类变量。而对于python来说，如果子类改变的类变量的值，那么不会影响到父类，其其它的子类。但是深究来说，我们重写给子类的类变量赋值，其实就相当于覆盖了该变量，因为python是动态变量，所以归根是一样的。</p>
+</li>
+<li>
+<p>python中 // 一直执行取整除法，不过对于/，python2和python3会有不同，python3是浮点除法，不过在python2中可以通过引入 <code>from __future__ import division</code> 使/为浮点除</p>
+</li>
+<li>
+<p>列表切片如果不存在，会返回空列表，而索引访问则会报错：IndexError: list index out of range</p>
+<pre><code>&gt;&gt;&gt; s = [1,3,24]
+&gt;&gt;&gt; s[10:]
+&gt;&gt;&gt; []
+&gt;&gt;&gt; s[10]
+&gt;&gt;&gt; IndexError: list index out of range
+</code></pre>
+</li>
+<li>
+<p>xrange(N)，将返回0..N-1的生成器，range(N)讲返回0..N-1的列表</p>
+</li>
+<li>
+<p>lambda 表达式创建的函数其实是一个闭包函数，和普通函数是不一样的。如果调用一个lambda函数，可能会产生闭包函数已经完成调用，导致每次的值都是最后一次的值，可以在函数中定义额外的参数来保存每一次的值。</p>
+<pre><code>def multipliers():
+    return [lambda x : i * x for i in range(4)]`  #  late binding 变量的值是在函数被调用的时候被查找的，那么这个时候循环早已完成，那么i的值就是循环最后的值了，也就是3.
+
+def multipliers():
+    return [lambda x, i=i : i * x for i in range(4)]  #这里使用了一个额外的参数i来绑定(消除lage binding)闭包中的i的值，那么在调用的适合，使用的i就是默认参数中的i的值了。
+
+print [m(2) for m in multipliers()]
+</code></pre>
+</li>
+<li>
+<p>对于函数的默认参数，只会在函数定义的时候创建，之后无论多少次的使用，都是使用的同一个。
+如：</p>
+<pre><code>def extendList(val, list=[]):
+   list.append(val)
+   return list
+
+list1 = extendList(10)
+list2 = extendList(123,[])
+list3 = extendList('a')
+
+print "list1 = %s" % list1
+print "list2 = %s" % list2
+print "list3 = %s" % list3
+</code></pre>
+<p>最后的结果会是： <br />
+list1 = [10, 'a']<br />
+list2 = [123] <br />
+list3 = [10, 'a']<br />
+list1和list3使用的是同一个列表，只有list2，重新传入了一个list，所以是使用的传入的list。</p>
+</li>
+<li>
+<p>type(x) 返回x的描述x的类型的type对象，，而isinstance(obj,class)，直接判断obj是否是class的实例，能作用于各种subclass，或者是新旧类型的类声明方式。而type(x)它不能对subclass起作用，对旧的类声明方式(class A:pass)也无作用，type(x)会返回<type “instance”>对象，与原类对象并不相等，新的类声明方式(class A(object):pass)是相等的，但是对于subclass也是不起作用的。</p>
+</li>
+<li>
+<p><strong>builtin</strong>模块代表了python中默认内置的函数的对象,如果碰到要重写buildin函数，可以import <strong>buildin</strong>然后调用buildin函数，这样不会对对当前scope的函数造成影响。</p>
+</li>
+<li>
+<p>os模块是和操作系统相关的，sys适合解释器相关的。</p>
+</li>
+<li>
+<p>copy 仅拷贝对象本身，而不拷贝对象中引用的其它对象。 deepcopy 除拷贝对象本身，而且拷贝对象中引用的其它对象。</p>
+</li>
+<li>
+<p>os.path是module，包含了各种处理长文件名(路径名)的函数。sys.path是由目录名构成的列表，python解释器依据这个查找模块及初始化。</p>
+</li>
+<li>
+<p>re.match() 函数只检查 RE 是否在字符串开始处匹配，而 re.search() 则是扫描整个字符串。</p>
+</li>
+<li>
+<p>reduce是对集合中的item 进行归并，其实和map/reduce中的reduce的概念差不多。它有两个参数，分别代表前一次迭代的值及本次迭代item的值。它还拥有一个startval。
+简单实现：</p>
+<pre><code>def reduce_impl(func, argvs, startVal=None):
+   if startVal is not None:
+       argv1 = startVal
+   else:
+       argv1 = argvs[0]
+
+   for argv2 in argvs[1:]:
+       argv1 = func(argv1, argv2)
+   return argv1
+</code></pre>
+</li>
+<li>
+<p>生成器和函数的主要区别在于函数 return a value，生成器 yield a value同时标记或记忆 point of the yield 以便于在下次调用时从标记点恢复执行。 yield 使函数转换成生成器，而生成器反过来又返回迭代器。</p>
+</li>
+<li>
+<p><code>__future__</code>模块是未来python版本默认支持的特性，比如python3就支持了。</p>
+<pre><code>from __future__ import unicode_literals # 默认字符串都是unicode的了
+from __future__ import print_function # print语句现在是一个函数
+from __future__ import division # '/'除法现在是浮点除
+from __future__ import absolute_import # 要使用绝对导入，而不能使用相对导入的方式
+</code></pre>
+</li>
+<li>
+<p><code>__builtins__</code>是对内建模块的引用，python2.*的<code>__builtin__</code>或python3.x的<code>builtins</code>。</p>
+</li>
+<li>
+<p><code>(i for i in [1,2,3,4])</code> 生成生成器，<code>[i for i in[1,2,3,4]]</code> 生成列表。</p>
+</li>
+<li>
+<p><code>__all__ = ["add", "x"]</code>，表示在import * 的时候，只会import 这些成员。</p>
+</li>
+<li>
+<p><code>__init__.py</code>中的<code>__path__</code>代表当前包的路劲，只要将当前包下的模块的解决路劲加入到path中，就可以从直接从包中引入了这些模块了。 </p>
+</li>
+<li>
+<p>如果一个累中<code>__slots__ = ("name", "age")</code>，那么就不能动态绑定其它的属性了，只能是<code>__slots__</code>中的。  </p>
+</li>
+<li>
+<p>enumerate 会返回索引和元素</p>
+<pre><code>l = [1,2,32,4,22,5]
+
+for idx, it in enumerate(l):
+print "{}=&gt;{}".format(idx, it)
+</code></pre>
+<p>output:</p>
+<pre><code>0=&gt;1
+1=&gt;2
+2=&gt;32
+3=&gt;4
+4=&gt;22
+5=&gt;5
+</code></pre>
+</li>
+<li>
+<p>inspect提供自省功能</p>
+<p>(1).对是否是模块，框架，函数等进行类型检查。</p>
+<p>(2).获取源码</p>
+<p>(3).获取类或函数的参数的信息</p>
+<p>(4).解析堆栈</p>
+<pre><code>inspect.stack() # 得到当前代码的调用堆栈
+is{module|class|function|method|builtin}(obj): #检查对象是否为模块、类、函数、方法、内建函数或方法。
+isroutine(obj): #用于检查对象是否为函数、方法、内建函数或方法等等可调用类型。用这个方法会比多个is*()更方便，不过它的实现仍然是用了多个is*()。
+getmembers(object[, predicate]):# dir函数的升级版本
+getmodule # 它返回object的定义所在的模块对象。
+# 此外还可以返回源码
+get{file|sourcefile}(object): #获取object的定义所在的模块的文件名|源代码文件名
+getargvalues(frame): # 仅用于栈帧，获取栈帧中保存的该次函数调用的参数值，返回元组
+#... 还有很多自省相关的函数
+</code></pre>
+</li>
+<li>
+<p>requests的编码 </p>
+<pre><code>r = request.get("http://xxx.com")
+print r.encoding
+</code></pre>
+<p>r.encoding 可以得到requests猜测的response的数据的编码，但是可能不正确，你可以自己检查response的编码，然后设置r.encoding='xxx'，这样下一次调用r.text的时候就会使用r.encoding的编码将r.text的值转换为当前python解释器所用的字符编码的字符。</p>
+</li>
+<li>
+<p>hashlib.md5编码错误</p>
+<p><code>hashlib.md5(u"中文字符")</code>是会报错的<code>UnicodeEncodeError</code><br />
+这个时候只要将需要hash的字符串先encode一下就行了。</p>
+</li>
+<li>
+<p>collections.defaultdict</p>
+<p>defaultdict(default_factory), 这样default的每个一value都是一个default_factory类型 <br />
+如：</p>
+<pre><code>s = [('yellow', 1), ('blue', 2), ('yellow', 3), ('blue', 4), ('red', 1)]
+
+# defaultdict
+d = collections.defaultdict(list)
+for k, v in s:
+    d[k].append(v)
+print d
+# output: defaultdict(&lt;type 'list'&gt;, {'blue': [2, 4], 'red': [1], 'yellow': [1, 3]})
+
+# 类似这样使用dict
+g = {}
+for k, v in s:
+g.setdefault(k, []).append(v)
+print g
+# output: {'blue': [2, 4], 'red': [1], 'yellow': [1, 3]}
+</code></pre>
+<p>defaultdict会比dict的setdefault的速度要快</p>
+</li>
+</ol>
+</dir>
+
+<div style="margin-top:24px;margin-bottom:12px;display: block;">
+<hr/>
+</div>
+<!-- UY BEGIN -->
+<div id="uyan_frame"></div>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=1794396"></script>
+<!-- UY END -->
+
+
+</div>
+<div id="footer">
+	<span style="color:#bbb;font-size:12px">
+	&copy; Powered by <a href="https://github.com/daimin/daimin.github.com" title="sologs">sologs</a> 
+	</span>
+	<p style="clear:both"></p>
+</div>
+</div>
+<script type="text/javascript">
+function hasClass(obj, cls) {  
+    return obj.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));  
+}
+function addClass(obj, cls) {  
+    if (!this.hasClass(obj, cls)) obj.className += " " + cls;  
+} 
+
+function render_pretty(){
+    var pres = document.getElementsByTagName("pre");
+    for(var i = 0, len = pres.length; i < len; i++){
+        addClass(pres[i], "prettyprint");
+    }
+    prettyPrint();
+
+}
+
+(function(){
+   var mattos = [
+   "人生没有对错，只有选择后的坚持，不后悔，走下去，就是对的。",
+   "生活是一面镜子。你对它笑，它就对你笑；你对它哭，它也对你哭。",
+   "宁愿做过了后悔，也不要错过了后悔。",
+   "不要拿小人的错误来惩罚自己，不要在这些微不足道的事情上折磨浪费自己的宝贵时间。",
+   "环境不会改变，解决之道在于改变自己。",
+   "勇气是控制恐惧心理，而不是心里毫无恐惧。",
+   "两个人共尝一个痛苦只有半个痛苦，两个人共享一个欢乐却有两个欢乐。",
+   "好好管教自己，不要管别人。",
+   "得之坦然，失之淡然，顺其自然，争其必然。",
+   "人生是一条没有回程的单行线，上帝不会给你一张返程的票。",
+   "把事情办好的秘密就是行动。成功之路就是有条理思考之后的行动！行动！行动！",
+   "人生是一场旅行，在乎的不是目的地，是沿途的风景以及看风景的心情。",
+   "放弃谁都可以，千万不要放弃自己！",
+   "长得漂亮是优势，活得漂亮是本事。",
+   "人生最大的错误是不断担心会犯错。",
+   "一个人可以被毁灭，但不能给打败 -- 《老人与海》。",
+   "要么不要开始，要么不要结束。",
+   ];
+   document.getElementById("motto").innerHTML = mattos[parseInt(Math.random() * mattos.length)];
+   
+})();
+
+window.onload = function(){
+   render_pretty();
+};
+
+var dispatch = function() {
+    q = document.getElementById("q");
+    if (q.value != "") {
+        //window.open('http://www.baidu.com/s?si=daimin.github.io&cl=3&ct=2097152&tn=bds&word=' + q.value, "_blank");
+        window.open('https://www.google.com.hk/search?q=site:daimin.github.io ' + q.value + '&gws_rd=cr,ssl', '_blank');
+        return false;
+    } else {
+        return false;
+    }
+};
+
+</script>
+<script type="text/javascript" src="/js/jimdoclockzip.js"></script>
+<script type="text/javascript">
+var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_5814730'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s23.cnzz.com/stat.php%3Fid%3D5814730%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<!-- JiaThis Button BEGIN -->
+<div class="jiathis_share_slide jiathis_share_24x24" id="jiathis_share_slide">
+<div class="jiathis_share_slide_top" id="jiathis_share_title"></div>
+<div class="jiathis_share_slide_inner">
+<div class="jiathis_style_24x24">
+<a class="jiathis_button_qzone"></a>
+<a class="jiathis_button_tsina"></a>
+<a class="jiathis_button_tqq"></a>
+<a class="jiathis_button_weixin"></a>
+<a class="jiathis_button_renren"></a>
+<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+<script type="text/javascript">
+var jiathis_config = {data_track_clickback:'true'
+	,slide:{
+		divid:'jiathis_main',
+		pos:'right'
+	}
+};
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1355186795124515" charset="utf-8"></script>	
+<script type="text/javascript" src="http://v3.jiathis.com/code/jiathis_slide.js" charset="utf-8"></script>
+</div></div></div>
+<!-- JiaThis Button END -->
+</body>
+</html>

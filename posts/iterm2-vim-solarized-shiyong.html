@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0025)http://daimin.github.io/ -->
+<html>
+<head>
+    
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="keywords" content="在iTerm2中的vim使用solarized配色" />
+    <meta name="description" content="一直很心水solarized主题，可是在iTerm2中vim无法正常的使用，会有一层朦朦的背景色，在..." />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    <title>在iTerm2中的vim使用solarized配色 | 茶瓯葱丝</title>
+    <link rel="stylesheet" type="text/css" href="/styles/style.css">
+    <link rel="Stylesheet" type="text/css" href="/js/prettify/desert.css" />
+    <link rel="stylesheet" type="text/css" href="/styles/bootstrap-jian.css">
+    <script type="text/javascript"  src="/js/prettify/prettify.js"></script>
+	<link rel="alternate" type="application/rss+xml" title="RSS" href="http://daimin.github.io/rss.xml">
+</head>
+<body>
+		<div id="logo">
+			<span id="motto"></span>
+			<h1><a href="/index.html" >茶瓯葱丝</a>
+            <form onsubmit="return dispatch()" style="display:inline">
+            <span style="width: 240px; height: 26px; margin-left:24px; background-size: 240px 26px; background-image: url('/image/qbar_light@2x.png'); background-repeat: no-repeat; display: inline-block;">
+            <input type="text" maxlength="40" name="q" id="q" value="">
+            </span>
+            </form>
+            </h1>
+            
+        </div>
+<div id="wrapper">
+<div id="content" class="index">
+     
+<h2 class="post-title">在iTerm2中的vim使用solarized配色</h2>
+<div class="cnt">
+<blockquote>
+<p>一直很心水solarized主题，可是在iTerm2中vim无法正常的使用，会有一层朦朦的背景色，在macvim到是可以，但是主要还是使用iTerm2的vim。</p>
+</blockquote>
+<p>折腾了很久，按照网上的方案一直不行，最后在<a href="https://github.com/altercation/solarized/tree/master/iterm2-colors-solarized">https://github.com/altercation/solarized/tree/master/iterm2-colors-solarized</a>找到了方法：</p>
+<p>这个目录下有两个iTerm2的solarized配色方案，我是用的dark的。
+然后如下：</p>
+<p>Open iTerm 2, open Preferences, click on the "Profiles" (formerly Addresses, formerly Bookmarks) icon in the preferences toolbar, then select the "colors" tab. Click on the "load presets" and select "import...". Select the Solarized Light or Dark theme file.</p>
+<p>You have now loaded the Solarized color presets into iTerm 2, but haven't yet applied them. To apply them, simply select an existing profile from the profile list window on the left, or create a new profile. Then select the Solarized Dark or Solarized Light preset from the "Load Presets" drop down.</p>
+<p>简单来说就是在iTerm2的Profiles edit中，选择colors tab，然后点击"load presets"，就可以加载你下载的配置方案了。</p>
+<p>然后在当前的profile中在"load presets"下拉列表中选择刚刚load的配色方案，你会发现你的整个iterm2界面都成了solarized了。</p>
+<p>最后可以再profile列表中的，"Other Actions"下拉列表中选择"Bulk Copy from Selected Profile"，将当前的colors方案拷贝到其它profile中，这样你所有的profile的iTerm2界面都是solarized了。</p>
+<p>最后回到vim，修改~/.vimrc，加入：</p>
+<pre><code>set background=dark
+colo solarized
+</code></pre>
+<p>ok，发现vim的solarized也正常使用了。</p>
+</dir>
+
+<div style="margin-top:24px;margin-bottom:12px;display: block;">
+<hr/>
+</div>
+<!-- UY BEGIN -->
+<div id="uyan_frame"></div>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=1794396"></script>
+<!-- UY END -->
+
+
+</div>
+<div id="footer">
+	<span style="color:#bbb;font-size:12px">
+	&copy; Powered by <a href="https://github.com/daimin/daimin.github.com" title="sologs">sologs</a> 
+	</span>
+	<p style="clear:both"></p>
+</div>
+</div>
+<script type="text/javascript">
+function hasClass(obj, cls) {  
+    return obj.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));  
+}
+function addClass(obj, cls) {  
+    if (!this.hasClass(obj, cls)) obj.className += " " + cls;  
+} 
+
+function render_pretty(){
+    var pres = document.getElementsByTagName("pre");
+    for(var i = 0, len = pres.length; i < len; i++){
+        addClass(pres[i], "prettyprint");
+    }
+    prettyPrint();
+
+}
+
+(function(){
+   var mattos = [
+   "人生没有对错，只有选择后的坚持，不后悔，走下去，就是对的。",
+   "生活是一面镜子。你对它笑，它就对你笑；你对它哭，它也对你哭。",
+   "宁愿做过了后悔，也不要错过了后悔。",
+   "不要拿小人的错误来惩罚自己，不要在这些微不足道的事情上折磨浪费自己的宝贵时间。",
+   "环境不会改变，解决之道在于改变自己。",
+   "勇气是控制恐惧心理，而不是心里毫无恐惧。",
+   "两个人共尝一个痛苦只有半个痛苦，两个人共享一个欢乐却有两个欢乐。",
+   "好好管教自己，不要管别人。",
+   "得之坦然，失之淡然，顺其自然，争其必然。",
+   "人生是一条没有回程的单行线，上帝不会给你一张返程的票。",
+   "把事情办好的秘密就是行动。成功之路就是有条理思考之后的行动！行动！行动！",
+   "人生是一场旅行，在乎的不是目的地，是沿途的风景以及看风景的心情。",
+   "放弃谁都可以，千万不要放弃自己！",
+   "长得漂亮是优势，活得漂亮是本事。",
+   "人生最大的错误是不断担心会犯错。",
+   "一个人可以被毁灭，但不能给打败 -- 《老人与海》。",
+   "要么不要开始，要么不要结束。",
+   ];
+   document.getElementById("motto").innerHTML = mattos[parseInt(Math.random() * mattos.length)];
+   
+})();
+
+window.onload = function(){
+   render_pretty();
+};
+
+var dispatch = function() {
+    q = document.getElementById("q");
+    if (q.value != "") {
+        //window.open('http://www.baidu.com/s?si=daimin.github.io&cl=3&ct=2097152&tn=bds&word=' + q.value, "_blank");
+        window.open('https://www.google.com.hk/search?q=site:daimin.github.io ' + q.value + '&gws_rd=cr,ssl', '_blank');
+        return false;
+    } else {
+        return false;
+    }
+};
+
+</script>
+<script type="text/javascript" src="/js/jimdoclockzip.js"></script>
+<script type="text/javascript">
+var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_5814730'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s23.cnzz.com/stat.php%3Fid%3D5814730%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<!-- JiaThis Button BEGIN -->
+<div class="jiathis_share_slide jiathis_share_24x24" id="jiathis_share_slide">
+<div class="jiathis_share_slide_top" id="jiathis_share_title"></div>
+<div class="jiathis_share_slide_inner">
+<div class="jiathis_style_24x24">
+<a class="jiathis_button_qzone"></a>
+<a class="jiathis_button_tsina"></a>
+<a class="jiathis_button_tqq"></a>
+<a class="jiathis_button_weixin"></a>
+<a class="jiathis_button_renren"></a>
+<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+<script type="text/javascript">
+var jiathis_config = {data_track_clickback:'true'
+	,slide:{
+		divid:'jiathis_main',
+		pos:'right'
+	}
+};
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1355186795124515" charset="utf-8"></script>	
+<script type="text/javascript" src="http://v3.jiathis.com/code/jiathis_slide.js" charset="utf-8"></script>
+</div></div></div>
+<!-- JiaThis Button END -->
+</body>
+</html>

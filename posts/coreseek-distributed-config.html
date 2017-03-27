@@ -1,0 +1,192 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0025)http://daimin.github.io/ -->
+<html>
+<head>
+    
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="keywords" content="coreseek(sphinx)分布式设置" />
+    <meta name="description" content="sphinx默认是单线程的，无论你是多少核的服务器，它始终只会使用一个核心。有两个办法可以实现sph..." />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    <title>coreseek(sphinx)分布式设置 | 茶瓯葱丝</title>
+    <link rel="stylesheet" type="text/css" href="/styles/style.css">
+    <link rel="Stylesheet" type="text/css" href="/js/prettify/desert.css" />
+    <link rel="stylesheet" type="text/css" href="/styles/bootstrap-jian.css">
+    <script type="text/javascript"  src="/js/prettify/prettify.js"></script>
+	<link rel="alternate" type="application/rss+xml" title="RSS" href="http://daimin.github.io/rss.xml">
+</head>
+<body>
+		<div id="logo">
+			<span id="motto"></span>
+			<h1><a href="/index.html" >茶瓯葱丝</a>
+            <form onsubmit="return dispatch()" style="display:inline">
+            <span style="width: 240px; height: 26px; margin-left:24px; background-size: 240px 26px; background-image: url('/image/qbar_light@2x.png'); background-repeat: no-repeat; display: inline-block;">
+            <input type="text" maxlength="40" name="q" id="q" value="">
+            </span>
+            </form>
+            </h1>
+            
+        </div>
+<div id="wrapper">
+<div id="content" class="index">
+     
+<h2 class="post-title">coreseek(sphinx)分布式设置</h2>
+<div class="cnt">
+<p>sphinx默认是单线程的，无论你是多少核的服务器，它始终只会使用一个核心。
+有两个办法可以实现sphinx多核利用，两种都是使用sphinx的分布式设置。</p>
+<h3>1. 使用agent，远程索引声明</h3>
+<ul>
+<li>建立一个分布式索引，这个索引不会用来存储数据，只是用来合并查询数据，提供客户端调用而已</li>
+<li>设置分布式索引的type=distributed</li>
+<li>将local属性指向自身就行，这里就是dist</li>
+<li>agent执行独立运行的searchd进程，可以是本机的，也可以在其它机器上面运行，不过注意的是agent的数据源必须相同，否则无法合并。</li>
+<li>agent的数据源是我们采用一定的算法将一个数据源拆分成积分，如id取模或者是其它方式。</li>
+<li>客户端进行搜索的时候就直接使用dist索引进程查询就行了。<pre><code>index dist
+{
+    type = distributed
+    local = chunk1
+    agent = localhost:9312:chunk2
+    agent = localhost:9312:chunk3
+    agent = localhost:9312:chunk4
+}
+</code></pre>
+</li>
+</ul>
+<h3>2. 使用local，本地索引声明</h3>
+<ul>
+<li>严格来说不算是分布式，只是多线程搜索</li>
+<li>coreseek4.1的手册上面明确的写着“全部本地索引会被依次搜索，仅使用1个CPU或核。”。</li>
+<li>
+<p>不过手册中没有翻译的文档中有一个dist_threads参数，这个参数指明并发查询现场数，里面写到，从sphinx-2.0.1-bata(coreseek4.1正是基于这个版本的sphinx)开始就可以使用了，它指明以多少个线程的方式去查询索引，线程数最好和索引数相同(不包括聚合索引，这里就是dist_test)。这里可以这样配置:</p>
+<pre><code>index dist_test
+{
+    type = distributed
+    local = chunk1
+    local = chunk2
+    local = chunk3
+    local = chunk4
+}
+
+#...
+
+dist_threads = 4
+</code></pre>
+</li>
+<li>
+<p>这里的chunk1 - chunk4正是我们配置的多个索引，需要在同一份配置文件中配置，它们的数据源也是和上文一样的方式从一个数据源中拆分出来的。
+可以参考<a href="http://www.oschina.net/translate/sphinx-search-performance-optimization-multi-threaded-search">这篇文章</a>。</p>
+</li>
+</ul>
+<blockquote>
+<p>coreseek4.1 基于sphinx-2.0.1-bata，其多线程查询支持可能并不完善，可能我们需要升级更高版本的sphinx才能更好的支持这一特性(我在虚拟机上面配置，似乎就没有启用多线程)。<br />
+而且基于数据源拆分实现的分布式，可能会有一些隐患，需要我们仔细分析。
+如果想实现比较完美的分布式搜索引擎可能solr，elasticsearch这些为分布式而生的搜索引擎会更符合我们的需要。</p>
+</blockquote>
+</dir>
+
+<div style="margin-top:24px;margin-bottom:12px;display: block;">
+<hr/>
+</div>
+<!-- UY BEGIN -->
+<div id="uyan_frame"></div>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=1794396"></script>
+<!-- UY END -->
+
+
+</div>
+<div id="footer">
+	<span style="color:#bbb;font-size:12px">
+	&copy; Powered by <a href="https://github.com/daimin/daimin.github.com" title="sologs">sologs</a> 
+	</span>
+	<p style="clear:both"></p>
+</div>
+</div>
+<script type="text/javascript">
+function hasClass(obj, cls) {  
+    return obj.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));  
+}
+function addClass(obj, cls) {  
+    if (!this.hasClass(obj, cls)) obj.className += " " + cls;  
+} 
+
+function render_pretty(){
+    var pres = document.getElementsByTagName("pre");
+    for(var i = 0, len = pres.length; i < len; i++){
+        addClass(pres[i], "prettyprint");
+    }
+    prettyPrint();
+
+}
+
+(function(){
+   var mattos = [
+   "人生没有对错，只有选择后的坚持，不后悔，走下去，就是对的。",
+   "生活是一面镜子。你对它笑，它就对你笑；你对它哭，它也对你哭。",
+   "宁愿做过了后悔，也不要错过了后悔。",
+   "不要拿小人的错误来惩罚自己，不要在这些微不足道的事情上折磨浪费自己的宝贵时间。",
+   "环境不会改变，解决之道在于改变自己。",
+   "勇气是控制恐惧心理，而不是心里毫无恐惧。",
+   "两个人共尝一个痛苦只有半个痛苦，两个人共享一个欢乐却有两个欢乐。",
+   "好好管教自己，不要管别人。",
+   "得之坦然，失之淡然，顺其自然，争其必然。",
+   "人生是一条没有回程的单行线，上帝不会给你一张返程的票。",
+   "把事情办好的秘密就是行动。成功之路就是有条理思考之后的行动！行动！行动！",
+   "人生是一场旅行，在乎的不是目的地，是沿途的风景以及看风景的心情。",
+   "放弃谁都可以，千万不要放弃自己！",
+   "长得漂亮是优势，活得漂亮是本事。",
+   "人生最大的错误是不断担心会犯错。",
+   "一个人可以被毁灭，但不能给打败 -- 《老人与海》。",
+   "要么不要开始，要么不要结束。",
+   ];
+   document.getElementById("motto").innerHTML = mattos[parseInt(Math.random() * mattos.length)];
+   
+})();
+
+window.onload = function(){
+   render_pretty();
+};
+
+var dispatch = function() {
+    q = document.getElementById("q");
+    if (q.value != "") {
+        //window.open('http://www.baidu.com/s?si=daimin.github.io&cl=3&ct=2097152&tn=bds&word=' + q.value, "_blank");
+        window.open('https://www.google.com.hk/search?q=site:daimin.github.io ' + q.value + '&gws_rd=cr,ssl', '_blank');
+        return false;
+    } else {
+        return false;
+    }
+};
+
+</script>
+<script type="text/javascript" src="/js/jimdoclockzip.js"></script>
+<script type="text/javascript">
+var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_5814730'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s23.cnzz.com/stat.php%3Fid%3D5814730%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<!-- JiaThis Button BEGIN -->
+<div class="jiathis_share_slide jiathis_share_24x24" id="jiathis_share_slide">
+<div class="jiathis_share_slide_top" id="jiathis_share_title"></div>
+<div class="jiathis_share_slide_inner">
+<div class="jiathis_style_24x24">
+<a class="jiathis_button_qzone"></a>
+<a class="jiathis_button_tsina"></a>
+<a class="jiathis_button_tqq"></a>
+<a class="jiathis_button_weixin"></a>
+<a class="jiathis_button_renren"></a>
+<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+<script type="text/javascript">
+var jiathis_config = {data_track_clickback:'true'
+	,slide:{
+		divid:'jiathis_main',
+		pos:'right'
+	}
+};
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1355186795124515" charset="utf-8"></script>	
+<script type="text/javascript" src="http://v3.jiathis.com/code/jiathis_slide.js" charset="utf-8"></script>
+</div></div></div>
+<!-- JiaThis Button END -->
+</body>
+</html>

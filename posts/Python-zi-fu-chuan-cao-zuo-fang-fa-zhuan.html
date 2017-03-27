@@ -1,0 +1,303 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0025)http://daimin.github.io/ -->
+<html>
+<head>
+    
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="keywords" content="Python-字符串操作方法(转)" />
+    <meta name="description" content="字符串中字符大小写的变换：S.lower()   #小写S.upper()   #大写S.swapc..." />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    <title>Python-字符串操作方法(转) | 茶瓯葱丝</title>
+    <link rel="stylesheet" type="text/css" href="/styles/style.css">
+    <link rel="Stylesheet" type="text/css" href="/js/prettify/desert.css" />
+    <link rel="stylesheet" type="text/css" href="/styles/bootstrap-jian.css">
+    <script type="text/javascript"  src="/js/prettify/prettify.js"></script>
+	<link rel="alternate" type="application/rss+xml" title="RSS" href="http://daimin.github.io/rss.xml">
+</head>
+<body>
+		<div id="logo">
+			<span id="motto"></span>
+			<h1><a href="/index.html" >茶瓯葱丝</a>
+            <form onsubmit="return dispatch()" style="display:inline">
+            <span style="width: 240px; height: 26px; margin-left:24px; background-size: 240px 26px; background-image: url('/image/qbar_light@2x.png'); background-repeat: no-repeat; display: inline-block;">
+            <input type="text" maxlength="40" name="q" id="q" value="">
+            </span>
+            </form>
+            </h1>
+            
+        </div>
+<div id="wrapper">
+<div id="content" class="index">
+     
+<h2 class="post-title">Python-字符串操作方法(转)</h2>
+<div class="cnt">
+<p><strong>字符串中字符大小写的变换：</strong></p>
+<ul>
+<li>
+<p>S.lower()   #小写</p>
+</li>
+<li>
+<p>S.upper()   #大写</p>
+</li>
+<li>
+<p>S.swapcase()   #大小写互换</p>
+</li>
+<li>
+<p>S.capitalize()   #首字母大写</p>
+</li>
+<li>
+<p>String.capwords(S) </p>
+<p>#这是模块中的方法。它把S用split()函数分开，然后用capitalize()把首字母变成大写，最后用join()合并到一起</p>
+</li>
+<li>
+<p>S.title()    #只有首字母大写，其余为小写，模块中没有这个方法</p>
+</li>
+</ul>
+<p><strong>字符串在输出时的对齐：</strong></p>
+<ul>
+<li>
+<p>S.ljust(width,[fillchar]) </p>
+<p>#输出width个字符，S左对齐，不足部分用fillchar填充，默认的为空格。</p>
+</li>
+<li>
+<p>S.rjust(width,[fillchar])    #右对齐</p>
+</li>
+<li>
+<p>S.center(width, [fillchar])    #中间对齐</p>
+</li>
+<li>
+<p>S.zfill(width)   #把S变成width长，并在右对齐，不足部分用0补足</p>
+</li>
+</ul>
+<p><strong>字符串中的搜索和替换：</strong></p>
+<ul>
+<li>
+<p>S.find(substr, [start, [end]]) </p>
+<p>#返回S中出现substr的第一个字母的标号，如果S中没有substr则返回-1。start和end作用就相当于在S[start:end]中搜索</p>
+</li>
+<li>
+<p>S.index(substr, [start, [end]]) </p>
+<p>#与find()相同，只是在S中没有substr时，会返回一个运行时错误</p>
+</li>
+<li>
+<p>S.rfind(substr, [start, [end]]) </p>
+<p>#返回S中最后出现的substr的第一个字母的标号，如果S中没有substr则返回-1，也就是说从右边算起的第一次出现的substr的首字母标号</p>
+</li>
+<li>
+<p>S.rindex(substr, [start, [end]])</p>
+</li>
+<li>
+<p>S.count(substr, [start, [end]])    #计算substr在S中出现的次数</p>
+</li>
+<li>
+<p>S.replace(oldstr, newstr, [count])  </p>
+<p>#把S中的oldstar替换为newstr，count为替换次数。这是替换的通用形式，还有一些函数进行特殊字符的替换</p>
+</li>
+<li>
+<p>S.strip([chars])</p>
+<p>#把S中前后chars中有的字符全部去掉，可以理解为把S前后chars替换为None</p>
+</li>
+<li>
+<p>S.lstrip([chars])</p>
+</li>
+<li>
+<p>S.rstrip([chars])</p>
+</li>
+<li>
+<p>S.expandtabs([tabsize]) </p>
+<p>#把S中的tab字符替换没空格，每个tab替换为tabsize个空格，默认是8个</p>
+</li>
+</ul>
+<p><strong>字符串的分割和组合：</strong></p>
+<ul>
+<li>
+<p>S.split([sep, [maxsplit]])</p>
+<p>#以sep为分隔符，把S分成一个list。maxsplit表示分割的次数。默认的分割符为空白字符</p>
+</li>
+<li>
+<p>S.rsplit([sep, [maxsplit]])</p>
+</li>
+<li>
+<p>S.splitlines([keepends])</p>
+<p>#把S按照行分割符分为一个list，keepends是一个bool值，如果为真每行后而会保留行分割符。</p>
+</li>
+<li>
+<p>S.join(seq) #把seq代表的序列──字符串序列，用S连接起来</p>
+</li>
+</ul>
+<p><strong>字符串的mapping，这一功能包含两个函数：</strong></p>
+<ul>
+<li>
+<p>String.maketrans(from, to)</p>
+<p>#返回一个256个字符组成的翻译表，其中from中的字符被一一对应地转换成to，所以from和to必须是等长的。</p>
+</li>
+<li>
+<p>S.translate(table[,deletechars])</p>
+<p>#使用上面的函数产后的翻译表，把S进行翻译，并把deletechars中有的字符删掉。需要注意的是，如果S为unicode字符串，那么就不支持 deletechars参数，可以使用把某个字符翻译为None的方式实现相同的功能。此外还可以使用codecs模块的功能来创建更加功能强大的翻译 表。</p>
+</li>
+</ul>
+<p><strong>字符串还有一对编码和解码的函数：</strong></p>
+<ul>
+<li>
+<p>S.encode([encoding,[errors]])</p>
+<p>#其中encoding可以有多种值，比如gb2312 gbk gb18030 bz2 zlib big5 bzse64等都支持。errors默认值为"strict"，意思是UnicodeError。可能的值还有'ignore', 'replace', 'xmlcharrefreplace', 'backslashreplace' 和所有的通过codecs.register_error注册的值。这一部分内容涉及codecs模块，不是特明白</p>
+</li>
+<li>
+<p>S.decode([encoding,[errors]])</p>
+</li>
+</ul>
+<p><strong>字符串的测试函数，这一类函数在string模块中没有，这些函数返回的都是bool值：</strong></p>
+<ul>
+<li>
+<p>S.startwith(prefix[,start[,end]])</p>
+<p>#是否以prefix开头</p>
+</li>
+<li>
+<p>S.endwith(suffix[,start[,end]])</p>
+<p>#以suffix结尾</p>
+</li>
+<li>
+<p>S.isalnum()</p>
+<p>#是否全是字母和数字，并至少有一个字符</p>
+</li>
+<li>
+<p>S.isalpha()  #是否全是字母，并至少有一个字符</p>
+</li>
+<li>
+<p>S.isdigit()  #是否全是数字，并至少有一个字符</p>
+</li>
+<li>
+<p>S.isspace() #是否全是空白字符，并至少有一个字符</p>
+</li>
+<li>
+<p>S.islower() #S中的字母是否全是小写</p>
+</li>
+<li>
+<p>S.isupper() #S中的字母是否便是大写</p>
+</li>
+<li>
+<p>S.istitle() #S是否是首字母大写的</p>
+</li>
+</ul>
+<p><strong>字符串类型转换函数，这几个函数只在string模块中有：</strong></p>
+<ul>
+<li>
+<p>string.atoi(s[,base])</p>
+<p>#base默认为10，如果为0,那么s就可以是012或0x23这种形式的字符串，如果是16那么s就只能是0x23或0X12这种形式的字符串</p>
+</li>
+<li>
+<p>string.atol(s[,base])  #转成long</p>
+</li>
+<li>
+<p>string.atof(s[,base])  #转成float</p>
+</li>
+</ul>
+</dir>
+
+<div style="margin-top:24px;margin-bottom:12px;display: block;">
+<hr/>
+</div>
+<!-- UY BEGIN -->
+<div id="uyan_frame"></div>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=1794396"></script>
+<!-- UY END -->
+
+
+</div>
+<div id="footer">
+	<span style="color:#bbb;font-size:12px">
+	&copy; Powered by <a href="https://github.com/daimin/daimin.github.com" title="sologs">sologs</a> 
+	</span>
+	<p style="clear:both"></p>
+</div>
+</div>
+<script type="text/javascript">
+function hasClass(obj, cls) {  
+    return obj.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));  
+}
+function addClass(obj, cls) {  
+    if (!this.hasClass(obj, cls)) obj.className += " " + cls;  
+} 
+
+function render_pretty(){
+    var pres = document.getElementsByTagName("pre");
+    for(var i = 0, len = pres.length; i < len; i++){
+        addClass(pres[i], "prettyprint");
+    }
+    prettyPrint();
+
+}
+
+(function(){
+   var mattos = [
+   "人生没有对错，只有选择后的坚持，不后悔，走下去，就是对的。",
+   "生活是一面镜子。你对它笑，它就对你笑；你对它哭，它也对你哭。",
+   "宁愿做过了后悔，也不要错过了后悔。",
+   "不要拿小人的错误来惩罚自己，不要在这些微不足道的事情上折磨浪费自己的宝贵时间。",
+   "环境不会改变，解决之道在于改变自己。",
+   "勇气是控制恐惧心理，而不是心里毫无恐惧。",
+   "两个人共尝一个痛苦只有半个痛苦，两个人共享一个欢乐却有两个欢乐。",
+   "好好管教自己，不要管别人。",
+   "得之坦然，失之淡然，顺其自然，争其必然。",
+   "人生是一条没有回程的单行线，上帝不会给你一张返程的票。",
+   "把事情办好的秘密就是行动。成功之路就是有条理思考之后的行动！行动！行动！",
+   "人生是一场旅行，在乎的不是目的地，是沿途的风景以及看风景的心情。",
+   "放弃谁都可以，千万不要放弃自己！",
+   "长得漂亮是优势，活得漂亮是本事。",
+   "人生最大的错误是不断担心会犯错。",
+   "一个人可以被毁灭，但不能给打败 -- 《老人与海》。",
+   "要么不要开始，要么不要结束。",
+   ];
+   document.getElementById("motto").innerHTML = mattos[parseInt(Math.random() * mattos.length)];
+   
+})();
+
+window.onload = function(){
+   render_pretty();
+};
+
+var dispatch = function() {
+    q = document.getElementById("q");
+    if (q.value != "") {
+        //window.open('http://www.baidu.com/s?si=daimin.github.io&cl=3&ct=2097152&tn=bds&word=' + q.value, "_blank");
+        window.open('https://www.google.com.hk/search?q=site:daimin.github.io ' + q.value + '&gws_rd=cr,ssl', '_blank');
+        return false;
+    } else {
+        return false;
+    }
+};
+
+</script>
+<script type="text/javascript" src="/js/jimdoclockzip.js"></script>
+<script type="text/javascript">
+var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_5814730'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s23.cnzz.com/stat.php%3Fid%3D5814730%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<!-- JiaThis Button BEGIN -->
+<div class="jiathis_share_slide jiathis_share_24x24" id="jiathis_share_slide">
+<div class="jiathis_share_slide_top" id="jiathis_share_title"></div>
+<div class="jiathis_share_slide_inner">
+<div class="jiathis_style_24x24">
+<a class="jiathis_button_qzone"></a>
+<a class="jiathis_button_tsina"></a>
+<a class="jiathis_button_tqq"></a>
+<a class="jiathis_button_weixin"></a>
+<a class="jiathis_button_renren"></a>
+<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+<script type="text/javascript">
+var jiathis_config = {data_track_clickback:'true'
+	,slide:{
+		divid:'jiathis_main',
+		pos:'right'
+	}
+};
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1355186795124515" charset="utf-8"></script>	
+<script type="text/javascript" src="http://v3.jiathis.com/code/jiathis_slide.js" charset="utf-8"></script>
+</div></div></div>
+<!-- JiaThis Button END -->
+</body>
+</html>
