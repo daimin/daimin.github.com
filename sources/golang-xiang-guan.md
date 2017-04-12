@@ -94,10 +94,11 @@ date:2017-03-21
     * 利用组合实现继承
 
             type A struct {
+                Name string
             }
 
             func (a *A) say() {
-                fmt.Println("Hello")
+                fmt.Println("Hello " + a.Name)
             }
 
             type AA struct {
@@ -108,6 +109,9 @@ date:2017-03-21
 	        aa.say()
             
             // 这里AA的对象就拥有了A类所有的属性和方法，接口的继承也是同理
+            // 匿名字段，当匿名字段是一个struct的时候，那么这个struct所拥有的全部字段都被隐式地引入了当前定义的这个struct
+            aa := &AA{A{"Vaga"}}
+	        aa.say()
 
 8. 并发
 
@@ -118,6 +122,14 @@ date:2017-03-21
     * 多核运行，可能需要设置`runtime.GOMAXPROCS(16)` 16就是核心数
     * 锁，实现并发通讯的另一种方式，原则上就是锁住共享内存
     * 实现IPC就只有两种方式：**共享内存**和**消息传递**。
+
+9. 类型断言
+
+        type T struct{}
+        var _ I = T{}
+
+        其中 I为interface
+        //上面用来判断 type T是否实现了I,用作类型断言，如果T没有实现借口I，则编译错误.
 
 
 ---
