@@ -120,10 +120,11 @@ rect = Rect{width: 100, height:200}
 &lt;li&gt;
 &lt;p&gt;利用组合实现继承&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;type A struct {
+    Name string
 }
 
 func (a *A) say() {
-    fmt.Println(&#34;Hello&#34;)
+    fmt.Println(&#34;Hello &#34; + a.Name)
 }
 
 type AA struct {
@@ -134,6 +135,9 @@ aa := &amp;amp;AA{}
 aa.say()
 
 // 这里AA的对象就拥有了A类所有的属性和方法，接口的继承也是同理
+// 匿名字段，当匿名字段是一个struct的时候，那么这个struct所拥有的全部字段都被隐式地引入了当前定义的这个struct
+aa := &amp;amp;AA{A{&#34;Vaga&#34;}}
+aa.say()
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
@@ -149,6 +153,15 @@ aa.say()
 &lt;li&gt;锁，实现并发通讯的另一种方式，原则上就是锁住共享内存&lt;/li&gt;
 &lt;li&gt;实现IPC就只有两种方式：&lt;strong&gt;共享内存&lt;/strong&gt;和&lt;strong&gt;消息传递&lt;/strong&gt;。&lt;/li&gt;
 &lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;类型断言&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type T struct{}
+var _ I = T{}
+
+其中 I为interface
+//上面用来判断 type T是否实现了I,用作类型断言，如果T没有实现借口I，则编译错误.
+&lt;/code&gt;&lt;/pre&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;hr /&gt;
