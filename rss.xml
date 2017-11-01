@@ -7,6 +7,14 @@
     <language>zh-cn</language>  
     <generator>sologd</generator>  
     <item>  
+		<title>一步步学习vue.js（一）</title>  
+		<link>http://daimin.github.io//posts/yi-bu-bu-xue-xi-vuejs-yi.html</link>  
+		<description>&lt;p&gt;开个坑&lt;/p&gt;</description>  
+		<author>daimin</author>  
+		<copyright></copyright>  
+		<pubDate>2017-11-01</pubDate>  
+    </item>  
+    <item>  
 		<title>golang相关</title>  
 		<link>http://daimin.github.io//posts/golang-xiang-guan.html</link>  
 		<description>&lt;hr /&gt;
