@@ -7,11 +7,11 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
     <meta name="format-detection" content="telephone=no" />
-    <meta name="keywords" content="使用VirtualBox使centos和win7共享文件夹设置" />
+    <meta name="keywords" content="使用VirtualBox使centos和win7共享文件夹设置" />
     <meta name="description" content="简单的记录一下。VirtualBox非常好用比vmware好用多了。它的VirtualBox功能，可..." />
     <link rel="shortcut icon" href="/favicon.ico" />
 
-    <title>使用VirtualBox使centos和win7共享文件夹设置 | 茶瓯葱丝</title>
+    <title>使用VirtualBox使centos和win7共享文件夹设置 | 茶瓯葱丝</title>
     <link rel="stylesheet" type="text/css" href="/styles/style.css">
     <link rel="Stylesheet" type="text/css" href="/js/prettify/desert.css" />
     <link rel="stylesheet" type="text/css" href="/styles/bootstrap-jian.css">
@@ -33,7 +33,35 @@
 <div id="wrapper">
 <div id="content" class="index">
      
-<h2 class="post-title">使用VirtualBox使centos和win7共享文件夹设置</h2>
+<div id="sidebar">
+        <ul>
+            <li>
+                <a href="/index.html">首页</a>
+                <ul>
+                        <li><a href="/tags/python.html" title="python"> python</a></li>
+                        <li><a href="/tags/php.html" title="php"> php</a></li>
+                        <li><a href="/tags/nginx.html" title="nginx"> nginx</a></li>
+                        <li><a href="/tags/markdown.html" title="markdown"> markdown</a></li>
+                        <li><a href="/tags/java.html" title="java"> java</a></li>
+                </ul>
+            </li>
+            <li><a href="/tags/">标签</a></li>
+            <li><a href="http://daimin.github.io/rss.xml">订阅</a></li>
+            <li><a href="/links.html">友链</a></li>
+            <li><a href="/docs/index.html">文档</a></li>
+                <li><a href="/posts/liu-yan-ban.html" title="留言">留言</a></li>
+            
+        </ul>
+        <div class="ad-panel" onclick="location.href='https://www.facebook.com/NancyatJarliet'" style="cursor: pointer;">
+            <div class="ad-desc">
+            <p>实体娃娃(Sex Doll).<br/><a href="mailto:sales5@jarliet.com">sales5@jarliet.com</a></p>
+            </div>
+           <img src="/image/ads/erwama.jpg" style="float:right;margin-top:3px;" /> 
+        </div>
+        
+    </div>
+<div id="main">
+<h2 class="post-title">使用VirtualBox使centos和win7共享文件夹设置</h2>
 <div class="cnt">
 <p>简单的记录一下。</p>
 <p>VirtualBox非常好用比vmware好用多了。它的VirtualBox功能，可以让我们直接在windows上面开发代码，而在虚拟机下面运行，这为像我这样不是很熟悉linux开发工具的很受力。</p>
@@ -55,7 +83,7 @@
 <p>OK，安装增强工具完成，开始设置共享文件夹。</p>
 <p>虚拟机的设备菜单中选择“共享文件夹”，添加固定分配的共享文件夹，选择需要共享到虚拟机的win7文件夹。设置完成后，进行centos，执行<code>mkdir /mnt/share</code>，然后执行<code>mount -t vboxsf pywork /mnt/share</code>，<strong>需要注意挂载文件夹名不要和共享文件夹名相同</strong>。</p>
 <p>进行/mnt/share，执行<code>ls -l</code>，可以看到win7的文件夹内容完全可以在linux下面访问了，而且可以直接用centos下面的命令，运行之。</p>
-</dir>
+</div>
 
 <div style="margin-top:24px;margin-bottom:12px;display: block;">
 <hr/>
@@ -64,6 +92,8 @@
 <div id="uyan_frame"></div>
 <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=1794396"></script>
 <!-- UY END -->
+
+</div>
 
 
 </div>

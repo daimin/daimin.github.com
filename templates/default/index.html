@@ -3,28 +3,8 @@
 
 <%block name="header">
 </%block>
-
 <%block name="main">
-<div id="sidebar">
-        <ul>
-            <li>
-                <a href="/index.html">首页</a>
-                <ul>
-                    % for tag in sidetags:
-                        <li><a href="${tag.url}" title="${tag.title}"> ${tag.title}</a></li>
-                    % endfor
-                </ul>
-            </li>
-            <li><a href="/tags/">标签</a></li>
-            <li><a href="http://${domain}/rss.xml">订阅</a></li>
-            <li><a href="/links.html">友链</a></li>
-            <li><a href="/docs/index.html">文档</a></li>
-            % for post in sideposts:
-                <li><a href="${post.url}" title="${post.title}">${post.title}</a></li>
-            % endfor
-            
-        </ul>
-    </div>
+<%include file="sidebar.html" />
 <div id="main">
         <ul class="posts">
         % for post in posts:

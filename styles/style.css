@@ -81,6 +81,11 @@ div#wrapper {
 	width:72%;
 }
 
+#post-entity{
+	float: right;
+    width: 84%;
+}
+
 #content a {
 	font-weight:bold;
 }
@@ -520,4 +525,46 @@ div#disqus_thread li ul li {
     color:#7e7e7e;
     font-size:25px;
     font-weight:bold;
+}
+
+#sidebar .ad-panel{
+	margin-top: 150px;
+	border: 2px solid #fff;
+	float:right;
+	width: 144px;
+	height:144px;
+	background: url('/image/ads/2222222.jpg') no-repeat center center;
+	background-size: 100% auto;
+}
+
+
+#sidebar .ad-panel a{
+ font-weight: normal;
+}
+
+#sidebar .ad-panel a img{
+	width: 100%;
+    height: 100%;
+    object-fit:cover;
+    border-radius: 0;
+}
+
+#sidebar .ad-panel .ad-desc{
+	line-height: 14px;
+	text-align: center;
+	background-color: #666;
+	font-size: 12px;
+	text-transform:none;
+	color: #fff;
+	text-shadow: 0 0 0;
+	padding-bottom: 3px;
+	margin-top:144px;
+}
+
+#sidebar .ad-panel .ad-desc a{
+	color: #fff;
+}
+
+#sidebar .ad-panel .ad-desc a:hover{
+	text-decoration: underline;
 }

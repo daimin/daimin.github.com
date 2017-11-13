@@ -4,9 +4,13 @@
 </%block>
 
 <%block name="main">
+<%include file="sidebar.html" />
+<div id="main">
 <h2 class="post-title">${post.title}</h2>
 <div class="cnt">
 ${post.cont}
-</dir>
+</div>
 <%include file="comment.html"/>
+</div>
+
 </%block>

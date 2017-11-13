@@ -33,6 +33,34 @@
 <div id="wrapper">
 <div id="content" class="index">
      
+<div id="sidebar">
+        <ul>
+            <li>
+                <a href="/index.html">首页</a>
+                <ul>
+                        <li><a href="/tags/python.html" title="python"> python</a></li>
+                        <li><a href="/tags/php.html" title="php"> php</a></li>
+                        <li><a href="/tags/nginx.html" title="nginx"> nginx</a></li>
+                        <li><a href="/tags/markdown.html" title="markdown"> markdown</a></li>
+                        <li><a href="/tags/java.html" title="java"> java</a></li>
+                </ul>
+            </li>
+            <li><a href="/tags/">标签</a></li>
+            <li><a href="http://daimin.github.io/rss.xml">订阅</a></li>
+            <li><a href="/links.html">友链</a></li>
+            <li><a href="/docs/index.html">文档</a></li>
+                <li><a href="/posts/liu-yan-ban.html" title="留言">留言</a></li>
+            
+        </ul>
+        <div class="ad-panel" onclick="location.href='https://www.facebook.com/NancyatJarliet'" style="cursor: pointer;">
+            <div class="ad-desc">
+            <p>实体娃娃(Sex Doll).<br/><a href="mailto:sales5@jarliet.com">sales5@jarliet.com</a></p>
+            </div>
+           <img src="/image/ads/erwama.jpg" style="float:right;margin-top:3px;" /> 
+        </div>
+        
+    </div>
+<div id="main">
 <h2 class="post-title">删除PHP文件中的BOM字符</h2>
 <div class="cnt">
 <p><code>BOM</code>是微软搞出来的，比如如果你用windows上面的记事本程序，另存一个文本文件为utf-8编码，那么在文件头就加上了<strong>BOM(0xEF 0xBB 0xBF，即BOM)</strong>，用来鉴别文件编码格式，但是这在html中就是一行啊，我们在Windows上面写php很容易就加上了BOM。下面是一个脚本，专门用来清除BOM的。</p>
@@ -144,7 +172,7 @@ fclose($filenum);
 
 ?&gt;
 </code></pre>
-</dir>
+</div>
 
 <div style="margin-top:24px;margin-bottom:12px;display: block;">
 <hr/>
@@ -153,6 +181,8 @@ fclose($filenum);
 <div id="uyan_frame"></div>
 <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=1794396"></script>
 <!-- UY END -->
+
+</div>
 
 
 </div>

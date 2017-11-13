@@ -7,11 +7,11 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
     <meta name="format-detection" content="telephone=no" />
-    <meta name="keywords" content="用logstash+elasticsearch+Kibana+redis搭建实时日志查询、收集与分析平台" />
+    <meta name="keywords" content="用logstash+elasticsearch+Kibana+redis搭建实时日志查询、收集与分析平台" />
     <meta name="description" content="hadoop之类的是高帅富用的，我们用不过来。这里搭建一个简单的日志平台。logstash是一个管理..." />
     <link rel="shortcut icon" href="/favicon.ico" />
 
-    <title>用logstash+elasticsearch+Kibana+redis搭建实时日志查询、收集与分析平台 | 茶瓯葱丝</title>
+    <title>用logstash+elasticsearch+Kibana+redis搭建实时日志查询、收集与分析平台 | 茶瓯葱丝</title>
     <link rel="stylesheet" type="text/css" href="/styles/style.css">
     <link rel="Stylesheet" type="text/css" href="/js/prettify/desert.css" />
     <link rel="stylesheet" type="text/css" href="/styles/bootstrap-jian.css">
@@ -33,7 +33,35 @@
 <div id="wrapper">
 <div id="content" class="index">
      
-<h2 class="post-title">用logstash+elasticsearch+Kibana+redis搭建实时日志查询、收集与分析平台</h2>
+<div id="sidebar">
+        <ul>
+            <li>
+                <a href="/index.html">首页</a>
+                <ul>
+                        <li><a href="/tags/python.html" title="python"> python</a></li>
+                        <li><a href="/tags/php.html" title="php"> php</a></li>
+                        <li><a href="/tags/nginx.html" title="nginx"> nginx</a></li>
+                        <li><a href="/tags/markdown.html" title="markdown"> markdown</a></li>
+                        <li><a href="/tags/java.html" title="java"> java</a></li>
+                </ul>
+            </li>
+            <li><a href="/tags/">标签</a></li>
+            <li><a href="http://daimin.github.io/rss.xml">订阅</a></li>
+            <li><a href="/links.html">友链</a></li>
+            <li><a href="/docs/index.html">文档</a></li>
+                <li><a href="/posts/liu-yan-ban.html" title="留言">留言</a></li>
+            
+        </ul>
+        <div class="ad-panel" onclick="location.href='https://www.facebook.com/NancyatJarliet'" style="cursor: pointer;">
+            <div class="ad-desc">
+            <p>实体娃娃(Sex Doll).<br/><a href="mailto:sales5@jarliet.com">sales5@jarliet.com</a></p>
+            </div>
+           <img src="/image/ads/erwama.jpg" style="float:right;margin-top:3px;" /> 
+        </div>
+        
+    </div>
+<div id="main">
+<h2 class="post-title">用logstash+elasticsearch+Kibana+redis搭建实时日志查询、收集与分析平台</h2>
 <div class="cnt">
 <p>hadoop之类的是高帅富用的，我们用不过来。这里搭建一个简单的日志平台。</p>
 <p>logstash是一个管理日志和事件的工具，你可以收集它们，解析它们，并存储它们以供以后使用(例如日志搜索)，logstash有一个内置的web界面，用来搜索你的所有日志。logstash在部署时有两种运行模式：standalone和centralized：</p>
@@ -141,7 +169,7 @@ output {
 <hr />
 <p><strong>关于filter的写法，这里我们最常使用的就是grok，可以参考logstash的官网，上面有很多介绍。 </strong></p>
 <p><strong>实际上我们可以用logstash完成很多功能，比如报警功能(使用metrics插件和ruby插件)，统计nginx访问日志，并按照自己的需求，这个就需要对grok进行编码了，主要就是正则表达式的编写，如果一个grok不够的话，还可以加上一个grok，诸如此类的。</strong></p>
-</dir>
+</div>
 
 <div style="margin-top:24px;margin-bottom:12px;display: block;">
 <hr/>
@@ -150,6 +178,8 @@ output {
 <div id="uyan_frame"></div>
 <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=1794396"></script>
 <!-- UY END -->
+
+</div>
 
 
 </div>
