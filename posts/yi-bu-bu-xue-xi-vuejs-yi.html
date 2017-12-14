@@ -7,11 +7,11 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
     <meta name="format-detection" content="telephone=no" />
-    <meta name="keywords" content="一步步学习vue.js（一）" />
-    <meta name="description" content="开个坑" />
+    <meta name="keywords" content="一步步学习vue.js（一）" />
+    <meta name="description" content="vue对象定义，常用指令和模板的简单使用{{ var }}用来输出变量var vm = new Vu..." />
     <link rel="shortcut icon" href="/favicon.ico" />
 
-    <title>一步步学习vue.js（一） | 茶瓯葱丝</title>
+    <title>一步步学习vue.js（一） | 茶瓯葱丝</title>
     <link rel="stylesheet" type="text/css" href="/styles/style.css">
     <link rel="Stylesheet" type="text/css" href="/js/prettify/desert.css" />
     <link rel="stylesheet" type="text/css" href="/styles/bootstrap-jian.css">
@@ -62,9 +62,71 @@
     </div>
 
 <div id="main">
-<h2 class="post-title">一步步学习vue.js（一）</h2>
+<h2 class="post-title">一步步学习vue.js（一）</h2>
 <div class="cnt">
-<p>开个坑</p>
+<h1>vue对象定义，常用指令和模板的简单使用</h1>
+<p><code>{{ var }}</code>用来输出变量
+<code>var vm = new Vue({
+    el: '#app',  # 对应一个DOM 元素进行挂载
+    data: { # data是Vue对象的属性
+        newPerson: {
+            name: '',
+            age: 0,
+            sex: 'Male'
+        },
+        peoples:[ ]
+    },
+    methods:{ # vue对象的方法
+        createPerson: function(){
+            this.peoples.push(this.newPerson);
+            // 添加完newPerson对象后，重置newPerson对象
+            this.newPerson = {name: '', age: 0, sex: 'Male'}
+        }
+    }
+})</code></p>
+<ol>
+<li>
+<p>常用指令</p>
+<ul>
+<li>v-bind 指令可以用于响应式地更新 HTML 属性，缩写为:</li>
+<li>v-for会对使用它的标签进行循环</li>
+<li>v-on 用于监听 DOM 事件，缩写为@</li>
+<li>v-model 指令在表单控件元素上创建双向数据绑定</li>
+<li>v-show 用于根据条件展示元素</li>
+<li>
+<p>v-if和v-show类似，不过他可以接v-else，还有v-else-if</p>
+<p>v-if 和v-show类似，不过二者还有有区别，v-if切换消耗较大，v-show初始化时消耗较大，因为v-if是惰性渲染。频繁变动的用v-show，否则用v-if
+    * v-once可以控制变量变化时绑定的数据不变化。
+    * v-html用来原始输出html</p>
+</li>
+</ul>
+</li>
+<li>
+<p>组件</p>
+<p>应该在挂载元素范围内使用组件
+```
+<div id="app">
+    <!-- 3. #app是Vue实例挂载的元素，应该在挂载元素范围内使用组件-->
+    <my-component></my-component>
+</div></p>
+<pre><code>// 1.创建一个组件构造器
+var myComponent = Vue.extend({
+    template: '&lt;div&gt;This is my first component!&lt;/div&gt;'
+})
+
+new Vue({
+    el: '#app',
+    components: {
+        // 2. 将myComponent组件注册到Vue实例下
+        'my-component' : myComponent
+    }
+});
+// 3. 全局注册组件
+Vue.component('my-component', myComponent)
+</code></pre>
+<p>```</p>
+</li>
+</ol>
 </div>
 
 <div style="margin-top:24px;margin-bottom:12px;display: block;">
