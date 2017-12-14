@@ -10,26 +10,26 @@ date:2017-11-01
 
 `{{ var }}` 用来输出变量
 
-```
-var vm = new Vue({
-    el: '#app',  # 对应一个DOM 元素进行挂载
-    data: { # data是Vue对象的属性
-        newPerson: {
-            name: '',
-            age: 0,
-            sex: 'Male'
+    ```
+    var vm = new Vue({
+        el: '#app',  # 对应一个DOM 元素进行挂载
+        data: { # data是Vue对象的属性
+            newPerson: {
+                name: '',
+                age: 0,
+                sex: 'Male'
+            },
+            peoples:[ ]
         },
-        peoples:[ ]
-    },
-    methods:{ # vue对象的方法
-        createPerson: function(){
-            this.peoples.push(this.newPerson);
-            // 添加完newPerson对象后，重置newPerson对象
-            this.newPerson = {name: '', age: 0, sex: 'Male'}
+        methods:{ # vue对象的方法
+            createPerson: function(){
+                this.peoples.push(this.newPerson);
+                // 添加完newPerson对象后，重置newPerson对象
+                this.newPerson = {name: '', age: 0, sex: 'Male'}
+            }
         }
-    }
-})
-```
+    })
+    ```
 
 1. 常用指令
     * v-bind 指令可以用于响应式地更新 HTML 属性，缩写为:

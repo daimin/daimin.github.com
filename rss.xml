@@ -11,7 +11,8 @@
 		<link>http://daimin.github.io//posts/yi-bu-bu-xue-xi-vuejs-yi.html</link>  
 		<description>&lt;h1&gt;vue对象定义，常用指令和模板的简单使用&lt;/h1&gt;
 &lt;p&gt;&lt;code&gt;{{ var }}&lt;/code&gt; 用来输出变量&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;var vm = new Vue({
+&lt;pre&gt;&lt;code&gt;```
+var vm = new Vue({
     el: &#39;#app&#39;,  # 对应一个DOM 元素进行挂载
     data: { # data是Vue对象的属性
         newPerson: {
@@ -28,7 +29,9 @@
             this.newPerson = {name: &#39;&#39;, age: 0, sex: &#39;Male&#39;}
         }
     }
-})&lt;/code&gt;&lt;/p&gt;
+})
+```
+&lt;/code&gt;&lt;/pre&gt;
 &lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;常用指令&lt;/p&gt;
