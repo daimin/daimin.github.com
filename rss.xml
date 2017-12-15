@@ -7,12 +7,11 @@
     <language>zh-cn</language>  
     <generator>sologd</generator>  
     <item>  
-		<title>一步步学习vue.js（一）</title>  
+		<title>一步步学习vue.js（一）</title>  
 		<link>http://daimin.github.io//posts/yi-bu-bu-xue-xi-vuejs-yi.html</link>  
 		<description>&lt;h1&gt;vue对象定义，常用指令和模板的简单使用&lt;/h1&gt;
 &lt;p&gt;&lt;code&gt;{{ var }}&lt;/code&gt; 用来输出变量&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;```
-var vm = new Vue({
+&lt;pre&gt;&lt;code&gt;var vm = new Vue({
     el: &#39;#app&#39;,  # 对应一个DOM 元素进行挂载
     data: { # data是Vue对象的属性
         newPerson: {
@@ -30,7 +29,6 @@ var vm = new Vue({
         }
     }
 })
-```
 &lt;/code&gt;&lt;/pre&gt;
 &lt;ol&gt;
 &lt;li&gt;
@@ -51,9 +49,8 @@ var vm = new Vue({
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;组件&lt;/p&gt;
-&lt;p&gt;应该在挂载元素范围内使用组件
-```
-&lt;div id=&#34;app&#34;&gt;
+&lt;p&gt;应该在挂载元素范围内使用组件&lt;/p&gt;
+&lt;p&gt;&lt;div id=&#34;app&#34;&gt;
     &lt;!-- 3. #app是Vue实例挂载的元素，应该在挂载元素范围内使用组件--&gt;
     &lt;my-component&gt;&lt;/my-component&gt;
 &lt;/div&gt;&lt;/p&gt;
@@ -72,12 +69,11 @@ new Vue({
 // 3. 全局注册组件
 Vue.component(&#39;my-component&#39;, myComponent)
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;```&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;</description>  
 		<author>daimin</author>  
 		<copyright></copyright>  
-		<pubDate>2017-11-01</pubDate>  
+		<pubDate>2017-11-01</pubDate>  
     </item>  
     <item>  
 		<title>golang相关</title>  
@@ -246,7 +242,7 @@ var _ I = T{}
 		<pubDate>2017-03-21</pubDate>  
     </item>  
     <item>  
-		<title>数组参数还是对象参数</title>  
+		<title>数组参数还是对象参数</title>  
 		<link>http://daimin.github.io//posts/php-shuzu-args-or-duixiang-args.html</link>  
 		<description>&lt;p&gt;在PHP中给函数传参数的时候，一般来说为了避免参数过长我们可以选择传数组或者是封装一个参数类来传对象。
 &lt;strong&gt;我的看法是对象肯定是优于数组。&lt;/strong&gt;&lt;/p&gt;
@@ -277,10 +273,10 @@ var _ I = T{}
 &lt;/blockquote&gt;</description>  
 		<author>daimin</author>  
 		<copyright></copyright>  
-		<pubDate>2017-03-17</pubDate>  
+		<pubDate>2017-03-17</pubDate>  
     </item>  
     <item>  
-		<title>phpstorm配置xdebug调试</title>  
+		<title>phpstorm配置xdebug调试</title>  
 		<link>http://daimin.github.io//posts/phpstorm-peizhi-xdebug-tiaoshi.html</link>  
 		<description>&lt;h1&gt;phpstorm配置xdebug调试&lt;/h1&gt;
 &lt;ol&gt;
@@ -312,10 +308,10 @@ xdebug.idekey = PHPSTORM
 &lt;/ol&gt;</description>  
 		<author>daimin</author>  
 		<copyright></copyright>  
-		<pubDate>2015-08-07</pubDate>  
+		<pubDate>2015-08-07</pubDate>  
     </item>  
     <item>  
-		<title>mac上docker的安装和简单使用</title>  
+		<title>mac上docker的安装和简单使用</title>  
 		<link>http://daimin.github.io//posts/docker-anzhuang-shiyong.html</link>  
 		<description>&lt;blockquote&gt;
 &lt;p&gt;本来在centos上面安装docker，本来都成功了，但是运行不起来，发生如下错误：
@@ -415,10 +411,10 @@ CMD [&#34;/usr/sbin/sshd&#34;, &#34;-D&#34;]  # 运行ssh服务
 &lt;/ol&gt;</description>  
 		<author>daimin</author>  
 		<copyright></copyright>  
-		<pubDate>2015-04-01</pubDate>  
+		<pubDate>2015-04-01</pubDate>  
     </item>  
     <item>  
-		<title>在iTerm2中的vim使用solarized配色</title>  
+		<title>在iTerm2中的vim使用solarized配色</title>  
 		<link>http://daimin.github.io//posts/iterm2-vim-solarized-shiyong.html</link>  
 		<description>&lt;blockquote&gt;
 &lt;p&gt;一直很心水solarized主题，可是在iTerm2中vim无法正常的使用，会有一层朦朦的背景色，在macvim到是可以，但是主要还是使用iTerm2的vim。&lt;/p&gt;
@@ -438,10 +434,10 @@ colo solarized
 &lt;p&gt;ok，发现vim的solarized也正常使用了。&lt;/p&gt;</description>  
 		<author>daimin</author>  
 		<copyright></copyright>  
-		<pubDate>2015-03-26</pubDate>  
+		<pubDate>2015-03-26</pubDate>  
     </item>  
     <item>  
-		<title>django和celery简单结合使用</title>  
+		<title>django和celery简单结合使用</title>  
 		<link>http://daimin.github.io//posts/django-celery-jihe-shiyong.html</link>  
 		<description>&lt;blockquote&gt;
 &lt;p&gt;自行安装django,celery,flower,rabbitmq,mysql &lt;/p&gt;
@@ -565,10 +561,10 @@ class AdminChapter(admin.ModelAdmin):
 &lt;/ol&gt;</description>  
 		<author>daimin</author>  
 		<copyright></copyright>  
-		<pubDate>2015-03-20</pubDate>  
+		<pubDate>2015-03-20</pubDate>  
     </item>  
     <item>  
-		<title>计算机基础知识</title>  
+		<title>计算机基础知识</title>  
 		<link>http://daimin.github.io//posts/jisuanji-jichu-zhishi.html</link>  
 		<description>&lt;ol&gt;
 &lt;li&gt;计算下100的反码是多少？&lt;pre&gt;&lt;code&gt;首先100的二机制是01100100，它的反码是10011011，因为是有符号的，那么这个数表示为：因为最高位是1，那么肯定是负数，将该数取反就是100，即01100100，然后负数要+1，也就是101，那么10011011也就是-101。
@@ -577,10 +573,10 @@ class AdminChapter(admin.ModelAdmin):
 &lt;/ol&gt;</description>  
 		<author>daimin</author>  
 		<copyright></copyright>  
-		<pubDate>2015-03-13</pubDate>  
+		<pubDate>2015-03-13</pubDate>  
     </item>  
     <item>  
-		<title>python协程使用</title>  
+		<title>python协程使用</title>  
 		<link>http://daimin.github.io//posts/pythono-xie-cheng-shi-yong.html</link>  
 		<description>&lt;p&gt;协程是一种比线程更轻量级的执行体。它不是有系统内核控制调度，而是自己协同调度。Python通过yield提供了对协程的基本支持，但是不完全。而第三方的gevent为Python提供了比较完善的协程支持。&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;from gevent import monkey
@@ -651,10 +647,10 @@ GET: http://www.163.com/
 &lt;p&gt;可以看出在同一个进程中执行，但是顺序却不同了，可见网络io的时候是并发执行的。&lt;/p&gt;</description>  
 		<author>daimin</author>  
 		<copyright></copyright>  
-		<pubDate>2015-03-10</pubDate>  
+		<pubDate>2015-03-10</pubDate>  
     </item>  
     <item>  
-		<title>走过2014</title>  
+		<title>走过2014</title>  
 		<link>http://daimin.github.io//posts/zou-guo-2014.html</link>  
 		<description>&lt;p&gt;2014年就这么安静的过去，很平淡，却让我比较舒服。  &lt;/p&gt;
 &lt;p&gt;2014年春节的时候换了一家公司，其实不是换，因为上家公司解散了，去年就面好了现在这家公司，于是年后换了房子后就直接来上班了。&lt;/p&gt;
@@ -665,10 +661,10 @@ GET: http://www.163.com/
 &lt;p&gt;一直觉得，能够生活的平平淡淡，简简单单，身体健健康康，和心爱的人一起把孩子带大，照顾好双方的父母。等我们在外面做不动了就回到家乡，安静的生活，有时候出去旅游一下，养养鸡鸭，或是去地里劳作下，或是再敲敲自己喜欢的代码。如果这是我们的一辈子，该是多么幸福的事情啊！&lt;/p&gt;</description>  
 		<author>daimin</author>  
 		<copyright></copyright>  
-		<pubDate>2015-01-01</pubDate>  
+		<pubDate>2015-01-01</pubDate>  
     </item>  
     <item>  
-		<title>大数据处理的一些算法学习</title>  
+		<title>大数据处理的一些算法学习</title>  
 		<link>http://daimin.github.io//posts/da-shu-ju-chu-li-de-yi-xie-suan-fa-xue-xi.html</link>  
 		<description>&lt;p&gt;一、 倒排索引
 一般的索引都是通过在内容中提取关键词作为索引，索引文件记录每个文章中出现的关键词，查询的时候根据搜索内容去查询每个文档的关键词，来确定是否为所需文档，然后合并查询结果。（以文档为中心）
@@ -693,10 +689,10 @@ bitmap一般采用bit位置表示值，而1或0表示是否存在该值&lt;/p&gt
      2. 其实可以知外排序也是双层桶划分的一种体现。&lt;/p&gt;</description>  
 		<author>daimin</author>  
 		<copyright></copyright>  
-		<pubDate>2014-12-30</pubDate>  
+		<pubDate>2014-12-30</pubDate>  
     </item>  
     <item>  
-		<title>celery的使用</title>  
+		<title>celery的使用</title>  
 		<link>http://daimin.github.io//posts/celery-shi-yong.html</link>  
 		<description>&lt;ol&gt;
 &lt;li&gt;安装&lt;/li&gt;
@@ -779,10 +775,10 @@ app.config_from_object(Config)
 &lt;/ol&gt;</description>  
 		<author>daimin</author>  
 		<copyright></copyright>  
-		<pubDate>2014-08-28</pubDate>  
+		<pubDate>2014-08-28</pubDate>  
     </item>  
     <item>  
-		<title>使用VirtualBox使centos和win7共享文件夹设置</title>  
+		<title>使用VirtualBox使centos和win7共享文件夹设置</title>  
 		<link>http://daimin.github.io//posts/virtualbox-share-dir.html</link>  
 		<description>&lt;p&gt;简单的记录一下。&lt;/p&gt;
 &lt;p&gt;VirtualBox非常好用比vmware好用多了。它的VirtualBox功能，可以让我们直接在windows上面开发代码，而在虚拟机下面运行，这为像我这样不是很熟悉linux开发工具的很受力。&lt;/p&gt;
@@ -806,10 +802,10 @@ app.config_from_object(Config)
 &lt;p&gt;进行/mnt/share，执行&lt;code&gt;ls -l&lt;/code&gt;，可以看到win7的文件夹内容完全可以在linux下面访问了，而且可以直接用centos下面的命令，运行之。&lt;/p&gt;</description>  
 		<author>daimin</author>  
 		<copyright></copyright>  
-		<pubDate>2014-04-14</pubDate>  
+		<pubDate>2014-04-14</pubDate>  
     </item>  
     <item>  
-		<title>安装scrapy</title>  
+		<title>安装scrapy</title>  
 		<link>http://daimin.github.io//posts/an-zhuang-scrapy.html</link>  
 		<description>&lt;p&gt;scrapy超级难装，它依赖很多库，反正我在windows上面没有装成功，linux上面弄了N久终于装好了，现在来记录一下。&lt;/p&gt;
 &lt;ol&gt;
@@ -849,10 +845,10 @@ pip install scrapy -i http://pypi.douban.com/simple&lt;/p&gt;
 &lt;/blockquote&gt;</description>  
 		<author>daimin</author>  
 		<copyright></copyright>  
-		<pubDate>2014-04-03</pubDate>  
+		<pubDate>2014-04-03</pubDate>  
     </item>  
     <item>  
-		<title>coreseek(sphinx)分布式设置</title>  
+		<title>coreseek(sphinx)分布式设置</title>  
 		<link>http://daimin.github.io//posts/coreseek-distributed-config.html</link>  
 		<description>&lt;p&gt;sphinx默认是单线程的，无论你是多少核的服务器，它始终只会使用一个核心。
 有两个办法可以实现sphinx多核利用，两种都是使用sphinx的分布式设置。&lt;/p&gt;
@@ -906,10 +902,10 @@ dist_threads = 4
 &lt;/blockquote&gt;</description>  
 		<author>daimin</author>  
 		<copyright></copyright>  
-		<pubDate>2014-03-31</pubDate>  
+		<pubDate>2014-03-31</pubDate>  
     </item>  
     <item>  
-		<title>使用elasticsearch搭建一个搜索系统</title>  
+		<title>使用elasticsearch搭建一个搜索系统</title>  
 		<link>http://daimin.github.io//posts/elasticsearch-flask-pyes-da-jian-shi-yong.html</link>  
 		<description>&lt;p&gt;要搭建一个日志分析系统，使用的elasticsearch+logstash+redis+kibana，搭建过程见之前的日志。&lt;/p&gt;
 &lt;p&gt;elasticsearch是一个分布式的搜索引擎，基于lucene，但是我们不需要学习太多的lucene的知识，就能很方便的使用。&lt;/p&gt;
@@ -1057,10 +1053,10 @@ for link in links:
 &lt;/blockquote&gt;</description>  
 		<author>daimin</author>  
 		<copyright></copyright>  
-		<pubDate>2014-03-29</pubDate>  
+		<pubDate>2014-03-29</pubDate>  
     </item>  
     <item>  
-		<title>用logstash+elasticsearch+Kibana+redis搭建实时日志查询、收集与分析平台(二)</title>  
+		<title>用logstash+elasticsearch+Kibana+redis搭建实时日志查询、收集与分析平台(二)</title>  
 		<link>http://daimin.github.io//posts/logstash-peizhi-shiyong-2.html</link>  
 		<description>&lt;p&gt;最近又在整那个日志分析平台，之前由于服务器没到位，然后又其它任务要做，这里就搁置了，经理说这个还是要弄，下周就能给我个服务器，希望吧。&lt;/p&gt;
 &lt;p&gt;最近弄elasticsearch集群部署，其实我的集群，就是virtualbox上面的两个系统（s1,s2），可怜啊，搞得电脑慢死了。&lt;/p&gt;
@@ -1099,10 +1095,10 @@ protocol有三种类型：node、transport、http。  &lt;/p&gt;
 &lt;/blockquote&gt;</description>  
 		<author>daimin</author>  
 		<copyright></copyright>  
-		<pubDate>2014-03-26</pubDate>  
+		<pubDate>2014-03-26</pubDate>  
     </item>  
     <item>  
-		<title>php-resque的安装和使用</title>  
+		<title>php-resque的安装和使用</title>  
 		<link>http://daimin.github.io//posts/php-resque-shiyong.html</link>  
 		<description>&lt;blockquote&gt;
 &lt;p&gt;Resque 是 Github 基于 Redis 开发的 background job 系统。PHP-Resque 是把 Resque porting 到 PHP 的方案。&lt;/p&gt;
@@ -1176,10 +1172,10 @@ require __DIR__.&#39;/../bin/resque&#39;;
 &lt;p&gt;基本就是这样，我简单的记录一下，记忆力不好，怕忘了。&lt;/p&gt;</description>  
 		<author>daimin</author>  
 		<copyright></copyright>  
-		<pubDate>2014-03-13</pubDate>  
+		<pubDate>2014-03-13</pubDate>  
     </item>  
     <item>  
-		<title>用logstash+elasticsearch+Kibana+redis搭建实时日志查询、收集与分析平台</title>  
+		<title>用logstash+elasticsearch+Kibana+redis搭建实时日志查询、收集与分析平台</title>  
 		<link>http://daimin.github.io//posts/logstash-peizhi-shiyong.html</link>  
 		<description>&lt;p&gt;hadoop之类的是高帅富用的，我们用不过来。这里搭建一个简单的日志平台。&lt;/p&gt;
 &lt;p&gt;logstash是一个管理日志和事件的工具，你可以收集它们，解析它们，并存储它们以供以后使用(例如日志搜索)，logstash有一个内置的web界面，用来搜索你的所有日志。logstash在部署时有两种运行模式：standalone和centralized：&lt;/p&gt;
@@ -1289,10 +1285,10 @@ output {
 &lt;p&gt;&lt;strong&gt;实际上我们可以用logstash完成很多功能，比如报警功能(使用metrics插件和ruby插件)，统计nginx访问日志，并按照自己的需求，这个就需要对grok进行编码了，主要就是正则表达式的编写，如果一个grok不够的话，还可以加上一个grok，诸如此类的。&lt;/strong&gt;&lt;/p&gt;</description>  
 		<author>daimin</author>  
 		<copyright></copyright>  
-		<pubDate>2014-03-02</pubDate>  
+		<pubDate>2014-03-02</pubDate>  
     </item>  
     <item>  
-		<title>python相关知识点整理</title>  
+		<title>python相关知识点整理</title>  
 		<link>http://daimin.github.io//posts/python-xiang-guan-zhi-shi-dian-zong-jie.html</link>  
 		<description>&lt;ol&gt;
 &lt;li&gt;
@@ -1507,10 +1503,10 @@ print g
 &lt;/ol&gt;</description>  
 		<author>daimin</author>  
 		<copyright></copyright>  
-		<pubDate>2014-02-14</pubDate>  
+		<pubDate>2014-02-14</pubDate>  
     </item>  
     <item>  
-		<title>写了一个静态博客</title>  
+		<title>写了一个静态博客</title>  
 		<link>http://daimin.github.io//posts/write-a-static-blog.html</link>  
 		<description>&lt;p&gt;BAE的域名要备案了，所以我的原来的博客&lt;a href=&#34;http://codecos.com&#34;&gt;http://codecos.com&lt;/a&gt;，无法使用了。找了一下国内的其它的免费的空间或引擎都是需要域名备案的。&lt;/p&gt;
 &lt;p&gt;之前就知道github是可以创建个人网站，还可以绑定一个域名，这货可是国外的，就不需要域名备案。&lt;/p&gt;
@@ -1524,7 +1520,7 @@ print g
 &lt;/blockquote&gt;</description>  
 		<author>daimin</author>  
 		<copyright></copyright>  
-		<pubDate>2014-02-13</pubDate>  
+		<pubDate>2014-02-13</pubDate>  
     </item>  
     <item>  
 		<title>使用RSA在Java端私钥加密，PHP端公钥验证</title>  
@@ -3702,7 +3698,7 @@ fastcgi_cache_key $host$request_uri;
 		<pubDate>2013-07-30</pubDate>  
     </item>  
     <item>  
-		<title>留言板</title>  
+		<title>留言板</title>  
 		<link>http://daimin.github.io//posts/liu-yan-ban.html</link>  
 		<description>&lt;ul&gt;
 &lt;li&gt;
@@ -3720,7 +3716,7 @@ fastcgi_cache_key $host$request_uri;
 &lt;/blockquote&gt;</description>  
 		<author>daimin</author>  
 		<copyright></copyright>  
-		<pubDate>2013-02-12</pubDate>  
+		<pubDate>2013-02-12</pubDate>  
     </item>  
     <item>  
 		<title>jVaga，蛋疼的JS库</title>  

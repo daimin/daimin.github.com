@@ -7,11 +7,11 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
     <meta name="format-detection" content="telephone=no" />
-    <meta name="keywords" content="一步步学习vue.js（一）" />
-    <meta name="description" content="vue对象定义，常用指令和模板的简单使用{{ var }} 用来输出变量```var vm = ne..." />
+    <meta name="keywords" content="一步步学习vue.js（一）" />
+    <meta name="description" content="vue对象定义，常用指令和模板的简单使用{{ var }} 用来输出变量var vm = new V..." />
     <link rel="shortcut icon" href="/favicon.ico" />
 
-    <title>一步步学习vue.js（一） | 茶瓯葱丝</title>
+    <title>一步步学习vue.js（一） | 茶瓯葱丝</title>
     <link rel="stylesheet" type="text/css" href="/styles/style.css">
     <link rel="Stylesheet" type="text/css" href="/js/prettify/desert.css" />
     <link rel="stylesheet" type="text/css" href="/styles/bootstrap-jian.css">
@@ -62,12 +62,11 @@
     </div>
 
 <div id="main">
-<h2 class="post-title">一步步学习vue.js（一）</h2>
+<h2 class="post-title">一步步学习vue.js（一）</h2>
 <div class="cnt">
 <h1>vue对象定义，常用指令和模板的简单使用</h1>
 <p><code>{{ var }}</code> 用来输出变量</p>
-<pre><code>```
-var vm = new Vue({
+<pre><code>var vm = new Vue({
     el: '#app',  # 对应一个DOM 元素进行挂载
     data: { # data是Vue对象的属性
         newPerson: {
@@ -85,7 +84,6 @@ var vm = new Vue({
         }
     }
 })
-```
 </code></pre>
 <ol>
 <li>
@@ -106,9 +104,8 @@ var vm = new Vue({
 </li>
 <li>
 <p>组件</p>
-<p>应该在挂载元素范围内使用组件
-```
-<div id="app">
+<p>应该在挂载元素范围内使用组件</p>
+<p><div id="app">
     <!-- 3. #app是Vue实例挂载的元素，应该在挂载元素范围内使用组件-->
     <my-component></my-component>
 </div></p>
@@ -127,7 +124,6 @@ new Vue({
 // 3. 全局注册组件
 Vue.component('my-component', myComponent)
 </code></pre>
-<p>```</p>
 </li>
 </ol>
 </div>

@@ -10,7 +10,7 @@ date:2017-11-01
 
 `{{ var }}` 用来输出变量
 
-    ```
+    
     var vm = new Vue({
         el: '#app',  # 对应一个DOM 元素进行挂载
         data: { # data是Vue对象的属性
@@ -29,7 +29,7 @@ date:2017-11-01
             }
         }
     })
-    ```
+    
 
 1. 常用指令
     * v-bind 指令可以用于响应式地更新 HTML 属性，缩写为:
@@ -46,7 +46,7 @@ date:2017-11-01
 2. 组件
     
     应该在挂载元素范围内使用组件
-    ```
+    
     <div id="app">
         <!-- 3. #app是Vue实例挂载的元素，应该在挂载元素范围内使用组件-->
         <my-component></my-component>
@@ -66,4 +66,4 @@ date:2017-11-01
         });
         // 3. 全局注册组件
         Vue.component('my-component', myComponent)
-    ```
+    
