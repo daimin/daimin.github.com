@@ -1379,7 +1379,7 @@ list1和list3使用的是同一个列表，只有list2，重新传入了一个li
 &lt;p&gt;type(x) 返回x的描述x的类型的type对象，，而isinstance(obj,class)，直接判断obj是否是class的实例，能作用于各种subclass，或者是新旧类型的类声明方式。而type(x)它不能对subclass起作用，对旧的类声明方式(class A:pass)也无作用，type(x)会返回&lt;type “instance”&gt;对象，与原类对象并不相等，新的类声明方式(class A(object):pass)是相等的，但是对于subclass也是不起作用的。&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;__builtin__模块代表了python中默认内置的函数的对象,如果碰到要重写buildin函数，可以import __buildin__然后调用buildin函数，这样不会对对当前scope的函数造成影响。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;builtin&lt;/strong&gt;模块代表了python中默认内置的函数的对象,如果碰到要重写buildin函数，可以import &lt;strong&gt;buildin&lt;/strong&gt;然后调用buildin函数，这样不会对对当前scope的函数造成影响。&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;os模块是和操作系统相关的，sys适合解释器相关的。&lt;/p&gt;
@@ -2211,6 +2211,23 @@ daemonize = /data/www/webpy/uwsgi.log
 		<pubDate>2013-08-27</pubDate>  
     </item>  
     <item>  
+		<title>BAE中文编码引起的程序崩溃</title>  
+		<link>http://daimin.github.io//posts/BAE-zhong-wen-bian-ma-yin-qi-de-cheng-xu-beng-kui.html</link>  
+		<description>&lt;p&gt;&lt;img alt=&#34;qiniu_1377505253074.jpg&#34; src=&#34;http://vaga-static.qiniudn.com/qiniu_1377505253074.jpg&#34; title=&#34;python&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;我的博客修改了一些东西，主要是中文编码问题，在自己的机器上面是没有问题的。只是在BAE上面会有问题，而且这个问题又不是每次都出现，所以很纠结，查看了很久的日志&lt;em&gt;因为日志查询真的很慢啊，有木有啊&lt;/em&gt;，在&lt;code&gt;index.py&lt;/code&gt;中加上了如下的代码。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import sys
+
+reload(sys)
+
+sys.setdefaultencoding(&#39;utf-8&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;设置系统的默认编码。&lt;/p&gt;
+&lt;p&gt;可以去github上面下载相关的代码：&lt;a href=&#34;https://github.com/daimin/tolog&#34;&gt;https://github.com/daimin/tolog&lt;/a&gt;&lt;/p&gt;</description>  
+		<author>daimin</author>  
+		<copyright></copyright>  
+		<pubDate>2013-08-26</pubDate>  
+    </item>  
+    <item>  
 		<title>mysql 用法备忘</title>  
 		<link>http://daimin.github.io//posts/mysql-yong-fa-bei-wang.html</link>  
 		<description>&lt;blockquote&gt;
@@ -2294,23 +2311,6 @@ kill connection threadid;
 &lt;blockquote&gt;
 &lt;p&gt;以后遇到新的问题，还会增加在这里。&lt;/p&gt;
 &lt;/blockquote&gt;</description>  
-		<author>daimin</author>  
-		<copyright></copyright>  
-		<pubDate>2013-08-26</pubDate>  
-    </item>  
-    <item>  
-		<title>BAE中文编码引起的程序崩溃</title>  
-		<link>http://daimin.github.io//posts/BAE-zhong-wen-bian-ma-yin-qi-de-cheng-xu-beng-kui.html</link>  
-		<description>&lt;p&gt;&lt;img alt=&#34;qiniu_1377505253074.jpg&#34; src=&#34;http://vaga-static.qiniudn.com/qiniu_1377505253074.jpg&#34; title=&#34;python&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;我的博客修改了一些东西，主要是中文编码问题，在自己的机器上面是没有问题的。只是在BAE上面会有问题，而且这个问题又不是每次都出现，所以很纠结，查看了很久的日志&lt;em&gt;因为日志查询真的很慢啊，有木有啊&lt;/em&gt;，在&lt;code&gt;index.py&lt;/code&gt;中加上了如下的代码。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;import sys
-
-reload(sys)
-
-sys.setdefaultencoding(&#39;utf-8&#39;)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;设置系统的默认编码。&lt;/p&gt;
-&lt;p&gt;可以去github上面下载相关的代码：&lt;a href=&#34;https://github.com/daimin/tolog&#34;&gt;https://github.com/daimin/tolog&lt;/a&gt;&lt;/p&gt;</description>  
 		<author>daimin</author>  
 		<copyright></copyright>  
 		<pubDate>2013-08-26</pubDate>  
@@ -2769,6 +2769,67 @@ if __name__ == &#34;__main__&#34;:
 		<pubDate>2013-08-17</pubDate>  
     </item>  
     <item>  
+		<title>BAE中web.py上传问题处理</title>  
+		<link>http://daimin.github.io//posts/BAE-zhong-web-py-shang-chuan-wen-ti-chu-li.html</link>  
+		<description>&lt;blockquote&gt;
+&lt;p&gt;这个问题困扰我了两天，在BAE中使用web.py默认的上传方式是不能上传的，通过不懈的努力终于解决了。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;首先你要设置tempfile库的tempdir，BAE文档上面说修改了tempfile的临时目录，但是实际是在web.py中还是使用的系统默认的/tmp/xxx目录，所以首先需要修改。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;from bae.core import const
+
+tempfile.tempdir = const.APP_TMPDIR
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;可以放置在app运行之前的代码前，保证其能被设置一次就够了。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;开始我使用的是web.py cookbook中的示例上传代码，文本文件上传是没有问题，但是二进制文件是不行的，无论怎么样多会丢失很多字节，想来应该是BAE修改了python一些库的代码。&lt;/p&gt;
+&lt;p&gt;web.py中除了web.input()来获取请求数据外，海油web.data()函数，web.input()是经过&lt;strong&gt;web.py处理过&lt;/strong&gt;的数据的，方便我们使用，而web.data()中获取的就是原本提交的数据。这里的问题就是在web.py的处理的时候，会使二进制数据丢失很多。所以我们来处理web.data()中的数据。&lt;/p&gt;
+&lt;p&gt;web.data()中获取的数据就是字符串，可以直接保存为文件，但是还是不能正常使用，因为里面有协议头和其它一些乱七八糟的东西，我们只要中间的entity就OK了。&lt;/p&gt;
+&lt;p&gt;前面大概包括空行是4行：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;------WebKitFormBoundaryecUZ2xK6QjVl5e3K
+
+Content-Disposition: form-data; name=&#34;attac&#34;; filename=&#34;jquery.edatagrid.js&#34;
+
+Content-Type: application/x-javascript
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;后面是5行：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;------WebKitFormBoundaryecUZ2xK6QjVl5e3K
+
+Content-Disposition: form-data; name=&#34;name&#34;
+
+pxblog
+
+------WebKitFormBoundaryecUZ2xK6QjVl5e3K--
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;ok,去掉这几行&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;d = web.data()
+
+import StringIO
+
+s1 = StringIO.StringIO(d)
+
+s2 = StringIO.StringIO()
+
+lines =  s1.readlines()
+
+lines = lines[4:-5]
+
+s1.close()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;现在的lines中就是我们所要的数据了，然后保存起来就是我们所要的。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;其实从Content-Disposition中可以得到filename，然后取得文件信息。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img alt=&#34;pic_1376642423074.jpg&#34; src=&#34;http://vaga-static.qiniudn.com/pic_1376642423074.jpg&#34; title=&#34;悲剧&#34; /&gt;&lt;/p&gt;</description>  
+		<author>daimin</author>  
+		<copyright></copyright>  
+		<pubDate>2013-08-16</pubDate>  
+    </item>  
+    <item>  
 		<title>css hack的简单使用</title>  
 		<link>http://daimin.github.io//posts/css-hack-de-jian-dan-shi-yong.html</link>  
 		<description>&lt;p&gt;&lt;img alt=&#34;pic_1376622770249.jpg&#34; src=&#34;http://vaga-static.qiniudn.com/pic_1376622770249.jpg&#34; title=&#34;IE hack&#34; /&gt;&lt;/p&gt;
@@ -2835,65 +2896,47 @@ margin-left:/*\**/:603px\9; /* 所有浏览器IE浏览器 */
 		<pubDate>2013-08-16</pubDate>  
     </item>  
     <item>  
-		<title>BAE中web.py上传问题处理</title>  
-		<link>http://daimin.github.io//posts/BAE-zhong-web-py-shang-chuan-wen-ti-chu-li.html</link>  
-		<description>&lt;blockquote&gt;
-&lt;p&gt;这个问题困扰我了两天，在BAE中使用web.py默认的上传方式是不能上传的，通过不懈的努力终于解决了。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;首先你要设置tempfile库的tempdir，BAE文档上面说修改了tempfile的临时目录，但是实际是在web.py中还是使用的系统默认的/tmp/xxx目录，所以首先需要修改。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;from bae.core import const
-
-tempfile.tempdir = const.APP_TMPDIR
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;可以放置在app运行之前的代码前，保证其能被设置一次就够了。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;开始我使用的是web.py cookbook中的示例上传代码，文本文件上传是没有问题，但是二进制文件是不行的，无论怎么样多会丢失很多字节，想来应该是BAE修改了python一些库的代码。&lt;/p&gt;
-&lt;p&gt;web.py中除了web.input()来获取请求数据外，海油web.data()函数，web.input()是经过&lt;strong&gt;web.py处理过&lt;/strong&gt;的数据的，方便我们使用，而web.data()中获取的就是原本提交的数据。这里的问题就是在web.py的处理的时候，会使二进制数据丢失很多。所以我们来处理web.data()中的数据。&lt;/p&gt;
-&lt;p&gt;web.data()中获取的数据就是字符串，可以直接保存为文件，但是还是不能正常使用，因为里面有协议头和其它一些乱七八糟的东西，我们只要中间的entity就OK了。&lt;/p&gt;
-&lt;p&gt;前面大概包括空行是4行：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;------WebKitFormBoundaryecUZ2xK6QjVl5e3K
-
-Content-Disposition: form-data; name=&#34;attac&#34;; filename=&#34;jquery.edatagrid.js&#34;
-
-Content-Type: application/x-javascript
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;后面是5行：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;------WebKitFormBoundaryecUZ2xK6QjVl5e3K
-
-Content-Disposition: form-data; name=&#34;name&#34;
-
-pxblog
-
-------WebKitFormBoundaryecUZ2xK6QjVl5e3K--
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;ok,去掉这几行&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;d = web.data()
-
-import StringIO
-
-s1 = StringIO.StringIO(d)
-
-s2 = StringIO.StringIO()
-
-lines =  s1.readlines()
-
-lines = lines[4:-5]
-
-s1.close()
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;现在的lines中就是我们所要的数据了，然后保存起来就是我们所要的。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;其实从Content-Disposition中可以得到filename，然后取得文件信息。&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;img alt=&#34;pic_1376642423074.jpg&#34; src=&#34;http://vaga-static.qiniudn.com/pic_1376642423074.jpg&#34; title=&#34;悲剧&#34; /&gt;&lt;/p&gt;</description>  
+		<title>MYSQL show 命令详解</title>  
+		<link>http://daimin.github.io//posts/MYSQL-show-ming-ling-xiang-jie.html</link>  
+		<description>&lt;p&gt;&lt;code&gt;show tables或show tables from database_name或show database_name.tables;&lt;/code&gt;  &lt;/p&gt;
+&lt;p&gt;解释：显示当前数据库中所有表的名称&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;show databases;&lt;/code&gt;  &lt;/p&gt;
+&lt;p&gt;解释：显示mysql中所有数据库的名称&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;show processlist;&lt;/code&gt;  &lt;/p&gt;
+&lt;p&gt;解释：显示系统中正在运行的所有进程，也就是当前正在执行的查询。大多数用户可以查看&lt;/p&gt;
+&lt;p&gt;他们自己的进程，但是如果他们拥有process权限，就可以查看所有人的进程，包括密码。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;show table status;&lt;/code&gt;  &lt;/p&gt;
+&lt;p&gt;解释：显示当前使用或者指定的database中的每个表的信息。信息包括表类型和表的最新更新时间&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;show columns from table_name from database_name; 或show columns from database_name.table_name;&lt;/code&gt;或&lt;code&gt;show fields;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;解释：显示表中列名称（和 desc table_name 命令的效果是一样的）&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;show grants for user_name@localhost;&lt;/code&gt;  &lt;/p&gt;
+&lt;p&gt;解释：显示一个用户的权限，显示结果类似于grant 命令&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;show index from table_name;或show keys;&lt;/code&gt;  &lt;/p&gt;
+&lt;p&gt;解释：显示表的索引&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;show status;&lt;/code&gt;  &lt;/p&gt;
+&lt;p&gt;解释：显示一些系统特定资源的信息，例如，正在运行的线程数量&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;show variables;&lt;/code&gt;  &lt;/p&gt;
+&lt;p&gt;解释：显示系统变量的名称和值&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;show privileges;&lt;/code&gt;  &lt;/p&gt;
+&lt;p&gt;解释：显示服务器所支持的不同权限&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;show create database database_name;&lt;/code&gt;  &lt;/p&gt;
+&lt;p&gt;解释：显示创建指定数据库的SQL语句&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;show create table table_name;&lt;/code&gt;  &lt;/p&gt;
+&lt;p&gt;解释：显示创建指定数据表的SQL语句&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;show engies;&lt;/code&gt;  &lt;/p&gt;
+&lt;p&gt;解释：显示安装以后可用的存储引擎和默认引擎。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;show innodb status;&lt;/code&gt;  &lt;/p&gt;
+&lt;p&gt;解释：显示innoDB存储引擎的状态&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;show logs;&lt;/code&gt;  &lt;/p&gt;
+&lt;p&gt;解释：显示BDB存储引擎的日志&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;show warnings;&lt;/code&gt;  &lt;/p&gt;
+&lt;p&gt;解释：显示最后一个执行的语句所产生的错误、警告和通知&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;show errors;&lt;/code&gt;  &lt;/p&gt;
+&lt;p&gt;解释：只显示最后一个执行语句所产生的错误&lt;/p&gt;
+&lt;p&gt;上面的大部分命令都可以用like，比如 &lt;code&gt;show table like ‘%abce%’&lt;/code&gt;  。&lt;/p&gt;</description>  
 		<author>daimin</author>  
 		<copyright></copyright>  
-		<pubDate>2013-08-16</pubDate>  
+		<pubDate>2013-08-12</pubDate>  
     </item>  
     <item>  
 		<title>Python-字符串操作方法(转)</title>  
@@ -3059,49 +3102,6 @@ s1.close()
 &lt;p&gt;string.atof(s[,base])  #转成float&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;</description>  
-		<author>daimin</author>  
-		<copyright></copyright>  
-		<pubDate>2013-08-12</pubDate>  
-    </item>  
-    <item>  
-		<title>MYSQL show 命令详解</title>  
-		<link>http://daimin.github.io//posts/MYSQL-show-ming-ling-xiang-jie.html</link>  
-		<description>&lt;p&gt;&lt;code&gt;show tables或show tables from database_name或show database_name.tables;&lt;/code&gt;  &lt;/p&gt;
-&lt;p&gt;解释：显示当前数据库中所有表的名称&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;show databases;&lt;/code&gt;  &lt;/p&gt;
-&lt;p&gt;解释：显示mysql中所有数据库的名称&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;show processlist;&lt;/code&gt;  &lt;/p&gt;
-&lt;p&gt;解释：显示系统中正在运行的所有进程，也就是当前正在执行的查询。大多数用户可以查看&lt;/p&gt;
-&lt;p&gt;他们自己的进程，但是如果他们拥有process权限，就可以查看所有人的进程，包括密码。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;show table status;&lt;/code&gt;  &lt;/p&gt;
-&lt;p&gt;解释：显示当前使用或者指定的database中的每个表的信息。信息包括表类型和表的最新更新时间&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;show columns from table_name from database_name; 或show columns from database_name.table_name;&lt;/code&gt;或&lt;code&gt;show fields;&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;解释：显示表中列名称（和 desc table_name 命令的效果是一样的）&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;show grants for user_name@localhost;&lt;/code&gt;  &lt;/p&gt;
-&lt;p&gt;解释：显示一个用户的权限，显示结果类似于grant 命令&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;show index from table_name;或show keys;&lt;/code&gt;  &lt;/p&gt;
-&lt;p&gt;解释：显示表的索引&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;show status;&lt;/code&gt;  &lt;/p&gt;
-&lt;p&gt;解释：显示一些系统特定资源的信息，例如，正在运行的线程数量&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;show variables;&lt;/code&gt;  &lt;/p&gt;
-&lt;p&gt;解释：显示系统变量的名称和值&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;show privileges;&lt;/code&gt;  &lt;/p&gt;
-&lt;p&gt;解释：显示服务器所支持的不同权限&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;show create database database_name;&lt;/code&gt;  &lt;/p&gt;
-&lt;p&gt;解释：显示创建指定数据库的SQL语句&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;show create table table_name;&lt;/code&gt;  &lt;/p&gt;
-&lt;p&gt;解释：显示创建指定数据表的SQL语句&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;show engies;&lt;/code&gt;  &lt;/p&gt;
-&lt;p&gt;解释：显示安装以后可用的存储引擎和默认引擎。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;show innodb status;&lt;/code&gt;  &lt;/p&gt;
-&lt;p&gt;解释：显示innoDB存储引擎的状态&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;show logs;&lt;/code&gt;  &lt;/p&gt;
-&lt;p&gt;解释：显示BDB存储引擎的日志&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;show warnings;&lt;/code&gt;  &lt;/p&gt;
-&lt;p&gt;解释：显示最后一个执行的语句所产生的错误、警告和通知&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;show errors;&lt;/code&gt;  &lt;/p&gt;
-&lt;p&gt;解释：只显示最后一个执行语句所产生的错误&lt;/p&gt;
-&lt;p&gt;上面的大部分命令都可以用like，比如 &lt;code&gt;show table like ‘%abce%’&lt;/code&gt;  。&lt;/p&gt;</description>  
 		<author>daimin</author>  
 		<copyright></copyright>  
 		<pubDate>2013-08-12</pubDate>  
@@ -3577,24 +3577,6 @@ fastcgi_cache_key $host$request_uri;
 		<pubDate>2013-08-04</pubDate>  
     </item>  
     <item>  
-		<title>最近准备干啥</title>  
-		<link>http://daimin.github.io//posts/zui-jin-zhun-bei-gan-sha.html</link>  
-		<description>&lt;blockquote&gt;
-&lt;p&gt;想练一练Java，具体来说是Android，预备是两个：&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;豆瓣的电影搜索，以前做过一部分，不过很丑，而且现在它的API升级了&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;关于本博客的Android客户端，其实就是一个写博客的工具而已，很简单的。&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;</description>  
-		<author>daimin</author>  
-		<copyright></copyright>  
-		<pubDate>2013-08-04</pubDate>  
-    </item>  
-    <item>  
 		<title>新增了一个相册</title>  
 		<link>http://daimin.github.io//posts/xin-zeng-le-yi-ge-xiang-ce.html</link>  
 		<description>&lt;ul&gt;
@@ -3617,6 +3599,24 @@ fastcgi_cache_key $host$request_uri;
 &lt;blockquote&gt;
 &lt;p&gt;之前百度一直不收录，买了个&lt;a href=&#34;http://codecos.com&#34;&gt;域名&lt;/a&gt;，可是让我肉痛了几下，准备多学学SEO的知识了，这个就当作学习成本吧，哈哈。&lt;/p&gt;
 &lt;/blockquote&gt;</description>  
+		<author>daimin</author>  
+		<copyright></copyright>  
+		<pubDate>2013-08-04</pubDate>  
+    </item>  
+    <item>  
+		<title>最近准备干啥</title>  
+		<link>http://daimin.github.io//posts/zui-jin-zhun-bei-gan-sha.html</link>  
+		<description>&lt;blockquote&gt;
+&lt;p&gt;想练一练Java，具体来说是Android，预备是两个：&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;豆瓣的电影搜索，以前做过一部分，不过很丑，而且现在它的API升级了&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;关于本博客的Android客户端，其实就是一个写博客的工具而已，很简单的。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description>  
 		<author>daimin</author>  
 		<copyright></copyright>  
 		<pubDate>2013-08-04</pubDate>  
