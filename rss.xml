@@ -1379,7 +1379,7 @@ list1和list3使用的是同一个列表，只有list2，重新传入了一个li
 &lt;p&gt;type(x) 返回x的描述x的类型的type对象，，而isinstance(obj,class)，直接判断obj是否是class的实例，能作用于各种subclass，或者是新旧类型的类声明方式。而type(x)它不能对subclass起作用，对旧的类声明方式(class A:pass)也无作用，type(x)会返回&lt;type “instance”&gt;对象，与原类对象并不相等，新的类声明方式(class A(object):pass)是相等的，但是对于subclass也是不起作用的。&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;strong&gt;builtin&lt;/strong&gt;模块代表了python中默认内置的函数的对象,如果碰到要重写buildin函数，可以import &lt;strong&gt;buildin&lt;/strong&gt;然后调用buildin函数，这样不会对对当前scope的函数造成影响。&lt;/p&gt;
+&lt;p&gt;__builtin__模块代表了python中默认内置的函数的对象,如果碰到要重写buildin函数，可以import __buildin__然后调用buildin函数，这样不会对对当前scope的函数造成影响。&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;os模块是和操作系统相关的，sys适合解释器相关的。&lt;/p&gt;
