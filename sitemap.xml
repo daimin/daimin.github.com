@@ -1,5 +1,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	<url>
+		<loc>http://daimin.github.io//posts/seckill-system-design.html</loc>
+		<lastmod>2020-05-22</lastmod>
+		<changefreq>monthly</changefreq>
+	</url>
+	<url>
+		<loc>http://daimin.github.io//posts/api-security-design.html</loc>
+		<lastmod>2020-05-21</lastmod>
+		<changefreq>monthly</changefreq>
+	</url>
+	<url>
 		<loc>http://daimin.github.io//posts/yi-bu-bu-xue-xi-vuejs-yi.html</loc>
 		<lastmod>2017-11-01</lastmod>
 		<changefreq>monthly</changefreq>
