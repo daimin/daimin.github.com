@@ -56,6 +56,14 @@
 		<pubDate>2020-05-21</pubDate>  
     </item>  
     <item>  
+		<title>接口的幂等性如何设计</title>  
+		<link>http://daimin.github.io//posts/接口的幂等性如何设计.html</link>  
+		<description></description>  
+		<author>daimin</author>  
+		<copyright></copyright>  
+		<pubDate>2020-05-21</pubDate>  
+    </item>  
+    <item>  
 		<title>一步步学习vue.js（一）</title>  
 		<link>http://daimin.github.io//posts/yi-bu-bu-xue-xi-vuejs-yi.html</link>  
 		<description>&lt;h1&gt;vue对象定义，常用指令和模板的简单使用&lt;/h1&gt;
