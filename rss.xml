@@ -311,7 +311,12 @@ var _ I = T{}
     <item>  
 		<title>数组参数还是对象参数</title>  
 		<link>http://daimin.github.io//posts/php-shuzu-args-or-duixiang-args.html</link>  
-		<description>&lt;p&gt;在PHP中给函数传参数的时候，一般来说为了避免参数过长我们可以选择传数组或者是封装一个参数类来传对象。
+		<description>&lt;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;以下都是个人的浅见。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;在PHP中给函数传参数的时候，一般来说为了避免参数过长我们可以选择传数组或者是封装一个参数类来传对象。
 &lt;strong&gt;我的看法是对象肯定是优于数组。&lt;/strong&gt;&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;
