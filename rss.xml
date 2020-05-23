@@ -27,19 +27,20 @@
 		<link>http://daimin.github.io//posts/api-security-design.html</link>  
 		<description>&lt;ol&gt;
 &lt;li&gt;
-&lt;p&gt;令牌token授权（或者是AppId）。验证通过后返回一个token（可以是一个uuid，保证唯一就行了），token存放在服务器中（可以存储在redis中），客户端的请求必须带上token，如果token不存在就说明请求无效。&lt;/p&gt;
+&lt;p&gt;令牌token授权（或者是AppId）。验证通过后返回一个token（可以是一个uuid，保证唯一就行了），token存放在服务器中（可以存储在redis中），客户端的请求必须带上token，如果token不存在就说明请求无效。&lt;br /&gt;
+内部系统或者安全要求比较低的系统可以用这个方式，性能很好。&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;时间戳t。验证通过后的请求带上当前时间戳，可以设置时间戳失效时间，当前时间减去时间戳如果大于了失效时间，就说明请求失效了。&lt;/p&gt;
-&lt;p&gt;能防止恶意请求攻击服务器；也能防止因为客户端的bug导致的无效请求。&lt;/p&gt;
+&lt;p&gt;时间戳t。验证通过后的请求带上当前时间戳，可以设置时间戳失效时间，当前时间减去时间戳如果大于了失效时间，就说明请求失效了。&lt;br /&gt;
+能防止恶意请求攻击服务器；也能防止因为客户端的bug导致的无效请求。&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;签名sign。token或AppId加上当前时间戳t，再加上其他业务参数，可以按照指定的顺序排序后序列化为一个字符串s，然后双方约定一个盐值k作为密钥，通过md5(s + k)得到签名。客户端请求带上sign及其他参数，服务端进行签名验证，如果不一致就返回不成功，否则允许请求或修改数据。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;因为得不到密钥，所以生成的签名将无法通过验证。&lt;/li&gt;
-&lt;li&gt;不知道签名的规则和参与签名的字段，也无法生成正确的签名。&lt;/li&gt;
+&lt;li&gt;不知道签名的规则和参与签名的字段，也无法生成正确的签名，所以保证了请求的合法性。&lt;/li&gt;
+&lt;li&gt;因为请求参数也参与了签名，所以如果篡改了请求数据，也会导致签名验证失败。&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;所以保证了请求的合法性。&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;非对称加密RSA。客户端生成密钥对，公钥提供给服务端。&lt;/p&gt;
@@ -56,7 +57,7 @@
 &lt;p&gt;限流机制。通过token或者appId进行限流，常用的限流算法有令牌桶和漏桶算法。&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;黑名单机制。 限制指定的token或者appId访问系统。&lt;/p&gt;
+&lt;p&gt;黑名单机制。 限制指定的token或者appId访问系统。因为拥有这些token或者appId的客户端可能不受信任或者临时要限制其访问。&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;数据合法性校验。xss，csrf，sql注入等内容的过滤或者防御。还有一些业务相关的数据的校验，比如电话号码长度、email格式，身份证长度和格式等。&lt;/p&gt;
