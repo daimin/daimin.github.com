@@ -9,10 +9,48 @@
     <item>  
 		<title>常用的限流算法</title>  
 		<link>http://daimin.github.io//posts/常用的限流算法.html</link>  
-		<description></description>  
+		<description>&lt;p&gt;在开发高并发系统时有三把利器用来保护系统：缓存、降级和限流。今天我们要聊的就是限流（Rate Limit），限流的目的很简单，就是为了保护系统不被瞬时大流量冲垮.&lt;/p&gt;
+&lt;p&gt;限流这个概念我其实很早之前就有去了解过，不过无奈之前工作所接触业务的并发量实在是谈不上限流。目前公司大促峰值QPS在2w往上，自然而然需要用到限流，特别是类似秒杀这种瞬时流量非常大但实际成单率低的业务场景。&lt;/p&gt;
+&lt;p&gt;目前比较常用的限流算法有三种&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;计数器固定窗口算法&lt;/li&gt;
+&lt;li&gt;计数器滑动窗口算法&lt;/li&gt;
+&lt;li&gt;漏桶算法&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;令牌桶算法&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;计数器法&lt;br /&gt;
+    用一个计数器在单位时间周期内最多多少次，然后下一个周期清零。&lt;br /&gt;
+    有一个明显问题，就是可能在周期最后和周期开始的短时间段之内，涌入大量请求，导致系统压力过大，甚至崩溃，限流作用有限。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;计数器滑动窗口算法&lt;br /&gt;
+    将周期分为N个小周期，每个小周期分别有自己的访问次数，根据时间滑动删除过期的小周期。
+    假设周期为5分钟（300秒），将5分钟分为10个小周期，每个小周期的访问次数为30次。第一个周期内访问次数为30次，超过30就会禁止访问。
+    当滑动窗口的格子划分的越多，那么滑动窗口的滚动就越平滑，限流的统计就会越精确。&lt;br /&gt;
+    此算法可以很好的解决固定窗口算法的临界问题。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;漏桶算法&lt;br /&gt;
+    漏桶算法，漏桶作为一个容器有固定的容量，出口流量速率是一个固定的值，因此漏桶的流出流量肯定是平滑的，对于流入流量是不设限的。&lt;br /&gt;
+    当漏桶容量满了以后，流入流量将被丢弃（拒绝访问）。
+    漏桶算法限制了流出流量是一个固定的值，无法支持突发流出流量。&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;&#34; src=&#34;/image/QQ20200525204528.png&#34; /&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;令牌桶算法&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;p&gt;参考：  &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.csdn.net/weixin_41846320/article/details/95941361&#34;&gt;常用4种限流算法介绍及比较&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.cnblogs.com/taromilk/p/11751211.html&#34;&gt;常用限流算法&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;</description>  
 		<author>daimin</author>  
 		<copyright></copyright>  
-		<pubDate>2020-05-24</pubDate>  
+		<pubDate>2020-05-25</pubDate>  
     </item>  
     <item>  
 		<title>接口的幂等性如何设计</title>  
