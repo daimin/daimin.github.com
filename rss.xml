@@ -7,6 +7,58 @@
     <language>zh-cn</language>  
     <generator>sologd</generator>  
     <item>  
+		<title>mysql主从延迟怎么解决</title>  
+		<link>http://daimin.github.io//posts/mysql主从延迟怎么解决.html</link>  
+		<description></description>  
+		<author>daimin</author>  
+		<copyright></copyright>  
+		<pubDate>2020-05-29</pubDate>  
+    </item>  
+    <item>  
+		<title>谈谈如何设计秒杀系统</title>  
+		<link>http://daimin.github.io//posts/seckill-system-design.html</link>  
+		<description>&lt;p&gt;没做过电商类网站，不过面试的时候，遇到过很多面试官问这个问题，把自己的理解记录下：&lt;/p&gt;
+&lt;h4&gt;什么是秒杀？通俗一点讲就是网络商家为促销等目的组织的网上限时抢购活动。&lt;/h4&gt;
+&lt;h4&gt;特点&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;瞬时并发量大&lt;/li&gt;
+&lt;li&gt;库存量有限&lt;/li&gt;
+&lt;li&gt;业务一般都简单&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4&gt;方案&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;前端限流&lt;br /&gt;
+    前端页面控制同一客户只允许点击一次秒杀按钮，防止重复请求。&lt;br /&gt;
+    前端页面可以根据业务要求，让部分客户请求不达到后端，直接秒杀失败。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;流量削峰和异步化&lt;br /&gt;
+    流量削峰就是用讲请求放到队列中，然后秒杀服务依次处理（开启几个秒杀服务处理几个请求，将到秒杀服务的并发峰值平缓下来）。&lt;br /&gt;
+    异步化就是不用立即直接处理完秒杀的逻辑，而是简单将任务消息放入队列，让异步任务去处理，让秒杀页面等待队列的处理完成，如果规定时间还未处理完或者商品已经卖完，就秒杀失败了。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;限流&lt;br /&gt;
+&lt;a href=&#34;http://daimin.github.io/posts/%E5%B8%B8%E7%94%A8%E7%9A%84%E9%99%90%E6%B5%81%E7%AE%97%E6%B3%95.html&#34;&gt;见文章&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;缓存&lt;br /&gt;
+    数据库读写性能比直接读写内存缓存要慢很多，可以让秒杀直接在缓存中完成，后续再同步数据到数据库中。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;超卖问题&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;DB的方案：在更新数据库的时候加where条件，where 商品数&amp;gt;0，更新失败的就是购买失败。这里起始就是利用了排它锁也叫写锁，执行update的时候，默认给相关的行加了写锁，其他线程不能修改和读取。&lt;br /&gt;
+    或者用乐观锁也可以，就是加一个版本号，版本一致才可以更新。&lt;/li&gt;
+&lt;li&gt;DB的方案性能比较差，可以用redis的方案：把商品放到一个队列（一个商品一个元素），pop是原子操作，pop为空表示卖完了；或者用decr会更好，更省存储。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description>  
+		<author>daimin</author>  
+		<copyright></copyright>  
+		<pubDate>2020-05-28</pubDate>  
+    </item>  
+    <item>  
 		<title>接口的幂等性如何设计</title>  
 		<link>http://daimin.github.io//posts/接口的幂等性如何设计.html</link>  
 		<description>&lt;p&gt;接口的幂等性指用户对于同一个接口使用相同的参数一次请求或者多次请求的接口应该是一致的，不会因为多次请求而产生副作用。&lt;br /&gt;
@@ -100,14 +152,6 @@
 		<author>daimin</author>  
 		<copyright></copyright>  
 		<pubDate>2020-05-25</pubDate>  
-    </item>  
-    <item>  
-		<title>谈谈如何设计秒杀系统</title>  
-		<link>http://daimin.github.io//posts/seckill-system-design.html</link>  
-		<description></description>  
-		<author>daimin</author>  
-		<copyright></copyright>  
-		<pubDate>2020-05-22</pubDate>  
     </item>  
     <item>  
 		<title>API接口安全性设计</title>  
