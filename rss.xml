@@ -44,7 +44,7 @@
 &lt;p&gt;使用业务字段值控制 
     更新语句的where条件的加上更新字段的前提条件。&lt;br /&gt;
     比如修改商品数量，客户将商品当前数量也作为请求参数加入更新的where条件：
-    &lt;code&gt;update goods num=num-1 where num=3;&lt;/code&gt; 那么多次请求只要有一次修改成果，其它的请求将不会修改数据。&lt;/p&gt;
+    &lt;code&gt;update goods set num=num-1 where num=3;&lt;/code&gt; 那么多次请求只要有一次修改成果，其它的请求将不会修改数据。&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;</description>  
 		<author>daimin</author>  
