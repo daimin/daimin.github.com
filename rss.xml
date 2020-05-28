@@ -9,10 +9,66 @@
     <item>  
 		<title>mysql主从延迟怎么解决</title>  
 		<link>http://daimin.github.io//posts/mysql主从延迟怎么解决.html</link>  
-		<description></description>  
+		<description>&lt;h4&gt;主从延迟产生的原因：&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;master数据库可以并发写，但是主从复制却是单线程；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;复制过去在salve重放的时候，产生了锁等待；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;服务器太差或者网络太差；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;master和slave的负载过高，分配给主从复制的cpu资源过少，跟不上master数据修改的速度；&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4&gt;判断是否产生主从延迟&lt;/h4&gt;
+&lt;p&gt;通过 show slave status 进行查看，从Seconds_Behind_Master参数的值来判断，是否有发生主从延时。      &lt;br /&gt;
+  其值有这么几种：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;* NULL - 表示io_thread或是sql_thread有任何一个发生故障，也就是该线程的Running状态是No,而非Yes.
+* 0 - 该值为零，是我们极为渴望看到的情况，表示主从复制状态正常
+* 正值，表示主从延迟已经出现，数据越大表示落后主库越多
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;用mk-heartbeat来判断，这个没用过，不做讲解。&lt;/p&gt;
+&lt;h4&gt;解决方法&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;分库，平摊主库服务器压力；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;降低主库的读压力，可以将读全部切换到从库，且增加多个从库，缓解单一从库读负载过高的情况；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;开启多线程的主从复制，提高从库的重发速度。（mysql5.6.3已经支持）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;加缓存，减少直接请求数据的请求数量；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;使用更好的数据硬件；检查网络，主库从库要在同一个子网，且网卡带宽要够；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;如果从库数据对可靠性不是要求很高，可以设置从库的sync_binlog=0（0表示MySQL不控制binlog的刷新，由文件系统自己控制它的缓存的刷新；N则是每N次事务，刷新日志到磁盘）。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;innodb_flush_log_at_trx_commit 参数的调整，innodb引擎受这个参数影像很大。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;默认值1的意思是每一次事务提交或事务外的指令都需要把日志写入（flush）硬盘，这是很费时的。mysql崩溃或者系统崩溃都不会丢数据&lt;/li&gt;
+&lt;li&gt;设成2的意思是事务提交的时候不直接写入硬盘而是先写入操作系统缓存。日志会每秒从缓存flush到硬盘，所以只有系统崩溃或断电才会丢失1秒的数据。&lt;/li&gt;
+&lt;li&gt;0最快，每次事务提交不会触发写磁盘的操作，而是每秒将日志写入磁盘，所以进程崩溃会丢失1秒数据。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;设置从库的slave_net_timeout（读取log失败，多久重试），如果出现了延迟，这个值应该调整。
+    master-connect-retry（主库宕机获取连接丢失情况下，从库多久连接一次主库）。&lt;br /&gt;
+    这两个参数调整，也能减少主库或者日志发生问题的情况下，恢复同步所隔的时间，降低这种情况所产生的延迟。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description>  
 		<author>daimin</author>  
 		<copyright></copyright>  
-		<pubDate>2020-05-29</pubDate>  
+		<pubDate>2020-05-28</pubDate>  
     </item>  
     <item>  
 		<title>谈谈如何设计秒杀系统</title>  
