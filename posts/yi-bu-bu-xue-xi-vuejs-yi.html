@@ -68,13 +68,30 @@
 <p><code>{{ var }}</code> 用来输出变量</p>
 <pre><code>var vm = new Vue({
     el: '#app',  # 对应一个DOM 元素进行挂载
-    data: { # data是Vue对象的属性
-        newPerson: {
+    create(){ // 页面加载未渲染html之前执行。
+
+    },
+    mounted(){ //渲染html后再执行。由于created在html模板生产之前所以无法对Dom进行操作而mounted可以。
+
+    },
+    computed{ // 计算属性，在使用的时候直接返回，而且带有缓存功能，如果相关的值未改变将不会重复计算。默认只有getter，也可以设置setter
+
+    },
+    watch{ //监控变量或方法，如果是监控方法，需要配合computed来使用。如果监控对象需要深度watch，比如有一个对象a={b:1}，监控b。
+            // 1. 'a.b'(newval,oldval){}
+            // 2. 这里也可以用computed，将变量作为计算属性返回
+            // 3. 又或者深度监听a{hander(newval,oldval),deep:true}（这个性能比较差，因为只要对象中任意变量改动都会调用handler）。
+
+    },
+    data(){ # data是Vue对象的属性，一般最好作为方法return，可以避免数据污染
+        return {
+            newPerson: {
             name: '',
             age: 0,
             sex: 'Male'
-        },
-        peoples:[ ]
+            },
+            peoples:[ ]
+        }
     },
     methods:{ # vue对象的方法
         createPerson: function(){
@@ -102,12 +119,15 @@
 </li>
 <li>
 <p>组件</p>
-<p>应该在挂载元素范围内使用组件</p>
+<ol>
+<li>
+<p>使用组件<br />
+应该在挂载元素范围内使用组件</p>
 <p><div id="app">
     <!-- 3. #app是Vue实例挂载的元素，应该在挂载元素范围内使用组件-->
     <my-component></my-component>
 </div></p>
-<pre><code>// 1.创建一个组件构造器
+<pre><code>// 创建一个组件构造器
 var myComponent = Vue.extend({
     template: '&lt;div&gt;This is my first component!&lt;/div&gt;'
 })
@@ -115,12 +135,154 @@ var myComponent = Vue.extend({
 new Vue({
     el: '#app',
     components: {
-        // 2. 将myComponent组件注册到Vue实例下
+        // 可以将myComponent组件注册到Vue实例下
         'my-component' : myComponent
     }
 });
-// 3. 全局注册组件
+
+// 也可以全局注册组件。可以在页面中所有的vue挂载元素中使用该组件，不可以在非vue挂载元素中使用
 Vue.component('my-component', myComponent)
+</code></pre>
+</li>
+<li>
+<p>组件模板</p>
+<pre><code>&lt;script type="text/x-template" id="myComponent"&gt; &lt;!-- html5之前的写法 --&gt;
+    &lt;div&gt;This is a component!&lt;/div&gt;
+&lt;/script&gt;
+&lt;template id="myComponent"&gt; &lt;!-- html5支持该标签 --&gt;
+    &lt;div&gt;This is a component!&lt;/div&gt;
+&lt;/template&gt;
+Vue.component('my-component',{
+    template: '#myComponent'
+})
+new Vue({
+    el: '#app'
+})
+</code></pre>
+</li>
+<li>
+<p>嵌套组件</p>
+<pre><code>&lt;div id="app"&gt;
+    &lt;parent-component&gt;
+    &lt;/parent-component&gt;
+&lt;/div&gt;
+var Child = Vue.extend({
+    template: '&lt;p&gt;This is a child component!&lt;/p&gt;'
+})
+
+var Parent = Vue.extend({
+    // 在Parent组件内使用&lt;child-component&gt;标签 , template中必须有一个根节点
+    template :'&lt;div&gt;&lt;p&gt;This is a Parent component&lt;/p&gt;&lt;child-component&gt;&lt;/child-component&gt;&lt;/div&gt;',
+    components: {
+        // 局部注册Child组件，该组件只能在Parent组件内使用
+        'child-component': Child
+    }
+})
+
+// 全局注册Parent组件
+Vue.component('parent-component', Parent)
+
+new Vue({
+    el: '#app'
+})
+</code></pre>
+</li>
+</ol>
+</li>
+<li>
+<p>使用props<br />
+    父组件的数据需要通过 prop 才能下发到子组件中，也就是props是子组件访问父组件数据的唯一接口。<br />
+    如果子组件想要引用父元素的数据，那么就在其prop里面声明一个变量（比如a），这个变量就可以引用父元素的数据。然后在模板里渲染这个变量（前面的a），这时候渲染出来的就是父元素里面的数据。</p>
+<pre><code>&lt;div id="app"&gt;
+&lt;!--在子组件中定义prop时，使用了camelCase命名法。由于HTML属性不区分大小写，camelCase的prop用于属性时，需要转为 kebab-case（短横线隔开）。例如，在prop中定义的myName，在用作属性时需要转换为my-name。--&gt;
+    &lt;my-component :my-name="name" :my-age="age"&gt;&lt;/my-component&gt;
+&lt;/div&gt;
+&lt;template id="myComponent"&gt;
+    &lt;table&gt;
+        &lt;tr&gt;
+            &lt;th colspan="2"&gt;
+                子组件数据
+            &lt;/th&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;my name&lt;/td&gt;
+            &lt;td&gt;{{ myName }}&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;my age&lt;/td&gt;
+            &lt;td&gt;{{ myAge }}&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/table&gt;
+&lt;/template&gt;
+var vm = new Vue({
+    el: '#app',
+    data: {
+        name: 'keepfool',
+        age: 28
+    },
+    components: {
+        'my-component': {
+            template: '#myComponent',
+            props: ['myName', 'myAge']
+        }
+    }
+})
+</code></pre>
+</li>
+<li>
+<p>使用slot <br />
+    slot就是将父组件的DOM显示在子组件中，父组件决定内容，子组件决定位置。</p>
+<ol>
+<li>
+<p>没有名字的slot，就是父节点模板中子组件标签的内容作为slot显示在子组件的DOM中。</p>
+<pre><code>&lt;my-component&gt;
+    &lt;h1&gt;Hello Vue.js!&lt;/h1&gt;  &lt;!--将会替换子组件的slot标签来展示--&gt;
+&lt;/my-component&gt;
+&lt;template id="myComponent"&gt;
+    &lt;div class="content"&gt;
+        &lt;h2&gt;This is a component!&lt;/h2&gt;
+        &lt;slot&gt;如果没有分发内容，则显示slot中的内容&lt;/slot&gt;
+        &lt;p&gt;Say something...&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+</code></pre>
+</li>
+<li>
+<p>具名的slot，父节点中的有slot属性的标签将会替换子组件中具名的slot。</p>
+<pre><code>&lt;!-- slot属性为header的标签将会提交子组件中name等于header的slot --&gt;
+&lt;header class="dialog-header" slot="header"&gt;
+    &lt;h1 class="dialog-title"&gt;
+        提示信息
+    &lt;/h1&gt;
+&lt;/header&gt;
+&lt;template id="dialog-template"&gt;
+    &lt;div&gt;
+        &lt;slot name="header"&gt;
+        &lt;/slot&gt;
+    &lt;/div&gt;
+ &lt;/template&gt;
+</code></pre>
+</li>
+</ol>
+</li>
+<li>
+<p>$emit</p>
+<ol>
+<li>父组件可以使用 props 把数据传给子组件。(这个上面已经讨论过)</li>
+<li>可以使用 $emit 触发组件的自定义事件。 用这个其实可以将子组件的数据传递给任一组件。其实这个容易使逻辑变复杂，不推荐过分使用。
+    vm.$emit( event, arg ) //触发当前实例上的事件<br />
+    vm.$on( event, func) //监听event事件后运行 fn； </li>
+<li>还可以单独new一个Vue实例，专门用来$emit发射自定义事件和$on监听自定义事件。</li>
+</ol>
+</li>
+<li>
+<p>ref</p>
+<p>可以给子组件的标签的ref属性指定一个名称，然后就可以通过其父组件的$refs来引用这个组件。
+比如：</p>
+<pre><code>&lt;childcp ref="acp"&gt;&lt;/childcp&gt;
+this.$parent.$refs.acp // 可以引用这个子组件
+this.$root // 指向根组件 
+this.$parent.$ref.acp.$emit('aevent', []) //向acp发射自定义事件，可以在这个组件中this.$on来监听
 </code></pre>
 </li>
 </ol>
