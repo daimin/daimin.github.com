@@ -271,8 +271,7 @@
     <item>  
 		<title>学习vue.js</title>  
 		<link>http://daimin.github.io//posts/yi-bu-bu-xue-xi-vuejs-yi.html</link>  
-		<description>&lt;h1&gt;vue对象定义，常用指令和模板的简单使用&lt;/h1&gt;
-&lt;p&gt;&lt;code&gt;{{ var }}&lt;/code&gt; 用来输出变量&lt;/p&gt;
+		<description>&lt;p&gt;&lt;code&gt;{{ var }}&lt;/code&gt; 用来输出变量&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;var vm = new Vue({
     el: &#39;#app&#39;,  # 对应一个DOM 元素进行挂载
     create(){ // 页面加载未渲染html之前执行。
