@@ -1,6 +1,6 @@
-title:一步步学习vue.js（一）
+title:学习vue.js
 
-tag:vue.js,一步步学习vue.js
+tag:vue.js
 
 date:2017-11-01
 
@@ -32,13 +32,12 @@ date:2017-11-01
     
 
 1. 常用指令
-    * v-bind 指令可以用于响应式地更新 HTML 属性，缩写为:
+    * v-bind 指令可以用于响应式地更新 HTML 属性，缩写为冒号 : 
     * v-for会对使用它的标签进行循环
     * v-on 用于监听 DOM 事件，缩写为@
     * v-model 指令在表单控件元素上创建双向数据绑定
     * v-show 用于根据条件展示元素
-    * v-if和v-show类似，不过他可以接v-else，还有v-else-if
-                
+    * v-if和v-show类似，不过他可以接v-else，还有v-else-if  
         v-if 和v-show类似，不过二者还有有区别，v-if切换消耗较大，v-show初始化时消耗较大，因为v-if是惰性渲染。频繁变动的用v-show，否则用v-if
     * v-once可以控制变量变化时绑定的数据不变化。
     * v-html用来原始输出html

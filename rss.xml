@@ -269,7 +269,7 @@
 		<pubDate>2020-05-21</pubDate>  
     </item>  
     <item>  
-		<title>一步步学习vue.js（一）</title>  
+		<title>学习vue.js</title>  
 		<link>http://daimin.github.io//posts/yi-bu-bu-xue-xi-vuejs-yi.html</link>  
 		<description>&lt;h1&gt;vue对象定义，常用指令和模板的简单使用&lt;/h1&gt;
 &lt;p&gt;&lt;code&gt;{{ var }}&lt;/code&gt; 用来输出变量&lt;/p&gt;
@@ -296,17 +296,15 @@
 &lt;li&gt;
 &lt;p&gt;常用指令&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;v-bind 指令可以用于响应式地更新 HTML 属性，缩写为:&lt;/li&gt;
+&lt;li&gt;v-bind 指令可以用于响应式地更新 HTML 属性，缩写为冒号 : &lt;/li&gt;
 &lt;li&gt;v-for会对使用它的标签进行循环&lt;/li&gt;
 &lt;li&gt;v-on 用于监听 DOM 事件，缩写为@&lt;/li&gt;
 &lt;li&gt;v-model 指令在表单控件元素上创建双向数据绑定&lt;/li&gt;
 &lt;li&gt;v-show 用于根据条件展示元素&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;v-if和v-show类似，不过他可以接v-else，还有v-else-if&lt;/p&gt;
-&lt;p&gt;v-if 和v-show类似，不过二者还有有区别，v-if切换消耗较大，v-show初始化时消耗较大，因为v-if是惰性渲染。频繁变动的用v-show，否则用v-if
-    * v-once可以控制变量变化时绑定的数据不变化。
-    * v-html用来原始输出html&lt;/p&gt;
-&lt;/li&gt;
+&lt;li&gt;v-if和v-show类似，不过他可以接v-else，还有v-else-if&lt;br /&gt;
+    v-if 和v-show类似，不过二者还有有区别，v-if切换消耗较大，v-show初始化时消耗较大，因为v-if是惰性渲染。频繁变动的用v-show，否则用v-if&lt;/li&gt;
+&lt;li&gt;v-once可以控制变量变化时绑定的数据不变化。&lt;/li&gt;
+&lt;li&gt;v-html用来原始输出html&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;
