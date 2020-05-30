@@ -519,6 +519,7 @@ var v2 = 10 //编译器可以自动推导出类型
 v3 := 10  //不需要var，声明和初始化一起，声明后的不能用:=初始化，这种简式的变量声明只能放在函数内部
 * 赋值，它也支持这种 `i, j = j, i`，这里i和j就交换了值。
 * 字符串类型必须是双引号
+* 如果变量定义了而未使用，编译会报错；import语句也是，未用的import也会编译报错
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
@@ -551,7 +552,12 @@ mys3 := []int{1,2,3,4,5} //直接初始化一个包含5个元素的切片
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;cap函数，返回数组(&lt;strong&gt;这里的数组包括切片，下同&lt;/strong&gt;)大小;len函数返回当前的个数;append给数组添加元素&lt;/p&gt;
+&lt;p&gt;数据常用内置函数&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;cap函数，返回数组(&lt;strong&gt;这里的数组包括切片，下同&lt;/strong&gt;)大小;&lt;/li&gt;
+&lt;li&gt;len函数返回当前的个数;&lt;/li&gt;
+&lt;li&gt;append给数组添加元素&lt;/li&gt;
+&lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
@@ -574,14 +580,14 @@ if ok { // finded
 &lt;ul&gt;
 &lt;li&gt;error接口，所有的错误都实现了这个接口&lt;/li&gt;
 &lt;li&gt;defer 相当于try...catch语句的finally。&lt;/li&gt;
-&lt;li&gt;panic打印错误，并终止流程，病返回调用函数处，由上层panic继续执行，知道goroutine被终止。&lt;/li&gt;
+&lt;li&gt;panic打印错误，并终止流程，并返回调用函数处，由上层panic继续执行，直到goroutine被终止。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;接口&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;golang接口很宽松，只要实现了方法就算是实现了接口，并不需要显示的实现。&lt;/p&gt;
+&lt;p&gt;golang接口很宽松，只要实现了方法就算是实现了接口，并不需要显式的实现。&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;interface{} 表示any类型&lt;/li&gt;
 &lt;li&gt;
@@ -625,7 +631,7 @@ aa := &amp;amp;AA{}
 aa.say()
 
 // 这里AA的对象就拥有了A类所有的属性和方法，接口的继承也是同理
-// 匿名字段，当匿名字段是一个struct的时候，那么这个struct所拥有的全部字段都被隐式地引入了当前定义的这个struct
+// 匿名字段，当匿名字段是一个struct的时候，那么这个struct所拥有的全部字段都被隐式地引入了当前定义的这个struct，起始类似如下代码：
 aa := &amp;amp;AA{A{&#34;Vaga&#34;}}
 aa.say()
 &lt;/code&gt;&lt;/pre&gt;
