@@ -576,6 +576,13 @@ if ok { // finded
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;
+&lt;p&gt;文件名和包&lt;br /&gt;
+    包名必须是小写字母。 &lt;br /&gt;
+    go文件名也必须是小写，如果有多个单词，用下划线分隔。 &lt;br /&gt;
+    根据惯例，每个目录都只包含一个包。&lt;br /&gt;
+    源文件中非注释的第一行指明这个文件属于哪个包，如：package main。package main表示一个可独立执行的程序，每个 Go 应用程序都包含一个名为 main 的包。        &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
 &lt;p&gt;错误处理&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;error接口，所有的错误都实现了这个接口&lt;/li&gt;
