@@ -1,5 +1,10 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	<url>
+		<loc>http://daimin.github.io//posts/大数据量分页优化.html</loc>
+		<lastmod>2020-06-02</lastmod>
+		<changefreq>monthly</changefreq>
+	</url>
+	<url>
 		<loc>http://daimin.github.io//posts/mysql主从延迟怎么解决.html</loc>
 		<lastmod>2020-05-28</lastmod>
 		<changefreq>monthly</changefreq>

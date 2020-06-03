@@ -7,6 +7,36 @@
     <language>zh-cn</language>  
     <generator>sologd</generator>  
     <item>  
+		<title>大数据量分页优化</title>  
+		<link>http://daimin.github.io//posts/大数据量分页优化.html</link>  
+		<description>&lt;h4&gt;mysql大数据量使用limit分页，随着页码的增大，查询效率越低下。&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;最常用的方法，limit offset, rows&lt;br /&gt;
+    比如：&lt;code&gt;select * from users limit 0, 10;&lt;/code&gt;，当起始页小或者数据量小的时候没有问题，因为要扫描的行数少。&lt;br /&gt;
+    但是如果数据表数据几百万行，然后要展示上千上万页的数据的时候，这个时候所需的时候就成倍增长。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;分页之前找到上次最后一条的相关ID进行过滤后再limit。&lt;br /&gt;
+    上一页最后的userId是1000000，那么给当前页传入上一页的userId，然后当前页的分页就是：  &lt;code&gt;select * from users where userId&amp;gt;1000000 limit 10;&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;利用子查询覆盖索引来优化  &lt;br /&gt;
+    覆盖了索引就不需要回表查询数据，所以很快的。比如：&lt;br /&gt;
+&lt;code&gt;select userId from users limit 1000000, 100;&lt;/code&gt;，因为userId是主键，所以不用回表查询数据，但是我们在查询中不可能只需要返回主键的。
+    如此：  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;select * from users where userId &amp;gt;= (select userId from users limit 1000000, 1) limit 100;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;select * from users a inner join (select userId from users limit 1000000, 100) b on a.userId=b.userId&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;反正类似的，就是子查询覆盖索引，然后外层查询只要扫描少量&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description>  
+		<author>daimin</author>  
+		<copyright></copyright>  
+		<pubDate>2020-06-02</pubDate>  
+    </item>  
+    <item>  
 		<title>mysql主从延迟怎么解决</title>  
 		<link>http://daimin.github.io//posts/mysql主从延迟怎么解决.html</link>  
 		<description>&lt;h4&gt;主从延迟产生的原因：&lt;/h4&gt;
