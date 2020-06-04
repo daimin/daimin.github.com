@@ -29,7 +29,7 @@
 &lt;li&gt;&lt;code&gt;select * from users where userId &amp;gt;= (select userId from users limit 1000000, 1) limit 100;&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;select * from users a inner join (select userId from users limit 1000000, 100) b on a.userId=b.userId&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;反正类似的，就是子查询覆盖索引，然后外层查询只要扫描少量&lt;/p&gt;
+&lt;p&gt;反正类似的，就是子查询覆盖索引，然后减少外层查询的扫描行数。&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;</description>  
 		<author>daimin</author>  
