@@ -5,12 +5,12 @@
 		<changefreq>monthly</changefreq>
 	</url>
 	<url>
-		<loc>http://daimin.github.io//posts/mysql主从延迟怎么解决.html</loc>
+		<loc>http://daimin.github.io//posts/seckill-system-design.html</loc>
 		<lastmod>2020-05-28</lastmod>
 		<changefreq>monthly</changefreq>
 	</url>
 	<url>
-		<loc>http://daimin.github.io//posts/seckill-system-design.html</loc>
+		<loc>http://daimin.github.io//posts/mysql主从延迟怎么解决.html</loc>
 		<lastmod>2020-05-28</lastmod>
 		<changefreq>monthly</changefreq>
 	</url>
@@ -170,12 +170,12 @@
 		<changefreq>monthly</changefreq>
 	</url>
 	<url>
-		<loc>http://daimin.github.io//posts/BAE-zhong-wen-bian-ma-yin-qi-de-cheng-xu-beng-kui.html</loc>
+		<loc>http://daimin.github.io//posts/mysql-yong-fa-bei-wang.html</loc>
 		<lastmod>2013-08-26</lastmod>
 		<changefreq>monthly</changefreq>
 	</url>
 	<url>
-		<loc>http://daimin.github.io//posts/mysql-yong-fa-bei-wang.html</loc>
+		<loc>http://daimin.github.io//posts/BAE-zhong-wen-bian-ma-yin-qi-de-cheng-xu-beng-kui.html</loc>
 		<lastmod>2013-08-26</lastmod>
 		<changefreq>monthly</changefreq>
 	</url>
@@ -195,22 +195,22 @@
 		<changefreq>monthly</changefreq>
 	</url>
 	<url>
-		<loc>http://daimin.github.io//posts/BAE-zhong-web-py-shang-chuan-wen-ti-chu-li.html</loc>
-		<lastmod>2013-08-16</lastmod>
-		<changefreq>monthly</changefreq>
-	</url>
-	<url>
 		<loc>http://daimin.github.io//posts/css-hack-de-jian-dan-shi-yong.html</loc>
 		<lastmod>2013-08-16</lastmod>
 		<changefreq>monthly</changefreq>
 	</url>
 	<url>
-		<loc>http://daimin.github.io//posts/MYSQL-show-ming-ling-xiang-jie.html</loc>
-		<lastmod>2013-08-12</lastmod>
+		<loc>http://daimin.github.io//posts/BAE-zhong-web-py-shang-chuan-wen-ti-chu-li.html</loc>
+		<lastmod>2013-08-16</lastmod>
 		<changefreq>monthly</changefreq>
 	</url>
 	<url>
 		<loc>http://daimin.github.io//posts/Python-zi-fu-chuan-cao-zuo-fang-fa-zhuan.html</loc>
+		<lastmod>2013-08-12</lastmod>
+		<changefreq>monthly</changefreq>
+	</url>
+	<url>
+		<loc>http://daimin.github.io//posts/MYSQL-show-ming-ling-xiang-jie.html</loc>
 		<lastmod>2013-08-12</lastmod>
 		<changefreq>monthly</changefreq>
 	</url>
@@ -245,12 +245,12 @@
 		<changefreq>monthly</changefreq>
 	</url>
 	<url>
-		<loc>http://daimin.github.io//posts/xin-zeng-le-yi-ge-xiang-ce.html</loc>
+		<loc>http://daimin.github.io//posts/zui-jin-zhun-bei-gan-sha.html</loc>
 		<lastmod>2013-08-04</lastmod>
 		<changefreq>monthly</changefreq>
 	</url>
 	<url>
-		<loc>http://daimin.github.io//posts/zui-jin-zhun-bei-gan-sha.html</loc>
+		<loc>http://daimin.github.io//posts/xin-zeng-le-yi-ge-xiang-ce.html</loc>
 		<lastmod>2013-08-04</lastmod>
 		<changefreq>monthly</changefreq>
 	</url>
