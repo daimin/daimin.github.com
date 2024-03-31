@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <title>你来比划我来猜 - 小游戏 - 在线工具</title>
+    <meta name="keywords" content="你来比划我来猜, 心有灵犀小游戏">
+    <meta name="description" content="你来比划我来猜, 心有灵犀小游戏">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+    <link href="https://s3.pstatp.com/cdn/expire-1-M/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="/public/site/qetool/css/base.css" rel="stylesheet">
+    <link href="/public/site/qetool/typo.css/typo.css" rel="stylesheet">
+    <link rel="shortcut icon" href="http://test.qetool.com/favicon.ico">
+    <script type="text/javascript" src="https://s1.pstatp.com/cdn/expire-1-M/jquery/2.2.3/jquery.min.js"></script>
+    <script type="text/javascript" src="https://s3.pstatp.com/cdn/expire-1-M/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap-hover-dropdown/2.2.1/bootstrap-hover-dropdown.min.js" type="application/javascript"></script>
+    <script type="text/javascript" language="javascript" src="https://s0.pstatp.com/cdn/expire-1-M/bootbox.js/4.4.0/bootbox.min.js"></script>
+    <script src="https://s2.pstatp.com/cdn/expire-1-M/lodash.js/2.0.0/lodash.min.js"></script>
+    <script src="/public/site/qetool/js/common.js?v=MTYyNTA1OTIxOQ0K"></script>
+
+    <style type="text/css">
+        .ad-img{
+            image-rendering:-moz-crisp-edges;
+            image-rendering:-o-crisp-edges;
+            image-rendering:-webkit-optimize-contrast;
+            image-rendering: crisp-edges;
+            -ms-interpolation-mode:nearest-neighbor;
+            border:0;
+        }
+        .ad-link{
+            position: absolute;
+            top:10%;
+            right:3%;
+            display: none;
+        }
+        @media screen and (max-width: 768px){
+            .ad-img{
+                display: none;
+            }
+        }
+        .dropdown-menu li{
+            padding-top: .3rem;
+            background-color: #fdfdfd;
+            color: #4d4d4c;
+        }
+        .dropdown-menu li a:hover{
+            background-color: #c4e3f3;
+        }
+    </style>
+    
+</head>
+<body style="color:#000">
+<div class="container-fluid w" style="margin-top: 0.8rem;">
+    <nav class="navbar navbar-default head-navbar navbar-fixed-top" style="background-color:#fff;border-bottom:1px solid #ddd;">
+        <div class="container-fluid" style="width: 90%">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">
+                    <img class="logo-png" src="/public/site/qetool/img/logo.png">
+                    <label class="logo-s-txt">在线工具</label>
+                </a>
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li  class="active" ><a href="/">首页 <span class="sr-only">(current)</span></a></li>
+                                        <li  class="dropdown">
+                        <a href="/category/dev.html"  data-hover="dropdown" >开发类 <span class="caret"></span> </a>
+                                                <ul class="dropdown-menu">
+                                                            <li>
+                                    <a href="/sql_json_go/sql.html">sql转golang struct</a>
+                                </li>
+                                                            <li>
+                                    <a href="/sql_json_go/json.html">json转golang struct</a>
+                                </li>
+                                                            <li>
+                                    <a href="/timestamp.html">时间戳转换</a>
+                                </li>
+                                                            <li>
+                                    <a href="/json_editor.html">JSON在线编辑</a>
+                                </li>
+                                                            <li>
+                                    <a href="/textjiami.html?jm=base64">Base64编码转换</a>
+                                </li>
+                                                            <li>
+                                    <a href="/textjiami.html?jm=md5_encode">MD5/SHA加密</a>
+                                </li>
+                                                    </ul>
+                                            </li>
+                                        <li  class="dropdown">
+                        <a href="/category/daily.html"  data-hover="dropdown" >日常类 <span class="caret"></span> </a>
+                                                <ul class="dropdown-menu">
+                                                            <li>
+                                    <a href="/rand_passwd.html">密码生成</a>
+                                </li>
+                                                            <li>
+                                    <a href="/gen_uuid.html">UUID生成</a>
+                                </li>
+                                                            <li>
+                                    <a href="/num2zhdx.html">数字转中文大写</a>
+                                </li>
+                                                            <li>
+                                    <a href="/img_compress.html">图片压缩</a>
+                                </li>
+                                                            <li>
+                                    <a href="/zh_pinyin.html">汉字转拼音</a>
+                                </li>
+                                                            <li>
+                                    <a href="/menstru_date.html">预产期计算</a>
+                                </li>
+                                                            <li>
+                                    <a href="/baobaoshengao.html">宝宝身高</a>
+                                </li>
+                                                            <li>
+                                    <a href="/smallgame/xinyoulingxi.html">随机成语猜猜猜</a>
+                                </li>
+                                                    </ul>
+                                            </li>
+                                    </ul>
+                <form class="navbar-form navbar-right" onsubmit="return search_engine_search(this)">
+<!--                    <select class="form-control input-sm" name="search_engine" style="padding: 5px 3px;">-->
+<!--                        <option value="google">谷歌</option>-->
+<!--                        <option value="baidu">百度</option>-->
+<!--                    </select>-->
+                    <div class="form-group" style="margin-left: -3px">
+                        <input type="text" class="form-control" size="26" placeholder="在谷歌搜索本站..." name="search_text">
+                    </div>
+
+                    <button type="submit" class="btn btn-default glyphicon glyphicon-search" style="margin-left: -3px;top:0"><span style="position: relative;top: -1px;left:2px">搜索</span></button>
+                </form>
+                <ul class="nav navbar-nav navbar-right">
+<!--                    <li><a href="#">Link</a></li>-->
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+
+    <script>
+        jQuery(function () {
+            let headNavbar = $($('.head-navbar').get(0))
+            console.log(headNavbar.width())
+            let docWid = document.documentElement.clientWidth;
+            $("#ad-link-a").css("top", 80)
+            $("#ad-link-a").css("left", (headNavbar.width() + (docWid - headNavbar.width())/2) + 42)
+            $("#ad-link-a").show()
+        })
+
+        function search_engine_search(form){
+            // let sevalue = form.search_engine.value;
+            let svalue = form.search_text.value
+            // if(sevalue == 'baidu'){
+            //     window.location.href = "https://www.baidu.com/s?si=qetool.com&cl=3&ct=2097152&tn=bds&word="  + svalue;
+            // }else if(sevalue == 'google'){
+            //     window.location.href = "http://www.google.com/search?domains=qetool.com&sitesearch=qetool.com&hl=zh-CN&ie=UTF-8&oe=UTF-8&q="  + svalue;
+            // }
+            window.location.href = "http://www.google.com/search?domains=qetool.com&sitesearch=qetool.com&hl=zh-CN&ie=UTF-8&oe=UTF-8&q="  + svalue;
+            return false
+        }
+    </script>
+<link href="https://s3.pstatp.com/cdn/expire-1-M/toastr.js/2.1.4/toastr.min.css" type="text/css" rel="stylesheet"/>
+<style>
+
+    .pwd-input {
+        border: 1px solid #ccc;
+        width: 28rem;
+    }
+
+    .hy-title {
+        margin-bottom: 2rem;
+        font-size: 3rem;
+    }
+
+    @media screen and (max-width: 768px) {
+        .pwd-input {
+            width: 14rem;
+        }
+
+        .r-ctl {
+            padding-left: 0.5rem;
+        }
+
+        .hy-title {
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+    }
+
+    .use-chars-chkbox {
+        margin-right: 1.5rem;
+        display: inline-block;
+    }
+
+    #other-char-span {
+        background-color: #eee;
+        border: 1px solid #ccc;
+        padding: 0.2rem 0.5rem;
+    }
+
+    #passwd_len {
+        height: 2.5rem;
+        width: 4rem;
+    }
+
+    .tip-div {
+        margin-top: 1.5rem;
+    }
+
+    .copy-btn {
+        margin: 0 auto;
+        outline: none;
+        padding: 1rem 1rem
+    }
+
+    .toast-top-center {
+        top: 8rem;
+        right: 0;
+        width: 100%;
+    }
+
+    .toast-message {
+        font-size: 1rem;
+        width: 12rem;
+    }
+
+    #game-div {
+        display: block;
+        width: 100%;
+        border: 1px solid #204d74;
+        vertical-align: middle;
+        text-align: center;
+    }
+
+    #opt-btn {
+        margin-top: 6px;
+    }
+
+    #opt-btn button {
+        min-width: 20%;
+        margin-right: 5%;
+        height: 50px;
+    }
+
+    #ciyu_board {
+        display: none;
+        font-size: 4rem;
+        font-weight: bold;
+        text-align: center;
+        border: 1px solid green;
+        overflow: hidden;
+    }
+
+    #ciyu_board_timer{
+        display: none;
+        color:#FF6633;
+        float: right;
+        margin: 3px;
+        font-size: 1.5rem;
+    }
+
+    #result_board {
+        display: none;
+    }
+
+    #progress-bar {
+        display: none;
+        font-size: 1.5rem;
+        color: blue;
+    }
+
+    #opt-btn {
+        display: none;
+    }
+
+    #round_score {
+        font-size: 3rem;
+        color: red;
+        margin-top: 2rem;
+    }
+
+    #round_detail {
+        font-size: 1.2rem;
+        color: blue;
+    }
+
+</style>
+<div id="game-div">
+    <div id="begin_round">
+        <button onclick="begin_new_round()" style="margin-top: 24px;font-size: 24px;width: 120px;">开始</button>
+    </div>
+    <div id="ciyu_board_timer"></div>
+    <div id="ciyu_board"></div>
+    <div id="result_board">
+        <div id="round_score"></div>
+        <div id="round_detail"></div>
+        <div id="begin_round" ><button onclick="begin_new_round()" style="margin-top: 12px;font-size:16px;width: 180px;">再来一局</button></div>
+    </div>
+</div>
+<div id="opt-btn">
+    <button onclick="set_right()" style="width: 25%;background-color: #006633;color:#eee">对</button>
+    <button onclick="set_wrong()" style="width: 25%;background-color: #993333;color:#eee">错</button>
+    <button onclick="jump()" style="width: 20%">跳过</button>
+    <span id="progress-bar">
+        <span id="cur_ciyu_idx"></span>/<span id="all_ciyu_cnt"></span>
+    </span>
+</div>
+<script>
+
+    var round_ciyus = [];
+    var round_idx = 0;
+    var rightCnt = 0;
+    var wrongCnt = 0;
+    var jumpCnt = 0;
+    var timerCnt = 0
+    var timerInterval = null
+
+
+    function begin_new_round() {
+        resetCnt();
+        let formData = new FormData()
+        formData.append('action', 'begin_round')
+        formData.append('uid', get_uid())
+        $.ajax({
+            url: "/smallgame/xinyoulingxi",
+            type: 'post',
+            data: formData,
+            processData: false,
+            contentType: false,
+            dataType: 'json',
+            success: function (result) {
+                if (result['errCode'] != 0) {
+                    window.alert(result["errMsg"])
+                } else {
+                    round_ciyus = result["data"]
+                    begin_round();
+                }
+            }
+        });
+    }
+
+
+    function begin_round() {
+        $("#begin_round").hide();
+        $("#result_board").hide();
+        $("#progress-bar").show();
+        next_ciyu();
+        $("#ciyu_board").show();
+        $("#ciyu_board_timer").show();
+        $("#ciyu_board_timer").html(getTimerDisplay())
+        timerInterval = setInterval(function () {
+            $("#ciyu_board_timer").html(getTimerDisplay())
+        }, 1000)
+        $("#opt-btn").show();
+    }
+
+    function getTimerDisplay(){
+        timerCnt++
+        if(timerCnt < 60) {
+            return timerCnt + "秒"
+        }
+
+        if(timerCnt > 60 && timerCnt < 3600) {
+            return Math.floor(timerCnt/60) + "分" + timerCnt%60 + "秒"
+        }
+
+        if(timerCnt > 3600) {
+
+            return Math.floor(timerCnt/3600) + "时" + Math.floor(timerCnt%3600/60) + "分" + timerCnt%3600%60 + "秒"
+        }
+    }
+
+    function resetCnt() {
+        round_idx = 0;
+        rightCnt = 0;
+        wrongCnt = 0;
+        jumpCnt = 0;
+        timerCnt = 0;
+    }
+
+    function showResultBoard() {
+        $("#opt-btn").hide();
+        $("#begin_round").hide();
+        $("#ciyu_board").hide();
+        clearInterval(timerInterval);
+        $("#result_board").show();
+        $("#round_score").html((rightCnt * 5) + "分");
+        $("#round_detail").html("共" + round_ciyus.length + "题，" + rightCnt + "对，" + wrongCnt + "错，" + jumpCnt + "跳过");
+    }
+
+    function next_ciyu() {
+        if (round_idx >= round_ciyus.length) {
+            showResultBoard();
+            return
+        }
+        let gameDivObj = $("#game-div");
+        let ciyuBoardObj = $("#ciyu_board");
+        let ciyu = round_ciyus[round_idx];
+        let fontSize = (gameDivObj.width() - 24) / ciyu.length - 12;
+        if (fontSize > 36) {
+            fontSize = 36;
+        }
+        ciyuBoardObj.css("font-size", fontSize)
+        ciyuBoardObj.html(ciyu);
+        let gameDivHeight = gameDivObj.height();
+        let ciyuBoardHeight = ciyuBoardObj.height();
+
+        ciyuBoardObj.css("margin-top", (gameDivHeight - ciyuBoardHeight) / 2)
+
+        $("#all_ciyu_cnt").html(round_ciyus.length)
+        $("#cur_ciyu_idx").html(round_idx + 1)
+        round_idx++;
+    }
+
+    function set_right() {
+        rightCnt++;
+        next_ciyu();
+    }
+
+    function set_wrong() {
+        wrongCnt++;
+        next_ciyu();
+    }
+
+    function jump() {
+        jumpCnt++;
+        next_ciyu();
+    }
+
+    $(function () {
+        $("#game-div").css('height', $(document.body).height() * 0.6);
+    })
+
+</script>
+
+<style type="text/css">
+    .ad-img2, .ad-img3{
+        image-rendering:-moz-crisp-edges;
+        image-rendering:-o-crisp-edges;
+        image-rendering:-webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+        -ms-interpolation-mode:nearest-neighbor;
+        border:0;
+    }
+    .ad-link2{
+        display: block;
+        text-align: center;
+    }
+    @media screen and (max-width: 768px){
+        .ad-img2{
+            width:300px;
+        }
+        .ad-img3{
+            width:100px;
+        }
+    }
+</style>
+<footer class="main-footer">
+    <div class="foot w1000">
+    </div>
+</footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <title>数字转大写 - 在线工具</title>
+    <meta name="keywords" content="数字转大写,数字转中文大写,金额中文大写,中文金额大写">
+    <meta name="description" content="数字转大写,数字转中文大写,金额中文大写,中文金额大写，日常要求中文数字大写">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+    <link href="https://s3.pstatp.com/cdn/expire-1-M/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="/public/tools/public/site/qetool/css/base.css" rel="stylesheet">
+    <link href="/public/tools/public/site/qetool/typo.css/typo.css" rel="stylesheet">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <script type="text/javascript" src="https://s1.pstatp.com/cdn/expire-1-M/jquery/2.2.3/jquery.min.js"></script>
+    <script type="text/javascript" src="https://s3.pstatp.com/cdn/expire-1-M/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap-hover-dropdown/2.2.1/bootstrap-hover-dropdown.min.js" type="application/javascript"></script>
+    <script type="text/javascript" language="javascript" src="https://s0.pstatp.com/cdn/expire-1-M/bootbox.js/4.4.0/bootbox.min.js"></script>
+    <script src="https://s2.pstatp.com/cdn/expire-1-M/lodash.js/2.0.0/lodash.min.js"></script>
+    <script src="/public/tools/public/site/qetool/js/common.js?v=MTYyNTA1OTIxOQ0K"></script>
+
+    <style type="text/css">
+        .ad-img{
+            image-rendering:-moz-crisp-edges;
+            image-rendering:-o-crisp-edges;
+            image-rendering:-webkit-optimize-contrast;
+            image-rendering: crisp-edges;
+            -ms-interpolation-mode:nearest-neighbor;
+            border:0;
+        }
+        .ad-link{
+            position: absolute;
+            top:10%;
+            right:3%;
+            display: none;
+        }
+        @media screen and (max-width: 768px){
+            .ad-img{
+                display: none;
+            }
+        }
+        .dropdown-menu li{
+            padding-top: .3rem;
+            background-color: #fdfdfd;
+            color: #4d4d4c;
+        }
+        .dropdown-menu li a:hover{
+            background-color: #c4e3f3;
+        }
+    </style>
+    
+</head>
+<body style="color:#000">
+<div class="container-fluid w" style="margin-top: 0rem;">
+
+
+    <script>
+        jQuery(function () {
+            let headNavbar = $($('.head-navbar').get(0))
+            console.log(headNavbar.width())
+            let docWid = document.documentElement.clientWidth;
+            $("#ad-link-a").css("top", 80)
+            $("#ad-link-a").css("left", (headNavbar.width() + (docWid - headNavbar.width())/2) + 42)
+            $("#ad-link-a").show()
+        })
+
+        function search_engine_search(form){
+            // let sevalue = form.search_engine.value;
+            let svalue = form.search_text.value
+            // if(sevalue == 'baidu'){
+            //     window.location.href = "https://www.baidu.com/s?si=qetool.com&cl=3&ct=2097152&tn=bds&word="  + svalue;
+            // }else if(sevalue == 'google'){
+            //     window.location.href = "http://www.google.com/search?domains=qetool.com&sitesearch=qetool.com&hl=zh-CN&ie=UTF-8&oe=UTF-8&q="  + svalue;
+            // }
+            window.location.href = "http://www.google.com/search?domains=qetool.com&sitesearch=qetool.com&hl=zh-CN&ie=UTF-8&oe=UTF-8&q="  + svalue;
+            return false
+        }
+    </script>
+<link href="https://s3.pstatp.com/cdn/expire-1-M/toastr.js/2.1.4/toastr.min.css" type="text/css" rel="stylesheet" />
+
+<style>
+
+    #alb-number{
+        border: 1px solid #ccc;
+        width: 28rem;
+        height:3rem;
+        font-size:2rem;
+    }
+
+    #result {
+        text-align: left;
+        font-size: 1.5rem;
+    }
+
+    .hy-title{
+        margin-bottom: 2rem;
+        font-size: 3rem;
+    }
+
+    @media screen and (max-width: 768px) {
+        #alb-number{
+            width: 18rem;
+            height: 2rem;
+            font-size:1rem;
+        }
+        #result {
+            font-size: 1rem;
+        }
+        .r-ctl{
+            padding-left: 0.5rem;
+        }
+        .hy-title{
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+    }
+
+    .use-chars-chkbox {
+        margin-right: 1.5rem;
+        display: inline-block;
+    }
+
+    #other-char-span {
+        background-color: #eee;
+        border: 1px solid #ccc;
+        padding: 0.2rem 0.5rem;
+    }
+
+    #passwd_len{
+        height: 2.5rem;
+        width: 4rem;
+    }
+
+
+    .tip-div{
+        margin-top: 1.5rem;
+    }
+
+    .toast-top-center {
+        top: 6rem;
+        right: 0;
+        width: 100%;
+    }
+    .toast-message{
+        font-size: 1rem;
+        width: 10rem;
+    }
+    #toast-container > div{
+        margin: 0 0 6px;
+        padding: 1rem 1rem 1rem 5rem;
+    }
+    #toast-container.toast-bottom-center>div, #toast-container.toast-top-center>div {
+        width: 20rem;
+    }
+
+</style>
+<div class="w2">
+    <div class="row" style="text-align: center;margin-bottom: 1rem">
+        <h2 class="hy-title">数字转中文大写</h2>
+    </div>
+    <div class="row" style="text-align: center;">
+        <table class="rtable">
+            <tr>
+                <td class="r-label">阿拉伯数字</td>
+                <td class="r-ctl" style="text-align: left">
+                    <input id="alb-number" placeholder="请输入数字" type="text">
+                </td>
+            </tr>
+            <tr>
+                <td class="r-label">结果<br/>(1兆=10000亿)</td>
+                <td class="r-ctl" id="result"></td>
+            </tr>
+        </table>
+    </div>
+    <div style="text-align: center;margin-top: 2rem">
+        <button class="btn btn-info result-btn" onclick="intToChinese()">转换</button>
+    </div>
+
+
+</div>
+<script src="https://s0.pstatp.com/cdn/expire-1-M/toastr.js/2.1.4/toastr.min.js" type="application/javascript"></script>
+<script>
+
+    toastr.options = {
+        closeButton: false,
+        debug: false,
+        progressBar: false,
+        positionClass: "toast-top-center",
+        onclick: null,
+        showDuration: "300",
+        hideDuration: "1000",
+        timeOut: "2000",
+    };
+    function intToChinese () {
+        let numstr = $('#alb-number').val();
+        numstr = numstr+'';
+        numstr = numstr.replace(/,/g, '')
+        let reg = new RegExp('^\-?[0-9]*$')
+        if (!reg.test(numstr)) {
+            toastr.warning("输入的数字不正确!");
+            return false
+        }
+        if(numstr.length > 16){
+            toastr.warning("数字太大无法转换!");
+            return false
+        }
+
+        $('#result').html(f(numstr));
+
+    }
+
+    function f(numstr) {
+        let _change = {
+            ary0:["零", "壹", "贰", "叁", "肆", "伍", "陆", "柒", "捌", "玖"],
+            ary1:["", "拾", "佰", "仟"],
+            ary2:["", "万", "亿", "兆"],
+            init:function (name) {
+                this.name = name;
+            },
+            strrev:function () {
+                let ary = []
+                for (let i = this.name.length; i >= 0; i--) {
+                    ary.push(this.name[i])
+                }
+                return ary.join("");
+            }, //倒转字符串。
+            pri_ary:function () {
+                let $this = this
+                let ary = this.strrev();
+                let zero = ""
+                let newary = ""
+                let fustr = ""
+                let i4 = -1
+                if(ary[ary.length - 1] === '-'){
+                    fustr = "负"
+                    ary = ary.substring(0, ary.length - 1)
+                }
+
+                for (let i = 0; i < ary.length; i++) {
+                    if (i % 4 == 0) { //首先判断万级单位，每隔四个字符就让万级单位数组索引号递增
+                        i4++;
+                        newary = this.ary2[i4] + newary; //将万级单位存入该字符的读法中去，它肯定是放在当前字符读法的末尾，所以首先将它叠加入$r中，
+                        zero = ""; //在万级单位位置的“0”肯定是不用的读的，所以设置零的读法为空
+
+                    }
+                    //关于0的处理与判断。
+                    if (ary[i] == '0') { //如果读出的字符是“0”，执行如下判断这个“0”是否读作“零”
+                        switch (i % 4) {
+                            case 0:
+                                break;
+                            //如果位置索引能被4整除，表示它所处位置是万级单位位置，这个位置的0的读法在前面就已经设置好了，所以这里直接跳过
+                            case 1:
+                            case 2:
+                            case 3:
+                                if (ary[i - 1] != '0') {
+                                    zero = "零"
+                                }
+                                ; //如果不被4整除，那么都执行这段判断代码：如果它的下一位数字（针对当前字符串来说是上一个字符，因为之前执行了反转）也是0，那么跳过，否则读作“零”
+                                break;
+
+                        }
+
+                        newary = zero + newary;
+                        zero = '';
+                    }
+                    else { //如果不是“0”
+                        newary = this.ary0[parseInt(ary[i])] + this.ary1[i % 4] + newary; //就将该当字符转换成数值型,并作为数组ary0的索引号,以得到与之对应的中文读法，其后再跟上它的的一级单位（空、十、百还是千）最后再加上前面已存入的读法内容。
+                    }
+
+                }
+                if (newary.indexOf("零") == 0) {
+                    newary = newary.substr(1)
+                }//处理前面的0
+                return fustr + newary;
+            }
+        }
+        function change() {
+            this.init.apply(this, arguments);
+        }
+        change.prototype = _change
+        var k = new change(numstr);
+        return k.pri_ary()
+    }
+    
+
+</script>
+
+<style type="text/css">
+    .ad-img2, .ad-img3{
+        image-rendering:-moz-crisp-edges;
+        image-rendering:-o-crisp-edges;
+        image-rendering:-webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+        -ms-interpolation-mode:nearest-neighbor;
+        border:0;
+    }
+    .ad-link2{
+        display: block;
+        text-align: center;
+    }
+    @media screen and (max-width: 768px){
+        .ad-img2{
+            width:300px;
+        }
+        .ad-img3{
+            width:100px;
+        }
+    }
+</style>
+<footer class="main-footer">
+    <div class="foot w1000">
+    </div>
+</footer>
+</div>
+</body>
+</html>

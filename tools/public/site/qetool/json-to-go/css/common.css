@@ -1,0 +1,77 @@
+/*
+	Eric Meyer's Reset CSS v2.0
+	
+	NOTICE: This copy of the CSS reset has been modified
+	to make main tag "display: block" because the default in
+	even IE 11 is "display: inline", which is not correct.
+*/
+
+
+code {
+	font-family: 'Consolas', 'Menlo', 'Monaco', 'Courier New', monospace;
+	padding: 0 3px;
+}
+
+
+
+
+#input,
+#output,
+#inputsql {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-o-box-sizing: border-box;
+	box-sizing: border-box;
+
+	white-space: pre;
+	display: block;
+	font: 12px 'Consolas', 'Menlo', 'Monaco', 'Courier New', monospace;
+	outline: none;
+	resize: both;
+	overflow: scroll;
+	tab-size: 4;
+}
+
+
+#input, #inputsql {
+	background: #ECF2F5;
+	border-right: 2px solid #AAA;
+}
+
+#inputsql {
+	background: #ECF5F2;
+}
+
+#output {
+	background: #E0EBF5;
+}
+
+footer {
+	color: #888;
+	text-align: center;
+	padding: 25px 0 50px;
+	line-height: 2em;
+}
+
+.clr-red {
+	color: #CC0000;
+}
+.faulty-line {
+	color: #C00;
+	background: #FDD;
+	font-weight: bold
+}
+.json-go-faulty-char  {
+	border: 1px solid purple;
+}
+
+.copy {
+	font-size: 14px;
+    padding: 5px;
+    background: #80808099;
+	border-radius: 5px;
+	cursor: pointer;
+}
+.copy:hover {
+	background: #808080cf;
+}

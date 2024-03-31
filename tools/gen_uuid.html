@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <title>UUID在线生成器 - 在线工具</title>
+    <meta name="keywords" content="生成UUID,生成GUID,UUID在线生成,UUID随机生成,UUID在线生成器,UUID随机生成器">
+    <meta name="description" content="生成UUID,生成GUID,UUID在线生成,UUID随机生成,UUID在线生成器,UUID随机生成器">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+    <link href="https://s3.pstatp.com/cdn/expire-1-M/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="/public/tools/public/site/qetool/css/base.css" rel="stylesheet">
+    <link href="/public/tools/public/site/qetool/typo.css/typo.css" rel="stylesheet">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <script type="text/javascript" src="https://s1.pstatp.com/cdn/expire-1-M/jquery/2.2.3/jquery.min.js"></script>
+    <script type="text/javascript" src="https://s3.pstatp.com/cdn/expire-1-M/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap-hover-dropdown/2.2.1/bootstrap-hover-dropdown.min.js" type="application/javascript"></script>
+    <script type="text/javascript" language="javascript" src="https://s0.pstatp.com/cdn/expire-1-M/bootbox.js/4.4.0/bootbox.min.js"></script>
+    <script src="https://s2.pstatp.com/cdn/expire-1-M/lodash.js/2.0.0/lodash.min.js"></script>
+    <script src="/public/tools/public/site/qetool/js/common.js?v=MTYyNTA1OTIxOQ0K"></script>
+
+    <style type="text/css">
+        .ad-img{
+            image-rendering:-moz-crisp-edges;
+            image-rendering:-o-crisp-edges;
+            image-rendering:-webkit-optimize-contrast;
+            image-rendering: crisp-edges;
+            -ms-interpolation-mode:nearest-neighbor;
+            border:0;
+        }
+        .ad-link{
+            position: absolute;
+            top:10%;
+            right:3%;
+            display: none;
+        }
+        @media screen and (max-width: 768px){
+            .ad-img{
+                display: none;
+            }
+        }
+        .dropdown-menu li{
+            padding-top: .3rem;
+            background-color: #fdfdfd;
+            color: #4d4d4c;
+        }
+        .dropdown-menu li a:hover{
+            background-color: #c4e3f3;
+        }
+    </style>
+    
+</head>
+<body style="color:#000">
+<div class="container-fluid w" style="margin-top: 0rem;">
+
+
+    <script>
+        jQuery(function () {
+            let headNavbar = $($('.head-navbar').get(0))
+            console.log(headNavbar.width())
+            let docWid = document.documentElement.clientWidth;
+            $("#ad-link-a").css("top", 80)
+            $("#ad-link-a").css("left", (headNavbar.width() + (docWid - headNavbar.width())/2) + 42)
+            $("#ad-link-a").show()
+        })
+
+        function search_engine_search(form){
+            // let sevalue = form.search_engine.value;
+            let svalue = form.search_text.value
+            // if(sevalue == 'baidu'){
+            //     window.location.href = "https://www.baidu.com/s?si=qetool.com&cl=3&ct=2097152&tn=bds&word="  + svalue;
+            // }else if(sevalue == 'google'){
+            //     window.location.href = "http://www.google.com/search?domains=qetool.com&sitesearch=qetool.com&hl=zh-CN&ie=UTF-8&oe=UTF-8&q="  + svalue;
+            // }
+            window.location.href = "http://www.google.com/search?domains=qetool.com&sitesearch=qetool.com&hl=zh-CN&ie=UTF-8&oe=UTF-8&q="  + svalue;
+            return false
+        }
+    </script>
+<link href="https://s3.pstatp.com/cdn/expire-1-M/toastr.js/2.1.4/toastr.min.css" type="text/css" rel="stylesheet" />
+<style>
+    .uuid-input {
+        border: none;
+        overflow: hidden;
+        width: 36rem;
+        resize: none;
+        height: auto;
+        outline: 0 none
+    }
+
+    .hy-title {
+        margin-bottom: 2rem;
+        font-size: 3rem;
+    }
+
+    @media screen and (max-width: 768px) {
+        .pwd-input {
+            width: 14rem;
+        }
+
+        .r-ctl {
+            padding-left: 0.5rem;
+        }
+
+        .hy-title {
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+    }
+
+    .use-chars-chkbox {
+        margin-right: 1.5rem;
+        display: inline-block;
+    }
+
+    #other-char-span {
+        background-color: #eee;
+        border: 1px solid #ccc;
+        padding: 0.2rem 0.5rem;
+    }
+
+    .tip-div {
+        margin-top: 1.5rem;
+    }
+
+    .copy-btn {
+        margin: 0 auto;
+        outline: none;
+        padding: 1rem 1rem
+    }
+
+    .toast-top-center {
+        top: 8rem;
+        right: 0;
+        width: 100%;
+    }
+
+    .toast-message {
+        font-size: 1rem;
+        width: 12rem;
+    }
+
+    #result {
+        font-size: 14px;
+        text-align: left;
+        padding-left: 1rem;
+    }
+
+    .rtable {
+        box-shadow: none;
+        border: none;
+    }
+
+    label{
+        font-weight: normal;
+    }
+  
+</style>
+<div class="w2">
+    <div class="row" style="text-align: center;margin-bottom: 1rem">
+        <h2 class="hy-title">UUID生成</h2>
+        <span style="font-size:1rem;color:#999;">在线uuid生成。支持大小写转换，支持去掉短横线。</span>
+    </div>
+    <div class="row" style="text-align: left;">
+        <table class="rtable">
+            <tr>
+                <td class="r-ctl">
+                    <div class="use-chars-chkbox"><label><input name="is-upper" type="checkbox" value="1">大写</label></div>
+                    <div class="use-chars-chkbox"><label><input name="rm-short-hx" type="checkbox" value="2">去掉短横线</label></div>
+                    <label for="bsize">
+                        生成个数
+                    </label>
+                    <select id="bsize">
+                    </select>
+                    <div style="display: inline-block;margin-left:10rem;">
+                        <button class="btn btn-info glyphicon glyphicon-hand-up" onclick="gen_uuid()">生成</button>
+                        <button class="btn btn-default glyphicon glyphicon-copy" onclick="do_copy()">复制</button>
+                    </div>
+
+                </td>
+            </tr>
+            <tr>
+                <td class="r-ctl" id="result"></td>
+            </tr>
+        </table>
+    </div>
+
+</div>
+<script src="https://s0.pstatp.com/cdn/expire-1-M/toastr.js/2.1.4/toastr.min.js" type="application/javascript"></script>
+<script>
+    toastr.options = {
+        closeButton: false,
+        debug: false,
+        progressBar: false,
+        positionClass: "toast-top-center",
+        onclick: null,
+        showDuration: "300",
+        hideDuration: "1000",
+        timeOut: "1000",
+    };
+    $(function() {
+        let blens = [1, 2, 5, 10, 20, 50, 100, 200, 500, 1000]
+        for (let i = 0; i < blens.length; i++) {
+            if (blens[i] === 5) {
+                $("#bsize").append('<option value="' + blens[i] + '" selected>' + blens[i] + '</option>')
+            } else {
+                $("#bsize").append('<option value="' + blens[i] + '">' + blens[i] + '</option>')
+            }
+        }
+    })
+
+    function uuid() {
+        var s = [];
+        var hexDigits = "0123456789abcdef";
+        for (var i = 0; i < 36; i++) {
+            s[i] = hexDigits.substr(Math.floor(Math.random() * 0x10), 1);
+        }
+        s[14] = "4"; // bits 12-15 of the time_hi_and_version field to 0010
+        s[19] = hexDigits.substr((s[19] & 0x3) | 0x8, 1); // bits 6-7 of the clock_seq_hi_and_reserved to 01
+        s[8] = s[13] = s[18] = s[23] = "-";
+
+        var uuid = s.join("");
+        return uuid;
+    }
+
+    function gen_uuid() {
+        let is_upper = $("input[name='is-upper']").is(':checked');
+        let rm_short_hx = $("input[name='rm-short-hx']").is(':checked');
+
+        let bsize = parseInt($("#bsize").val());
+        let uuids = [];
+        for (let i = 0; i < bsize; i++) {
+            let ustr = uuid()
+            if (is_upper) {
+                ustr = ustr.toUpperCase();
+            }
+            if (rm_short_hx) {
+                ustr = ustr.replaceAll('-', '')
+            }
+            uuids.push(ustr)
+        }
+
+        $("#result").html('<textarea type="text" id="result-input" class="uuid-input" readonly autoHeight="true">' +
+            uuids.join("\n") +
+            '</textarea>');
+
+        $("#result-input").css({
+            "height": (uuids.length * 25.2)
+        })
+    }
+
+    function do_copy() {
+        let resultJo = $("#result-input");
+        if (!resultJo || typeof resultJo === 'undefined' || resultJo.length === 0) {
+            return
+        }
+        let result_input = resultJo[0]
+        if ($.trim(result_input.value) == "") {
+            return
+        }
+        result_input.focus()
+        if (result_input.setSelectionRange)
+            result_input.setSelectionRange(0, result_input.value.length);
+        else
+            result_input.select();
+        document.execCommand("copy");
+        result_input.setSelectionRange(0, 0)
+        toastr.success("已复制到剪贴板");
+    }
+</script>
+
+<style type="text/css">
+    .ad-img2, .ad-img3{
+        image-rendering:-moz-crisp-edges;
+        image-rendering:-o-crisp-edges;
+        image-rendering:-webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+        -ms-interpolation-mode:nearest-neighbor;
+        border:0;
+    }
+    .ad-link2{
+        display: block;
+        text-align: center;
+    }
+    @media screen and (max-width: 768px){
+        .ad-img2{
+            width:300px;
+        }
+        .ad-img3{
+            width:100px;
+        }
+    }
+</style>
+<footer class="main-footer">
+    <div class="foot w1000">
+    </div>
+</footer>
+</div>
+</body>
+</html>

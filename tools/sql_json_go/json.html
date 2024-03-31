@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <title>在线json转golang struct - 在线工具</title>
+    <meta name="keywords" content="Golang工具，json转golang struct, json转go, 在线json转go">
+    <meta name="description" content="Golang工具，json转golang struct，支持子类展平和不展平。json转go, 在线json转go。">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+    <link href="https://s3.pstatp.com/cdn/expire-1-M/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="/public/tools/public/site/qetool/css/base.css" rel="stylesheet">
+    <link href="/public/tools/public/site/qetool/typo.css/typo.css" rel="stylesheet">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <script type="text/javascript" src="https://s1.pstatp.com/cdn/expire-1-M/jquery/2.2.3/jquery.min.js"></script>
+    <script type="text/javascript" src="https://s3.pstatp.com/cdn/expire-1-M/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap-hover-dropdown/2.2.1/bootstrap-hover-dropdown.min.js" type="application/javascript"></script>
+    <script type="text/javascript" language="javascript" src="https://s0.pstatp.com/cdn/expire-1-M/bootbox.js/4.4.0/bootbox.min.js"></script>
+    <script src="https://s2.pstatp.com/cdn/expire-1-M/lodash.js/2.0.0/lodash.min.js"></script>
+    <script src="/public/tools/public/site/qetool/js/common.js?v=MTYyNTA1OTIxOQ0K"></script>
+
+    <style type="text/css">
+        .ad-img{
+            image-rendering:-moz-crisp-edges;
+            image-rendering:-o-crisp-edges;
+            image-rendering:-webkit-optimize-contrast;
+            image-rendering: crisp-edges;
+            -ms-interpolation-mode:nearest-neighbor;
+            border:0;
+        }
+        .ad-link{
+            position: absolute;
+            top:10%;
+            right:3%;
+            display: none;
+        }
+        @media screen and (max-width: 768px){
+            .ad-img{
+                display: none;
+            }
+        }
+        .dropdown-menu li{
+            padding-top: .3rem;
+            background-color: #fdfdfd;
+            color: #4d4d4c;
+        }
+        .dropdown-menu li a:hover{
+            background-color: #c4e3f3;
+        }
+    </style>
+    
+</head>
+<body style="color:#000">
+<div class="container-fluid w" style="margin-top: 0rem;">
+
+
+    <script>
+        jQuery(function () {
+            let headNavbar = $($('.head-navbar').get(0))
+            console.log(headNavbar.width())
+            let docWid = document.documentElement.clientWidth;
+            $("#ad-link-a").css("top", 80)
+            $("#ad-link-a").css("left", (headNavbar.width() + (docWid - headNavbar.width())/2) + 42)
+            $("#ad-link-a").show()
+        })
+
+        function search_engine_search(form){
+            // let sevalue = form.search_engine.value;
+            let svalue = form.search_text.value
+            // if(sevalue == 'baidu'){
+            //     window.location.href = "https://www.baidu.com/s?si=qetool.com&cl=3&ct=2097152&tn=bds&word="  + svalue;
+            // }else if(sevalue == 'google'){
+            //     window.location.href = "http://www.google.com/search?domains=qetool.com&sitesearch=qetool.com&hl=zh-CN&ie=UTF-8&oe=UTF-8&q="  + svalue;
+            // }
+            window.location.href = "http://www.google.com/search?domains=qetool.com&sitesearch=qetool.com&hl=zh-CN&ie=UTF-8&oe=UTF-8&q="  + svalue;
+            return false
+        }
+    </script>
+<link href="/public/tools/public/site/qetool/json-to-go/css/common.css?v=MTYyNTA1OTIxOQ0K" rel="stylesheet">
+<link href="/public/tools/public/site/qetool/json-to-go/css/tomorrow.highlight.css?v=MTYyNTA1OTIxOQ0K" rel="stylesheet">
+<script src="/public/tools/public/site/qetool/highlightjs/highlight.min.js?v=MTYyNTA1OTIxOQ0K" type="application/javascript"></script>
+<script src="/public/site/qetool/json-to-go/json-to-go.js?v=MTYyNTA1OTIxOQ0K"></script>
+<script src="/public/site/qetool/json-to-go/sql-to-go.js?v=MTYyNTA1OTIxOQ0K"></script>
+<script src="/public/tools/public/site/qetool/json-to-go/js/common.js?v=MTYyNTA1OTIxOQ0K"></script>
+
+<style>
+    .input-editor {
+        height: 1000px;
+        border: 1px solid #5b8ecb;
+        outline: none;
+        padding: 1rem;
+    }
+
+    .output-result {
+        height: 1000px;
+        border: 1px solid #cccccc;
+        outline: none;
+        padding: 1rem;
+        background: #f1f1f1;
+    }
+
+    #sql-go-type-div, #json-go-type-div {
+        background: #f1f1f8;
+        width: 80%;
+        margin-bottom: 0.5rem;
+        padding: 0.2rem 1rem;
+        border-radius: 3px;
+    }
+
+    #json-go-type-div {
+        margin-left: 2rem;
+        width: 20rem;
+        display: block;
+    }
+
+        #inputsql {
+       display: none;
+    }
+
+    #sql-go-type-div{
+        display: none;
+    }
+        @media screen and (max-height: 1200px) {
+        .input-editor {
+            height: 1050px;
+        }
+        .output-result {
+            height: 1050px;
+        }
+    }
+    @media screen and (max-height: 1000px) {
+        .input-editor {
+            height: 850px;
+        }
+        .output-result {
+            height: 850px;
+        }
+    }
+    @media screen and (max-height: 900px) {
+        .input-editor {
+            height: 750px;
+        }
+        .output-result {
+            height: 750px;
+        }
+    }
+
+</style>
+
+<table style="width: 100%">
+    <tr>
+        <th style="width: 45%;">
+                        <label class="radio-inline"  style="display: none">
+                <input type="radio" name="data_type" id="data_type_json" checked value="json"> JSON
+            </label>
+                                                <div id="json-go-type-div">
+                <label class="checkbox-inline">
+                    <input type="checkbox" name="child-flatten" value="true" checked> 平铺子类
+                </label>
+            </div>
+                    </th>
+        <th style="width: 10%; font-size: 22px;text-align: center"></th>
+        <th style="width: 45%;">Golang Struct
+            <span class="copy" id="copy-btn"><span class="glyphicon glyphicon-copy" aria-hidden="true"></span>复制到剪贴板</span>
+        </th>
+    </tr>
+</table>
+<table style="width: 100%">
+    <tr>
+        <td style="width: 200px;">
+                        <div id="input" contenteditable class="input-editor" ></div>
+                                </td>
+        <td style="text-align: center;width: 4%" id="split-opt-btn">
+            <button type="button" class="btn btn-primary" id="convert-btn" style="outline: none"> >> </button>
+        </td>
+        <td style="width: 48%;">
+            <div id="output" class="output-result"></div>
+        </td>
+    </tr>
+</table>
+
+    <div style="margin-top:2rem;margin-bottom: 1rem;color:#ff9900;border:1px solid #eee;padding: 0.2rem 1rem;font-size: 1.3rem;line-height: 2rem">
+        当勾选 <b>平铺子类</b>，多层嵌套json对象的每个子json对象将生成单独的go结构体，否则只生成一个嵌套结构的go结构体
+    </div>
+    <div style="margin-bottom: 2rem;color:#0099ff;border:1px solid #eee;padding: 0.2rem 1rem;font-size: 1.3rem;line-height: 2rem">
+        <b>更新：</b>
+        <br/>
+        1. 粘贴json时自动格式化json。<br/>
+    </div>
+<script>
+    $(function () {
+        let halfPW = $('.input-editor').parent().parent().width() / 2 - $("#split-opt-btn").width()/2;
+        $('.input-editor').css('width', halfPW + 'px');
+    })
+</script>
+<style type="text/css">
+    .ad-img2, .ad-img3{
+        image-rendering:-moz-crisp-edges;
+        image-rendering:-o-crisp-edges;
+        image-rendering:-webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+        -ms-interpolation-mode:nearest-neighbor;
+        border:0;
+    }
+    .ad-link2{
+        display: block;
+        text-align: center;
+    }
+    @media screen and (max-width: 768px){
+        .ad-img2{
+            width:300px;
+        }
+        .ad-img3{
+            width:100px;
+        }
+    }
+</style>
+<footer class="main-footer">
+    <div class="foot w1000">
+    </div>
+</footer>
+</div>
+</body>
+</html>

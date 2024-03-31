@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <title>在线工具</title>
+    <meta name="keywords" content="在线工具,程序员,工具,开发人员工具,日常工具,儿童故事,在线听故事,文库,golang,json,markdown,editor">
+    <meta name="description" content="在线工具,程序员,工具,开发人员工具,日常工具,儿童故事,golang,json,markdown,editor。
+            提供在线工具，包括：程序开发文章分享，程序开发、日常工作、日常生活使用工具，以及在线阅读儿童故事，在线听儿童故事，亲子知识，文库等">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+    <link href="https://s3.pstatp.com/cdn/expire-1-M/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="/public/tools/public/site/qetool/css/base.css" rel="stylesheet">
+    <link href="/public/tools/public/site/qetool/typo.css/typo.css" rel="stylesheet">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <script type="text/javascript" src="https://s1.pstatp.com/cdn/expire-1-M/jquery/2.2.3/jquery.min.js"></script>
+    <script type="text/javascript" src="https://s3.pstatp.com/cdn/expire-1-M/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap-hover-dropdown/2.2.1/bootstrap-hover-dropdown.min.js" type="application/javascript"></script>
+    <script type="text/javascript" language="javascript" src="https://s0.pstatp.com/cdn/expire-1-M/bootbox.js/4.4.0/bootbox.min.js"></script>
+    <script src="https://s2.pstatp.com/cdn/expire-1-M/lodash.js/2.0.0/lodash.min.js"></script>
+    <script src="/public/tools/public/site/qetool/js/common.js?v=MTYyNTA1OTIxOQ0K"></script>
+
+    <style type="text/css">
+        .ad-img{
+            image-rendering:-moz-crisp-edges;
+            image-rendering:-o-crisp-edges;
+            image-rendering:-webkit-optimize-contrast;
+            image-rendering: crisp-edges;
+            -ms-interpolation-mode:nearest-neighbor;
+            border:0;
+        }
+        .ad-link{
+            position: absolute;
+            top:10%;
+            right:3%;
+            display: none;
+        }
+        @media screen and (max-width: 768px){
+            .ad-img{
+                display: none;
+            }
+        }
+        .dropdown-menu li{
+            padding-top: .3rem;
+            background-color: #fdfdfd;
+            color: #4d4d4c;
+        }
+        .dropdown-menu li a:hover{
+            background-color: #c4e3f3;
+        }
+    </style>
+    
+</head>
+<body style="color:#000">
+<div class="container-fluid w" style="margin-top: 0rem;">
+
+
+    <script>
+        jQuery(function () {
+            let headNavbar = $($('.head-navbar').get(0))
+            console.log(headNavbar.width())
+            let docWid = document.documentElement.clientWidth;
+            $("#ad-link-a").css("top", 80)
+            $("#ad-link-a").css("left", (headNavbar.width() + (docWid - headNavbar.width())/2) + 42)
+            $("#ad-link-a").show()
+        })
+
+        function search_engine_search(form){
+            // let sevalue = form.search_engine.value;
+            let svalue = form.search_text.value
+            // if(sevalue == 'baidu'){
+            //     window.location.href = "https://www.baidu.com/s?si=qetool.com&cl=3&ct=2097152&tn=bds&word="  + svalue;
+            // }else if(sevalue == 'google'){
+            //     window.location.href = "http://www.google.com/search?domains=qetool.com&sitesearch=qetool.com&hl=zh-CN&ie=UTF-8&oe=UTF-8&q="  + svalue;
+            // }
+            window.location.href = "http://www.google.com/search?domains=qetool.com&sitesearch=qetool.com&hl=zh-CN&ie=UTF-8&oe=UTF-8&q="  + svalue;
+            return false
+        }
+    </script>
+<style>
+    a:link {text-decoration: none}
+</style>
+<div class="row">
+    <div class="col-xs-12 col-sm-12">
+            <div class="clearfix visible-xs-block"></div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" onclick="goto_page('/public/tools/sql_json_go/sql.html')">
+            <div class="panel tool-panel">
+                <div class="panel-heading">
+                    <div class="panel-head-body">
+                        <a href="/public/tools/sql_json_go/sql.html" >
+                        <img class="thumbnail tool-panel-img" src="/public/tools/public/site/qetool/img/golang-blue.jpg">
+                        </a>
+                        <a href="/public/tools/sql_json_go/sql.html" class="title-link" >
+                        <div class="panel-title"  style="color:" >sql转golang struct</div>
+                        </a>
+                        <div class="panel-category"><a style="color:#444;font-size: 1.4rem" href="">[开发类]</a></div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                        <div class="tool-panel-url"><a href="/public/tools/sql_json_go/sql.html"> 在线sql转golang struct</a></div>
+                        <div class="tool-panel-entry"><a href="/public/tools/sql_json_go/sql.html" >进入</a></div>
+                </div>
+            </div>
+        </div>
+
+            <div class="clearfix visible-xs-block"></div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" onclick="goto_page('/public/tools/sql_json_go/json.html')">
+            <div class="panel tool-panel">
+                <div class="panel-heading">
+                    <div class="panel-head-body">
+                        <a href="/public/tools/sql_json_go/json.html" >
+                        <img class="thumbnail tool-panel-img" src="/public/tools/public/site/qetool/img/golang-2.jpg">
+                        </a>
+                        <a href="/public/tools/sql_json_go/json.html" class="title-link" >
+                        <div class="panel-title"  style="color:" >json转golang struct</div>
+                        </a>
+                        <div class="panel-category"><a style="color:#444;font-size: 1.4rem" href="">[开发类]</a></div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                        <div class="tool-panel-url"><a href="/public/tools/sql_json_go/json.html"> 在线json转golang struct</a></div>
+                        <div class="tool-panel-entry"><a href="/public/tools/sql_json_go/json.html" >进入</a></div>
+                </div>
+            </div>
+        </div>
+
+            <div class="clearfix visible-xs-block"></div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" onclick="goto_page('/public/tools/timestamp.html')">
+            <div class="panel tool-panel">
+                <div class="panel-heading">
+                    <div class="panel-head-body">
+                        <a href="/public/tools/timestamp.html" >
+                        <img class="thumbnail tool-panel-img" src="/public/tools/public/site/qetool/img/timestamp.jpg">
+                        </a>
+                        <a href="/public/tools/timestamp.html" class="title-link" >
+                        <div class="panel-title"  style="color:" >时间戳转换</div>
+                        </a>
+                        <div class="panel-category"><a style="color:#444;font-size: 1.4rem" href="">[开发类]</a></div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                        <div class="tool-panel-url"><a href="/public/tools/timestamp.html"> 时间戳转换</a></div>
+                        <div class="tool-panel-entry"><a href="/public/tools/timestamp.html" >进入</a></div>
+                </div>
+            </div>
+        </div>
+
+            <div class="clearfix visible-xs-block"></div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" onclick="goto_page('/public/tools/json_editor.html')">
+            <div class="panel tool-panel">
+                <div class="panel-heading">
+                    <div class="panel-head-body">
+                        <a href="/public/tools/json_editor.html"  target="_blank" >
+                        <img class="thumbnail tool-panel-img" src="/public/tools/public/site/qetool/img/json-editor.jpg">
+                        </a>
+                        <a href="/public/tools/json_editor.html" class="title-link"  target="_blank" >
+                        <div class="panel-title"  style="color:" >JSON在线编辑</div>
+                        </a>
+                        <div class="panel-category"><a style="color:#444;font-size: 1.4rem" href="">[开发类]</a></div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                        <div class="tool-panel-url"><a href="/public/tools/json_editor.html"> JSON在线编辑</a></div>
+                        <div class="tool-panel-entry"><a href="/public/tools/json_editor.html"  target="_blank" >进入</a></div>
+                </div>
+            </div>
+        </div>
+
+            <div class="clearfix visible-xs-block"></div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" onclick="goto_page('/public/tools/rand_passwd.html')">
+            <div class="panel tool-panel">
+                <div class="panel-heading">
+                    <div class="panel-head-body">
+                        <a href="/public/tools/rand_passwd.html" >
+                        <img class="thumbnail tool-panel-img" src="/public/tools/public/site/qetool/img/rand_passwd.jpg">
+                        </a>
+                        <a href="/public/tools/rand_passwd.html" class="title-link" >
+                        <div class="panel-title"  style="color:" >密码生成</div>
+                        </a>
+                        <div class="panel-category"><a style="color:#444;font-size: 1.4rem" href="">[日常类]</a></div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                        <div class="tool-panel-url"><a href="/public/tools/rand_passwd.html"> 生成随机密码</a></div>
+                        <div class="tool-panel-entry"><a href="/public/tools/rand_passwd.html" >进入</a></div>
+                </div>
+            </div>
+        </div>
+
+            <div class="clearfix visible-xs-block"></div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" onclick="goto_page('/public/tools/gen_uuid.html')">
+            <div class="panel tool-panel">
+                <div class="panel-heading">
+                    <div class="panel-head-body">
+                        <a href="/public/tools/gen_uuid.html" >
+                        <img class="thumbnail tool-panel-img" src="/public/tools/public/site/qetool/img/gen_uuid.jpg">
+                        </a>
+                        <a href="/public/tools/gen_uuid.html" class="title-link" >
+                        <div class="panel-title"  style="color:" >UUID生成</div>
+                        </a>
+                        <div class="panel-category"><a style="color:#444;font-size: 1.4rem" href="">[日常类]</a></div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                        <div class="tool-panel-url"><a href="/public/tools/gen_uuid.html"> 生成uuid</a></div>
+                        <div class="tool-panel-entry"><a href="/public/tools/gen_uuid.html" >进入</a></div>
+                </div>
+            </div>
+        </div>
+
+            <div class="clearfix visible-xs-block"></div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" onclick="goto_page('/public/tools/num2zhdx.html')">
+            <div class="panel tool-panel">
+                <div class="panel-heading">
+                    <div class="panel-head-body">
+                        <a href="/public/tools/num2zhdx.html" >
+                        <img class="thumbnail tool-panel-img" src="/public/tools/public/site/qetool/img/num2dx.jpg">
+                        </a>
+                        <a href="/public/tools/num2zhdx.html" class="title-link" >
+                        <div class="panel-title"  style="color:" >数字转中文大写</div>
+                        </a>
+                        <div class="panel-category"><a style="color:#444;font-size: 1.4rem" href="">[日常类]</a></div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                        <div class="tool-panel-url"><a href="/public/tools/num2zhdx.html"> 数字转中文大写</a></div>
+                        <div class="tool-panel-entry"><a href="/public/tools/num2zhdx.html" >进入</a></div>
+                </div>
+            </div>
+        </div>
+
+        </div>
+<!--    <div class="col-sm-3">-->
+<!--        <div class="panel panel-default sidebar-random-div" style="padding-bottom: 12px">
+    <div class="sidebar-random-div-title"><span class="glyphicon glyphicon-fire"> 热门</span></div>
+    <ul>
+        
+    </ul>
+
+</div>-->
+<!--        <div class="panel panel-default sidebar-random-div" style="padding-bottom: 12px">
+    <div class="sidebar-random-div-title"><span class="glyphicon glyphicon-calendar"> 最近</span></div>
+    <ul>
+                    <li>
+                <a target="_blank" style="" title="根据另一列的条目创建多个图" href="/scripts/view/2194.html">根据另一列的条目创建多个图</a>
+            </li>
+                        <li>
+                <a target="_blank" style="" title="在 python 中验证 StoreKit 2 事务 jwsRepresentation 的正确方法是什么？" href="/scripts/view/2195.html">在 python 中验证 StoreKit 2 事务 jwsRepresentation 的正确方法是什么？</a>
+            </li>
+                        <li>
+                <a target="_blank" style="" title="如何在 python 3 中循环/测试多行 shell 子进程输出？" href="/scripts/view/2193.html">如何在 python 3 中循环/测试多行 shell 子进程输出？</a>
+            </li>
+                        <li>
+                <a target="_blank" style="" title="模块 PIL 没有属性“重采样”" href="/scripts/view/2192.html">模块 PIL 没有属性“重采样”</a>
+            </li>
+                        <li>
+                <a target="_blank" style="" title="使用 nbconvert 时如何指定输出文件的名称和位置？" href="/scripts/view/2191.html">使用 nbconvert 时如何指定输出文件的名称和位置？</a>
+            </li>
+                        <li>
+                <a target="_blank" style="" title="Selenium 4 添加二进制路径" href="/scripts/view/2190.html">Selenium 4 添加二进制路径</a>
+            </li>
+                        <li>
+                <a target="_blank" style="" title="npm 错误！代码错误。尝试安装robotjs。新的" href="/scripts/view/2189.html">npm 错误！代码错误。尝试安装robotjs。新的</a>
+            </li>
+                        <li>
+                <a target="_blank" style="" title="冒泡排序错误，我的代码有什么问题" href="/scripts/view/2188.html">冒泡排序错误，我的代码有什么问题</a>
+            </li>
+                        <li>
+                <a target="_blank" style="" title="我的标记没有显示 React 传单" href="/scripts/view/2187.html">我的标记没有显示 React 传单</a>
+            </li>
+                        <li>
+                <a target="_blank" style="" title="Scrypto 从其他文件夹导入结构" href="/scripts/view/2185.html">Scrypto 从其他文件夹导入结构</a>
+            </li>
+                        <li>
+                <a target="_blank" style="" title="错误消息“没有可用的 pq 包装器”。导入 psycopg 时弹出？" href="/scripts/view/2186.html">错误消息“没有可用的 pq 包装器”。导入 psycopg 时弹出？</a>
+            </li>
+                        <li>
+                <a target="_blank" style="" title="Shopware 6 应用程序 - 如何更改购物车订单项的价格" href="/scripts/view/2184.html">Shopware 6 应用程序 - 如何更改购物车订单项的价格</a>
+            </li>
+                        <li>
+                <a target="_blank" style="" title="如何使用引导程序为表格的行和标题着色" href="/scripts/view/2183.html">如何使用引导程序为表格的行和标题着色</a>
+            </li>
+                        <li>
+                <a target="_blank" style="" title="如何根据另一个元素的高度隐藏一个元素" href="/scripts/view/2182.html">如何根据另一个元素的高度隐藏一个元素</a>
+            </li>
+                        <li>
+                <a target="_blank" style="" title="未捕获的错误：[Elements] 不是 <Route> 组件。 <Routes> 的所有子组件必须是 <Route> 或 <React.Fragment>" href="/scripts/view/2178.html">未捕获的错误：[Elements] 不是 <Route> 组件。 <Routes> 的所有子组件必须是 <Route> 或 <React.Fragment></a>
+            </li>
+                        <li>
+                <a target="_blank" style="" title="为什么这个 JavaScript 实体不起作用？ （特别是： property="&{JavaScript-statements};" ）" href="/scripts/view/2179.html">为什么这个 JavaScript 实体不起作用？ （特别是： property="&{JavaScript-statements};" ）</a>
+            </li>
+                        <li>
+                <a target="_blank" style="" title="路由器更改时如何重新渲染和运行useEffect（React js）" href="/scripts/view/2181.html">路由器更改时如何重新渲染和运行useEffect（React js）</a>
+            </li>
+                        <li>
+                <a target="_blank" style="" title="Fabricjs Impact字体未在移动设备上加载" href="/scripts/view/2180.html">Fabricjs Impact字体未在移动设备上加载</a>
+            </li>
+                        <li>
+                <a target="_blank" style="" title="在 DatePicker Ant Design 中更改语言" href="/scripts/view/2176.html">在 DatePicker Ant Design 中更改语言</a>
+            </li>
+                        <li>
+                <a target="_blank" style="" title="如何将输入值保存在JS中的变量中" href="/scripts/view/2177.html">如何将输入值保存在JS中的变量中</a>
+            </li>
+            
+    </ul>
+
+</div>-->
+<!--    </div>-->
+</div>
+<script>
+    
+</script>
+<style type="text/css">
+    .ad-img2, .ad-img3{
+        image-rendering:-moz-crisp-edges;
+        image-rendering:-o-crisp-edges;
+        image-rendering:-webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+        -ms-interpolation-mode:nearest-neighbor;
+        border:0;
+    }
+    .ad-link2{
+        display: block;
+        text-align: center;
+    }
+    @media screen and (max-width: 768px){
+        .ad-img2{
+            width:300px;
+        }
+        .ad-img3{
+            width:100px;
+        }
+    }
+</style>
+<footer class="main-footer">
+    <div class="foot w1000">
+    </div>
+</footer>
+</div>
+</body>
+</html>
