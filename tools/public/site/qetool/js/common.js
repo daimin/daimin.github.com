@@ -23,39 +23,3 @@ function getCookie(objName) {//获取指定名称的cookie的值
     return "";
 }
 
-function guid() {
-    return 'xxxxxxxxxxxx4xxxyxxxxxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-        var r = Math.random() * 16 | 0,
-            v = c == 'x' ? r : (r & 0x3 | 0x8);
-        return v.toString(16);
-    });
-}
-
-var userKey = "___www_qetool_com_user_key_v003"
-$(function () {
-    let userVal = localStorage.getItem(userKey)
-    if(userVal == null){
-        localStorage.removeItem("___www_qetool_com_user_key")
-        localStorage.removeItem("___www_qetool_com_user_key_v001")
-        localStorage.removeItem("___www_qetool_com_user_key_v002")
-        userVal = guid()
-        $.ajax({
-            url: "/gapi/reg_uid",
-            type: 'post',
-            data: JSON.stringify({"uid":userVal}),
-            contentType: "application/json;charset=utf-8",
-            dataType:'json',
-            success: function (resultJo) {
-                if(resultJo['code'] != 0){
-                    window.alert(resultJo['errMsg'])
-                } else {
-                    localStorage.setItem(userKey, userVal)
-                }
-            }
-        });
-    }
-})
-
-function get_uid() {
-    return localStorage.getItem(userKey)
-}
